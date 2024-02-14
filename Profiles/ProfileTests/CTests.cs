@@ -42,16 +42,17 @@ namespace ProfileTests
             // Act
             IC c = new C(h, w, webThk, flangeThk, lip);
             string json = c.ToJson();
-            
+
             // Assert
-            Assert.Equal(_cJson, json);
+            string expected = _cJson.Replace("\r\n", Environment.NewLine);
+            Assert.Equal(expected, json);
         }
 
         [Fact]
         public void CDeserializationTest()
         {
             // Assemble
-            string json = _cJson;
+            string json = _cJson.Replace("\r\n", Environment.NewLine); ;
 
             // Act
             IC c = json.FromJson<IC>();

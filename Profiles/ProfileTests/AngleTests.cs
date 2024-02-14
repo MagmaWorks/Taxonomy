@@ -42,14 +42,15 @@ namespace ProfileTests
             string json = angle.ToJson();
             
             // Assert
-            Assert.Equal(_angleJson, json);
+            string expected = _angleJson.Replace("\r\n", Environment.NewLine);
+            Assert.Equal(expected, json);
         }
 
         [Fact]
         public void AngleDeserializationTest()
         {
             // Assemble
-            string json = _angleJson;
+            string json = _angleJson.Replace("\r\n", Environment.NewLine);
 
             // Act
             IAngle angle = json.FromJson<IAngle>();
