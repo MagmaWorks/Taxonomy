@@ -3,11 +3,10 @@ using MagmaWorks.Taxonomy.Serialization.Profiles;
 using OasysUnits;
 using OasysUnits.Units;
 using ProfileTests.Utility;
-using Angle = MagmaWorks.Taxonomy.Profiles.Angle;
 
 namespace ProfileTests
 {
-    public class AngleTests
+    public class TeeTests
     {
         [Fact]
         public void CreateProfileTest()
@@ -19,7 +18,7 @@ namespace ProfileTests
             var flangeThk = new Length(15, LengthUnit.Millimeter);
 
             // Act
-            IAngle prfl = new Angle(h, w, webThk, flangeThk);
+            ITee prfl = new Tee(h, w, flangeThk, webThk);
 
             // Assert
             TestUtility.TestLengthsAreEqual(h, prfl.Height);
@@ -38,9 +37,9 @@ namespace ProfileTests
             var flangeThk = new Length(15, LengthUnit.Millimeter);
 
             // Act
-            IAngle prfl = new Angle(h, w, webThk, flangeThk);
+            ITee prfl = new Tee(h, w, flangeThk, webThk);
             string json = prfl.ToJson();
-            
+
             // Assert
             string expected = _prflJson.Replace("\r\n", Environment.NewLine);
             Assert.Equal(expected, json);
@@ -50,10 +49,10 @@ namespace ProfileTests
         public void DeserializationTest()
         {
             // Assemble
-            string json = _prflJson.Replace("\r\n", Environment.NewLine);
+            string json = _prflJson.Replace("\r\n", Environment.NewLine); ;
 
             // Act
-            IAngle prfl = json.FromJson<IAngle>();
+            ITee prfl = json.FromJson<ITee>();
             
             // Assert
             TestUtility.TestLengthsAreEqual(new Length(2.3, LengthUnit.Centimeter), prfl.Height);
@@ -72,9 +71,9 @@ namespace ProfileTests
             var flangeThk = new Length(15, LengthUnit.Millimeter);
 
             // Act
-            IAngle prfl = new Angle(h, w, webThk, flangeThk);
+            ITee prfl = new Tee(h, w, flangeThk, webThk);
             string json = prfl.ToJson();
-            IAngle prflDeserialized = json.FromJson<IAngle>();
+            ITee prflDeserialized = json.FromJson<ITee>();
 
             // Assert
             TestUtility.TestLengthsAreEqual(prfl.Height, prflDeserialized.Height);
@@ -83,6 +82,6 @@ namespace ProfileTests
             TestUtility.TestLengthsAreEqual(prfl.FlangeThickness, prflDeserialized.FlangeThickness);
         }
 
-        private static string _prflJson = "{\r\n  \"Height\": {\r\n    \"Unit\": \"LengthUnit.Centimeter\",\r\n    \"Value\": 2.3\r\n  },\r\n  \"Width\": {\r\n    \"Unit\": \"LengthUnit.Centimeter\",\r\n    \"Value\": 5.4\r\n  },\r\n  \"WebThickness\": {\r\n    \"Unit\": \"LengthUnit.Millimeter\",\r\n    \"Value\": 10.9\r\n  },\r\n  \"FlangeThickness\": {\r\n    \"Unit\": \"LengthUnit.Millimeter\",\r\n    \"Value\": 15.0\r\n  }\r\n}";
+        private static string _prflJson = "{\r\n  \"Height\": {\r\n    \"Unit\": \"LengthUnit.Centimeter\",\r\n    \"Value\": 2.3\r\n  },\r\n  \"Width\": {\r\n    \"Unit\": \"LengthUnit.Centimeter\",\r\n    \"Value\": 5.4\r\n  },\r\n  \"FlangeThickness\": {\r\n    \"Unit\": \"LengthUnit.Millimeter\",\r\n    \"Value\": 15.0\r\n  },\r\n  \"WebThickness\": {\r\n    \"Unit\": \"LengthUnit.Millimeter\",\r\n    \"Value\": 10.9\r\n  }\r\n}";
     }
 }

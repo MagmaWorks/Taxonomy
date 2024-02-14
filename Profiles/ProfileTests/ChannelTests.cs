@@ -3,11 +3,10 @@ using MagmaWorks.Taxonomy.Serialization.Profiles;
 using OasysUnits;
 using OasysUnits.Units;
 using ProfileTests.Utility;
-using Angle = MagmaWorks.Taxonomy.Profiles.Angle;
 
 namespace ProfileTests
 {
-    public class AngleTests
+    public class ChannelTests
     {
         [Fact]
         public void CreateProfileTest()
@@ -19,7 +18,7 @@ namespace ProfileTests
             var flangeThk = new Length(15, LengthUnit.Millimeter);
 
             // Act
-            IAngle prfl = new Angle(h, w, webThk, flangeThk);
+            IChannel prfl = new Channel(h, w, webThk, flangeThk);
 
             // Assert
             TestUtility.TestLengthsAreEqual(h, prfl.Height);
@@ -38,9 +37,9 @@ namespace ProfileTests
             var flangeThk = new Length(15, LengthUnit.Millimeter);
 
             // Act
-            IAngle prfl = new Angle(h, w, webThk, flangeThk);
+            IChannel prfl = new Channel(h, w, webThk, flangeThk);
             string json = prfl.ToJson();
-            
+
             // Assert
             string expected = _prflJson.Replace("\r\n", Environment.NewLine);
             Assert.Equal(expected, json);
@@ -50,10 +49,10 @@ namespace ProfileTests
         public void DeserializationTest()
         {
             // Assemble
-            string json = _prflJson.Replace("\r\n", Environment.NewLine);
+            string json = _prflJson.Replace("\r\n", Environment.NewLine); ;
 
             // Act
-            IAngle prfl = json.FromJson<IAngle>();
+            IChannel prfl = json.FromJson<IChannel>();
             
             // Assert
             TestUtility.TestLengthsAreEqual(new Length(2.3, LengthUnit.Centimeter), prfl.Height);
@@ -72,9 +71,9 @@ namespace ProfileTests
             var flangeThk = new Length(15, LengthUnit.Millimeter);
 
             // Act
-            IAngle prfl = new Angle(h, w, webThk, flangeThk);
+            IChannel prfl = new Channel(h, w, webThk, flangeThk);
             string json = prfl.ToJson();
-            IAngle prflDeserialized = json.FromJson<IAngle>();
+            IChannel prflDeserialized = json.FromJson<IChannel>();
 
             // Assert
             TestUtility.TestLengthsAreEqual(prfl.Height, prflDeserialized.Height);
