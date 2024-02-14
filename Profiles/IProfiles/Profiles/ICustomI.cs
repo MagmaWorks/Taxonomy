@@ -2,7 +2,7 @@
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
-    public interface IICustom : IProfile
+    public interface ICustomI : IProfile
     {
         Length Height { get; }
         Length TopFlangeWidth { get; }
