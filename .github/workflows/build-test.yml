@@ -1,4 +1,5 @@
 name: Build and test
+run-name: PR ${{ github.event_name }} by @${{ github.actor }}
 on:
   pull_request:
     branches:    
