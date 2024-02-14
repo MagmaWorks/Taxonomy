@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Taxonomy\MagmaWorks.Taxonomy.IProfiles.csproj" />
+    <ProjectReference Include="..\IProfiles\MagmaWorks.Taxonomy.IProfiles.csproj" />
   </ItemGroup>
 
 </Project>
