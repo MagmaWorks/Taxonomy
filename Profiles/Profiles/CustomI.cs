@@ -2,7 +2,7 @@
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
-    public class ICustom : IICustom
+    public class CustomI : ICustomI
     {
         public Length Height { get; set; }
         public Length TopFlangeWidth { get; set; }
@@ -11,7 +11,7 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length BottomFlangeThickness { get; set; }
         public Length WebThickness { get; set; }
 
-        public ICustom(Length height, Length topFlangeWidth, Length bottomFlangeWidth, Length topFlangeThickness, Length bottomFlangeThickness, Length webThickness)
+        public CustomI(Length height, Length topFlangeWidth, Length bottomFlangeWidth, Length topFlangeThickness, Length bottomFlangeThickness, Length webThickness)
         {
             Height = height;
             TopFlangeWidth = topFlangeWidth;
