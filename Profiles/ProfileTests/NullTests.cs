@@ -1,8 +1,5 @@
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Serialization.Profiles;
-using OasysUnits;
-using OasysUnits.Units;
-using ProfileTests.Utility;
 
 namespace ProfileTests
 {
@@ -12,7 +9,7 @@ namespace ProfileTests
         public void DeserializationTest()
         {
             // Assemble
-            string json = _prflJson.Replace("\r\n", Environment.NewLine); ;
+            string json = _prflJson;
 
             // Act
             IProfile prfl = json.FromJson<IProfile>();

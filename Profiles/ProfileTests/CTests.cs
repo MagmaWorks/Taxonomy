@@ -52,7 +52,7 @@ namespace ProfileTests
         public void DeserializationTest()
         {
             // Assemble
-            string json = _prflJson.Replace("\r\n", Environment.NewLine); ;
+            string json = _prflJson;
 
             // Act
             IC c = json.FromJson<IC>();
