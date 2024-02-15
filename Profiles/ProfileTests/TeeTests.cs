@@ -49,7 +49,7 @@ namespace ProfileTests
         public void DeserializationTest()
         {
             // Assemble
-            string json = _prflJson.Replace("\r\n", Environment.NewLine); ;
+            string json = _prflJson;
 
             // Act
             ITee prfl = json.FromJson<ITee>();
