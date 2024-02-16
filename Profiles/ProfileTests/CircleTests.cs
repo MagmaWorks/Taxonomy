@@ -64,6 +64,21 @@ namespace ProfileTests
             TestUtility.TestLengthsAreEqual(prfl.Diameter, prflDeserialized.Diameter);
         }
 
+        [Fact]
+        public void ConcreteImplementationSurvivesRoundtripDeserializationTest()
+        {
+            // Assemble
+            var dia = new Length(2.3, LengthUnit.Centimeter);
+
+            // Act
+            ICircle prfl = new Circle(dia);
+            string json = prfl.ToJson();
+            ICircle prflDeserialized = json.FromJson<Circle>();
+
+            // Assert
+            TestUtility.TestLengthsAreEqual(prfl.Diameter, prflDeserialized.Diameter);
+        }
+
         private static string _prflJson = "{\r\n  \"Diameter\": {\r\n    \"Unit\": \"LengthUnit.Centimeter\",\r\n    \"Value\": 2.3\r\n  }\r\n}";
     }
 }

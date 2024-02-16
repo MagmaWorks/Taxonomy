@@ -45,7 +45,7 @@ namespace MagmaWorks.Taxonomy.Serialization.Profiles.Extensions
                     => (T)(ITrapezoid)JsonConvert.DeserializeObject<Trapezoid>(json, settings),
                 var profile when profile == typeof(IZ)
                     => (T)(IZ)JsonConvert.DeserializeObject<Z>(json, settings),
-                _ => default,
+                _ => JsonConvert.DeserializeObject<T>(json, settings),
             };
         }
     }

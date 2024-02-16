@@ -70,6 +70,23 @@ namespace ProfileTests
             TestUtility.TestLengthsAreEqual(prfl.Thickness, prflDeserialized.Thickness);
         }
 
+        [Fact]
+        public void ConcreteImplementationSurvivesRoundtripDeserializationTest()
+        {
+            // Assemble
+            var dia = new Length(2.3, LengthUnit.Centimeter);
+            var thk = new Length(10.9, LengthUnit.Millimeter);
+
+            // Act
+            ICircularHollow prfl = new CircularHollow(dia, thk);
+            string json = prfl.ToJson();
+            ICircularHollow prflDeserialized = json.FromJson<CircularHollow>();
+
+            // Assert
+            TestUtility.TestLengthsAreEqual(prfl.Diameter, prflDeserialized.Diameter);
+            TestUtility.TestLengthsAreEqual(prfl.Thickness, prflDeserialized.Thickness);
+        }
+
         private static string _prflJson = "{\r\n  \"Diameter\": {\r\n    \"Unit\": \"LengthUnit.Centimeter\",\r\n    \"Value\": 2.3\r\n  },\r\n  \"Thickness\": {\r\n    \"Unit\": \"LengthUnit.Millimeter\",\r\n    \"Value\": 10.9\r\n  }\r\n}";
     }
 }
