@@ -1,5 +1,5 @@
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization.Profiles;
+using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
 using OasysUnits;
 using OasysUnits.Units;
 using ProfileTests.Utility;
@@ -69,6 +69,25 @@ namespace ProfileTests
             IRectangularHollow prfl = new RectangularHollow(h, w, thk);
             string json = prfl.ToJson();
             IRectangularHollow prflDeserialized = json.FromJson<IRectangularHollow>();
+
+            // Assert
+            TestUtility.TestLengthsAreEqual(prfl.Height, prflDeserialized.Height);
+            TestUtility.TestLengthsAreEqual(prfl.Width, prflDeserialized.Width);
+            TestUtility.TestLengthsAreEqual(prfl.Thickness, prflDeserialized.Thickness);
+        }
+
+        [Fact]
+        public void ConcreteImplementationSurvivesRoundtripDeserializationTest()
+        {
+            // Assemble
+            var h = new Length(2.3, LengthUnit.Centimeter);
+            var w = new Length(5.4, LengthUnit.Centimeter);
+            var thk = new Length(10.9, LengthUnit.Millimeter);
+
+            // Act
+            IRectangularHollow prfl = new RectangularHollow(h, w, thk);
+            string json = prfl.ToJson();
+            IRectangularHollow prflDeserialized = json.FromJson<RectangularHollow>();
 
             // Assert
             TestUtility.TestLengthsAreEqual(prfl.Height, prflDeserialized.Height);

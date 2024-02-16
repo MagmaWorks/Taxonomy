@@ -1,5 +1,5 @@
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization.Profiles;
+using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
 using OasysUnits;
 using OasysUnits.Units;
 using ProfileTests.Utility;
@@ -74,6 +74,27 @@ namespace ProfileTests
             ITee prfl = new Tee(h, w, flangeThk, webThk);
             string json = prfl.ToJson();
             ITee prflDeserialized = json.FromJson<ITee>();
+
+            // Assert
+            TestUtility.TestLengthsAreEqual(prfl.Height, prflDeserialized.Height);
+            TestUtility.TestLengthsAreEqual(prfl.Width, prflDeserialized.Width);
+            TestUtility.TestLengthsAreEqual(prfl.WebThickness, prflDeserialized.WebThickness);
+            TestUtility.TestLengthsAreEqual(prfl.FlangeThickness, prflDeserialized.FlangeThickness);
+        }
+
+        [Fact]
+        public void ConcreteImplementationSurvivesRoundtripDeserializationTest()
+        {
+            // Assemble
+            var h = new Length(2.3, LengthUnit.Centimeter);
+            var w = new Length(5.4, LengthUnit.Centimeter);
+            var webThk = new Length(10.9, LengthUnit.Millimeter);
+            var flangeThk = new Length(15, LengthUnit.Millimeter);
+
+            // Act
+            ITee prfl = new Tee(h, w, flangeThk, webThk);
+            string json = prfl.ToJson();
+            ITee prflDeserialized = json.FromJson<Tee>();
 
             // Assert
             TestUtility.TestLengthsAreEqual(prfl.Height, prflDeserialized.Height);
