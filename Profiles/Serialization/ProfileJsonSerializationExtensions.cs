@@ -1,7 +1,7 @@
 ﻿using MagmaWorks.Taxonomy.Profiles;
 using Newtonsoft.Json;
 
-namespace MagmaWorks.Taxonomy.Serialization.Profiles
+namespace MagmaWorks.Taxonomy.Serialization.Profiles.Extensions
 {
     public static class ProfileJsonSerializationExtensions
     {

@@ -1,5 +1,4 @@
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization.Profiles;
 using OasysUnits;
 using OasysUnits.Units;
 using ProfileTests.Utility;
