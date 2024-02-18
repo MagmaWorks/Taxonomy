@@ -1,11 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <MinVerMinimumMajorMinor>0.0</MinVerMinimumMajorMinor>
+  </PropertyGroup>
+  
+  <PropertyGroup>
     <TargetFrameworks>net48;netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
 	  <LangVersion>8.0</LangVersion>
     <Platforms>AnyCPU</Platforms>
     <RootNamespace>MagmaWorks.Taxonomy.Profiles</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MinVer" Version="4.3.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\IProfiles\MagmaWorks.Taxonomy.IProfiles.csproj" />
