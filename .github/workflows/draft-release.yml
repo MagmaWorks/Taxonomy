@@ -24,7 +24,15 @@ jobs:
       run: dotnet test --configuration Release --no-build
     
     - name: Package
-      run: dotnet pack
+      run: dotnet pack -c Release --no-restore --include-symbols
+
+    - name: run minver
+      id: version
+      uses: thefringeninja/action-minver@2.0.0-preview1
+      
+    - name: output
+      run: |
+        echo ${{ steps.version.outputs.version }}
       
     - name: Upload artifact
       uses: actions/upload-artifact@v4.3.1
