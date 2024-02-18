@@ -11,14 +11,16 @@ jobs:
     name: Lint, build, test and report coverage
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      
+    
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
           auto_fix: true
           dotnet_format: true
-
+      
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
       - name: Build
         run: dotnet build
     
