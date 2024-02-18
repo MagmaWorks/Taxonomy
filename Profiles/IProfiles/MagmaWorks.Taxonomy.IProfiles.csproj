@@ -2,8 +2,6 @@
 
   <PropertyGroup>
     <MinVerMinimumMajorMinor>0.0</MinVerMinimumMajorMinor>
-    <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
-    <MinVerDefaultPreReleaseIdentifiers>beta.1</MinVerDefaultPreReleaseIdentifiers>
   </PropertyGroup>
   
   <PropertyGroup>
