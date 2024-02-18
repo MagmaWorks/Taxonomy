@@ -7,7 +7,7 @@ on:
     
 jobs:
   build_test_package:
-    name: Build, test, package and upload artifact
+    name: Build, test, package and create release
     runs-on: ubuntu-latest
     steps:
     
