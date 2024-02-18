@@ -32,7 +32,13 @@ jobs:
     
     - name: Package
       run: dotnet pack -c Release --no-restore --include-symbols
-      
+
+    - name: Upload artifact
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "./**/*.nupkg"
+        tag: ${{ steps.tag_version.outputs.new_tag }}
+    
     - name: Upload artifact
       uses: actions/upload-artifact@v4.3.1
       with:
