@@ -1,8 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <MinVerMinimumMajorMinor>0.2</MinVerMinimumMajorMinor>
+    <MinVerMinimumMajorMinor>0.0</MinVerMinimumMajorMinor>
     <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
+    <MinVerDefaultPreReleaseIdentifiers>beta</MinVerDefaultPreReleaseIdentifiers>
   </PropertyGroup>
   
   <PropertyGroup>
