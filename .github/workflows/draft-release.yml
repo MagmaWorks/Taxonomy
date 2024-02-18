@@ -16,13 +16,7 @@ jobs:
       with:
         fetch-depth: 0
         filter: tree:0
-    
-    - name: Build
-      run: dotnet build --configuration Release
-    
-    - name: Test
-      run: dotnet test --configuration Release --no-build
-
+        
     - name: Bump version and push tag
       id: tag_version
       uses: mathieudutour/github-tag-action@v6.1
@@ -30,13 +24,27 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         tag_prefix: ""
     
+    - name: Build
+      run: dotnet build --configuration Release
+    
+    - name: Test
+      run: dotnet test --configuration Release --no-build
+    
     - name: Package
       run: dotnet pack -c Release --no-restore --include-symbols
 
-    - name: Create release
+    - name: Delete any previous draft releases
+      uses: hugo19941994/delete-draft-releases@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Create new draft release
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./**/*.nupkg"
         tag: ${{ steps.tag_version.outputs.new_tag }}
         draft: true
+        allowUpdates: true
         updateOnlyUnreleased: true
+
+
