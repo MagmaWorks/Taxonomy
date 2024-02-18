@@ -7,7 +7,8 @@ on:
       - 'release/**'
       
 jobs:
-  cache_checkout:
+  lint-build-test:
+    name: Lint, build, test and report coverage
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
