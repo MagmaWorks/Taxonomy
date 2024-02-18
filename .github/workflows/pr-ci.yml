@@ -18,8 +18,8 @@ jobs:
 
   run_lint:
     needs: cache_checkout
-    uses: ./.github/workflows/actions/lint.yml
+    uses: ./.github/workflows/sub-action_lint.yml
 
   run_test:
     needs: cache_checkout
-    uses: ./.github/workflows/actions/test.yml
+    uses: ./.github/workflows/sub-action_test.yml
