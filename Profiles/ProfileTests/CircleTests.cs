@@ -44,7 +44,7 @@ namespace ProfileTests
 
             // Act
             ICircle c = json.FromJson<ICircle>();
-            
+
             // Assert
             TestUtility.TestLengthsAreEqual(new Length(2.3, LengthUnit.Centimeter), c.Diameter);
         }

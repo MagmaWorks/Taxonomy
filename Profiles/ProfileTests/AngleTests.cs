@@ -40,7 +40,7 @@ namespace ProfileTests
             // Act
             IAngle prfl = new Angle(h, w, webThk, flangeThk);
             string json = prfl.ToJson();
-            
+
             // Assert
             string expected = _prflJson.Replace("\r\n", Environment.NewLine);
             Assert.Equal(expected, json);
@@ -54,7 +54,7 @@ namespace ProfileTests
 
             // Act
             IAngle prfl = json.FromJson<IAngle>();
-            
+
             // Assert
             TestUtility.TestLengthsAreEqual(new Length(2.3, LengthUnit.Centimeter), prfl.Height);
             TestUtility.TestLengthsAreEqual(new Length(5.4, LengthUnit.Centimeter), prfl.Width);

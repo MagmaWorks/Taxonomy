@@ -10,7 +10,8 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length FlangeThickness { get; set; }
         public Length Lip { get; set; }
 
-        public C(Length height, Length width, Length webThickness, Length flangeThickness, Length lip) {
+        public C(Length height, Length width, Length webThickness, Length flangeThickness, Length lip)
+        {
             Height = height;
             Width = width;
             WebThickness = webThickness;

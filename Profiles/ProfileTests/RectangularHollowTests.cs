@@ -50,7 +50,7 @@ namespace ProfileTests
 
             // Act
             IRectangularHollow prfl = json.FromJson<IRectangularHollow>();
-            
+
             // Assert
             TestUtility.TestLengthsAreEqual(new Length(2.3, LengthUnit.Centimeter), prfl.Height);
             TestUtility.TestLengthsAreEqual(new Length(5.4, LengthUnit.Centimeter), prfl.Width);

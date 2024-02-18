@@ -56,7 +56,7 @@ namespace ProfileTests
 
             // Act
             IC c = json.FromJson<IC>();
-            
+
             // Assert
             TestUtility.TestLengthsAreEqual(new Length(2.3, LengthUnit.Centimeter), c.Height);
             TestUtility.TestLengthsAreEqual(new Length(5.4, LengthUnit.Centimeter), c.Width);

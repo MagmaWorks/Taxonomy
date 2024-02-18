@@ -59,7 +59,7 @@ namespace ProfileTests
 
             // Act
             IZ prfl = json.FromJson<IZ>();
-            
+
             // Assert
             TestUtility.TestLengthsAreEqual(new Length(2.3, LengthUnit.Centimeter), prfl.Height);
             TestUtility.TestLengthsAreEqual(new Length(5.4, LengthUnit.Centimeter), prfl.TopFlangeWidth);
