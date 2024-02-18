@@ -47,7 +47,7 @@ namespace ProfileTests
 
             // Act
             ICircularHollow prfl = json.FromJson<ICircularHollow>();
-            
+
             // Assert
             TestUtility.TestLengthsAreEqual(new Length(2.3, LengthUnit.Centimeter), prfl.Diameter);
             TestUtility.TestLengthsAreEqual(new Length(10.9, LengthUnit.Millimeter), prfl.Thickness);
