@@ -13,6 +13,7 @@ namespace MagmaWorks.Taxonomy.Serialization
                     Converters = {
                         new OasysUnits.Serialization.JsonNet.OasysUnitsIQuantityJsonConverter(),
                     },
+                    TypeNameHandling = TypeNameHandling.Objects,
                     TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple
                 };
                 return settings;

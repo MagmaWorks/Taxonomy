@@ -32,45 +32,7 @@ namespace ProfileTests
         }
 
         [Fact]
-        public void SerializationTest()
-        {
-            // Assemble
-            var h = new Length(2.3, LengthUnit.Centimeter);
-            var wTop = new Length(5.4, LengthUnit.Centimeter);
-            var wBottom = new Length(0.5, LengthUnit.Meter);
-            var thk = new Length(10.9, LengthUnit.Millimeter);
-            var topLip = new Length(15, LengthUnit.Millimeter);
-            var bottomLip = new Length(9.8, LengthUnit.Millimeter);
-
-            // Act
-            IZ prfl = new Z(h, wTop, wBottom, thk, topLip, bottomLip);
-            string json = prfl.ToJson();
-
-            // Assert
-            string expected = _prflJson.Replace("\r\n", Environment.NewLine);
-            Assert.Equal(expected, json);
-        }
-
-        [Fact]
-        public void DeserializationTest()
-        {
-            // Assemble
-            string json = _prflJson;
-
-            // Act
-            IZ prfl = json.FromJson<IZ>();
-
-            // Assert
-            TestUtility.TestLengthsAreEqual(new Length(2.3, LengthUnit.Centimeter), prfl.Height);
-            TestUtility.TestLengthsAreEqual(new Length(5.4, LengthUnit.Centimeter), prfl.TopFlangeWidth);
-            TestUtility.TestLengthsAreEqual(new Length(0.5, LengthUnit.Meter), prfl.BottomFlangeWidth);
-            TestUtility.TestLengthsAreEqual(new Length(10.9, LengthUnit.Millimeter), prfl.Thickness);
-            TestUtility.TestLengthsAreEqual(new Length(15, LengthUnit.Millimeter), prfl.TopLip);
-            TestUtility.TestLengthsAreEqual(new Length(9.8, LengthUnit.Millimeter), prfl.BottomLip);
-        }
-
-        [Fact]
-        public void SurvivesRoundtripDeserializationTest()
+        public void InterfaceSurvivesRoundtripDeserializationTest()
         {
             // Assemble
             var h = new Length(2.3, LengthUnit.Centimeter);

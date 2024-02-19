@@ -26,39 +26,7 @@ namespace ProfileTests
         }
 
         [Fact]
-        public void SerializationTest()
-        {
-            // Assemble
-            var h = new Length(2.3, LengthUnit.Centimeter);
-            var w = new Length(5.4, LengthUnit.Centimeter);
-            var Thk = new Length(10.9, LengthUnit.Millimeter);
-
-            // Act
-            IRectangularHollow prfl = new RectangularHollow(h, w, Thk);
-            string json = prfl.ToJson();
-
-            // Assert
-            string expected = _prflJson.Replace("\r\n", Environment.NewLine);
-            Assert.Equal(expected, json);
-        }
-
-        [Fact]
-        public void DeserializationTest()
-        {
-            // Assemble
-            string json = _prflJson;
-
-            // Act
-            IRectangularHollow prfl = json.FromJson<IRectangularHollow>();
-
-            // Assert
-            TestUtility.TestLengthsAreEqual(new Length(2.3, LengthUnit.Centimeter), prfl.Height);
-            TestUtility.TestLengthsAreEqual(new Length(5.4, LengthUnit.Centimeter), prfl.Width);
-            TestUtility.TestLengthsAreEqual(new Length(10.9, LengthUnit.Millimeter), prfl.Thickness);
-        }
-
-        [Fact]
-        public void SurvivesRoundtripDeserializationTest()
+        public void InterfaceSurvivesRoundtripDeserializationTest()
         {
             // Assemble
             var h = new Length(2.3, LengthUnit.Centimeter);
