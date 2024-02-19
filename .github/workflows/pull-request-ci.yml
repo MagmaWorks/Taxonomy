@@ -7,8 +7,8 @@ on:
       - 'release/**'
       
 jobs:
-  lint-build-test:
-    name: Lint, build, test and report coverage
+  lint:
+    name: Lint (auto-fix errors and style)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,6 +18,13 @@ jobs:
         with:
           auto_fix: true
           dotnet_format: true
+  
+  build-test:
+    name: Build, test and report coverage
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
       - name: Build
         run: dotnet build
