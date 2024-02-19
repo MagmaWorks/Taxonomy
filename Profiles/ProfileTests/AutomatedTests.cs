@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
 using OasysUnits;
@@ -83,7 +84,8 @@ namespace ProfileTests
                       && !_excludedTypes.Contains(type)
                       && type.Attributes.HasFlag(TypeAttributes.Public)
                       && !type.Attributes.HasFlag(TypeAttributes.Abstract)
-                      && !type.Attributes.HasFlag(TypeAttributes.Interface))
+                      && !type.Attributes.HasFlag(TypeAttributes.Interface)
+                      && type.GetCustomAttribute(typeof(CompilerGeneratedAttribute), true) == null)
                     {
                         data.Add([type]);
                     }
