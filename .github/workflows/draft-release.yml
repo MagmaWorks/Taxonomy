@@ -25,11 +25,9 @@ jobs:
     
     - name: Package
       run: dotnet pack -c Release --no-restore --include-symbols
-
-    - name: Delete any previous draft releases
-      uses: hugo19941994/delete-draft-releases@v1.0.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set VERSION variable from tag
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\/*/}" >> $GITHUB_ENV
 
     - name: Create new draft release
       uses: ncipollo/release-action@v1
@@ -39,3 +37,8 @@ jobs:
         draft: true
         allowUpdates: true
         updateOnlyUnreleased: true
+
+    - name: Delete any previous draft releases
+      uses: hugo19941994/delete-draft-releases@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
