@@ -33,7 +33,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./**/*.nupkg"
-        tag: ${{ steps.tag_version.outputs.new_tag }}
+        tag: ${{ env.RELEASE_VERSION }}
         draft: true
         allowUpdates: true
         updateOnlyUnreleased: true
