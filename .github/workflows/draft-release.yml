@@ -36,15 +36,9 @@ jobs:
         echo "Build: $buildVersion"
 
     - name: Create tag
-      uses: actions/github-script@v5
-      with:
-        script: |
-          github.rest.git.createRef({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            ref: 'refs/tags/${{ env.VERSION }}',
-            sha: context.sha
-          })
+      run: |
+        git tag ${{ env.VERSION }}
+        git push --tags
 
   build_test_package:
     name: Build, test, package and create release
@@ -54,9 +48,6 @@ jobs:
         
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        filter: tree:0
     
     - name: Build
       run: dotnet build --configuration Release
