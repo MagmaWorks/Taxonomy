@@ -29,7 +29,7 @@ jobs:
     - name: Install dotnet-validate
       run: |
         dotnet tool install --global dotnet-validate --version 0.0.1-preview.42
-        dotnet-validate package local "./**/*.nupkg
+        dotnet-validate package local ./**/*.nupkg
 
     - name: Delete any previous draft releases
       uses: hugo19941994/delete-draft-releases@v1.0.0
