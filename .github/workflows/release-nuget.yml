@@ -6,7 +6,7 @@ on:
 
 jobs:
   clean_version:
-    name: Increment Build version
+    name: Clean Build version
     runs-on: ubuntu-latest
     steps:
     
@@ -15,15 +15,6 @@ jobs:
       with:
         fetch-depth: 0
         filter: tree:0
-
-    - name: Delete old release assets
-      uses: mknejp/delete-release-assets@v1
-      with:
-        token: ${{ github.token }}
-        tag: ${{ github.event.release.tag_name }}
-        assets: |
-         *.nupkg
-         *.snupkg
     
     - name: Package
       run: dotnet pack --configuration Release -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:DebugType=portable /property:Configuration=Debug
@@ -40,7 +31,6 @@ jobs:
         $versionTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
         echo "VERSION=$versionTag" >> $env:GITHUB_OUTPUT
         echo "Version: $versionTag"
-        echo "Build version: $versionBuildTag"
 
     - name: Create tag
       run: |
@@ -75,6 +65,7 @@ jobs:
         tag: ${{ github.event.release.tag_name }}
         draft: false
         allowUpdates: true
+        removeArtifacts: true
         updateOnlyUnreleased: false
       
   pushNuGetPackage:
@@ -100,10 +91,5 @@ jobs:
           file: /.*\.snupkg/
           token: ${{ secrets.GITHUB_TOKEN }}
 
-#      - name: Push nupkg file to nuget.org
-#        run: dotnet nuget push "*.nupkg" --api-key ${{ SECRETS.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
-
-#      - name: Delete previous draft releases
-#        uses: hugo19941994/delete-draft-releases@v1.0.0
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push nupkg file to nuget.org
+        run: dotnet nuget push "*.nupkg" --api-key ${{ SECRETS.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
