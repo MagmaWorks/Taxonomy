@@ -6,12 +6,9 @@ on:
     - main
     
 jobs:
-  bump_version:
-    name: Increment Build version
+  build_test_package:
+    name: Build, test, package and create release
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.get_version.outputs.VERSION }}
-      build_version: ${{ steps.get_version.outputs.BUILD }}
     steps:
     
     - name: Checkout
@@ -20,8 +17,14 @@ jobs:
         fetch-depth: 0
         filter: tree:0
     
+    - name: Build
+      run: dotnet build --configuration Release
+    
+    - name: Test
+      run: dotnet test --configuration Release --no-build
+    
     - name: Package
-      run: dotnet pack --configuration Release -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:DebugType=portable /property:Configuration=Debug
+      run: dotnet pack --configuration Release --no-restore -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:DebugType=portable /property:Configuration=Debug
 
     - name: Get version from Package name
       id: get_version
@@ -32,55 +35,15 @@ jobs:
         $minorVersion = [string]$fullVersion[1]
         $patchVersion = [string]$fullVersion[2]
         $buildVersion = [string]$fullVersion[3]
-        $versionTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
         $versionBuildTag = $majorVersion + "." + $minorVersion + "." + $patchVersion + "." + $buildVersion
-        echo "VERSION=$versionTag" >> $env:GITHUB_OUTPUT
         echo "BUILD=$versionBuildTag" >> $env:GITHUB_OUTPUT
-        echo "Version: $versionTag"
         echo "Build version: $versionBuildTag"
-
-    - name: Create tag
-      run: |
-        git tag -f ${{ steps.get_version.outputs.VERSION }}
-        git tag ${{ steps.get_version.outputs.BUILD }}
-        git push --tags
-
-  build_test_package:
-    name: Build, test, package and create release
-    needs: bump_version
-    runs-on: ubuntu-latest
-    steps:
-    
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        filter: tree:0
-    
-    - env:
-        VERSION: ${{needs.get_version.outputs.version}}
-        BUILD_VERSION: ${{needs.get_version.outputs.build_version}}
-      run: echo "$BUILD_VERSION"
-    
-    - name: Build
-      run: dotnet build --configuration Release
-    
-    - name: Test
-      run: dotnet test --configuration Release --no-build
-    
-    - name: Package
-      run: dotnet pack --configuration Release --no-restore -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:DebugType=portable /property:Configuration=Debug
-    
-    - name: Delete previous draft releases
-      uses: hugo19941994/delete-draft-releases@v1.0.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Create new draft release
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./**/*.*nupkg"
-        tag: "$BUILD_VERSION"
+        tag: "${{ steps.get_version.outputs.BUILD }}"
         draft: true
         allowUpdates: true
         updateOnlyUnreleased: true
