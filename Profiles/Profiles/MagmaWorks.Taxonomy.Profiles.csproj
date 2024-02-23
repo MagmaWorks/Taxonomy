@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\MagmaWorks.icog">
+    <None Include="..\..\MagmaWorks.ico">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
