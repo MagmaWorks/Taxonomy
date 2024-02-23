@@ -60,9 +60,7 @@ jobs:
     - env:
         VERSION: ${{needs.get_version.outputs.version}}
         BUILD_VERSION: ${{needs.get_version.outputs.build_version}}
-        
-    - name: Get tags
-      run: git fetch --tags origin
+      run: echo "$BUILD_VERSION"
     
     - name: Build
       run: dotnet build --configuration Release
