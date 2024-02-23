@@ -32,7 +32,7 @@ jobs:
     - name: Create new draft release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "./**/*.nupkg"
+        artifacts: "./**/*.*nupkg"
         tag: ${{ env.version }}
         draft: true
         allowUpdates: true
