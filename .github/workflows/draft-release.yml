@@ -26,10 +26,9 @@ jobs:
     - name: Package
       run: dotnet pack -c Release --no-restore --include-symbols
     
-    - name: Get version variable from tag
-      run: |
-        echo "RELEASE_VERSION=${GITHUB_REF/refs\/tags\/*/}" >> $GITHUB_ENV
-        echo "::notice ${{ env.RELEASE_VERSION }}::Version"
+    - name: run minver
+      id: version
+      uses: thefringeninja/action-minver@2.0.0-preview1
 
     - name: Delete any previous draft releases
       uses: hugo19941994/delete-draft-releases@v1.0.0
@@ -40,7 +39,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./**/*.nupkg"
-        tag: ${{ env.RELEASE_VERSION }}
+        tag: ${{ env.VERSION }}
         draft: true
         allowUpdates: true
         updateOnlyUnreleased: true
