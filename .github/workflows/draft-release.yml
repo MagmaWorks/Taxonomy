@@ -30,8 +30,8 @@ jobs:
         $buildVersion = [string]$fullVersion[3]
         $versionTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
         $versionBuildTag = $majorVersion + "." + $minorVersion + "." + $patchVersion + "." + $buildVersion
-        echo "VERSION=$versionTag" >> $GITHUB_OUTPUT
-        echo "BUILD=$versionBuildTag" >> $GITHUB_OUTPUT
+        echo "VERSION=$versionTag" >> $env:GITHUB_OUTPUT
+        echo "BUILD=$versionBuildTag" >> $env:GITHUB_OUTPUT
         echo "Version: $versionTag"
         echo "Build version: $versionBuildTag"
 
