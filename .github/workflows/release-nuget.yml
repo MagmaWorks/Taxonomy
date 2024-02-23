@@ -29,21 +29,21 @@ jobs:
 #      - name: Push nupkg file to nuget.org
 #        run: dotnet nuget push "*.nupkg" --api-key ${{ SECRETS.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
 
-      - name: Get version
-        uses: actions-ecosystem/action-get-latest-tag@v1
-        id: get-latest-tag
-
-      - name: Bump version
-        uses: actions-ecosystem/action-bump-semver@v1
-        id: bump-semver
-        with:
-          current_version: ${{ steps.get-latest-tag.outputs.tag }}
-          level: patch
+      - name: Get version from Package name
+        id: get_version
+        shell: pwsh
+        run: |
+          $fullVersion = [array]$($(Get-ChildItem -recurse -Filter *.nupkg | Select-Object -First 1).Name -split '(?=\d)',2)[1].replace('.nupkg','').split('.')
+          $majorVersion = [string]$fullVersion[0]
+          $minorVersion = [string]$fullVersion[1]
+          $patchVersion = [string]$fullVersion[2]
+          $dotSeparatedTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
+          echo "VERSION=$dotSeparatedTag" >> $env:GITHUB_ENV
       
       - name: Create new version tag
         uses: actions-ecosystem/action-push-tag@v1
         with:
-          tag: ${{ steps.bump-semver.outputs.new_version }}
+          tag: ${{ env.VERSION }}
           message: '${{ steps.bump-semver.outputs.new_version }}: Release #${{ github.event.release.tag_name }}'
 
       - name: Delete previous draft releases
