@@ -6,6 +6,35 @@ on:
     - main
     
 jobs:
+  bump_patch_version:
+    name: Increment Patch version
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        filter: tree:0
+    
+    - name: Package
+      run: dotnet pack --configuration Release -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:DebugType=portable /property:Configuration=Debug
+
+    - name: Get version from Package name
+      id: get_version
+      shell: pwsh
+      run: |
+        $fullVersion = [array]$($(Get-ChildItem -recurse -Filter *.nupkg | Select-Object -First 1).Name -split '(?=\d)',2)[1].replace('.nupkg','').replace('-preview','').split('.')
+        $majorVersion = [string]$fullVersion[0]
+        $minorVersion = [string]$fullVersion[1]
+        $patchVersion = [string]$fullVersion[2]
+        $dotSeparatedTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
+        echo "VERSION=$dotSeparatedTag" >> $env:GITHUB_ENV
+
+    - name: Create git version tag
+      run: |
+        git tag ${{ env.VERSION }}
+        git push --tags
+
   build_test_package:
     name: Build, test, package and create release
     runs-on: ubuntu-latest
