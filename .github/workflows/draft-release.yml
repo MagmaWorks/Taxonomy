@@ -27,7 +27,7 @@ jobs:
       run: dotnet pack -c Release --no-restore --include-symbols
     
     - name: Set VERSION variable from tag
-      run: echo "VERSION=${GITHUB_REF/refs\/tags\/*/}" >> $GITHUB_ENV
+      run: echo "RELEASE_VERSION=${GITHUB_REF/refs\/tags\/*/}" >> $GITHUB_ENV
 
     - name: Create new draft release
       uses: ncipollo/release-action@v1
