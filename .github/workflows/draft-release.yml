@@ -30,15 +30,15 @@ jobs:
         $buildVersion = [string]$fullVersion[3]
         $versionTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
         $versionBuildTag = $majorVersion + "." + $minorVersion + "." + $patchVersion + "." + $buildVersion
-        echo "VERSION=$versionTag" >> $env:GITHUB_ENV
-        echo "BUILD=$versionBuildTag" >> $env:GITHUB_ENV
+        echo "VERSION=$versionTag" >> $GITHUB_OUTPUT
+        echo "BUILD=$versionBuildTag" >> $GITHUB_OUTPUT
         echo "Version: $versionTag"
         echo "Build version: $versionBuildTag"
 
     - name: Create tag
       run: |
-        git tag -f ${{ env.VERSION }}
-        git tag ${{ env.BUILD }}
+        git tag -f ${{ steps.get_version.outputs.VERSION }}
+        git tag ${{ steps.get_version.outputs.BUILD }}
         git push --tags
 
   build_test_package:
@@ -74,7 +74,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./**/*.*nupkg"
-        tag: ${{ env.VERSION }}
+        tag: ${{ steps.get_version.outputs.BUILD }}
         draft: true
         allowUpdates: true
         updateOnlyUnreleased: true
