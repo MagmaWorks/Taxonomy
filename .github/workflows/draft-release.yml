@@ -37,8 +37,8 @@ jobs:
         $dotSeparatedTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
         echo "VERSION=$dotSeparatedTag" >> $env:GITHUB_ENV
 
-    - name: Debug
-      run: echo ${{ env.VERSION }}
+    - name: Git tag
+      run: git tag ${{ env.VERSION }}
       
     - name: Create new draft release
       uses: ncipollo/release-action@v1
