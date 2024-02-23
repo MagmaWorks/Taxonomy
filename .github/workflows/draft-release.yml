@@ -24,7 +24,7 @@ jobs:
       run: dotnet test --configuration Release --no-build
     
     - name: Package
-      run: dotnet pack --configuration Release --no-restore --include-symbols
+      run: dotnet pack --configuration Release --no-restore -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
 
     - name: Get version from tag
       run: |
