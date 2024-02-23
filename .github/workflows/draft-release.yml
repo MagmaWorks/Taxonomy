@@ -36,7 +36,7 @@ jobs:
         $patchVersion = [string]$fullVersion[2]
         $dotSeparatedTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
         echo $dotSeparatedTag
-        ::set-output name=version::$dotSeparatedTag
+        Write-Output ::set-output name=version::$dotSeparatedTag
       
     - name: Create new draft release
       uses: ncipollo/release-action@v1
