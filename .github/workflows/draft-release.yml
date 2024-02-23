@@ -25,10 +25,11 @@ jobs:
     
     - name: Package
       run: dotnet pack -c Release --no-restore --include-symbols
-    
-    - name: run minver
-      id: version
-      uses: thefringeninja/action-minver@2.0.0-preview1
+
+    - name: Install dotnet-validate
+      run: |
+        dotnet tool install --global dotnet-validate
+        dotnet-validate package local "./**/*.nupkg -v
 
     - name: Delete any previous draft releases
       uses: hugo19941994/delete-draft-releases@v1.0.0
