@@ -35,8 +35,7 @@ jobs:
         $minorVersion = [string]$fullVersion[1]
         $patchVersion = [string]$fullVersion[2]
         $dotSeparatedTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
-        echo $dotSeparatedTag
-        version=$dotSeparatedTag >> "$GITHUB_OUTPUT"
+        echo version=$dotSeparatedTag >> "$GITHUB_OUTPUT"
       
     - name: Create new draft release
       uses: ncipollo/release-action@v1
