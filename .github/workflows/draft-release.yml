@@ -27,7 +27,7 @@ jobs:
       run: dotnet pack --configuration Release --no-restore -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:DebugType=portable /property:Configuration=Debug
 
     - name: Get version from Package name
-      id: get_version
+      id: get-version
       shell: pwsh
       run: |
         $fullVersion = [array]$($(Get-ChildItem -recurse -Filter *.nupkg | Select-Object -First 1).Name -split '(?=\d)',2)[1].replace('.nupkg','').split('.')
@@ -42,7 +42,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./**/*.*nupkg"
-        tag: ${{ get_version.version }}
+        tag: ${{ steps.get-version.version }}
         draft: true
         allowUpdates: true
         updateOnlyUnreleased: true
