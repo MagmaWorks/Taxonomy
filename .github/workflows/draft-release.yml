@@ -48,6 +48,12 @@ jobs:
         
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        filter: tree:0
+    
+    - name: Get tags
+      run: git fetch --tags origin
     
     - name: Build
       run: dotnet build --configuration Release
