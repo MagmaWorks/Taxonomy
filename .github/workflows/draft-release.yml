@@ -28,16 +28,17 @@ jobs:
         $minorVersion = [string]$fullVersion[1]
         $patchVersion = [string]$fullVersion[2]
         $buildVersion = [string]$fullVersion[3]
-        $dotSeparatedTag = $majorVersion + "." + $minorVersion + "." + $patchVersion + "." + $buildVersion
-        echo "VERSION=$dotSeparatedTag" >> $env:GITHUB_ENV
-        echo "Major: $majorVersion"
-        echo "Minor: $minorVersion"
-        echo "Patch: $patchVersion"
-        echo "Build: $buildVersion"
+        $versionTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
+        $versionBuildTag = $majorVersion + "." + $minorVersion + "." + $patchVersion + "." + $buildVersion
+        echo "VERSION=$versionTag" >> $env:GITHUB_ENV
+        echo "BUILD=$versionBuildTag" >> $env:GITHUB_ENV
+        echo "Version: $versionTag"
+        echo "Build version: $versionBuildTag"
 
     - name: Create tag
       run: |
-        git tag ${{ env.VERSION }}
+        git tag -f ${{ env.VERSION }}
+        git tag ${{ env.BUILD }}
         git push --tags
 
   build_test_package:
