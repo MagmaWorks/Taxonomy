@@ -27,7 +27,8 @@ jobs:
         $majorVersion = [string]$fullVersion[0]
         $minorVersion = [string]$fullVersion[1]
         $patchVersion = [string]$fullVersion[2]
-        $dotSeparatedTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
+        $buildVersion = [string]$fullVersion[3]
+        $dotSeparatedTag = $majorVersion + "." + $minorVersion + "." + $patchVersion + "." + $buildVersion
         echo "VERSION=$dotSeparatedTag" >> $env:GITHUB_ENV
 
     - name: Create git version tag
@@ -37,6 +38,7 @@ jobs:
 
   build_test_package:
     name: Build, test, package and create release
+    needs: bump_patch_version
     runs-on: ubuntu-latest
     steps:
         
