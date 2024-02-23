@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  bump_version:
+  clean_version:
     name: Increment Build version
     runs-on: ubuntu-latest
     steps:
@@ -22,8 +22,8 @@ jobs:
         token: ${{ github.token }}
         tag: ${{ github.event.release.tag_name }}
         assets: |
-          '*.nupkg'
-          '*.snupkg'
+         *.nupkg
+         *.snupkg
     
     - name: Package
       run: dotnet pack --configuration Release -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:DebugType=portable /property:Configuration=Debug
@@ -49,6 +49,7 @@ jobs:
 
   build_test_package:
     name: Build, test, and package
+    needs: clean_version
     runs-on: ubuntu-latest
     steps:
     
@@ -77,6 +78,8 @@ jobs:
         updateOnlyUnreleased: false
       
   pushNuGetPackage:
+    name: Push new nuget packages
+    needs: build_test_package
     runs-on: ubuntu-latest
     steps:
       - name: Download NuGet Package
