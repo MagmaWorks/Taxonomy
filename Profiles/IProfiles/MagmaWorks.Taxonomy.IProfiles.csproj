@@ -18,7 +18,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/MagmaWorks/Taxonomy/</RepositoryUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/MagmaWorks/Taxonomy/main/MagmaWorks.ico</PackageIconUrl>
+    <PackageIcon>MagmaWorks.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -46,7 +46,7 @@
       <Pack>True</Pack>
       <PackagePath>\Licenses\</PackagePath>
     </None>
-    <None Include="..\..\MagmaWorks.ico">
+    <None Include="..\..\MagmaWorks.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
