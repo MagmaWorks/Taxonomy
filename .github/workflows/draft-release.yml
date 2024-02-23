@@ -40,13 +40,19 @@ jobs:
         git tag -f ${{ steps.get_version.outputs.VERSION }}
         git tag ${{ steps.get_version.outputs.BUILD }}
         git push --tags
+    
+    outputs:
+      version: ${{ steps.get_version.outputs.VERSION }}
+      build_version: ${{ steps.get_version.outputs.BUILD }}
 
   build_test_package:
     name: Build, test, package and create release
     needs: bump_version
     runs-on: ubuntu-latest
     steps:
-        
+    - env:
+        VERSION: ${{needs.get_version.outputs.version}}
+        BUILD_VERSION: ${{needs.get_version.outputs.build_version}}
     - name: Checkout
       uses: actions/checkout@v4
       with:
@@ -74,7 +80,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./**/*.*nupkg"
-        tag: ${{ steps.get_version.outputs.BUILD }}
+        tag: $BUILD_VERSION
         draft: true
         allowUpdates: true
         updateOnlyUnreleased: true
