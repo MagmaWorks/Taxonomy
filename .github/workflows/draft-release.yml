@@ -9,7 +9,11 @@ jobs:
   bump_version:
     name: Increment Build version
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.VERSION }}
+      build_version: ${{ steps.get_version.outputs.BUILD }}
     steps:
+    
     - name: Checkout
       uses: actions/checkout@v4
       with:
@@ -40,10 +44,6 @@ jobs:
         git tag -f ${{ steps.get_version.outputs.VERSION }}
         git tag ${{ steps.get_version.outputs.BUILD }}
         git push --tags
-    
-    outputs:
-      version: ${{ steps.get_version.outputs.VERSION }}
-      build_version: ${{ steps.get_version.outputs.BUILD }}
 
   build_test_package:
     name: Build, test, package and create release
@@ -80,7 +80,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./**/*.*nupkg"
-        tag: $BUILD_VERSION
+        tag: "$BUILD_VERSION"
         draft: true
         allowUpdates: true
         updateOnlyUnreleased: true
