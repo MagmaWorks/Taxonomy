@@ -35,16 +35,16 @@ jobs:
         $minorVersion = [string]$fullVersion[1]
         $patchVersion = [string]$fullVersion[2]
         $dotSeparatedTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
-        Write-Output ::set-output name=version::$dotSeparatedTag
+        echo "VERSION=$dotSeparatedTag" >> $env:GITHUB_ENV
 
     - name: Debug
-      run: echo ${{ steps.get_version.outputs.version }}
+      run: echo ${{ env.VERSION }}
       
     - name: Create new draft release
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./**/*.*nupkg"
-        tag: ${{ steps.get_version.outputs.version }}
+        tag: ${{ env.VERSION }}
         draft: true
         allowUpdates: true
         updateOnlyUnreleased: true
