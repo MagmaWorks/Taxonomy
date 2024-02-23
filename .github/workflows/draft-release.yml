@@ -31,17 +31,14 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Set Version Variable
-      if: ${{ github.ref_type == 'tag' }}
-      env:
-        TAG: ${{ github.ref_name }}
-      run: echo "version=${TAG#v}" >> $GITHUB_ENV
+    - id: get_version
+      uses: battila7/get-version-action@v2
       
     - name: Create new draft release
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./**/*.nupkg"
-        tag: ${{ env.version }}
+        tag: ${{ steps.get_version.outputs.version }}
         draft: true
         allowUpdates: true
         updateOnlyUnreleased: true
