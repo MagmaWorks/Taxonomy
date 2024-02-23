@@ -28,19 +28,25 @@ jobs:
 
     - name: Install dotnet-validate
       run: |
-        dotnet tool install --global dotnet-validate --version 0.0.1-preview.42
-        dotnet-validate package local ./**/*.nupkg
+        dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
+        meziantou.validate-nuget-package ./**/*.nupkg
 
     - name: Delete any previous draft releases
       uses: hugo19941994/delete-draft-releases@v1.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
+
+    - name: Set Version Variable
+      if: ${{ github.ref_type == 'tag' }}
+      env:
+        TAG: ${{ github.ref_name }}
+      run: echo "version=${TAG#v}" >> $GITHUB_ENV
+      
     - name: Create new draft release
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./**/*.nupkg"
-#        tag: ${{ steps.version.outputs.version }}
+        tag: ${{ env.version }}
         draft: true
         allowUpdates: true
         updateOnlyUnreleased: true
