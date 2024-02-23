@@ -36,9 +36,6 @@ jobs:
         $patchVersion = [string]$fullVersion[2]
         $dotSeparatedTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
         echo "VERSION=$dotSeparatedTag" >> $env:GITHUB_ENV
-
-    - name: Git tag
-      run: git tag 0.0.5
       
     - name: Create new draft release
       uses: ncipollo/release-action@v1
