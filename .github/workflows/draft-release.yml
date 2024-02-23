@@ -35,11 +35,16 @@ jobs:
         echo "Patch: $patchVersion"
         echo "Build: $buildVersion"
 
-    - name: Create git version tag
-      run: |
-        git tag ${{ env.VERSION }}
-        git push --tags
-        echo ${{ env.VERSION }}
+    - name: Create tag
+      uses: actions/github-script@v5
+      with:
+        script: |
+          github.rest.git.createRef({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: 'refs/tags/${{ env.VERSION }}',
+            sha: context.sha
+          })
 
   build_test_package:
     name: Build, test, package and create release
