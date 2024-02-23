@@ -30,12 +30,17 @@ jobs:
       id: get_version
       shell: pwsh
       run: |
-        $fullVersion = [array]$($(Get-ChildItem -recurse -Filter *.nupkg | Select-Object -First 1).Name -split '(?=\d)',2)[1].replace('.nupkg','').split('.')
+        $fullVersion = [array]$($(Get-ChildItem -recurse -Filter *.nupkg | Select-Object -First 1).Name -split '(?=\d)',2)[1].replace('.nupkg','').replace('-preview','').split('.')
         $majorVersion = [string]$fullVersion[0]
         $minorVersion = [string]$fullVersion[1]
         $patchVersion = [string]$fullVersion[2]
         $dotSeparatedTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
         echo "VERSION=$dotSeparatedTag" >> $env:GITHUB_ENV
+    
+    - name: Delete previous draft releases
+      uses: hugo19941994/delete-draft-releases@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Create new draft release
       uses: ncipollo/release-action@v1
