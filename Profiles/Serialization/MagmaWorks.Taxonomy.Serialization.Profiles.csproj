@@ -13,7 +13,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <Title>MagmaWorks Taxonomy Serialization Profiles</Title>
+    <Company>Whitby Wood</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/MagmaWorks/Taxonomy/</RepositoryUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/MagmaWorks/Taxonomy/main/MagmaWorks.ico</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
