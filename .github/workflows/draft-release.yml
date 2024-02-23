@@ -29,7 +29,7 @@ jobs:
     - name: Install dotnet-validate
       run: |
         dotnet tool install --global dotnet-validate --version 0.0.1-preview.42
-        dotnet-validate package local "./**/*.nupkg -v
+        dotnet-validate package local "./**/*.nupkg
 
     - name: Delete any previous draft releases
       uses: hugo19941994/delete-draft-releases@v1.0.0
@@ -40,7 +40,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./**/*.nupkg"
-        tag: ${{ steps.version.outputs.version }}
+#        tag: ${{ steps.version.outputs.version }}
         draft: true
         allowUpdates: true
         updateOnlyUnreleased: true
