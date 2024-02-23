@@ -62,7 +62,5 @@ namespace ProfileTests
             TestUtility.TestLengthsAreEqual(prfl.Width, prflDeserialized.Width);
             TestUtility.TestLengthsAreEqual(prfl.Thickness, prflDeserialized.Thickness);
         }
-
-        private static string _prflJson = "{\r\n  \"Height\": {\r\n    \"Unit\": \"LengthUnit.Centimeter\",\r\n    \"Value\": 2.3\r\n  },\r\n  \"Width\": {\r\n    \"Unit\": \"LengthUnit.Centimeter\",\r\n    \"Value\": 5.4\r\n  },\r\n  \"Thickness\": {\r\n    \"Unit\": \"LengthUnit.Millimeter\",\r\n    \"Value\": 10.9\r\n  }\r\n}";
     }
 }
