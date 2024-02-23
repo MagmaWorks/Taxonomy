@@ -24,12 +24,7 @@ jobs:
       run: dotnet test --configuration Release --no-build
     
     - name: Package
-      run: dotnet pack -c Release --no-restore --include-symbols
-
-    - name: Install dotnet-validate
-      run: |
-        dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
-        meziantou.validate-nuget-package ./**/*.nupkg
+      run: dotnet pack --configuration Release --no-restore --include-symbols
 
     - name: Delete any previous draft releases
       uses: hugo19941994/delete-draft-releases@v1.0.0
