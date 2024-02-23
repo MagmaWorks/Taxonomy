@@ -35,7 +35,7 @@ jobs:
         $minorVersion = [string]$fullVersion[1]
         $patchVersion = [string]$fullVersion[2]
         $dotSeparatedTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
-        Write-Host version=$dotSeparatedTag >> "$GITHUB_OUTPUT"
+        Write-Output ::set-output name=version::$dotSeparatedTag
 
     - name: Debug
       run: echo ${{ steps.get_version.outputs.version }}
