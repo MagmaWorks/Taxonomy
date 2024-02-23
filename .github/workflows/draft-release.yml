@@ -38,7 +38,7 @@ jobs:
         echo "VERSION=$dotSeparatedTag" >> $env:GITHUB_ENV
 
     - name: Git tag
-      run: git tag ${{ env.VERSION }}
+      run: git tag 0.0.6
       
     - name: Create new draft release
       uses: ncipollo/release-action@v1
