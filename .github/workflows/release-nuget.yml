@@ -5,6 +5,77 @@ on:
     types: [published]
 
 jobs:
+  bump_version:
+    name: Increment Build version
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        filter: tree:0
+
+    - name: Delete old release assets
+      uses: mknejp/delete-release-assets@v1
+      with:
+        token: ${{ github.token }}
+        tag: ${{ github.event.release.tag_name }}
+        assets: |
+          '*.nupkg'
+          '*.snupkg'
+    
+    - name: Package
+      run: dotnet pack --configuration Release -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:DebugType=portable /property:Configuration=Debug
+
+    - name: Get version from Package name
+      id: get_version
+      shell: pwsh
+      run: |
+        $fullVersion = [array]$($(Get-ChildItem -recurse -Filter *.nupkg | Select-Object -First 1).Name -split '(?=\d)',2)[1].replace('.nupkg','').replace('-preview','').split('.')
+        $majorVersion = [string]$fullVersion[0]
+        $minorVersion = [string]$fullVersion[1]
+        $patchVersion = [string]$fullVersion[2]
+        $buildVersion = [string]$fullVersion[3]
+        $versionTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
+        echo "VERSION=$versionTag" >> $env:GITHUB_OUTPUT
+        echo "Version: $versionTag"
+        echo "Build version: $versionBuildTag"
+
+    - name: Create tag
+      run: |
+        git tag ${{ steps.get_version.outputs.VERSION }}
+        git push --tags
+
+  build_test_package:
+    name: Build, test, and package
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        filter: tree:0
+    
+    - name: Build
+      run: dotnet build --configuration Release
+    
+    - name: Test
+      run: dotnet test --configuration Release --no-build
+    
+    - name: Package
+      run: dotnet pack --configuration Release --no-restore -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:DebugType=portable /property:Configuration=Debug
+
+    - name: Update release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "./**/*.*nupkg"
+        tag: ${{ github.event.release.tag_name }}
+        draft: false
+        allowUpdates: true
+        updateOnlyUnreleased: false
+      
   pushNuGetPackage:
     runs-on: ubuntu-latest
     steps:
@@ -26,10 +97,10 @@ jobs:
           file: /.*\.snupkg/
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push nupkg file to nuget.org
-        run: dotnet nuget push "*.nupkg" --api-key ${{ SECRETS.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+#      - name: Push nupkg file to nuget.org
+#        run: dotnet nuget push "*.nupkg" --api-key ${{ SECRETS.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
 
-      - name: Delete previous draft releases
-        uses: hugo19941994/delete-draft-releases@v1.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      - name: Delete previous draft releases
+#        uses: hugo19941994/delete-draft-releases@v1.0.0
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
