@@ -16,6 +16,11 @@ jobs:
       with:
         fetch-depth: 0
         filter: tree:0
+
+    - name: Create new version tag
+      uses: actions-ecosystem/action-push-tag@v1
+      with:
+        tag: "0.0.6"
     
     - name: Build
       run: dotnet build --configuration Release
