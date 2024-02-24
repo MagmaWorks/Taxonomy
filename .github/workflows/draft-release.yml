@@ -28,23 +28,15 @@ jobs:
 
     - name: Get version from Package name
       id: get_version
+      shell: pwsh
       run: |
-        # Get the full version from the first .nupkg file found recursively, remove 'preview'
-        tag=$(ls -r **/*.nupkg | head -n 1 | cut -d '.' -f 2 | sed 's/.nupkg//;s/-preview//;s/\./ /g')
-        echo $tag
-
-        # Split the tag into major, minor, patch, and build versions
-        IFS='.' read -r -a fullVersion <<< "$tag"
-        majorVersion=${fullVersion[0]}
-        minorVersion=${fullVersion[1]}
-        patchVersion=${fullVersion[2]}
-        buildVersion=${fullVersion[3]}
-
-        # Concatenate version components
-        versionBuildTag="$majorVersion.$minorVersion.$patchVersion.$buildVersion"
-
-        # Write version to output file and display it
-        echo "BUILD=$versionBuildTag" >> $GITHUB_OUTPUT
+        $fullVersion = [array]$($(Get-ChildItem -recurse -Filter *.nupkg | Select-Object -First 1).Name -split '(?=\d)',2)[1].replace('.nupkg','').replace('-preview','').split('.')
+        $majorVersion = [string]$fullVersion[0]
+        $minorVersion = [string]$fullVersion[1]
+        $patchVersion = [string]$fullVersion[2]
+        $buildVersion = [string]$fullVersion[3]
+        $versionBuildTag = $majorVersion + "." + $minorVersion + "." + $patchVersion + "." + $buildVersion
+        echo "BUILD=$versionBuildTag" >> $env:GITHUB_OUTPUT
         echo "Build version: $versionBuildTag"
       
     - name: Create new draft release
