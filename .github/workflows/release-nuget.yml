@@ -5,25 +5,16 @@ on:
     types: [published]
 
 jobs:
-  clean_version:
-    name: Clean Build version
+  build_test_package:
+    name: Build, test, and package
     runs-on: ubuntu-latest
     steps:
-    
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        filter: tree:0
-    
-    - name: Package
-      run: dotnet pack --configuration Release -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:DebugType=portable /property:Configuration=Debug
 
-    - name: Get version from Package name
+    - name: Get version from Release tag name
       id: get_version
       shell: pwsh
       run: |
-        $fullVersion = [array]$($(Get-ChildItem -recurse -Filter *.nupkg | Select-Object -First 1).Name -split '(?=\d)',2)[1].replace('.nupkg','').replace('-preview','').split('.')
+        $fullVersion = [array]${{ github.event.release.tag_name }}.split('.')
         $majorVersion = [string]$fullVersion[0]
         $minorVersion = [string]$fullVersion[1]
         $patchVersion = [string]$fullVersion[2]
@@ -31,24 +22,18 @@ jobs:
         $versionTag = $majorVersion + "." + $minorVersion + "." + $patchVersion
         echo "VERSION=$versionTag" >> $env:GITHUB_OUTPUT
         echo "Version: $versionTag"
-
-    - name: Create tag
+    
+    - name: Create Major.Minor.Patch tag
       run: |
         git tag ${{ steps.get_version.outputs.VERSION }}
         git push --tags
-
-  build_test_package:
-    name: Build, test, and package
-    needs: clean_version
-    runs-on: ubuntu-latest
-    steps:
     
     - name: Checkout
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
         filter: tree:0
-    
+
     - name: Build
       run: dotnet build --configuration Release
     
@@ -67,29 +52,6 @@ jobs:
         allowUpdates: true
         removeArtifacts: true
         updateOnlyUnreleased: false
-      
-  pushNuGetPackage:
-    name: Push new nuget packages
-    needs: build_test_package
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download NuGet Package
-        uses: i3h/download-release-asset@v1
-        with:
-          owner: ${{ github.repository_owner }}
-          repo: Taxonomy
-          tag: ${{ github.event.release.tag_name }}
-          file: /.*\.nupkg/
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Download Symbols
-        uses: i3h/download-release-asset@v1
-        with:
-          owner: ${{ github.repository_owner }}
-          repo: Taxonomy
-          tag: ${{ github.event.release.tag_name }}
-          file: /.*\.snupkg/
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push nupkg file to nuget.org
-        run: dotnet nuget push "*.nupkg" --api-key ${{ SECRETS.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+#    - name: Push nupkg file to nuget.org
+#      run: dotnet nuget push "*.nupkg" --api-key ${{ SECRETS.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
