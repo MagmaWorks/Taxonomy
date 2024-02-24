@@ -21,7 +21,9 @@ jobs:
       run: |
         $tag = ${{ github.event.release.tag_name }}
         echo $tag
-        $fullVersion = [array]$tag.ToString().split('.')
+        $tagString = [string]$tag.ToString()
+        echo $tagString
+        $fullVersion = [array]$tagString.split('.')
         $majorVersion = [string]$fullVersion[0]
         $minorVersion = [string]$fullVersion[1]
         $patchVersion = [string]$fullVersion[2]
