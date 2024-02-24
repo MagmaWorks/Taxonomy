@@ -9,6 +9,9 @@ jobs:
     name: Tag version
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
     - name: Strip Build from Tag version
       run: |
         # Get the tag from GitHub event
@@ -57,4 +60,4 @@ jobs:
         updateOnlyUnreleased: false
 
 #    - name: Push nupkg file to nuget.org
-#      run: dotnet nuget push "*.nupkg" --api-key ${{ SECRETS.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+#      run: dotnet nuget push "*.nupkg" -s https://api.nuget.org/v3/index.json -k ${{ SECRETS.NUGET_API_KEY }}
