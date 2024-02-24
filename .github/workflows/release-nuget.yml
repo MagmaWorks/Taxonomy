@@ -9,13 +9,17 @@ jobs:
     name: Tag version, build, test, re-package, update release and push nuget
     runs-on: ubuntu-latest
     steps:
-
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        filter: tree:0
+        
     - name: Strip Build from Tag version
       id: get_version
       shell: pwsh
       run: |
-        $tag=[string]${{ github.event.release.tag_name }}
-        $fullVersion = [array]$tag.split('.')
+        $fullVersion = [array]${github.event.release.tag_name}.split('.')
         $majorVersion = [string]$fullVersion[0]
         $minorVersion = [string]$fullVersion[1]
         $patchVersion = [string]$fullVersion[2]
@@ -28,12 +32,6 @@ jobs:
       run: |
         git tag ${{ steps.get_version.outputs.VERSION }}
         git push --tags
-    
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        filter: tree:0
 
     - name: Build
       run: dotnet build --configuration Release
