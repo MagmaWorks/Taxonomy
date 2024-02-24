@@ -38,6 +38,11 @@ jobs:
         $versionBuildTag = $majorVersion + "." + $minorVersion + "." + $patchVersion + "." + $buildVersion
         echo "BUILD=$versionBuildTag" >> $env:GITHUB_OUTPUT
         echo "Build version: $versionBuildTag"
+
+    - name: Create and push new Major.Minor.Patch.Build tag
+      run: |
+        git tag ${{ steps.get_version.outputs.BUILD }}
+        git push origin ${{ steps.get_version.outputs.BUILD }}
       
     - name: Create new draft release
       uses: ncipollo/release-action@v1
