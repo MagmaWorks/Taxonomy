@@ -6,15 +6,16 @@ on:
 
 jobs:
   build_test_package:
-    name: Build, test, and package
+    name: Tag version, build, test, re-package, update release and push nuget
     runs-on: ubuntu-latest
     steps:
 
-    - name: Get version from Release tag name
+    - name: Strip Build from Tag version
       id: get_version
       shell: pwsh
       run: |
-        $fullVersion = [array]$(${{ github.event.release.tag_name }}).Name.split('.')
+        $tag=[string]${{ github.event.release.tag_name }}
+        $fullVersion = [array]$tag.split('.')
         $majorVersion = [string]$fullVersion[0]
         $minorVersion = [string]$fullVersion[1]
         $patchVersion = [string]$fullVersion[2]
@@ -23,7 +24,7 @@ jobs:
         echo "VERSION=$versionTag" >> $env:GITHUB_OUTPUT
         echo "Version: $versionTag"
     
-    - name: Create Major.Minor.Patch tag
+    - name: Create new Major.Minor.Patch tag
       run: |
         git tag ${{ steps.get_version.outputs.VERSION }}
         git push --tags
