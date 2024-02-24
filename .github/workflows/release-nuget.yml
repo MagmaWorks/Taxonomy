@@ -62,3 +62,8 @@ jobs:
 
 #    - name: Push nupkg file to nuget.org
 #      run: dotnet nuget push "*.nupkg" -s https://api.nuget.org/v3/index.json -k ${{ SECRETS.NUGET_API_KEY }}
+
+    - name: Delete previous draft releases
+      uses: hugo19941994/delete-draft-releases@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
