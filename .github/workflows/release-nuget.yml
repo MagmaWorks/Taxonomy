@@ -14,8 +14,7 @@ jobs:
       id: get_version
       shell: pwsh
       run: |
-        $releaseTag = ${{ github.event.release.tag_name }}
-        $fullVersion = [array]$releaseTag.split('.')
+        $fullVersion = [array]$(${{ github.event.release.tag_name }}).Name.split('.')
         $majorVersion = [string]$fullVersion[0]
         $minorVersion = [string]$fullVersion[1]
         $patchVersion = [string]$fullVersion[2]
