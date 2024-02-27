@@ -8,13 +8,15 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length Width { get; set; }
         public Length FlangeThickness { get; set; }
         public Length WebThickness { get; set; }
+        public Length FilletRadius { get; set; } = Length.Zero;
 
-        public I(Length height, Length width, Length flangeThickness, Length webThickness)
+        public I(Length height, Length width, Length flangeThickness, Length webThickness, Length filletRadius)
         {
             Height = height;
             Width = width;
             FlangeThickness = flangeThickness;
             WebThickness = webThickness;
+            FilletRadius = filletRadius;
         }
     }
 }

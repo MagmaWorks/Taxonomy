@@ -16,15 +16,17 @@ namespace ProfileTests
             var w = new Length(5.4, LengthUnit.Centimeter);
             var flangeThk = new Length(15, LengthUnit.Millimeter);
             var webThk = new Length(10.9, LengthUnit.Millimeter);
+            var filletR = new Length(2, LengthUnit.Millimeter);
 
             // Act
-            II prfl = new I(h, w, flangeThk, webThk);
+            II prfl = new I(h, w, flangeThk, webThk, filletR);
 
             // Assert
             TestUtility.TestLengthsAreEqual(h, prfl.Height);
             TestUtility.TestLengthsAreEqual(w, prfl.Width);
             TestUtility.TestLengthsAreEqual(webThk, prfl.WebThickness);
             TestUtility.TestLengthsAreEqual(flangeThk, prfl.FlangeThickness);
+            TestUtility.TestLengthsAreEqual(filletR, prfl.FilletRadius);
         }
 
         [Fact]
@@ -37,7 +39,7 @@ namespace ProfileTests
             var webThk = new Length(10.9, LengthUnit.Millimeter);
 
             // Act
-            II prfl = new I(h, w, flangeThk, webThk);
+            II prfl = new I(h, w, flangeThk, webThk, Length.Zero);
             string json = prfl.ToJson();
             II prflDeserialized = json.FromJson<II>();
 
@@ -46,6 +48,7 @@ namespace ProfileTests
             TestUtility.TestLengthsAreEqual(prfl.Width, prflDeserialized.Width);
             TestUtility.TestLengthsAreEqual(prfl.WebThickness, prflDeserialized.WebThickness);
             TestUtility.TestLengthsAreEqual(prfl.FlangeThickness, prflDeserialized.FlangeThickness);
+            TestUtility.TestLengthsAreEqual(prfl.FilletRadius, prflDeserialized.FilletRadius);
         }
 
         [Fact]
@@ -58,7 +61,7 @@ namespace ProfileTests
             var webThk = new Length(10.9, LengthUnit.Millimeter);
 
             // Act
-            II prfl = new I(h, w, flangeThk, webThk);
+            II prfl = new I(h, w, flangeThk, webThk, Length.Zero);
             string json = prfl.ToJson();
             II prflDeserialized = json.FromJson<I>();
 
@@ -67,6 +70,7 @@ namespace ProfileTests
             TestUtility.TestLengthsAreEqual(prfl.Width, prflDeserialized.Width);
             TestUtility.TestLengthsAreEqual(prfl.WebThickness, prflDeserialized.WebThickness);
             TestUtility.TestLengthsAreEqual(prfl.FlangeThickness, prflDeserialized.FlangeThickness);
+            TestUtility.TestLengthsAreEqual(prfl.FilletRadius, prflDeserialized.FilletRadius);
         }
     }
 }
