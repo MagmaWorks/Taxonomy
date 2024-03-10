@@ -4,16 +4,16 @@
     <MinVerMinimumMajorMinor>0.0</MinVerMinimumMajorMinor>
     <MinVerDefaultPreReleaseIdentifiers>preview</MinVerDefaultPreReleaseIdentifiers>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <TargetFrameworks>net48;netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
-	  <LangVersion>8.0</LangVersion>
+    <LangVersion>8.0</LangVersion>
     <Platforms>AnyCPU</Platforms>
-    <RootNamespace>MagmaWorks.Taxonomy.Profiles</RootNamespace>
+    <RootNamespace>MagmaWorks.Taxonomy.Stages</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>MagmaWorks Taxonomy Profiles</Title>
+    <Title>MagmaWorks Taxonomy Stages</Title>
     <Company>Whitby Wood</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -29,7 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IProfiles\MagmaWorks.Taxonomy.IProfiles.csproj" />
+    <ProjectReference Include="..\..\Countries\Countries\MagmaWorks.Taxonomy.Countries.csproj" />
+    <ProjectReference Include="..\IStages\MagmaWorks.Taxonomy.IStages.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,10 +41,6 @@
     <None Include="..\..\LICENSE">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\..\Licenses\UnitsNet">
-      <Pack>True</Pack>
-      <PackagePath>\Licenses\</PackagePath>
     </None>
     <None Include="..\..\MagmaWorks.png">
       <Pack>True</Pack>
