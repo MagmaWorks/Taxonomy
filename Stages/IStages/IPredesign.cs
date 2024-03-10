@@ -1,4 +1,4 @@
 ﻿namespace MagmaWorks.Taxonomy.Stages
 {
-    public interface IPredesign: IStage { }
+    public interface IPredesign : IStage { }
 }
