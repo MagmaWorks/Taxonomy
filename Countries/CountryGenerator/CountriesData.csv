@@ -50,7 +50,7 @@ CC,Cocos (Keeling) Islands
 CO,Colombia
 KM,Comoros
 CG,Congo
-CD,"Congo, the Democratic Republic of the"
+CD,Democratic Republic of the Congo
 CK,Cook Islands
 CR,Costa Rica
 CI,Côte d'Ivoire
@@ -116,8 +116,8 @@ JO,Jordan
 KZ,Kazakhstan
 KE,Kenya
 KI,Kiribati
-KP,"Korea, Democratic People's Republic of"
-KR,"Korea, Republic of"
+KP,"North Korea, Democratic People's Republic of"
+KR,"South Korea, Republic of"
 KW,Kuwait
 KG,Kyrgyzstan
 LA,Lao People's Democratic Republic
@@ -241,8 +241,8 @@ UZ,Uzbekistan
 VU,Vanuatu
 VE,"Venezuela, Bolivarian Republic of"
 VN,Viet Nam
-VG,"Virgin Islands, British"
-VI,"Virgin Islands, U.S."
+VG,"Virgin Islands British"
+VI,"Virgin Islands U.S."
 WF,Wallis and Futuna
 EH,Western Sahara
 YE,Yemen

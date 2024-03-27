@@ -6,7 +6,7 @@ namespace MagmaWorks.Taxonomy.Countries
         public string CountryCode => _countryCode;
 
         private const string _name = "Congo";
-        private const string _countryCode = "CD";
+        private const string _countryCode = "CG";
 
         public Congo() { }
     }
