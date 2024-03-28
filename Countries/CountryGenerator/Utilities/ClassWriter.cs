@@ -8,27 +8,26 @@ namespace CountryGenerator
         private static string _classType = "public sealed class";
         private static string _abstractClass = "SingletonCountryBase";
         private static string _interface = "ICountry";
-        private static string _indt = "    ";
 
         public static void WriteClass(CsvValues values, string filePath, string nameSpace)
         {
             string className = ToPascalCase(values.Name);
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"namespace {nameSpace}");
-            sb.AppendLine("{");
-            sb.AppendLine($"{_indt}{_classType} {className} : {_abstractClass}<{className}>, {_interface}");
-            sb.AppendLine($"{_indt}{{");
-            sb.AppendLine($"{_indt}{_indt}public string Name => _name;");
-            sb.AppendLine($"{_indt}{_indt}public string CountryCode => _countryCode;");
-            sb.AppendLine();
-            sb.AppendLine($"{_indt}{_indt}private const string _name = \"{values.Name}\";");
-            sb.AppendLine($"{_indt}{_indt}private const string _countryCode = \"{values.CountryCode}\";");
-            sb.AppendLine();
-            sb.AppendLine($"{_indt}{_indt}public {className}() {{ }}");
-            sb.AppendLine($"{_indt}}}");
-            sb.AppendLine("}");
-            sb.AppendLine();
+            sb.AppendLine(
+$@"namespace {nameSpace}
+{{
+    {_classType} {className} : {_abstractClass}<{className}>, {_interface}
+    {{
+        public string Name => _name;
+        public string CountryCode => _countryCode;
 
+        private const string _name = ""{values.Name}"";
+        private const string _countryCode = ""{values.CountryCode}"";
+
+        public {className}() {{ }}
+    }}
+}}
+");
             var file = new StreamWriter($"{filePath}/{className}.cs");
             file.Write(sb);
             file.Close();
