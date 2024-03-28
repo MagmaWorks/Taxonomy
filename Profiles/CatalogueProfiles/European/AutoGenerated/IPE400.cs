@@ -9,8 +9,8 @@ namespace MagmaWorks.Taxonomy.Profiles
         public override string Designation => "IPE 400";
         public Length Height => new Length(400, LengthUnit.Millimeter);
         public Length Width => new Length(180, LengthUnit.Millimeter);
-        public Length FlangeThickness => new Length(8.6, LengthUnit.Millimeter);
-        public Length WebThickness => new Length(13.5, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length(13.5, LengthUnit.Millimeter);
+        public Length WebThickness => new Length(8.6, LengthUnit.Millimeter);
         public Length FilletRadius => new Length(21, LengthUnit.Millimeter);
 
         public IPE400() { }

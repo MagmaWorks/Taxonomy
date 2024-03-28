@@ -9,8 +9,8 @@ namespace MagmaWorks.Taxonomy.Profiles
         public override string Designation => "UC 356 × 368 × 129";
         public Length Height => new Length(355.6, LengthUnit.Millimeter);
         public Length Width => new Length(368.6, LengthUnit.Millimeter);
-        public Length FlangeThickness => new Length(10.4, LengthUnit.Millimeter);
-        public Length WebThickness => new Length(17.5, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length(17.5, LengthUnit.Millimeter);
+        public Length WebThickness => new Length(10.4, LengthUnit.Millimeter);
         public Length FilletRadius => new Length(15, LengthUnit.Millimeter);
 
         public UC356x368x129() { }

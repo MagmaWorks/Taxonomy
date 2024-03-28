@@ -9,8 +9,8 @@ namespace MagmaWorks.Taxonomy.Profiles
         public override string Designation => "IPE AA 180";
         public Length Height => new Length(176.4, LengthUnit.Millimeter);
         public Length Width => new Length(91, LengthUnit.Millimeter);
-        public Length FlangeThickness => new Length(4.3, LengthUnit.Millimeter);
-        public Length WebThickness => new Length(6.2, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length(6.2, LengthUnit.Millimeter);
+        public Length WebThickness => new Length(4.3, LengthUnit.Millimeter);
         public Length FilletRadius => new Length(9, LengthUnit.Millimeter);
 
         public IPEAA180() { }

@@ -9,8 +9,8 @@ namespace MagmaWorks.Taxonomy.Profiles
         public override string Designation => "HLZ 1100 C";
         public Length Height => new Length(1083.4, LengthUnit.Millimeter);
         public Length Width => new Length(459, LengthUnit.Millimeter);
-        public Length FlangeThickness => new Length(21, LengthUnit.Millimeter);
-        public Length WebThickness => new Length(35, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length(35, LengthUnit.Millimeter);
+        public Length WebThickness => new Length(21, LengthUnit.Millimeter);
         public Length FilletRadius => new Length(35, LengthUnit.Millimeter);
         public Length ToeRadius => new Length(0, LengthUnit.Millimeter);
         public Length WebHeight => new Length(935.9, LengthUnit.Millimeter);

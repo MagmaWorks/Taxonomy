@@ -9,8 +9,8 @@ namespace MagmaWorks.Taxonomy.Profiles
         public override string Designation => "UB 914 × 305 × 271";
         public Length Height => new Length(923, LengthUnit.Millimeter);
         public Length Width => new Length(307, LengthUnit.Millimeter);
-        public Length FlangeThickness => new Length(18.4, LengthUnit.Millimeter);
-        public Length WebThickness => new Length(30, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length(30, LengthUnit.Millimeter);
+        public Length WebThickness => new Length(18.4, LengthUnit.Millimeter);
         public Length FilletRadius => new Length(19, LengthUnit.Millimeter);
 
         public UB914x305x271() { }

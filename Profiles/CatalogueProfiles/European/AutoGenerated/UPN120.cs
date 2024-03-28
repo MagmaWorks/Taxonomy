@@ -9,8 +9,8 @@ namespace MagmaWorks.Taxonomy.Profiles
         public override string Designation => "UPN 120";
         public Length Height => new Length(120, LengthUnit.Millimeter);
         public Length Width => new Length(55, LengthUnit.Millimeter);
-        public Length FlangeThickness => new Length(7, LengthUnit.Millimeter);
-        public Length WebThickness => new Length(9, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length(9, LengthUnit.Millimeter);
+        public Length WebThickness => new Length(7, LengthUnit.Millimeter);
         public Length FilletRadius => new Length(9, LengthUnit.Millimeter);
         public Length ToeRadius => new Length(4.5, LengthUnit.Millimeter);
         public Length WebHeight => new Length(82, LengthUnit.Millimeter);

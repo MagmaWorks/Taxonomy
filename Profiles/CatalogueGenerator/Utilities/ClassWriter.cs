@@ -143,8 +143,8 @@ namespace {nameSpace}
                 case EuropeanShapeType.PFC:
                     return $@"public Length Height => new Length({values.Values[1]}, LengthUnit.Millimeter);
         public Length Width => new Length({values.Values[2]}, LengthUnit.Millimeter);
-        public Length FlangeThickness => new Length({values.Values[3]}, LengthUnit.Millimeter);
-        public Length WebThickness => new Length({values.Values[4]}, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length({values.Values[4]}, LengthUnit.Millimeter);
+        public Length WebThickness => new Length({values.Values[3]}, LengthUnit.Millimeter);
         public Length FilletRadius => new Length({values.Values[6]}, LengthUnit.Millimeter);";
 
                 case EuropeanShapeType.IPN:
@@ -155,8 +155,8 @@ namespace {nameSpace}
                 case EuropeanShapeType.CH:
                     return $@"public Length Height => new Length({values.Values[1]}, LengthUnit.Millimeter);
         public Length Width => new Length({values.Values[2]}, LengthUnit.Millimeter);
-        public Length FlangeThickness => new Length({values.Values[3]}, LengthUnit.Millimeter);
-        public Length WebThickness => new Length({values.Values[4]}, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length({values.Values[4]}, LengthUnit.Millimeter);
+        public Length WebThickness => new Length({values.Values[3]}, LengthUnit.Millimeter);
         public Length FilletRadius => new Length({values.Values[6]}, LengthUnit.Millimeter);
         public Length ToeRadius => new Length({values.Values[7]}, LengthUnit.Millimeter);
         public Length WebHeight => new Length({values.Values[8]}, LengthUnit.Millimeter);";

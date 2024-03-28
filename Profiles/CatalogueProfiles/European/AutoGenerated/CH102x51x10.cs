@@ -9,8 +9,8 @@ namespace MagmaWorks.Taxonomy.Profiles
         public override string Designation => "CH 102 × 51 × 10";
         public Length Height => new Length(101.6, LengthUnit.Millimeter);
         public Length Width => new Length(50.8, LengthUnit.Millimeter);
-        public Length FlangeThickness => new Length(6.1, LengthUnit.Millimeter);
-        public Length WebThickness => new Length(7.6, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length(7.6, LengthUnit.Millimeter);
+        public Length WebThickness => new Length(6.1, LengthUnit.Millimeter);
         public Length FilletRadius => new Length(12, LengthUnit.Millimeter);
         public Length ToeRadius => new Length(6, LengthUnit.Millimeter);
         public Length WebHeight => new Length(61.2, LengthUnit.Millimeter);

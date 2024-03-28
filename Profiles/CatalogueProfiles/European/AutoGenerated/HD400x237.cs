@@ -9,8 +9,8 @@ namespace MagmaWorks.Taxonomy.Profiles
         public override string Designation => "HD 400 × 237";
         public Length Height => new Length(380, LengthUnit.Millimeter);
         public Length Width => new Length(395, LengthUnit.Millimeter);
-        public Length FlangeThickness => new Length(18.9, LengthUnit.Millimeter);
-        public Length WebThickness => new Length(30.2, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length(30.2, LengthUnit.Millimeter);
+        public Length WebThickness => new Length(18.9, LengthUnit.Millimeter);
         public Length FilletRadius => new Length(15, LengthUnit.Millimeter);
 
         public HD400x237() { }

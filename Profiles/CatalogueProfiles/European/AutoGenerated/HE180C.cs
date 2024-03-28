@@ -9,9 +9,9 @@ namespace MagmaWorks.Taxonomy.Profiles
         public override string Designation => "HE 180 C";
         public Length Height => new Length(190, LengthUnit.Millimeter);
         public Length Width => new Length(183, LengthUnit.Millimeter);
-        public Length FlangeThickness => new Length(11.5, LengthUnit.Millimeter);
-        public Length WebThickness => new Length(19, LengthUnit.Millimeter);
-        public Length FilletRadius => new Length(18, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length(19, LengthUnit.Millimeter);
+        public Length WebThickness => new Length(11.5, LengthUnit.Millimeter);
+        public Length FilletRadius => new Length(15, LengthUnit.Millimeter);
 
         public HE180C() { }
     }

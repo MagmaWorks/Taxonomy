@@ -9,9 +9,9 @@ namespace MagmaWorks.Taxonomy.Profiles
         public override string Designation => "HE 160 A";
         public Length Height => new Length(152, LengthUnit.Millimeter);
         public Length Width => new Length(160, LengthUnit.Millimeter);
-        public Length FlangeThickness => new Length(6, LengthUnit.Millimeter);
-        public Length WebThickness => new Length(9, LengthUnit.Millimeter);
-        public Length FilletRadius => new Length(18, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length(9, LengthUnit.Millimeter);
+        public Length WebThickness => new Length(6, LengthUnit.Millimeter);
+        public Length FilletRadius => new Length(15, LengthUnit.Millimeter);
 
         public HE160A() { }
     }
