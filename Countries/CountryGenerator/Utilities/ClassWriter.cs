@@ -12,7 +12,7 @@ namespace CountryGenerator
         public static void WriteClass(CsvValues values, string filePath, string nameSpace)
         {
             string className = ToPascalCase(values.Name);
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.AppendLine(
 $@"namespace {nameSpace}
 {{
