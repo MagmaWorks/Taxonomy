@@ -41,7 +41,7 @@ namespace {nameSpace}
                 .Replace("-", " ").Replace("(", " ").Replace(")", " ")
                 .Replace("'", string.Empty).Replace(".", string.Empty)
                 .Replace("_", string.Empty).Replace(",", "_")
-                .Replace("×", "x"); 
+                .Replace("×", "x");
 
             value = TrimSpaces(value);
 

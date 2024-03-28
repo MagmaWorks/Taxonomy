@@ -4,7 +4,7 @@ namespace CountryGenerator
 {
     internal class ClassWriter
     {
-        
+
         private static string _classType = "public sealed class";
         private static string _abstractClass = "SingletonCountryBase";
         private static string _interface = "ICountry";
