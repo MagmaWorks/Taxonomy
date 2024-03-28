@@ -2,7 +2,7 @@
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
-    public class Channel : IChannel
+    public class Channel : IChannelParallelFlange
     {
         public Length Height { get; set; }
         public Length Width { get; set; }

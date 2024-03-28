@@ -1,0 +1,19 @@
+using OasysUnits;
+using OasysUnits.Units;
+
+namespace MagmaWorks.Taxonomy.Profiles
+{
+    public sealed class IPE140 : SingletonEuropeanBase<IPE140>, IIParallelFlange
+    {
+        public override EuropeanShapeType ShapeType => EuropeanShapeType.IPE;
+        public override string Designation => "IPE 140";
+        public Length Height => new Length(140, LengthUnit.Millimeter);
+        public Length Width => new Length(73, LengthUnit.Millimeter);
+        public Length FlangeThickness => new Length(4.7, LengthUnit.Millimeter);
+        public Length WebThickness => new Length(6.9, LengthUnit.Millimeter);
+        public Length FilletRadius => new Length(7, LengthUnit.Millimeter);
+
+        public IPE140() { }
+    }
+}
+

@@ -2,7 +2,7 @@
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
-    public interface IC : IChannel
+    public interface IC : IChannelParallelFlange
     {
         Length Lip { get; }
     }

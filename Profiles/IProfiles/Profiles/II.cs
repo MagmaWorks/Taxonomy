@@ -8,6 +8,5 @@ namespace MagmaWorks.Taxonomy.Profiles
         Length Width { get; }
         Length FlangeThickness { get; }
         Length WebThickness { get; }
-        Length FilletRadius { get; }
     }
 }
