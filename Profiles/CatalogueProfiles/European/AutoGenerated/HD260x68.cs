@@ -16,4 +16,3 @@ namespace MagmaWorks.Taxonomy.Profiles
         public HD260x68() { }
     }
 }
-

@@ -18,7 +18,7 @@ namespace ProfileTests
             var flangeThk = new Length(15, LengthUnit.Millimeter);
 
             // Act
-            IChannelParallelFlange prfl = new Channel(h, w, webThk, flangeThk);
+            IChannel prfl = new Channel(h, w, webThk, flangeThk);
 
             // Assert
             TestUtility.TestLengthsAreEqual(h, prfl.Height);
@@ -37,9 +37,9 @@ namespace ProfileTests
             var flangeThk = new Length(15, LengthUnit.Millimeter);
 
             // Act
-            IChannelParallelFlange prfl = new Channel(h, w, webThk, flangeThk);
+            IChannel prfl = new Channel(h, w, webThk, flangeThk);
             string json = prfl.ToJson();
-            IChannelParallelFlange prflDeserialized = json.FromJson<IChannelParallelFlange>();
+            IChannel prflDeserialized = json.FromJson<IChannel>();
 
             // Assert
             TestUtility.TestLengthsAreEqual(prfl.Height, prflDeserialized.Height);
@@ -58,9 +58,9 @@ namespace ProfileTests
             var flangeThk = new Length(15, LengthUnit.Millimeter);
 
             // Act
-            IChannelParallelFlange prfl = new Channel(h, w, webThk, flangeThk);
+            IChannel prfl = new Channel(h, w, webThk, flangeThk);
             string json = prfl.ToJson();
-            IChannelParallelFlange prflDeserialized = json.FromJson<Channel>();
+            IChannel prflDeserialized = json.FromJson<Channel>();
 
             // Assert
             TestUtility.TestLengthsAreEqual(prfl.Height, prflDeserialized.Height);

@@ -16,4 +16,3 @@ namespace MagmaWorks.Taxonomy.Profiles
         public UBP356x368x152() { }
     }
 }
-

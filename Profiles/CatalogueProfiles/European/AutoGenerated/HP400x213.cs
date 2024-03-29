@@ -16,4 +16,3 @@ namespace MagmaWorks.Taxonomy.Profiles
         public HP400x213() { }
     }
 }
-

@@ -18,4 +18,3 @@ namespace MagmaWorks.Taxonomy.Profiles
         public CH229x76x26() { }
     }
 }
-

@@ -13,7 +13,7 @@ namespace ProfileTests.Catalogue
         {
             // Assemble
             // Act
-            II prfl = new HEB100();
+            IIParallelFlange prfl = new HE100B();
 
             // Assert
             var h = new Length(100, LengthUnit.Millimeter);
@@ -32,7 +32,7 @@ namespace ProfileTests.Catalogue
         public void CreateEuropeanCatalogueTest()
         {
             // Act
-            IEuropeanCatalogue prfl = new HEB100();
+            IEuropeanCatalogue prfl = new HE100B();
 
             // Assert
             Assert.NotNull(prfl);
@@ -44,11 +44,11 @@ namespace ProfileTests.Catalogue
         public void CreateCatalogueTest()
         {
             // Act
-            ICatalogue prfl = new HEB100();
+            ICatalogue prfl = new HE100B();
 
             // Assert
             Assert.NotNull(prfl);
-            Assert.Equal("HEB100", prfl.Designation);
+            Assert.Equal("HE 100 B", prfl.Designation);
             Assert.Equal(MagmaWorks.Taxonomy.Profiles.Catalogue.EuropeanEN10365, prfl.Catalogue);
         }
 
@@ -56,9 +56,9 @@ namespace ProfileTests.Catalogue
         public void IProfileSurvivesRoundtripDeserializationTest()
         {
             // Act
-            var prfl = new HEB100();
+            var prfl = new HE100B();
             string json = prfl.ToJson();
-            II prflDeserialized = json.FromJson<II>();
+            IIParallelFlange prflDeserialized = json.FromJson<IIParallelFlange>();
 
             // Assert
             var h = new Length(100, LengthUnit.Millimeter);
@@ -77,7 +77,7 @@ namespace ProfileTests.Catalogue
         public void EuropeanCatalogueSurvivesRoundtripDeserializationTest()
         {
             // Act
-            var prfl = new HEB100();
+            var prfl = new HE100B();
             string json = prfl.ToJson();
             IEuropeanCatalogue prflDeserialized = json.FromJson<IEuropeanCatalogue>();
 
@@ -91,13 +91,13 @@ namespace ProfileTests.Catalogue
         public void CatalogueSurvivesRoundtripDeserializationTest()
         {
             // Act
-            var prfl = new HEB100();
+            var prfl = new HE100B();
             string json = prfl.ToJson();
             ICatalogue prflDeserialized = json.FromJson<ICatalogue>();
 
             // Assert
             Assert.NotNull(prflDeserialized);
-            Assert.Equal("HEB100", prflDeserialized.Designation);
+            Assert.Equal("HE 100 B", prflDeserialized.Designation);
             Assert.Equal(MagmaWorks.Taxonomy.Profiles.Catalogue.EuropeanEN10365, prflDeserialized.Catalogue);
         }
     }

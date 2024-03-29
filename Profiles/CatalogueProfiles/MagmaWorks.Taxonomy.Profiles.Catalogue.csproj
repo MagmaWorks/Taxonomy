@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <MinVerMinimumMajorMinor>0.0</MinVerMinimumMajorMinor>
@@ -50,6 +50,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IProfiles\MagmaWorks.Taxonomy.IProfiles.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="American\" />
   </ItemGroup>
 
 </Project>

@@ -16,4 +16,3 @@ namespace MagmaWorks.Taxonomy.Profiles
         public HL1100x607() { }
     }
 }
-

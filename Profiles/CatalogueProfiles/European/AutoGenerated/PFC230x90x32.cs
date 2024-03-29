@@ -16,4 +16,3 @@ namespace MagmaWorks.Taxonomy.Profiles
         public PFC230x90x32() { }
     }
 }
-

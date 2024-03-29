@@ -4,9 +4,9 @@ using MagmaWorks.Taxonomy.Profiles;
 
 namespace CatalogueProfileGenerator
 {
-    internal class ClassWriter
+    internal partial class ClassWriter
     {
-        public static void WriteEN10365Class(CsvValues values, string filePath, string nameSpace)
+        public static void WriteEuropeanClass(CsvValues values, string filePath, string nameSpace)
         {
             string className = CreateClassName(values.Designation);
             EuropeanShapeType shapeType = GetEuropeanShapeTypeName(values.Designation);

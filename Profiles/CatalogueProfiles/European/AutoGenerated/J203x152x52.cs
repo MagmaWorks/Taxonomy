@@ -18,4 +18,3 @@ namespace MagmaWorks.Taxonomy.Profiles
         public J203x152x52() { }
     }
 }
-

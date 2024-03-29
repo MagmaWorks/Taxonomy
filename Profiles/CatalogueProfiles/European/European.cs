@@ -560,7 +560,5 @@ namespace MagmaWorks.Taxonomy.Profiles
         CH305x102x46,
         CH381x102x55,
         CH432x102x65,
-
     }
 }
-

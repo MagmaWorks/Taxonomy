@@ -16,4 +16,3 @@ namespace MagmaWorks.Taxonomy.Profiles
         public HE1000B() { }
     }
 }
-

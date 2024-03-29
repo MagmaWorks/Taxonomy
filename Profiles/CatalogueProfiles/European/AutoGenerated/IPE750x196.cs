@@ -16,4 +16,3 @@ namespace MagmaWorks.Taxonomy.Profiles
         public IPE750x196() { }
     }
 }
-

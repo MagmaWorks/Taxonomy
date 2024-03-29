@@ -18,4 +18,3 @@ namespace MagmaWorks.Taxonomy.Profiles
         public U50x25x5() { }
     }
 }
-
