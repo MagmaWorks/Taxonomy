@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.RegularExpressions;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
@@ -139,7 +140,7 @@ namespace ProfileTests.Catalogue
         private void IEuropeanCatalogueTest(ICatalogue profile)
         {
             var prfl = (IEuropeanCatalogue)profile;
-            string name = prfl.Designation.Replace("�", string.Empty).Replace("\"", string.Empty);
+            string name = RemoveSpecialCharacters(prfl.Designation);
             if (name.StartsWith("HE") || name.StartsWith("IPE"))
             {
                 name = Regex.Replace(name, @"[\d-]", string.Empty)
@@ -147,7 +148,7 @@ namespace ProfileTests.Catalogue
             }
             else
             {
-                name = name.Split(' ')[0];
+                name = RemoveDigits(name.Split(' ')[0]);
             }
 
             // Assert
@@ -186,6 +187,32 @@ namespace ProfileTests.Catalogue
                 List<string> value = values.Skip(1).ToList();
                 _csvValues.Add(key, value);
             }
+        }
+
+        private string RemoveSpecialCharacters(string str)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in str)
+            {
+                if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == ' ' || c == '_')
+                {
+                    sb.Append(c);
+                }
+            }
+            return sb.ToString();
+        }
+
+        private string RemoveDigits(string str)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in str)
+            {
+                if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '_')
+                {
+                    sb.Append(c);
+                }
+            }
+            return sb.ToString();
         }
     }
 }
