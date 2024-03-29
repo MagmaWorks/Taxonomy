@@ -139,12 +139,13 @@ namespace ProfileTests.Catalogue
         private void IEuropeanCatalogueTest(ICatalogue profile)
         {
             var prfl = (IEuropeanCatalogue)profile;
-            string name = prfl.Designation.Replace("×", string.Empty).Replace("\"", string.Empty);
+            string name = prfl.Designation.Replace("ï¿½", string.Empty).Replace("\"", string.Empty);
             if (name.StartsWith("HE") || name.StartsWith("IPE"))
             {
                 name = Regex.Replace(name, @"[\d-]", string.Empty)
                 .Replace(" ", string.Empty);
-            } else
+            }
+            else
             {
                 name = name.Split(' ')[0];
             }
