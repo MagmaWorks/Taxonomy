@@ -28,8 +28,7 @@ namespace {nameSpace}
 
         public {className}() {{ }}
     }}
-}}
-");
+}}");
             var file = new StreamWriter($"{filePath}/{className}.cs");
             file.Write(sb);
             file.Close();
