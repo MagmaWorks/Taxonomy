@@ -207,7 +207,7 @@ namespace ProfileTests.Catalogue
             StringBuilder sb = new StringBuilder();
             foreach (char c in str)
             {
-                if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '_')
+                if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == ' ' || c == '_')
                 {
                     sb.Append(c);
                 }
