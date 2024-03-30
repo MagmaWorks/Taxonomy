@@ -305,7 +305,7 @@ namespace CatalogueProfileGenerator
                         }
 
                         string[] fractionParts = fraction.Split('/');
-                        double distance = Math.Round(double.Parse(fractionParts[0]) / double.Parse(fractionParts[1]), 3);
+                        double distance = preFractionNumber + Math.Round(double.Parse(fractionParts[0]) / double.Parse(fractionParts[1]), 3);
                         props.Add(new ClassProperty("BackToBackDistance", distance.ToString(), LengthUnit.Inch));
                     }
                     else
