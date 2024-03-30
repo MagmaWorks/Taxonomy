@@ -24,7 +24,7 @@ namespace ProfileTests.Catalogue
 
         public static IEnumerable<object[]> EuropeanEnumValues()
         {
-            foreach (var catalogueProfile in Enum.GetValues(typeof(European)))
+            foreach (European catalogueProfile in Enum.GetValues(typeof(European)))
             {
                 yield return new object[] { catalogueProfile };
             }
@@ -177,10 +177,10 @@ namespace ProfileTests.Catalogue
         {
             _csvValues = new Dictionary<string, List<string>>();
             string path = $"../../../EN10365-2017.csv";
-            var directory = Directory.GetParent(path).Parent;
+            DirectoryInfo directory = Directory.GetParent(path).Parent;
             path = Path.Combine(directory.FullName, "CatalogueGenerator", "EN10365-2017.csv");
             List<string> csvLines = File.ReadAllLines(path).Skip(1).ToList();
-            foreach (var csvLine in csvLines)
+            foreach (string csvLine in csvLines)
             {
                 string[] values = Regex.Split(csvLine, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
                 string key = values[0].Replace("\"", string.Empty);

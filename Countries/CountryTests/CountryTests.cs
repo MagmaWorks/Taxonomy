@@ -16,7 +16,7 @@ namespace CountryTests
 
         public static IEnumerable<object[]> CountryValues()
         {
-            foreach (var country in Enum.GetValues(typeof(Country)))
+            foreach (object country in Enum.GetValues(typeof(Country)))
             {
                 yield return new object[] { country };
             }
