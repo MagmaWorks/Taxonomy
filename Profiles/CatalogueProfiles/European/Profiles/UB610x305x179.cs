@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class UB610x305x179 : SingletonEuropeanBase<UB610x305x179>, IIParallelFlange
     {
-        public override EuropeanShapeType ShapeType => EuropeanShapeType.UB;
-        public override string Designation => "UB 610 × 305 × 179";
+        public override EuropeanShape Shape => EuropeanShape.UB;
+        public override string Label => "UB 610 × 305 × 179";
         public Length Height => new Length(620.2, LengthUnit.Millimeter);
         public Length Width => new Length(307.1, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(23.6, LengthUnit.Millimeter);

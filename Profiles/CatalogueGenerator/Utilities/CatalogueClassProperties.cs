@@ -87,16 +87,14 @@ namespace CatalogueGenerator.Utilities
 
         private static string SecureValidClassName(string className)
         {
-            string name = RemoveSpecialCharacters(className.Replace("×", "x").Replace(",", "_"));
-            name = TrimSpaces(name);
-            string digits = string.Empty;
-            while (name[0] >= '0' && name[0] <= '9')
+            if (className.StartsWith("2L"))
             {
-                digits.Append(name[0]);
-                name = name.Remove(0, 1);
+                className = className.Replace("2L", "DoubleL");
             }
 
-            return name + digits;
+            string name = RemoveSpecialCharacters(className.Replace("×", "x").Replace("X", "x")
+                .Replace(",", "_").Replace(".", "_").Replace("-", "_").Replace("/", "over"));
+            return TrimSpaces(name);
         }
 
         private static string TrimSpaces(string value)

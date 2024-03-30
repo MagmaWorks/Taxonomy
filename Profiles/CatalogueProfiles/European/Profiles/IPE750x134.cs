@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class IPE750x134 : SingletonEuropeanBase<IPE750x134>, IIParallelFlange
     {
-        public override EuropeanShapeType ShapeType => EuropeanShapeType.IPE;
-        public override string Designation => "IPE 750 × 134";
+        public override EuropeanShape Shape => EuropeanShape.IPE;
+        public override string Label => "IPE 750 × 134";
         public Length Height => new Length(750, LengthUnit.Millimeter);
         public Length Width => new Length(264, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(15.5, LengthUnit.Millimeter);

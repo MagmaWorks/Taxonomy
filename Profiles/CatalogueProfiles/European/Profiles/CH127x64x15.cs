@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class CH127x64x15 : SingletonEuropeanBase<CH127x64x15>, IChannelTaperFlange
     {
-        public override EuropeanShapeType ShapeType => EuropeanShapeType.CH;
-        public override string Designation => "CH 127 × 64 × 15";
+        public override EuropeanShape Shape => EuropeanShape.CH;
+        public override string Label => "CH 127 × 64 × 15";
         public Length Height => new Length(127, LengthUnit.Millimeter);
         public Length Width => new Length(63.5, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(9.2, LengthUnit.Millimeter);

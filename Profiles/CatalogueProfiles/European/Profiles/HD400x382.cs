@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class HD400x382 : SingletonEuropeanBase<HD400x382>, IIParallelFlange
     {
-        public override EuropeanShapeType ShapeType => EuropeanShapeType.HD;
-        public override string Designation => "HD 400 × 382";
+        public override EuropeanShape Shape => EuropeanShape.HD;
+        public override string Label => "HD 400 × 382";
         public Length Height => new Length(416, LengthUnit.Millimeter);
         public Length Width => new Length(406, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(48, LengthUnit.Millimeter);

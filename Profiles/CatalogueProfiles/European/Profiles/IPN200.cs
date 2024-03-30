@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class IPN200 : SingletonEuropeanBase<IPN200>, IITaperFlange
     {
-        public override EuropeanShapeType ShapeType => EuropeanShapeType.IPN;
-        public override string Designation => "IPN 200";
+        public override EuropeanShape Shape => EuropeanShape.IPN;
+        public override string Label => "IPN 200";
         public Length Height => new Length(200, LengthUnit.Millimeter);
         public Length Width => new Length(90, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(11.3, LengthUnit.Millimeter);

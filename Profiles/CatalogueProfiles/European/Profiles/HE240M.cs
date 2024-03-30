@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class HE240M : SingletonEuropeanBase<HE240M>, IIParallelFlange
     {
-        public override EuropeanShapeType ShapeType => EuropeanShapeType.HEM;
-        public override string Designation => "HE 240 M";
+        public override EuropeanShape Shape => EuropeanShape.HEM;
+        public override string Label => "HE 240 M";
         public Length Height => new Length(270, LengthUnit.Millimeter);
         public Length Width => new Length(248, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(32, LengthUnit.Millimeter);

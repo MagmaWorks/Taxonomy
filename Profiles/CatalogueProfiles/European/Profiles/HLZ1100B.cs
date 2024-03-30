@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class HLZ1100B : SingletonEuropeanBase<HLZ1100B>, IITaperFlange
     {
-        public override EuropeanShapeType ShapeType => EuropeanShapeType.HLZ;
-        public override string Designation => "HLZ 1100 B";
+        public override EuropeanShape Shape => EuropeanShape.HLZ;
+        public override string Label => "HLZ 1100 B";
         public Length Height => new Length(1079.4, LengthUnit.Millimeter);
         public Length Width => new Length(458, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(33, LengthUnit.Millimeter);

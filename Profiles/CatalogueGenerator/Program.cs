@@ -1,5 +1,4 @@
-﻿using System.Text;
-using CatalogueGenerator.Utilities;
+﻿using CatalogueGenerator.Utilities;
 
 namespace CatalogueProfileGenerator
 {
@@ -9,6 +8,7 @@ namespace CatalogueProfileGenerator
         public static void Main()
         {
             ConvertEuropean();
+            ConvertAmerican();
         }
 
         private static void ConvertEuropean()
@@ -19,7 +19,23 @@ namespace CatalogueProfileGenerator
             List<CsvValues> values = File.ReadAllLines(path).Skip(1)
                                      .Select(v => CsvValues.FromEuropeanCsv(v))
                                      .ToList();
-            string catalogue = "European";
+            GenerateFiles(values, "European");
+        }
+
+        private static void ConvertAmerican()
+        {
+            // Relative path to data
+            string path = $"../../../aisc-shapes-database-v16.0.csv";
+            // read data, skip header row
+            List<CsvValues> values = File.ReadAllLines(path).Skip(1)
+                                     .Select(v => CsvValues.FromAmericanCsv(v))
+                                     .ToList();
+            GenerateFiles(values, "American");
+        }
+
+        private static void GenerateFiles(List<CsvValues> values, string catalogue)
+        {
+            string path = $"../../../EN10365-2017.csv";
             DirectoryInfo? directory = Directory.GetParent(path).Parent;
             path = Path.Combine(directory.FullName, "CatalogueProfiles", catalogue, "Profiles");
             Directory.CreateDirectory(path);

@@ -36,8 +36,8 @@ namespace ProfileTests.Catalogue
 
             // Assert
             Assert.NotNull(prfl);
-            Assert.Equal(EuropeanShapeType.HEB, prfl.ShapeType);
-            Assert.Equal(EuropeanShapeType.HEB, prfl.Type);
+            Assert.Equal(EuropeanShape.HEB, prfl.Shape);
+            Assert.Equal(EuropeanShape.HEB, prfl.Type);
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace ProfileTests.Catalogue
 
             // Assert
             Assert.NotNull(prfl);
-            Assert.Equal("HE 100 B", prfl.Designation);
+            Assert.Equal("HE 100 B", prfl.Label);
             Assert.Equal(MagmaWorks.Taxonomy.Profiles.Catalogue.EuropeanEN10365, prfl.Catalogue);
         }
 
@@ -83,8 +83,8 @@ namespace ProfileTests.Catalogue
 
             // Assert
             Assert.NotNull(prfl);
-            Assert.Equal(EuropeanShapeType.HEB, prflDeserialized.ShapeType);
-            Assert.Equal(EuropeanShapeType.HEB, prflDeserialized.Type);
+            Assert.Equal(EuropeanShape.HEB, prflDeserialized.Shape);
+            Assert.Equal(EuropeanShape.HEB, prflDeserialized.Type);
         }
 
         [Fact]
@@ -97,7 +97,7 @@ namespace ProfileTests.Catalogue
 
             // Assert
             Assert.NotNull(prflDeserialized);
-            Assert.Equal("HE 100 B", prflDeserialized.Designation);
+            Assert.Equal("HE 100 B", prflDeserialized.Label);
             Assert.Equal(MagmaWorks.Taxonomy.Profiles.Catalogue.EuropeanEN10365, prflDeserialized.Catalogue);
         }
     }

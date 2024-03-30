@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class HL1000M : SingletonEuropeanBase<HL1000M>, IIParallelFlange
     {
-        public override EuropeanShapeType ShapeType => EuropeanShapeType.HL;
-        public override string Designation => "HL 1000 M";
+        public override EuropeanShape Shape => EuropeanShape.HL;
+        public override string Label => "HL 1000 M";
         public Length Height => new Length(1008, LengthUnit.Millimeter);
         public Length Width => new Length(402, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(40, LengthUnit.Millimeter);

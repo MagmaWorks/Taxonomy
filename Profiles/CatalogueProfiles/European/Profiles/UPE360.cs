@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class UPE360 : SingletonEuropeanBase<UPE360>, IChannelParallelFlange
     {
-        public override EuropeanShapeType ShapeType => EuropeanShapeType.UPE;
-        public override string Designation => "UPE 360";
+        public override EuropeanShape Shape => EuropeanShape.UPE;
+        public override string Label => "UPE 360";
         public Length Height => new Length(360, LengthUnit.Millimeter);
         public Length Width => new Length(110, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(17, LengthUnit.Millimeter);

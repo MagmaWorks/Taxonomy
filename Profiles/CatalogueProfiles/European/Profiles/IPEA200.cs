@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class IPEA200 : SingletonEuropeanBase<IPEA200>, IIParallelFlange
     {
-        public override EuropeanShapeType ShapeType => EuropeanShapeType.IPEA;
-        public override string Designation => "IPE A 200";
+        public override EuropeanShape Shape => EuropeanShape.IPEA;
+        public override string Label => "IPE A 200";
         public Length Height => new Length(197, LengthUnit.Millimeter);
         public Length Width => new Length(100, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(7, LengthUnit.Millimeter);

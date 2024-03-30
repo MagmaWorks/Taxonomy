@@ -22,6 +22,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="American\American.cs" />
+    <Compile Remove="American\AmericanUtility.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MinVer" Version="5.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -50,10 +55,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IProfiles\MagmaWorks.Taxonomy.IProfiles.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="American\" />
   </ItemGroup>
 
 </Project>

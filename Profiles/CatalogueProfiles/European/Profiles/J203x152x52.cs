@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class J203x152x52 : SingletonEuropeanBase<J203x152x52>, IITaperFlange
     {
-        public override EuropeanShapeType ShapeType => EuropeanShapeType.J;
-        public override string Designation => "J 203 × 152 × 52";
+        public override EuropeanShape Shape => EuropeanShape.J;
+        public override string Label => "J 203 × 152 × 52";
         public Length Height => new Length(203.2, LengthUnit.Millimeter);
         public Length Width => new Length(152.4, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(16.5, LengthUnit.Millimeter);

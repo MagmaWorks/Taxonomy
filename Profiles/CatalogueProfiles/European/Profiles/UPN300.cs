@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class UPN300 : SingletonEuropeanBase<UPN300>, IChannelTaperFlange
     {
-        public override EuropeanShapeType ShapeType => EuropeanShapeType.UPN;
-        public override string Designation => "UPN 300";
+        public override EuropeanShape Shape => EuropeanShape.UPN;
+        public override string Label => "UPN 300";
         public Length Height => new Length(300, LengthUnit.Millimeter);
         public Length Width => new Length(100, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(16, LengthUnit.Millimeter);

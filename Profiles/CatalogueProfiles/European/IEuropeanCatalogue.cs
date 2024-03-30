@@ -2,6 +2,6 @@
 {
     public interface IEuropeanCatalogue : ICatalogue
     {
-        EuropeanShapeType ShapeType { get; }
+        EuropeanShape Shape { get; }
     }
 }

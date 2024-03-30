@@ -6,6 +6,6 @@ namespace MagmaWorks.Taxonomy.Profiles
     {
         Catalogue Catalogue { get; }
         Enum Type { get; }
-        string Designation { get; }
+        string Label { get; }
     }
 }

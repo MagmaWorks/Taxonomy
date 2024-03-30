@@ -36,7 +36,7 @@ namespace ProfileTests.Catalogue
         {
             ICatalogue profile = MagmaWorks.Taxonomy.Profiles.Utility.GetCatalogue(type);
             Assert.NotNull(profile);
-            List<string> expectedValues = CsvValues[profile.Designation];
+            List<string> expectedValues = CsvValues[profile.Label];
             ProfileValuesTest(profile, expectedValues);
             IEuropeanCatalogueTest(profile);
             ICatalogueTest(profile);
@@ -140,7 +140,7 @@ namespace ProfileTests.Catalogue
         private void IEuropeanCatalogueTest(ICatalogue profile)
         {
             var prfl = (IEuropeanCatalogue)profile;
-            string name = RemoveSpecialCharacters(prfl.Designation);
+            string name = RemoveSpecialCharacters(prfl.Label);
             if (name.StartsWith("HE") || name.StartsWith("IPE"))
             {
                 name = Regex.Replace(name, @"[\d-]", string.Empty)
@@ -152,8 +152,8 @@ namespace ProfileTests.Catalogue
             }
 
             // Assert
-            Assert.Equal(name, Enum.GetName(prfl.ShapeType));
-            Assert.Equal(prfl.ShapeType, prfl.Type);
+            Assert.Equal(name, Enum.GetName(prfl.Shape));
+            Assert.Equal(prfl.Shape, prfl.Type);
         }
 
         private void ICatalogueTest(ICatalogue prfl)
