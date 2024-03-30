@@ -37,44 +37,6 @@ namespace CatalogueProfileGenerator
             path = Path.Combine(directory.FullName, "CatalogueProfiles", catalogue);
             enums.WriteClassToFile(path);
             utility.WriteClassToFile(path);
-
-            //            StringBuilder enums = new StringBuilder();
-            //            enums.AppendLine($@"namespace {_namespace}
-            //{{
-            //    public enum {catalogue}
-            //    {{");
-            //            StringBuilder utility = new StringBuilder();
-            //            utility.AppendLine($@"namespace {_namespace}
-            //{{
-            //    public partial class Utility
-            //    {{
-            //        public static ICatalogue GetCatalogue({catalogue} {catalogue.ToLower()})
-            //        {{
-            //            return {catalogue.ToLower()} switch
-            //            {{");
-
-            //            foreach (CsvValues v in values)
-            //            {
-            //                CatalogueClassWriter.GenerateClass(v, path, _namespace);
-            //                string className = CatalogueClassWriter.CreateClassName(v.Designation);
-            //                enums.AppendLine($"{_indt}{_indt}{className},");
-            //                utility.AppendLine($"{_indt}{_indt}{_indt}{_indt}{catalogue}.{className} => new {className}(),");
-            //            }
-
-            //            enums.AppendLine($"    }}\r\n}}");
-            //            utility.AppendLine($@"                _ => throw new System.NotImplementedException(),
-            //            }};
-            //        }}
-            //    }}
-            //}}");
-
-            //            path = Path.Combine(directory.FullName, "CatalogueProfiles", catalogue);
-            //            var file = new StreamWriter($"{path}/{catalogue}.cs");
-            //            file.Write(enums);
-            //            file.Close();
-            //            file = new StreamWriter($"{path}/Utility.cs");
-            //            file.Write(utility);
-            //            file.Close();
         }
     }
 }
