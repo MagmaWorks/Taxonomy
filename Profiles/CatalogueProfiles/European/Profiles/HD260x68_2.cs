@@ -3,7 +3,7 @@ using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
-    public sealed class HD260x68 : SingletonEuropeanBase<HD260x68>, IIParallelFlange
+    public sealed class HD260x68_2 : SingletonEuropeanBase<HD260x68_2>, IIParallelFlange
     {
         public override EuropeanShapeType ShapeType => EuropeanShapeType.HD;
         public override string Designation => "HD 260 × 68,2";
@@ -13,6 +13,6 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length WebThickness => new Length(7.5, LengthUnit.Millimeter);
         public Length FilletRadius => new Length(24, LengthUnit.Millimeter);
 
-        public HD260x68() { }
+        public HD260x68_2() { }
     }
 }

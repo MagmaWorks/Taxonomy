@@ -3,7 +3,7 @@ using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
-    public sealed class U65x42x5 : SingletonEuropeanBase<U65x42x5>, IChannelTaperFlange
+    public sealed class U65x42x5_5 : SingletonEuropeanBase<U65x42x5_5>, IChannelTaperFlange
     {
         public override EuropeanShapeType ShapeType => EuropeanShapeType.U;
         public override string Designation => "U 65 × 42 × 5,5";
@@ -15,6 +15,6 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length ToeRadius => new Length(4, LengthUnit.Millimeter);
         public Length WebHeight => new Length(34, LengthUnit.Millimeter);
 
-        public U65x42x5() { }
+        public U65x42x5_5() { }
     }
 }
