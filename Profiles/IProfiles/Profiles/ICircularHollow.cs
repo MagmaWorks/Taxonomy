@@ -2,8 +2,5 @@
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
-    public interface ICircularHollow : ICircle
-    {
-        Length Thickness { get; }
-    }
+    public interface ICircularHollow : ICircle, IHollowStructuralSection { }
 }

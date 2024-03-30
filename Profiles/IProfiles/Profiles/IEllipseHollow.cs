@@ -2,8 +2,5 @@
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
-    public interface IEllipseHollow : IEllipse
-    {
-        Length Thickness { get; }
-    }
+    public interface IEllipseHollow : IEllipse, IHollowStructuralSection { }
 }
