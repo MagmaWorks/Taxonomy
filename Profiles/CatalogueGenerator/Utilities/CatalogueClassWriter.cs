@@ -237,7 +237,7 @@ namespace CatalogueProfileGenerator
                     props.Add(new ClassProperty("WebThickness", values.Values[16], LengthUnit.Inch));
                     double k1 = double.Parse(values.Values[26]);
                     webThickness = double.Parse(values.Values[16]);
-                    filletRadius = Math.Round(k1 - webThickness/2, 3);
+                    filletRadius = Math.Round(k1 - webThickness / 2, 3);
                     props.Add(new ClassProperty("FilletRadius", filletRadius.ToString(), LengthUnit.Inch));
                     break;
 
