@@ -94,9 +94,9 @@ namespace CatalogueProfileGenerator
 
         private static Enum GetAmericanShapeName(string type)
         {
-            if (type.Contains("2"))
+            if (type.Contains("2L"))
             {
-                type = type.Replace("2", "Double");
+                type = type.Replace("2L", "DoubleL");
             }
 
             return (AmericanShape)Enum.Parse(typeof(AmericanShape), type, true);
@@ -235,10 +235,9 @@ namespace CatalogueProfileGenerator
                     props.Add(new ClassProperty("Width", values.Values[11], LengthUnit.Inch));
                     props.Add(new ClassProperty("FlangeThickness", values.Values[19], LengthUnit.Inch));
                     props.Add(new ClassProperty("WebThickness", values.Values[16], LengthUnit.Inch));
-                    height = double.Parse(values.Values[6]);
-                    flangeThickness = double.Parse(values.Values[19]);
-                    webStraightHeight = double.Parse(values.Values[81]);
-                    filletRadius = Math.Round((height - 2 * flangeThickness - webStraightHeight) / 2, 3);
+                    double k1 = double.Parse(values.Values[26]);
+                    webThickness = double.Parse(values.Values[16]);
+                    filletRadius = Math.Round(k1 - webThickness/2, 3);
                     props.Add(new ClassProperty("FilletRadius", filletRadius.ToString(), LengthUnit.Inch));
                     break;
 
@@ -267,7 +266,7 @@ namespace CatalogueProfileGenerator
                     flangeThickness = double.Parse(values.Values[19]);
                     webStraightHeight = double.Parse(values.Values[81]);
                     filletRadius = Math.Round((height - 2 * flangeThickness - webStraightHeight) / 2, 3);
-                    toeRadius = Math.Round(filletRadius * 0.5, 3);
+                    toeRadius = Math.Round(filletRadius * 0.6, 3);
                     props.Add(new ClassProperty("FilletRadius", filletRadius.ToString(), LengthUnit.Inch));
                     props.Add(new ClassProperty("ToeRadius", toeRadius.ToString(), LengthUnit.Inch));
                     props.Add(new ClassProperty("WebHeight", values.Values[81], LengthUnit.Inch));
