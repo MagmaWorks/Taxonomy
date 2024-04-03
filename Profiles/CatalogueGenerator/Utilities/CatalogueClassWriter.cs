@@ -15,7 +15,7 @@ namespace CatalogueProfileGenerator
                 "OasysUnits.Units"
             };
 
-            Enum shape = null;
+            Enum? shape = null;
             string abstrct = string.Empty;
             string shapeEnumType = string.Empty;
             switch (values.Catalogue)
@@ -55,8 +55,13 @@ namespace CatalogueProfileGenerator
             return clss.Name;
         }
 
-        private static string CatchAmericanAnormalities(string interfaceName, Enum shape, List<string> values)
+        private static string CatchAmericanAnormalities(string interfaceName, Enum? shape, List<string> values)
         {
+            if (shape == null)
+            {
+                throw new ArgumentNullException(nameof(shape));
+            }
+
             var usShape = (AmericanShape)shape;
             if (usShape == AmericanShape.M && values[3] == "T")
             {
@@ -102,7 +107,7 @@ namespace CatalogueProfileGenerator
             return (AmericanShape)Enum.Parse(typeof(AmericanShape), type, true);
         }
 
-        private static string GetInterfaceName(Enum type)
+        private static string GetInterfaceName(Enum? type)
         {
             switch (type)
             {
@@ -172,7 +177,7 @@ namespace CatalogueProfileGenerator
             }
         }
 
-        private static List<ClassProperty> CreateProperties(Enum type, CsvValues values)
+        private static List<ClassProperty> CreateProperties(Enum? type, CsvValues values)
         {
             var props = new List<ClassProperty>();
 
