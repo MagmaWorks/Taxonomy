@@ -34,7 +34,7 @@ jobs:
       - name: Merge coverage reports
         run: |
           dotnet tool install --global dotnet-coverage
-          dotnet-coverage merge coverage/*/coverage.cobertura.xml --remove-input-files -o coverage/merged.cobertura.xml
+          dotnet-coverage merge coverage/*/coverage.cobertura.xml --remove-input-files f- xml -o coverage/merged.cobertura.xml
     
       - name: Code Coverage Summary Report
         uses: irongut/CodeCoverageSummary@v1.3.0
