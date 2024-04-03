@@ -2,8 +2,5 @@
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
-    public interface IRectangularHollow : IRectangle
-    {
-        Length Thickness { get; }
-    }
+    public interface IRectangularHollow : IRectangle, IHollowStructuralSection { }
 }

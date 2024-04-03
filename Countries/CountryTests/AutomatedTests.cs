@@ -12,7 +12,7 @@ namespace CountryTests
         // Add manual tests of these class' constructors instead
         private static readonly List<Type> _excludedTypes =
         [
-
+            typeof(Utility)
         ];
 
         [Theory]

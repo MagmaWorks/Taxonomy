@@ -1,0 +1,18 @@
+using OasysUnits;
+using OasysUnits.Units;
+
+namespace MagmaWorks.Taxonomy.Profiles
+{
+    public sealed class W24x103 : SingletonAmericanBase<W24x103>, IIParallelFlange
+    {
+        public override AmericanShape Shape => AmericanShape.W;
+        public override string Label => "W24X103";
+        public Length Height => new Length(24.50, LengthUnit.Inch);
+        public Length Width => new Length(9.00, LengthUnit.Inch);
+        public Length FlangeThickness => new Length(0.98, LengthUnit.Inch);
+        public Length WebThickness => new Length(0.55, LengthUnit.Inch);
+        public Length FilletRadius => new Length(1.225, LengthUnit.Inch);
+
+        public W24x103() { }
+    }
+}

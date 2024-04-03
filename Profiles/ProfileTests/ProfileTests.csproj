@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CatalogueProfiles\MagmaWorks.Taxonomy.Profiles.Catalogue.csproj" />
     <ProjectReference Include="..\IProfiles\MagmaWorks.Taxonomy.IProfiles.csproj" />
     <ProjectReference Include="..\Profiles\MagmaWorks.Taxonomy.Profiles.csproj" />
     <ProjectReference Include="..\Serialization\MagmaWorks.Taxonomy.Serialization.Profiles.csproj" />

@@ -1,0 +1,31 @@
+﻿namespace MagmaWorks.Taxonomy.Profiles
+{
+    public enum EuropeanShape
+    {
+        IPEAA,
+        IPEA,
+        IPE,
+        IPEO,
+        IPEV,
+        HEAA,
+        HEA,
+        HEB,
+        HEC,
+        HEM,
+        HE,
+        HL,
+        HLZ,
+        HD,
+        HP,
+        UBP,
+        UB,
+        UC,
+        IPN,
+        J,
+        UPE,
+        PFC,
+        UPN,
+        U,
+        CH,
+    }
+}
