@@ -3,7 +3,7 @@ using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
-    public sealed class DoubleL8x6x7over8LLBB : SingletonAmericanBase<DoubleL8x6x7over8LLBB>, IAngle, IBackToBack
+    public sealed class DoubleL8x6x7over8LLBB : SingletonAmericanBase<DoubleL8x6x7over8LLBB>, IDoubleAngle
     {
         public override AmericanShape Shape => AmericanShape.DoubleL;
         public override string Label => "2L8X6X7/8LLBB";

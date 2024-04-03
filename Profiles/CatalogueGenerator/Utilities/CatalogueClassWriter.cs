@@ -164,7 +164,7 @@ namespace CatalogueProfileGenerator
                     return "ICutTeeTaperFlange";
 
                 case AmericanShape.DoubleL:
-                    return "IAngle, IBackToBack";
+                    return "IDoubleAngle";
 
                 case AmericanShape.HSS:
                     return "IRoundedRectangularHollow";
@@ -282,10 +282,9 @@ namespace CatalogueProfileGenerator
                     props.Add(new ClassProperty("Width", values.Values[14], LengthUnit.Inch));
                     props.Add(new ClassProperty("FlangeThickness", values.Values[21], LengthUnit.Inch));
                     props.Add(new ClassProperty("WebThickness", values.Values[21], LengthUnit.Inch));
-                    width = double.Parse(values.Values[14]);
                     flangeThickness = double.Parse(values.Values[21]);
                     distanceFromEdgeFlangeToWebToe = double.Parse(values.Values[24]);
-                    filletRadius = Math.Round(width - flangeThickness - distanceFromEdgeFlangeToWebToe, 3);
+                    filletRadius = Math.Round(flangeThickness - distanceFromEdgeFlangeToWebToe, 3);
                     toeRadius = Math.Round(filletRadius * 0.5, 3);
                     props.Add(new ClassProperty("FilletRadius", filletRadius.ToString(), LengthUnit.Inch));
                     props.Add(new ClassProperty("ToeRadius", toeRadius.ToString(), LengthUnit.Inch));
@@ -325,10 +324,9 @@ namespace CatalogueProfileGenerator
                     props.Add(new ClassProperty("Width", values.Values[11], LengthUnit.Inch));
                     props.Add(new ClassProperty("FlangeThickness", values.Values[19], LengthUnit.Inch));
                     props.Add(new ClassProperty("WebThickness", values.Values[16], LengthUnit.Inch));
-                    width = double.Parse(values.Values[11]);
-                    webThickness = double.Parse(values.Values[16]);
+                    height = double.Parse(values.Values[6]);
                     distanceFromEdgeFlangeToWebToe = double.Parse(values.Values[24]);
-                    filletRadius = Math.Round((width - webThickness) / 2 - distanceFromEdgeFlangeToWebToe, 3);
+                    filletRadius = Math.Round(height - distanceFromEdgeFlangeToWebToe, 3);
                     props.Add(new ClassProperty("FilletRadius", filletRadius.ToString(), LengthUnit.Inch));
                     break;
 
@@ -337,10 +335,9 @@ namespace CatalogueProfileGenerator
                     props.Add(new ClassProperty("Width", values.Values[11], LengthUnit.Inch));
                     props.Add(new ClassProperty("FlangeThickness", values.Values[19], LengthUnit.Inch));
                     props.Add(new ClassProperty("WebThickness", values.Values[16], LengthUnit.Inch));
-                    width = double.Parse(values.Values[11]);
-                    webThickness = double.Parse(values.Values[16]);
+                    height = double.Parse(values.Values[6]);
                     distanceFromEdgeFlangeToWebToe = double.Parse(values.Values[24]);
-                    filletRadius = Math.Round((width - webThickness) / 2 - distanceFromEdgeFlangeToWebToe, 3);
+                    filletRadius = Math.Round(height - distanceFromEdgeFlangeToWebToe, 3);
                     toeRadius = Math.Round(filletRadius * 0.5, 3);
                     props.Add(new ClassProperty("FilletRadius", filletRadius.ToString(), LengthUnit.Inch));
                     props.Add(new ClassProperty("ToeRadius", toeRadius.ToString(), LengthUnit.Inch));
@@ -375,7 +372,12 @@ namespace CatalogueProfileGenerator
             var shape = (AmericanShape)type;
             if (shape == AmericanShape.M && values.Values[3] == "T")
             {
-                toeRadius = Math.Round(filletRadius * 0.5, 3);
+                height = double.Parse(values.Values[6]);
+                flangeThickness = double.Parse(values.Values[19]);
+                webStraightHeight = double.Parse(values.Values[81]);
+                filletRadius = Math.Round((height - 2 * flangeThickness - webStraightHeight) / 2, 3);
+                props[props.Count - 1] = new ClassProperty("FilletRadius", filletRadius.ToString(), LengthUnit.Inch);
+                toeRadius = Math.Round(filletRadius * 0.6, 3);
                 props.Add(new ClassProperty("ToeRadius", toeRadius.ToString(), LengthUnit.Inch));
                 props.Add(new ClassProperty("WebHeight", values.Values[81], LengthUnit.Inch));
             }

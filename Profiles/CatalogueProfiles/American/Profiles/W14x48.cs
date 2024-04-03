@@ -11,7 +11,7 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length Width => new Length(8.03, LengthUnit.Inch);
         public Length FlangeThickness => new Length(0.60, LengthUnit.Inch);
         public Length WebThickness => new Length(0.34, LengthUnit.Inch);
-        public Length FilletRadius => new Length(0.86, LengthUnit.Inch);
+        public Length FilletRadius => new Length(0.83, LengthUnit.Inch);
 
         public W14x48() { }
     }

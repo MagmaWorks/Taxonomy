@@ -12,7 +12,7 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length FlangeThickness => new Length(0.33, LengthUnit.Inch);
         public Length WebThickness => new Length(0.21, LengthUnit.Inch);
         public Length FilletRadius => new Length(0.42, LengthUnit.Inch);
-        public Length ToeRadius => new Length(0.21, LengthUnit.Inch);
+        public Length ToeRadius => new Length(0.252, LengthUnit.Inch);
         public Length WebHeight => new Length(3.50, LengthUnit.Inch);
 
         public S5x10() { }
