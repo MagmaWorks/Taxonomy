@@ -5,5 +5,5 @@ on:
     types: [published]
 
 jobs:
-  call-workflow:
+  release-ci:
     uses: magmaworks/actions/.github/workflows/on-release.yml@main
