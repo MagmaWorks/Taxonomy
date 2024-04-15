@@ -7,3 +7,4 @@ on:
 jobs:
   release-ci:
     uses: magmaworks/actions/.github/workflows/on-release.yml@main
+    secrets: inherit
