@@ -6,5 +6,5 @@ on:
     - main
     
 jobs:
-  call-workflow:
+  merge-to-main-ci:
     uses: magmaworks/actions/.github/workflows/on-merge-to-main.yml@main
