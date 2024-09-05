@@ -1,4 +1,5 @@
 using MagmaWorks.Taxonomy.Profiles;
+using MagmaWorks.Taxonomy.Profiles.Utilities;
 using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
 using OasysUnits;
 using OasysUnits.Units;
@@ -68,6 +69,24 @@ namespace ProfileTests
             TestUtility.TestLengthsAreEqual(prfl.Width, prflDeserialized.Width);
             TestUtility.TestLengthsAreEqual(prfl.WebThickness, prflDeserialized.WebThickness);
             TestUtility.TestLengthsAreEqual(prfl.FlangeThickness, prflDeserialized.FlangeThickness);
+        }
+
+        [Fact]
+        public void GetPerimeterTest()
+        {
+            // Assemble
+            var h = new Length(2.3, LengthUnit.Centimeter);
+            var w = new Length(5.4, LengthUnit.Centimeter);
+            var webThk = new Length(10.9, LengthUnit.Millimeter);
+            var flangeThk = new Length(15, LengthUnit.Millimeter);
+
+            // Act
+            IAngle prfl = new Angle(h, w, webThk, flangeThk);
+            IPerimeter perimeter = prfl.GetPerimeter();
+
+            // Assert
+            Assert.Equal(7, perimeter.OuterEdge.Points.Count);
+            
         }
     }
 }
