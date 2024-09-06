@@ -27,7 +27,7 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
             List<IPoint2d> outerEdge = RoundedRectangleConversion.GetPoints(profile.Height, profile.Width, filletRadius, divisions);
             List<IPoint2d> voidEdge = RoundedRectangleConversion.GetPoints(
                 profile.Height - 2 * profile.Thickness, profile.Width - 2 * profile.Thickness, filletRadius - profile.Thickness, divisions);
-            return new Perimeter(new Polygon2d(voidEdge), new List<IPolygon2d>() { new Polygon2d(voidEdge) });
+            return new Perimeter(new Polygon2d(outerEdge), new List<IPolygon2d>() { new Polygon2d(voidEdge) });
         }
     }
 }

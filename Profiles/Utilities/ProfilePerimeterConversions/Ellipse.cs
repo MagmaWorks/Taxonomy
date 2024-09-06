@@ -37,15 +37,13 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
             double factorU = isVertical ? width / height : 1;
             double factorV = isVertical ? 1 : height / width;
             Length radius = (isVertical ? height : width) / 2;
-            double degree = 0;
+            double radian = 2 * Math.PI / divisions;
             var pts = new List<IPoint2d>();
             for (int i = 0; i < divisions + 1; i++)
             {
-                degree = i * (360 / divisions);
-                float radian = (float)(degree * Math.PI / 180);
                 pts.Add(new Point2d(
-                    factorU * radius * Math.Cos(degree),
-                    factorV * radius * Math.Sin(degree))
+                    factorU * radius * Math.Cos(radian * i),
+                    factorV * radius * Math.Sin(radian * i))
                 );
             }
 

@@ -6,7 +6,7 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
 {
     public static class CConversion
     {
-        public static IPerimeter GetPerimeter<T>(this T profile) where T : IC
+        internal static IPerimeter GetPerimeter<T>(this T profile) where T : IC
         {
             return new Perimeter(new List<IPoint2d>()
             {
@@ -21,6 +21,7 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
                 new Point2d(profile.Width - profile.FlangeThickness, -profile.Height / 2 + profile.Lip),
                 new Point2d(profile.Width, -profile.Height / 2 + profile.Lip),
                 new Point2d(profile.Width, -profile.Height / 2),
+                new Point2d(Length.Zero, -profile.Height / 2),
                 new Point2d(Length.Zero, profile.Height / 2),
             });
         }

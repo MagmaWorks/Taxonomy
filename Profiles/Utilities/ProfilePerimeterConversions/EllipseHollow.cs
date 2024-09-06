@@ -18,7 +18,7 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
             int divisions = (int)Math.Round(
                 Math.PI * max / tolerance,
                 MidpointRounding.AwayFromZero);
-            return profile.GetPerimeter(divisions);
+            return profile.GetPerimeters(divisions);
         }
 
         internal static IPerimeter GetPerimeters<T>(this T profile, int divisions) where T : IEllipseHollow
@@ -26,7 +26,7 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
             IList<IPoint2d> outerEdge = EllipseConversion.GetPoints(profile.Height, profile.Width, divisions);
             IList<IPoint2d> voidEdge = EllipseConversion.GetPoints(
                 profile.Height - 2 * profile.Thickness, profile.Width - 2 * profile.Thickness, divisions);
-            return new Perimeter(new Polygon2d(voidEdge), new List<IPolygon2d>() { new Polygon2d(voidEdge) });
+            return new Perimeter(new Polygon2d(outerEdge), new List<IPolygon2d>() { new Polygon2d(voidEdge) });
         }
     }
 }
