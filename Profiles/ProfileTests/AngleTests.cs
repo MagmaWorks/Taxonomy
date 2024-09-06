@@ -86,7 +86,7 @@ namespace ProfileTests
 
             // Assert
             Assert.Equal(7, perimeter.OuterEdge.Points.Count);
-            
+
         }
     }
 }

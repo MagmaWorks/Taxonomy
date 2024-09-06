@@ -9,7 +9,7 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
         public static (IPerimeter, IPerimeter) GetPerimeter<T>(this T profile) where T : IDoubleAngle
         {
             return GetBackToBackPerimeter(((IAngle)profile).GetPerimeter().OuterEdge.Points, profile.BackToBackDistance);
-            
+
         }
 
         internal static (IPerimeter, IPerimeter) GetBackToBackPerimeter(IList<IPoint2d> original, Length backToBackDistance)

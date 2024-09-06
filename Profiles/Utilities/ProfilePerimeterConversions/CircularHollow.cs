@@ -1,7 +1,7 @@
-﻿using MagmaWorks.Geometry;
-using OasysUnits;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MagmaWorks.Geometry;
+using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Profiles.Utilities
 {
@@ -24,7 +24,7 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
         {
             List<IPoint2d> outerEdge = CircleConversion.GetPoints(profile.Diameter, divisions);
             List<IPoint2d> voidEdge = CircleConversion.GetPoints(profile.Diameter - 2 * profile.Thickness, divisions);
-            return new Perimeter(new Polygon2d(voidEdge), new List<IPolygon2d>() { new Polygon2d(voidEdge)});
+            return new Perimeter(new Polygon2d(voidEdge), new List<IPolygon2d>() { new Polygon2d(voidEdge) });
         }
     }
 }
