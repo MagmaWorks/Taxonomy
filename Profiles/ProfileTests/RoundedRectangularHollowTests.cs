@@ -12,11 +12,11 @@ namespace ProfileTests
         public void CreateProfileTest()
         {
             // Assemble
-            var h = new Length(2.3, LengthUnit.Centimeter);
-            var w = new Length(5.4, LengthUnit.Centimeter);
-            var h1 = new Length(2, LengthUnit.Centimeter);
+            var h = new Length(6, LengthUnit.Centimeter);
+            var w = new Length(7, LengthUnit.Centimeter);
+            var h1 = new Length(4, LengthUnit.Centimeter);
             var w1 = new Length(5, LengthUnit.Centimeter);
-            var thk = new Length(10.9, LengthUnit.Millimeter);
+            var thk = new Length(3.8, LengthUnit.Millimeter);
 
             // Act
             IRoundedRectangularHollow prfl = new RoundedRectangularHollow(h, w, h1, w1, thk);
@@ -33,11 +33,11 @@ namespace ProfileTests
         public void InterfaceSurvivesRoundtripDeserializationTest()
         {
             // Assemble
-            var h = new Length(2.3, LengthUnit.Centimeter);
-            var w = new Length(5.4, LengthUnit.Centimeter);
-            var h1 = new Length(2, LengthUnit.Centimeter);
+            var h = new Length(6, LengthUnit.Centimeter);
+            var w = new Length(7, LengthUnit.Centimeter);
+            var h1 = new Length(4, LengthUnit.Centimeter);
             var w1 = new Length(5, LengthUnit.Centimeter);
-            var thk = new Length(10.9, LengthUnit.Millimeter);
+            var thk = new Length(3.8, LengthUnit.Millimeter);
 
             // Act
             IRoundedRectangularHollow prfl = new RoundedRectangularHollow(h, w, h1, w1, thk);
@@ -56,11 +56,11 @@ namespace ProfileTests
         public void ConcreteImplementationSurvivesRoundtripDeserializationTest()
         {
             // Assemble
-            var h = new Length(2.3, LengthUnit.Centimeter);
-            var w = new Length(5.4, LengthUnit.Centimeter);
-            var h1 = new Length(2, LengthUnit.Centimeter);
+            var h = new Length(6, LengthUnit.Centimeter);
+            var w = new Length(7, LengthUnit.Centimeter);
+            var h1 = new Length(4, LengthUnit.Centimeter);
             var w1 = new Length(5, LengthUnit.Centimeter);
-            var thk = new Length(10.9, LengthUnit.Millimeter);
+            var thk = new Length(3.8, LengthUnit.Millimeter);
 
             // Act
             IRoundedRectangularHollow prfl = new RoundedRectangularHollow(h, w, h1, w1, thk);

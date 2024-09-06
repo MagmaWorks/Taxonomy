@@ -12,10 +12,10 @@ namespace ProfileTests
         public void CreateProfileTest()
         {
             // Assemble
-            var h = new Length(2.3, LengthUnit.Centimeter);
-            var w = new Length(5.4, LengthUnit.Centimeter);
-            var h1 = new Length(2, LengthUnit.Centimeter);
-            var w1 = new Length(5, LengthUnit.Centimeter);
+            var h = new Length(4, LengthUnit.Centimeter);
+            var w = new Length(5, LengthUnit.Centimeter);
+            var h1 = new Length(3, LengthUnit.Centimeter);
+            var w1 = new Length(4, LengthUnit.Centimeter);
 
             // Act
             IRoundedRectangle prfl = new RoundedRectangle(h, w, h1, w1);
@@ -31,10 +31,10 @@ namespace ProfileTests
         public void InterfaceSurvivesRoundtripDeserializationTest()
         {
             // Assemble
-            var h = new Length(2.3, LengthUnit.Centimeter);
-            var w = new Length(5.4, LengthUnit.Centimeter);
-            var h1 = new Length(2, LengthUnit.Centimeter);
-            var w1 = new Length(5, LengthUnit.Centimeter);
+            var h = new Length(4, LengthUnit.Centimeter);
+            var w = new Length(5, LengthUnit.Centimeter);
+            var h1 = new Length(3, LengthUnit.Centimeter);
+            var w1 = new Length(4, LengthUnit.Centimeter);
 
             // Act
             IRoundedRectangle prfl = new RoundedRectangle(h, w, h1, w1);
@@ -52,10 +52,10 @@ namespace ProfileTests
         public void ConcreteImplementationSurvivesRoundtripDeserializationTest()
         {
             // Assemble
-            var h = new Length(2.3, LengthUnit.Centimeter);
-            var w = new Length(5.4, LengthUnit.Centimeter);
-            var h1 = new Length(2, LengthUnit.Centimeter);
-            var w1 = new Length(5, LengthUnit.Centimeter);
+            var h = new Length(4, LengthUnit.Centimeter);
+            var w = new Length(5, LengthUnit.Centimeter);
+            var h1 = new Length(3, LengthUnit.Centimeter);
+            var w1 = new Length(4, LengthUnit.Centimeter);
 
             // Act
             IRoundedRectangle prfl = new RoundedRectangle(h, w, h1, w1);
