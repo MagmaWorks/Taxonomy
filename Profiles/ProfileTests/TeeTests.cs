@@ -1,4 +1,5 @@
 using MagmaWorks.Taxonomy.Profiles;
+using MagmaWorks.Taxonomy.Profiles.Utilities;
 using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
 using OasysUnits;
 using OasysUnits.Units;
@@ -67,6 +68,53 @@ namespace ProfileTests
             TestUtility.TestLengthsAreEqual(prfl.Width, prflDeserialized.Width);
             TestUtility.TestLengthsAreEqual(prfl.WebThickness, prflDeserialized.WebThickness);
             TestUtility.TestLengthsAreEqual(prfl.FlangeThickness, prflDeserialized.FlangeThickness);
+        }
+
+        [Fact]
+        public void GetPerimeterTest()
+        {
+            // Assemble
+            var h = new Length(22.3, LengthUnit.Centimeter);
+            var w = new Length(51.4, LengthUnit.Centimeter);
+            var webThk = new Length(10.9, LengthUnit.Millimeter);
+            var flangeThk = new Length(15, LengthUnit.Millimeter);
+
+            // Act
+            ITee prfl = new Tee(h, w, flangeThk, webThk);
+            IPerimeter perimeter = prfl.GetPerimeter();
+
+            // Assert
+            Assert.Equal(9, perimeter.OuterEdge.Points.Count);
+            List<double> u = perimeter.OuterEdge.Points.Select(x => x.U.Millimeters).ToList();
+            List<double> v = perimeter.OuterEdge.Points.Select(x => x.V.Millimeters).ToList();
+
+            var expectedU = new List<double>()
+            {
+                -257,
+257,
+257,
+5.45,
+5.45,
+-5.45,
+-5.45,
+-257,
+-257,
+};
+
+            var expectedV = new List<double>() {
+                0,
+0,
+-15,
+-15,
+-223,
+-223,
+-15,
+-15,
+0
+};
+
+            TestUtility.TestListsOfDoublesAreEqual(expectedU, u);
+            TestUtility.TestListsOfDoublesAreEqual(expectedV, v);
         }
     }
 }

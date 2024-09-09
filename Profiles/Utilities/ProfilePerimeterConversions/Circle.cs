@@ -30,16 +30,16 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
             return new Perimeter(GetPoints(profile.Diameter, divisions));
         }
 
-        internal static List<IPoint2d> GetPoints(Length diameter, int divisions)
+        internal static List<IPoint2d> GetPoints(Length diameter, int divisions, double factorU = 1, double factorV = 1)
         {
             Length radius = diameter / 2;
             double radian = 2 * Math.PI / divisions;
             var pts = new List<IPoint2d>();
-            for (int i = 0; i < divisions + 1; i++)
+            for (int i = divisions + 1; i-- > 0;)
             {
                 pts.Add(new Point2d(
-                    radius * Math.Cos(radian * i),
-                    radius * Math.Sin(radian * i))
+                    factorU * radius * Math.Cos(radian * i),
+                    factorV * radius * Math.Sin(radian * i))
                 );
             }
 

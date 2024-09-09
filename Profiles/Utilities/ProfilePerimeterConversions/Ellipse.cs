@@ -36,18 +36,8 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
             bool isVertical = height > width;
             double factorU = isVertical ? width / height : 1;
             double factorV = isVertical ? 1 : height / width;
-            Length radius = (isVertical ? height : width) / 2;
-            double radian = 2 * Math.PI / divisions;
-            var pts = new List<IPoint2d>();
-            for (int i = 0; i < divisions + 1; i++)
-            {
-                pts.Add(new Point2d(
-                    factorU * radius * Math.Cos(radian * i),
-                    factorV * radius * Math.Sin(radian * i))
-                );
-            }
-
-            return pts;
+            Length diameter = (isVertical ? height : width);
+            return CircleConversion.GetPoints(diameter, divisions, factorU, factorV);
         }
     }
 }

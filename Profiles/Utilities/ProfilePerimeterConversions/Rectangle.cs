@@ -8,6 +8,16 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
     {
         public static IPerimeter GetPerimeter<T>(this T profile) where T : IRectangle
         {
+            if (profile is IRectangularHollow hollow)
+            {
+                return RectangularHollowConversion.GetPerimeter(hollow);
+            }
+
+            if (profile is IRoundedRectangle rounded)
+            {
+                return RoundedRectangleConversion.GetPerimeter(rounded);
+            }
+
             return new Perimeter(GetPoints(profile.Height, profile.Width));
         }
 

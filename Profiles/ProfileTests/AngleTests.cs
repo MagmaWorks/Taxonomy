@@ -98,7 +98,7 @@ namespace ProfileTests
 54,
 54,
 0
-            };
+};
 
             var expectedV = new List<double>() {
                 0,

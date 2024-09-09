@@ -17,10 +17,11 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
                 new Point2d(-profile.Thickness * 1.5 + profile.TopFlangeWidth, profile.Height / 2 - profile.Thickness),
                 new Point2d(profile.Thickness / 2, profile.Height / 2 - profile.Thickness),
                 new Point2d(profile.Thickness / 2, -profile.Height / 2),
-                new Point2d(profile.Thickness / 2 - profile.BottomFlangeWidth, profile.Height / 2),
-                new Point2d(profile.Thickness / 2 - profile.BottomFlangeWidth, profile.Height / 2 + profile.BottomLip),
-                new Point2d(profile.Thickness * 1.5 - profile.BottomFlangeWidth, profile.Height / 2 + profile.BottomLip),
-                new Point2d(profile.Thickness * 1.5 - profile.BottomFlangeWidth, profile.Height / 2 + profile.Thickness),
+                new Point2d(profile.Thickness / 2 - profile.BottomFlangeWidth, -profile.Height / 2),
+                new Point2d(profile.Thickness / 2 - profile.BottomFlangeWidth, -profile.Height / 2 + profile.BottomLip),
+                new Point2d(profile.Thickness * 1.5 - profile.BottomFlangeWidth, -profile.Height / 2 + profile.BottomLip),
+                new Point2d(profile.Thickness * 1.5 - profile.BottomFlangeWidth, -profile.Height / 2 + profile.Thickness),
+                new Point2d(-profile.Thickness / 2, -profile.Height / 2 + profile.Thickness),
                 new Point2d(-profile.Thickness / 2, profile.Height / 2),
             });
         }
