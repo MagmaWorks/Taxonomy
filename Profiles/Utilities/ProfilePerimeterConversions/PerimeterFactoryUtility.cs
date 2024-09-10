@@ -1,7 +1,7 @@
-﻿using MagmaWorks.Geometry;
-using OasysUnits;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using MagmaWorks.Geometry;
+using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Profiles.Utilities
 {

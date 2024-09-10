@@ -1,5 +1,5 @@
-﻿using MagmaWorks.Geometry;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MagmaWorks.Geometry;
 
 namespace MagmaWorks.Taxonomy.Profiles.Utilities
 {
