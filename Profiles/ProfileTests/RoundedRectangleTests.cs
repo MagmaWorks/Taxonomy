@@ -1,5 +1,4 @@
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Profiles.Utilities;
 using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
 using OasysUnits;
 using OasysUnits.Units;
@@ -81,7 +80,7 @@ namespace ProfileTests
 
             // Act
             IRoundedRectangle prfl = new RoundedRectangle(h, w, h1, w1);
-            IPerimeter perimeter = prfl.GetPerimeter();
+            IPerimeter perimeter = new Perimeter(prfl);
 
             // Assert
             Assert.Equal(37, perimeter.OuterEdge.Points.Count);

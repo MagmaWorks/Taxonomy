@@ -1,5 +1,4 @@
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Profiles.Utilities;
 using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
 using OasysUnits;
 using OasysUnits.Units;
@@ -88,7 +87,7 @@ namespace ProfileTests
 
             // Act
             IDoubleAngle prfl = new DoubleAngle(h, w, webThk, flangeThk, dist);
-            (IPerimeter perimeter1, IPerimeter perimeter2) = prfl.GetPerimeters();
+            (IPerimeter perimeter1, IPerimeter perimeter2) = Perimeter.CreatePerimeters(prfl);
 
             // Assert
             Assert.Equal(7, perimeter1.OuterEdge.Points.Count);

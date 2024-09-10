@@ -1,5 +1,4 @@
 ﻿using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Profiles.Utilities;
 using ProfileTests.Utility;
 
 namespace ProfileTests
@@ -14,7 +13,7 @@ namespace ProfileTests
             IIParallelFlange prfl = new HE500B();
 
             // Act
-            IPerimeter perimeter = prfl.GetPerimeter();
+            IPerimeter perimeter = new Perimeter(prfl);
 
             // Assert
             Assert.Equal(45, perimeter.OuterEdge.Points.Count);

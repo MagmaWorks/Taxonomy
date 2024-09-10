@@ -1,5 +1,4 @@
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Profiles.Utilities;
 using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
 using OasysUnits;
 using OasysUnits.Units;
@@ -67,7 +66,7 @@ namespace ProfileTests
 
             // Act
             ICircularHollow prfl = new CircularHollow(dia, thk);
-            IPerimeter perimeter = prfl.GetPerimeter();
+            IPerimeter perimeter = new Perimeter(prfl, 47);
 
             // Assert
             Assert.Equal(48, perimeter.OuterEdge.Points.Count);

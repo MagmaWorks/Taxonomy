@@ -3,9 +3,9 @@ using MagmaWorks.Geometry;
 
 namespace MagmaWorks.Taxonomy.Profiles.Utilities
 {
-    public static class CruciformConversion
+    internal static partial class PerimeterFactory
     {
-        public static IPerimeter GetPerimeter<T>(this T profile) where T : ICruciform
+        private static IPerimeter CreateCruciform(ICruciform profile)
         {
             return new Perimeter(new List<IPoint2d>()
             {

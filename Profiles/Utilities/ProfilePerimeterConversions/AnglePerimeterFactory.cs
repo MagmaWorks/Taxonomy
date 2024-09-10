@@ -4,9 +4,9 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Profiles.Utilities
 {
-    public static class AngleConversion
+    internal static partial class PerimeterFactory
     {
-        public static IPerimeter GetPerimeter<T>(this T profile) where T : IAngle
+        private static IPerimeter CreateAngle(IAngle profile)
         {
             return new Perimeter(new List<IPoint2d>()
             {

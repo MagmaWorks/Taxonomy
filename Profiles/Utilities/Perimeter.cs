@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using MagmaWorks.Geometry;
+using MagmaWorks.Taxonomy.Profiles.Utilities;
+using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
@@ -19,6 +21,33 @@ namespace MagmaWorks.Taxonomy.Profiles
         {
             OuterEdge = outerEdge;
             VoidEdges = voidEdges;
+        }
+
+        public Perimeter(IProfile profile)
+        {
+            IPerimeter factory = PerimeterFactory.CreatePerimeter(profile);
+            OuterEdge = factory.OuterEdge;
+            VoidEdges = factory.VoidEdges;
+        }
+
+        public Perimeter(IProfile profile, Length tolerance)
+        {
+            IPerimeter factory = PerimeterFactory.CreatePerimeter(profile, tolerance);
+            OuterEdge = factory.OuterEdge;
+            VoidEdges = factory.VoidEdges;
+        }
+
+        public Perimeter(IProfile profile, int divisions)
+        {
+            IPerimeter factory = PerimeterFactory.CreatePerimeter(profile, divisions);
+            OuterEdge = factory.OuterEdge;
+            VoidEdges = factory.VoidEdges;
+        }
+
+        public static (IPerimeter, IPerimeter) CreatePerimeters<T>(T profile)
+            where T : IProfile, IBackToBack
+        {
+            return PerimeterFactory.CreateBackToBackPerimeters(profile);
         }
     }
 }

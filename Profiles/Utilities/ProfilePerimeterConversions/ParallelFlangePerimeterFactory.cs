@@ -1,30 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MagmaWorks.Geometry;
-using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Profiles.Utilities
 {
-    public static class ParallelFlangeConversion
+    internal static partial class PerimeterFactory
     {
-        internal static IPerimeter GetPerimeter<T>(this T profile) where T : IIParallelFlange
+        private static IPerimeter CreateParallelFlange(IIParallelFlange profile, int filletDivisions)
         {
-            return profile.GetPerimeter(new Length(10, OasysUnits.Units.LengthUnit.Millimeter));
-        }
-
-        public static IPerimeter GetPerimeter<T>(this T profile, Length tolerance) where T : IIParallelFlange
-        {
-            int divisions = (int)Math.Round(
-                Math.PI * profile.FilletRadius / tolerance,
-                MidpointRounding.AwayFromZero);
-            return profile.GetPerimeter(divisions);
-        }
-
-        internal static IPerimeter GetPerimeter<T>(this T profile, int filletDivisions) where T : IIParallelFlange
-        {
-            List<IPoint2d> pts = CustomIConversion.GetIPoints(profile.Height, profile.Width, profile.Width,
+            List<IPoint2d> pts = PerimeterFactoryUtility.CreateCustomIPoints(profile.Height, profile.Width, profile.Width,
                 profile.FlangeThickness, profile.FlangeThickness, profile.WebThickness);
-            List<IPoint2d> filletCircle = EllipseConversion.GetPoints(
+            List<IPoint2d> filletCircle = PerimeterFactoryUtility.CreateEllipsePoints(
                 profile.FilletRadius * 2, profile.FilletRadius * 2, filletDivisions * 4);
             List<IPoint2d> filletBottomRight = filletCircle.GetRange(0, filletDivisions + 1);
             List<IPoint2d> filletBottomLeft = filletCircle.GetRange(filletDivisions, filletDivisions + 1);

@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using OasysUnits;
 using OasysUnits.Units;
 
 namespace CatalogueGenerator.Utilities
