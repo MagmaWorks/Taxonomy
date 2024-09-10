@@ -37,7 +37,7 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
             double factorU = isVertical ? width / height : 1;
             double factorV = isVertical ? 1 : height / width;
             Length diameter = (isVertical ? height : width);
-            return CircleConversion.GetPoints(diameter, divisions, factorU, factorV);
+            return Utility.GetCirclePoints(diameter, divisions, factorU, factorV);
         }
     }
 }

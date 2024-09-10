@@ -22,8 +22,8 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
 
         internal static IPerimeter GetPerimeters<T>(this T profile, int divisions) where T : ICircularHollow
         {
-            List<IPoint2d> outerEdge = CircleConversion.GetPoints(profile.Diameter, divisions);
-            List<IPoint2d> voidEdge = CircleConversion.GetPoints(profile.Diameter - 2 * profile.Thickness, divisions);
+            List<IPoint2d> outerEdge = Utility.GetCirclePoints(profile.Diameter, divisions);
+            List<IPoint2d> voidEdge = Utility.GetCirclePoints(profile.Diameter - 2 * profile.Thickness, divisions);
             return new Perimeter(new Polygon2d(outerEdge), new List<IPolygon2d>() { new Polygon2d(voidEdge) });
         }
     }

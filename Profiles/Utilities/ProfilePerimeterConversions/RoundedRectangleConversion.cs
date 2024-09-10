@@ -41,14 +41,10 @@ namespace MagmaWorks.Taxonomy.Profiles.Utilities
             List<IPoint2d> fillet2 = filletCircle.GetRange(filletDivisions, filletDivisions + 1);
             List<IPoint2d> fillet3 = filletCircle.GetRange(2 * filletDivisions, filletDivisions + 1);
             List<IPoint2d> fillet4 = filletCircle.GetRange(3 * filletDivisions, filletDivisions + 1);
-            for (int i = 0; i < filletDivisions + 1; i++)
-            {
-                fillet1[i] = new Point2d(fillet1[i].U + width / 2 - filletRadiusW, fillet1[i].V - height / 2 + filletRadiusH);
-                fillet2[i] = new Point2d(fillet2[i].U - width / 2 + filletRadiusW, fillet2[i].V - height / 2 + filletRadiusH);
-                fillet3[i] = new Point2d(fillet3[i].U - width / 2 + filletRadiusW, fillet3[i].V + height / 2 - filletRadiusH);
-                fillet4[i] = new Point2d(fillet4[i].U + width / 2 - filletRadiusW, fillet4[i].V + height / 2 - filletRadiusH);
-            }
-
+            fillet1.MovePoints(width / 2 - filletRadiusW, -height / 2 + filletRadiusH);
+            fillet2.MovePoints(-width / 2 + filletRadiusW, -height / 2 + filletRadiusH);
+            fillet3.MovePoints(-width / 2 + filletRadiusW, height / 2 - filletRadiusH);
+            fillet4.MovePoints(width / 2 - filletRadiusW, height / 2 - filletRadiusH);
             var pts = new List<IPoint2d>();
             pts.AddRange(fillet1);
             pts.AddRange(fillet2);
