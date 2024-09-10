@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using MagmaWorks.Geometry;
-using OasysUnits;
-
-namespace MagmaWorks.Taxonomy.Profiles.Utilities
+﻿namespace MagmaWorks.Taxonomy.Profiles.Utilities
 {
     public static class IConversion
     {

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using MagmaWorks.Geometry;
-using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Profiles.Utilities
 {
