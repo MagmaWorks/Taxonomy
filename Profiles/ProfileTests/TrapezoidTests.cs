@@ -32,9 +32,6 @@ namespace ProfileTests
             var h = new Length(2.3, LengthUnit.Centimeter);
             var wTop = new Length(5.4, LengthUnit.Centimeter);
             var wBottom = new Length(0.5, LengthUnit.Meter);
-            var webThk = new Length(10.9, LengthUnit.Millimeter);
-            var topFlangeThk = new Length(15, LengthUnit.Millimeter);
-            var bottomFlangeThk = new Length(9.8, LengthUnit.Millimeter);
 
             // Act
             ITrapezoid prfl = new Trapezoid(h, wTop, wBottom);
@@ -54,9 +51,6 @@ namespace ProfileTests
             var h = new Length(2.3, LengthUnit.Centimeter);
             var wTop = new Length(5.4, LengthUnit.Centimeter);
             var wBottom = new Length(0.5, LengthUnit.Meter);
-            var webThk = new Length(10.9, LengthUnit.Millimeter);
-            var topFlangeThk = new Length(15, LengthUnit.Millimeter);
-            var bottomFlangeThk = new Length(9.8, LengthUnit.Millimeter);
 
             // Act
             ITrapezoid prfl = new Trapezoid(h, wTop, wBottom);
@@ -67,6 +61,44 @@ namespace ProfileTests
             TestUtility.TestLengthsAreEqual(prfl.Height, prflDeserialized.Height);
             TestUtility.TestLengthsAreEqual(prfl.TopWidth, prflDeserialized.TopWidth);
             TestUtility.TestLengthsAreEqual(prfl.BottomWidth, prflDeserialized.BottomWidth);
+        }
+
+        [Fact]
+        public void GetPerimeterTest()
+        {
+            // Assemble
+            var h = new Length(2.3, LengthUnit.Centimeter);
+            var wTop = new Length(5.4, LengthUnit.Centimeter);
+            var wBottom = new Length(0.5, LengthUnit.Meter);
+
+            // Act
+            ITrapezoid prfl = new Trapezoid(h, wTop, wBottom);
+            IPerimeter perimeter = new Perimeter(prfl);
+
+            // Assert
+            Assert.Equal(5, perimeter.OuterEdge.Points.Count);
+            List<double> u = perimeter.OuterEdge.Points.Select(x => x.U.Millimeters).ToList();
+            List<double> v = perimeter.OuterEdge.Points.Select(x => x.V.Millimeters).ToList();
+
+            var expectedU = new List<double>()
+            {
+                -27,
+27,
+250,
+-250,
+-27
+};
+
+            var expectedV = new List<double>() {
+                11.5,
+11.5,
+-11.5,
+-11.5,
+11.5
+};
+
+            TestUtility.TestListsOfDoublesAreEqual(expectedU, u);
+            TestUtility.TestListsOfDoublesAreEqual(expectedV, v);
         }
     }
 }

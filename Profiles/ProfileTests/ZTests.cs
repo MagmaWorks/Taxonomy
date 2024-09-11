@@ -80,5 +80,62 @@ namespace ProfileTests
             TestUtility.TestLengthsAreEqual(prfl.TopLip, prflDeserialized.TopLip);
             TestUtility.TestLengthsAreEqual(prfl.BottomLip, prflDeserialized.BottomLip);
         }
+
+        [Fact]
+        public void GetPerimeterTest()
+        {
+            // Assemble
+            var h = new Length(40, LengthUnit.Centimeter);
+            var wTop = new Length(20, LengthUnit.Centimeter);
+            var wBottom = new Length(30, LengthUnit.Centimeter);
+            var thk = new Length(20, LengthUnit.Millimeter);
+            var topLip = new Length(60, LengthUnit.Millimeter);
+            var bottomLip = new Length(40, LengthUnit.Millimeter);
+
+            // Act
+            IZ prfl = new Z(h, wTop, wBottom, thk, topLip, bottomLip);
+            IPerimeter perimeter = new Perimeter(prfl);
+
+            // Assert
+            Assert.Equal(13, perimeter.OuterEdge.Points.Count);
+            List<double> u = perimeter.OuterEdge.Points.Select(x => x.U.Millimeters).ToList();
+            List<double> v = perimeter.OuterEdge.Points.Select(x => x.V.Millimeters).ToList();
+
+            var expectedU = new List<double>()
+            {
+                -10,
+190,
+190,
+170,
+170,
+10,
+10,
+-290,
+-290,
+-270,
+-270,
+-10,
+-10
+};
+
+            var expectedV = new List<double>() {
+                200,
+200,
+140,
+140,
+180,
+180,
+-200,
+-200,
+-160,
+-160,
+-180,
+-180,
+200
+};
+
+            TestUtility.TestListsOfDoublesAreEqual(expectedU, u);
+            TestUtility.TestListsOfDoublesAreEqual(expectedV, v);
+        }
     }
 }
