@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using MagmaWorks.Geometry;
 
-namespace MagmaWorks.Taxonomy.Profiles.Utilities
+namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
 {
-    internal static partial class PerimeterFactory
+    public static partial class PerimeterFactory
     {
-        private static IPerimeter CreateTrapezoid(ITrapezoid profile)
+        public static IPerimeter CreateTrapezoid(ITrapezoid profile)
         {
             return new Perimeter(new List<IPoint2d>()
             {

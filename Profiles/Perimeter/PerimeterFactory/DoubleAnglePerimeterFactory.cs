@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using MagmaWorks.Geometry;
 
-namespace MagmaWorks.Taxonomy.Profiles.Utilities
+namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
 {
-    internal static partial class PerimeterFactory
+    public static partial class PerimeterFactory
     {
-        private static (IPerimeter, IPerimeter) CreateDoubleAngle(IDoubleAngle profile)
+        public static (IPerimeter, IPerimeter) CreateDoubleAngle(IDoubleAngle profile)
         {
             IList<IPoint2d> anglePoints = CreateAngle(profile).OuterEdge.Points;
             return PerimeterFactoryUtility.CreateBackToBackMirror(anglePoints, profile.BackToBackDistance);

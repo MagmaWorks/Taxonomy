@@ -1,8 +1,8 @@
-﻿namespace MagmaWorks.Taxonomy.Profiles.Utilities
+﻿namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
 {
-    internal static partial class PerimeterFactory
+    public static partial class PerimeterFactory
     {
-        private static IPerimeter CreateI(II profile)
+        public static IPerimeter CreateI(II profile)
         {
             return new Perimeter(PerimeterFactoryUtility.CreateCustomIPoints(profile.Height, profile.Width, profile.Width,
                 profile.FlangeThickness, profile.FlangeThickness, profile.WebThickness));

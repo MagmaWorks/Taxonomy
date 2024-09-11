@@ -2,11 +2,11 @@
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Profiles.Utilities
+namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
 {
-    internal static partial class PerimeterFactory
+    public static partial class PerimeterFactory
     {
-        internal static IPerimeter CreatePerimeter(IProfile profile)
+        public static IPerimeter CreatePerimeter(IProfile profile)
         {
             int divisions = 8;
             Length tolerance = new Length(10, LengthUnit.Millimeter);

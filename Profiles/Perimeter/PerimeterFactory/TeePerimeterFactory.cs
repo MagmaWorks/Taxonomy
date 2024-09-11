@@ -2,11 +2,11 @@
 using MagmaWorks.Geometry;
 using OasysUnits;
 
-namespace MagmaWorks.Taxonomy.Profiles.Utilities
+namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
 {
-    internal static partial class PerimeterFactory
+    public static partial class PerimeterFactory
     {
-        private static IPerimeter CreateTee(ITee profile)
+        public static IPerimeter CreateTee(ITee profile)
         {
             return new Perimeter(new List<IPoint2d>()
             {

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using MagmaWorks.Geometry;
 
-namespace MagmaWorks.Taxonomy.Profiles.Utilities
+namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
 {
-    internal static partial class PerimeterFactory
+    public static partial class PerimeterFactory
     {
-        private static IPerimeter CreateRectangularHollow(IRectangularHollow profile)
+        public static IPerimeter CreateRectangularHollow(IRectangularHollow profile)
         {
             return new Perimeter(
                 new Polygon2d(PerimeterFactoryUtility.CreateRectanglePoints(profile.Height, profile.Width)),

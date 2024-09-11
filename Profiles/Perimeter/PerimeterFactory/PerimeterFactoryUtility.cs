@@ -3,9 +3,9 @@ using OasysUnits;
 using System.Collections.Generic;
 using System;
 
-namespace MagmaWorks.Taxonomy.Profiles.Utilities
+namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
 {
-    internal static class PerimeterFactoryUtility
+    public static class PerimeterFactoryUtility
     {
         internal static int CalculateDivisions(Length radius, Length tolerance)
         {

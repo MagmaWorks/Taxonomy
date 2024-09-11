@@ -9,11 +9,11 @@
     <TargetFrameworks>net48;netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
     <LangVersion>9.0</LangVersion>
     <Platforms>AnyCPU</Platforms>
-    <RootNamespace>MagmaWorks.Taxonomy.Profiles.Utilities</RootNamespace>
+    <RootNamespace>MagmaWorks.Taxonomy.Profiles</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>MagmaWorks Taxonomy Catalogue Profiles</Title>
+    <Title>MagmaWorks Taxonomy Perimeter Profiles</Title>
     <Company>Whitby Wood</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using MagmaWorks.Geometry;
 
-namespace MagmaWorks.Taxonomy.Profiles.Utilities
+namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
 {
-    internal static partial class PerimeterFactory
+    public static partial class PerimeterFactory
     {
-        private static IPerimeter CreateEllipseHollow(IEllipseHollow profile, int divisions)
+        public static IPerimeter CreateEllipseHollow(IEllipseHollow profile, int divisions)
         {
             IList<IPoint2d> outerEdge = PerimeterFactoryUtility.CreateEllipsePoints(profile.Height, profile.Width, divisions);
             IList<IPoint2d> voidEdge = PerimeterFactoryUtility.CreateEllipsePoints(

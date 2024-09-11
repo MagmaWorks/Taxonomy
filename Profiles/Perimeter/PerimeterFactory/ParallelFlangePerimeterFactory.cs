@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using MagmaWorks.Geometry;
 
-namespace MagmaWorks.Taxonomy.Profiles.Utilities
+namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
 {
-    internal static partial class PerimeterFactory
+    public static partial class PerimeterFactory
     {
-        private static IPerimeter CreateParallelFlange(IIParallelFlange profile, int filletDivisions)
+        public static IPerimeter CreateParallelFlange(IIParallelFlange profile, int filletDivisions)
         {
             List<IPoint2d> pts = PerimeterFactoryUtility.CreateCustomIPoints(profile.Height, profile.Width, profile.Width,
                 profile.FlangeThickness, profile.FlangeThickness, profile.WebThickness);
