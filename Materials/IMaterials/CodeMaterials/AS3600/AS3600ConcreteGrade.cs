@@ -2,13 +2,13 @@
 {
     public enum AS3600ConcreteGrade
     {
-        MPA20,
-        MPA25,
-        MPA32,
-        MPA40,
-        MPA50,
-        MPA65,
-        MPA80,
-        MPA100
+        MPa20,
+        MPa25,
+        MPa32,
+        MPa40,
+        MPa50,
+        MPa65,
+        MPa80,
+        MPa100
     }
 }
