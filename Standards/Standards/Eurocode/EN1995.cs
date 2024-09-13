@@ -12,7 +12,8 @@ namespace MagmaWorks.Taxonomy.Standards.Eurocode
 
         private EN1995Part EN1995Part;
 
-        public EN1995(EN1995Part part, NationalAnnex nationalAnnex) {
+        public EN1995(EN1995Part part, NationalAnnex nationalAnnex)
+        {
             EN1995Part = part;
             NationalAnnex = nationalAnnex;
         }
