@@ -5,7 +5,7 @@ namespace MagmaWorks.Taxonomy.Materials
 {
     public interface IStandardMaterial : IMaterial
     {
-        IStandard Standard { get ; }
+        IStandard Standard { get; }
         Enum Grade { get; }
     }
 }
