@@ -30,6 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Standards\IStandards\MagmaWorks.Taxonomy.IStandards.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
