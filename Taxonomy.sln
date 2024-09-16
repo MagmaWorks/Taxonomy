@@ -43,13 +43,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Standards", "Standards", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.IStandards", "Standards\IStandards\MagmaWorks.Taxonomy.IStandards.csproj", "{056BC6B7-8798-4B9E-8C03-789CBD1CE41E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagmaWorks.Taxonomy.Standards", "Standards\Standards\MagmaWorks.Taxonomy.Standards.csproj", "{01929CD7-F264-4587-BF40-DAD2B7FED09F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Standards", "Standards\Standards\MagmaWorks.Taxonomy.Standards.csproj", "{01929CD7-F264-4587-BF40-DAD2B7FED09F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandardTests", "Standards\StandardTests\StandardTests.csproj", "{36737F9F-F975-454C-BA8F-3854514C324A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StandardTests", "Standards\StandardTests\StandardTests.csproj", "{36737F9F-F975-454C-BA8F-3854514C324A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.IMaterials", "Materials\IMaterials\MagmaWorks.Taxonomy.IMaterials.csproj", "{071A8705-5343-4685-A3CE-42B770505EE0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Materials", "Materials", "{6F8C841C-0951-4088-9A87-AE1B669D5CE8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Materials", "Materials\Materials\MagmaWorks.Taxonomy.Materials.csproj", "{6CF07C18-9C5F-4440-AB38-7B128BE8041D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialTests", "Materials\MaterialTests\MaterialTests.csproj", "{AB60261A-3E89-4B5C-B8A4-B255CD364090}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -133,6 +137,14 @@ Global
 		{071A8705-5343-4685-A3CE-42B770505EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{071A8705-5343-4685-A3CE-42B770505EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{071A8705-5343-4685-A3CE-42B770505EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CF07C18-9C5F-4440-AB38-7B128BE8041D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CF07C18-9C5F-4440-AB38-7B128BE8041D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CF07C18-9C5F-4440-AB38-7B128BE8041D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CF07C18-9C5F-4440-AB38-7B128BE8041D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB60261A-3E89-4B5C-B8A4-B255CD364090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB60261A-3E89-4B5C-B8A4-B255CD364090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB60261A-3E89-4B5C-B8A4-B255CD364090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB60261A-3E89-4B5C-B8A4-B255CD364090}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -157,6 +169,8 @@ Global
 		{01929CD7-F264-4587-BF40-DAD2B7FED09F} = {865990BE-4B50-49AC-8BEE-254E799070BC}
 		{36737F9F-F975-454C-BA8F-3854514C324A} = {865990BE-4B50-49AC-8BEE-254E799070BC}
 		{071A8705-5343-4685-A3CE-42B770505EE0} = {6F8C841C-0951-4088-9A87-AE1B669D5CE8}
+		{6CF07C18-9C5F-4440-AB38-7B128BE8041D} = {6F8C841C-0951-4088-9A87-AE1B669D5CE8}
+		{AB60261A-3E89-4B5C-B8A4-B255CD364090} = {6F8C841C-0951-4088-9A87-AE1B669D5CE8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {037E8DD3-6CB9-4A55-BB67-CD24D471F05A}
