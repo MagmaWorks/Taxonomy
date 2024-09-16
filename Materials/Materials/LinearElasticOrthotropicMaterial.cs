@@ -1,5 +1,4 @@
-﻿using MagmaWorks.Taxonomy.Materials;
-using OasysUnits;
+﻿using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Materials
 {
