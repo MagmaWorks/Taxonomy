@@ -1,7 +1,7 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
 using OasysUnits;
 
-namespace Materials
+namespace MagmaWorks.Taxonomy.Materials
 {
     public class LinearElasticOrthotropicMaterial : ILinearElasticOrthotropicMaterial
     {

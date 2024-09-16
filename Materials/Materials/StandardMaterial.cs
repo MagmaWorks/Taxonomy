@@ -1,8 +1,7 @@
 ﻿using System;
-using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Standards;
 
-namespace Materials
+namespace MagmaWorks.Taxonomy.Materials
 {
     public class StandardMaterial : IStandardMaterial
     {

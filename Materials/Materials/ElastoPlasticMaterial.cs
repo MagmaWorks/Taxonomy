@@ -1,9 +1,7 @@
-﻿using System;
-using MagmaWorks.Taxonomy.Materials;
-using OasysUnits;
+﻿using OasysUnits;
 using OasysUnits.Units;
 
-namespace Materials
+namespace MagmaWorks.Taxonomy.Materials
 {
     public class ElastoPlasticMaterial : IElastoPlasticMaterial
     {

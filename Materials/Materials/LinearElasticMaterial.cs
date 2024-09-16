@@ -2,7 +2,7 @@
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace Materials
+namespace MagmaWorks.Taxonomy.Materials
 {
     public class LinearElasticMaterial : ILinearElasticMaterial
     {
