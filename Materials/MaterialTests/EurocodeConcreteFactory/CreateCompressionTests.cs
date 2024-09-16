@@ -1,5 +1,4 @@
 using MagmaWorks.Taxonomy.Materials;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MaterialTests
 {
@@ -25,6 +24,8 @@ namespace MaterialTests
             double expectedElasticModulus = expectedStrength / expectedStrain;
             Assert.True(expectedElasticModulus > 6 && expectedElasticModulus < 40);
             Assert.Equal(expectedElasticModulus, material.ElasticModulus.Gigapascals, 12);
+
+            Assert.Equal(MaterialType.Concrete, material.Type);
         }
 
         public static IEnumerable<object[]> enumValues()
