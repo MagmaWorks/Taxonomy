@@ -8,5 +8,4 @@ on:
       
 jobs:
   pr-ci:
-    uses: magmaworks/actions/.github/workflows/on-pull-request.yml@combined-report
-
+    uses: magmaworks/actions/.github/workflows/on-pull-request.yml@main
