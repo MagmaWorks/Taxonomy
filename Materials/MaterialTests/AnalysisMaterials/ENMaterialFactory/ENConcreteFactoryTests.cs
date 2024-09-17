@@ -4,15 +4,15 @@ using OasysUnits.Units;
 
 namespace MaterialTests
 {
-    public class EurocodeConcreteFactoryTests
+    public class ENConcreteFactoryTests
     {
         [Theory]
-        [MemberData(nameof(enumValues))]
-        public void CreateLinearElasticCompressionTests(EurocodeConcreteGrade grade)
+        [MemberData(nameof(EnumValues))]
+        public void CreateLinearElasticTests(ENConcreteGrade grade)
         {
             // Assemble
             // Act
-            ILinearElasticMaterial material = EurocodeConcreteFactory.CreateLinearElasticCompression(grade);
+            ILinearElasticMaterial material = ENConcreteFactory.CreateLinearElastic(grade);
 
             // Assert
             double expectedStrength = double.Parse(grade.ToString().Split('C', '_')[1]);
@@ -31,12 +31,12 @@ namespace MaterialTests
         }
 
         [Theory]
-        [MemberData(nameof(enumValues))]
-        public void CreateParabolaRectangleCompressionTests(EurocodeConcreteGrade grade)
+        [MemberData(nameof(EnumValues))]
+        public void CreateParabolaRectangleTests(ENConcreteGrade grade)
         {
             // Assemble
             // Act
-            IParabolaRectangleMaterial material = EurocodeConcreteFactory.CreateParabolaRectangleCompression(grade);
+            IParabolaRectangleMaterial material = ENConcreteFactory.CreateParabolaRectangle(grade);
 
             // Assert
             double expectedStrength = double.Parse(grade.ToString().Split('C', '_')[1]);
@@ -59,10 +59,10 @@ namespace MaterialTests
         }
 
         [Theory]
-        [MemberData(nameof(enumValues))]
-        public void GetStressFromParabolaRectangleCompressionTests(EurocodeConcreteGrade grade)
+        [MemberData(nameof(EnumValues))]
+        public void GetStressFromParabolaRectangleTests(ENConcreteGrade grade)
         {
-            IParabolaRectangleMaterial material = EurocodeConcreteFactory.CreateParabolaRectangleCompression(grade);
+            IParabolaRectangleMaterial material = ENConcreteFactory.CreateParabolaRectangle(grade);
             List<Strain> strains = new List<Strain>()
             {
                 new Strain(0, StrainUnit.MilliStrain),
@@ -94,9 +94,9 @@ namespace MaterialTests
             }
         }
 
-        public static IEnumerable<object[]> enumValues()
+        public static IEnumerable<object[]> EnumValues()
         {
-            foreach (var enumValue in Enum.GetValues(typeof(EurocodeConcreteGrade)))
+            foreach (var enumValue in Enum.GetValues(typeof(ENConcreteGrade)))
             {
                 yield return new object[] { enumValue };
             }

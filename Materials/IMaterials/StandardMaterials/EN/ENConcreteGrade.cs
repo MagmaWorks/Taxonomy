@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Materials
 {
-    public enum EurocodeConcreteGrade
+    public enum ENConcreteGrade
     {
         C12_15,
         C16_20,

@@ -4,9 +4,9 @@ using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Materials
 {
-    public static class EurocodeConcreteFactory
+    public static class ENConcreteFactory
     {
-        public static ILinearElasticMaterial CreateLinearElasticCompression(EurocodeConcreteGrade grade)
+        public static ILinearElasticMaterial CreateLinearElastic(ENConcreteGrade grade)
         {
             MaterialType type = MaterialType.Concrete;
 
@@ -21,7 +21,7 @@ namespace MagmaWorks.Taxonomy.Materials
             return new LinearElasticMaterial(type, elasticModulus, f_ck);
         }
 
-        public static IParabolaRectangleMaterial CreateParabolaRectangleCompression(EurocodeConcreteGrade grade)
+        public static IParabolaRectangleMaterial CreateParabolaRectangle(ENConcreteGrade grade)
         {
             MaterialType type = MaterialType.Concrete;
 
