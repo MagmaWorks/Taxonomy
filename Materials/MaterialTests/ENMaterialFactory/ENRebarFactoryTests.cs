@@ -31,7 +31,7 @@ namespace MaterialTests
         {
             // Assemble
             // Act
-            IElastoPlasticMaterial material = ENRebarFactory.CreateElastoPlastic(grade);
+            IBiLinearMaterial material = ENRebarFactory.CreateBiLinear(grade);
 
             // Assert
             double expectedStrength = double.Parse(string.Concat(grade.ToString().Where(Char.IsDigit)));
