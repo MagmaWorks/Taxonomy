@@ -1,5 +1,6 @@
-﻿using System.Diagnostics;
-using MagmaWorks.Taxonomy.Materials;
+﻿using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Standards;
+using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
@@ -7,6 +8,26 @@ namespace MaterialTests
 {
     public class ENSteelFactoryTests
     {
+        [Fact]
+        public void CreateStandardS355ConcreteMaterialTests()
+        {
+            // Assemble
+            NationalAnnex nationalAnnex = NationalAnnex.RecommendedValues;
+            ENSteelGrade grade = ENSteelGrade.S355;
+
+            // Act
+            IStandardMaterial material = ENSteelFactory.CreateStandardMaterial(grade, nationalAnnex);
+
+            // Assert
+            Assert.Equal(MaterialType.Steel, material.Type);
+            Assert.Equal(StandardBody.EN, material.Standard.Body);
+            Assert.Equal(Eurocode.EN1993, material.Standard.Code);
+            Assert.Equal(
+                "EN 1993-1-1: Eurocode 3: Design of Steel Structures - Part 1-1: General rules and rules for buildings",
+                material.Standard.Title);
+            Assert.Equal(ENSteelGrade.S355, material.Grade);
+        }
+
         [Theory]
         [MemberData(nameof(EnumValues))]
         public void CreateLinearElasticTests(ENSteelGrade grade)
@@ -70,6 +91,12 @@ namespace MaterialTests
         [MemberData(nameof(EnumValues))]
         public void CreateBiLinearThickPlatedTests(ENSteelGrade grade)
         {
+            if ((int)grade > 21)
+            {
+                CreateBiLinearThrowsExpectionForSomeGradesTests(grade);
+                return;
+            }
+
             // Assemble
             Length thickness = new Length(60, LengthUnit.Millimeter);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
@@ -7,15 +8,18 @@ namespace MagmaWorks.Taxonomy.Materials
 {
     public static class ENRebarFactory
     {
+        public static IStandardMaterial CreateStandardMaterial(ENRebarGrade grade, NationalAnnex nationalAnnex)
+        {
+            IEurocode standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
+            return new StandardMaterial(MaterialType.Reinforcement, standard, grade);
+        }
+
         public static ILinearElasticMaterial CreateLinearElastic(ENRebarGrade grade)
         {
             MaterialType type = MaterialType.Reinforcement;
-
             double strength = double.Parse(string.Concat(grade.ToString().Where(Char.IsDigit)));
             Pressure f_yk = new Pressure(strength, PressureUnit.Megapascal);
-
             Pressure elasticModulus = new Pressure(200, PressureUnit.Gigapascal);
-
             return new LinearElasticMaterial(type, elasticModulus, f_yk);
         }
 

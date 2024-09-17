@@ -1,4 +1,6 @@
 using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Standards;
+using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
@@ -6,13 +8,33 @@ namespace MaterialTests
 {
     public class ENConcreteFactoryTests
     {
+        [Fact]
+        public void CreateStandardENC30_37ConcreteMaterialTests()
+        {
+            // Assemble
+            NationalAnnex nationalAnnex = NationalAnnex.RecommendedValues;
+            ENConcreteGrade grade = ENConcreteGrade.C30_37;
+
+            // Act
+            IStandardMaterial material = ENConcreteFactory.CreateStandardMaterial(grade, nationalAnnex);
+
+            // Assert
+            Assert.Equal(MaterialType.Concrete, material.Type);
+            Assert.Equal(StandardBody.EN, material.Standard.Body);
+            Assert.Equal(Eurocode.EN1992, material.Standard.Code);
+            Assert.Equal(
+                "EN 1992-1-1: Eurocode 2: Design of Concrete Structures - Part 1-1: General rules and rules for buildings",
+                material.Standard.Title);
+            Assert.Equal(ENConcreteGrade.C30_37, material.Grade);
+        }
+
         [Theory]
         [MemberData(nameof(EnumValues))]
         public void CreateLinearElasticTests(ENConcreteGrade grade)
         {
             // Assemble
             // Act
-            ILinearElasticMaterial material = ENConcreteFactory.CreateLinearElastic(grade);
+            ILinearElasticMaterial material = ENConcreteFactory.CreateLinearElasticAnalysisMaterial(grade);
 
             // Assert
             double expectedStrength = double.Parse(grade.ToString().Split('C', '_')[1]);
@@ -36,7 +58,7 @@ namespace MaterialTests
         {
             // Assemble
             // Act
-            IParabolaRectangleMaterial material = ENConcreteFactory.CreateParabolaRectangle(grade);
+            IParabolaRectangleMaterial material = ENConcreteFactory.CreateParabolaRectangleAnalysisMaterial(grade);
 
             // Assert
             double expectedStrength = double.Parse(grade.ToString().Split('C', '_')[1]);
@@ -62,7 +84,7 @@ namespace MaterialTests
         [MemberData(nameof(EnumValues))]
         public void GetStressFromParabolaRectangleTests(ENConcreteGrade grade)
         {
-            IParabolaRectangleMaterial material = ENConcreteFactory.CreateParabolaRectangle(grade);
+            IParabolaRectangleMaterial material = ENConcreteFactory.CreateParabolaRectangleAnalysisMaterial(grade);
             List<Strain> strains = new List<Strain>()
             {
                 new Strain(0, StrainUnit.MilliStrain),

@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Standards\Standards\MagmaWorks.Taxonomy.Standards.csproj" />
     <ProjectReference Include="..\IMaterials\MagmaWorks.Taxonomy.IMaterials.csproj" />
   </ItemGroup>
 
