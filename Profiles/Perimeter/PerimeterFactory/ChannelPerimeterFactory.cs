@@ -13,17 +13,17 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
                 return CreateC(c);
             }
 
-            return new Perimeter(new List<IPoint2d>()
+            return new Perimeter(new List<ILocalPoint2d>()
             {
-                new Point2d(Length.Zero, profile.Height / 2),
-                new Point2d(profile.Width, profile.Height / 2),
-                new Point2d(profile.Width, profile.Height / 2 - profile.FlangeThickness),
-                new Point2d(profile.WebThickness, profile.Height / 2 - profile.FlangeThickness),
-                new Point2d(profile.WebThickness, -profile.Height / 2 + profile.FlangeThickness),
-                new Point2d(profile.Width, -profile.Height / 2 + profile.FlangeThickness),
-                new Point2d(profile.Width, -profile.Height / 2),
-                new Point2d(Length.Zero, -profile.Height / 2),
-                new Point2d(Length.Zero, profile.Height / 2),
+                new LocalPoint2d(Length.Zero, profile.Height / 2),
+                new LocalPoint2d(profile.Width, profile.Height / 2),
+                new LocalPoint2d(profile.Width, profile.Height / 2 - profile.FlangeThickness),
+                new LocalPoint2d(profile.WebThickness, profile.Height / 2 - profile.FlangeThickness),
+                new LocalPoint2d(profile.WebThickness, -profile.Height / 2 + profile.FlangeThickness),
+                new LocalPoint2d(profile.Width, -profile.Height / 2 + profile.FlangeThickness),
+                new LocalPoint2d(profile.Width, -profile.Height / 2),
+                new LocalPoint2d(Length.Zero, -profile.Height / 2),
+                new LocalPoint2d(Length.Zero, profile.Height / 2),
             });
         }
     }

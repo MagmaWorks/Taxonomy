@@ -7,9 +7,9 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
     {
         public static IPerimeter CreateCircularHollow(ICircularHollow profile, int divisions)
         {
-            List<IPoint2d> outerEdge = PerimeterFactoryUtility.CreateCirclePoints(profile.Diameter, divisions);
-            List<IPoint2d> voidEdge = PerimeterFactoryUtility.CreateCirclePoints(profile.Diameter - 2 * profile.Thickness, divisions);
-            return new Perimeter(new Polygon2d(outerEdge), new List<IPolygon2d>() { new Polygon2d(voidEdge) });
+            List<ILocalPoint2d> outerEdge = PerimeterFactoryUtility.CreateCirclePoints(profile.Diameter, divisions);
+            List<ILocalPoint2d> voidEdge = PerimeterFactoryUtility.CreateCirclePoints(profile.Diameter - 2 * profile.Thickness, divisions);
+            return new Perimeter(new LocalPolygon2d(outerEdge), new List<ILocalPolygon2d>() { new LocalPolygon2d(voidEdge) });
         }
     }
 }

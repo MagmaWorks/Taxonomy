@@ -77,13 +77,13 @@ namespace ProfileTests
 
             // Assert
             Assert.Equal(5, perimeter.OuterEdge.Points.Count);
-            List<double> u = perimeter.OuterEdge.Points.Select(x => x.U.Millimeters).ToList();
-            List<double> v = perimeter.OuterEdge.Points.Select(x => x.V.Millimeters).ToList();
+            List<double> u = perimeter.OuterEdge.Points.Select(x => x.Y.Millimeters).ToList();
+            List<double> v = perimeter.OuterEdge.Points.Select(x => x.Z.Millimeters).ToList();
 
             Assert.Single(perimeter.VoidEdges);
             Assert.Equal(5, perimeter.VoidEdges[0].Points.Count);
-            List<double> ui = perimeter.VoidEdges[0].Points.Select(x => x.U.Millimeters).ToList();
-            List<double> vi = perimeter.VoidEdges[0].Points.Select(x => x.V.Millimeters).ToList();
+            List<double> ui = perimeter.VoidEdges[0].Points.Select(x => x.Y.Millimeters).ToList();
+            List<double> vi = perimeter.VoidEdges[0].Points.Select(x => x.Z.Millimeters).ToList();
 
             var expectedU = new List<double>()
             {
