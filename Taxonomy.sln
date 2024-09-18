@@ -53,7 +53,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Materials", "Materials", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Materials", "Materials\Materials\MagmaWorks.Taxonomy.Materials.csproj", "{6CF07C18-9C5F-4440-AB38-7B128BE8041D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialTests", "Materials\MaterialTests\MaterialTests.csproj", "{AB60261A-3E89-4B5C-B8A4-B255CD364090}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaterialTests", "Materials\MaterialTests\MaterialTests.csproj", "{AB60261A-3E89-4B5C-B8A4-B255CD364090}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sections", "Sections", "{69DBCCB8-FF7F-42B8-952C-8D4F09B0C4C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.ISections", "Sections\ISections\MagmaWorks.Taxonomy.ISections.csproj", "{71CF9742-4D08-450F-B88D-EDF992D05381}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Sections", "Sections\Sections\MagmaWorks.Taxonomy.Sections.csproj", "{31167C8D-47E7-4C6B-848A-C6369BF89E76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SectionTests", "Sections\SectionTests\SectionTests.csproj", "{1091E92F-A6F3-4B4F-939D-F2377B5D243D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -145,6 +153,18 @@ Global
 		{AB60261A-3E89-4B5C-B8A4-B255CD364090}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB60261A-3E89-4B5C-B8A4-B255CD364090}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB60261A-3E89-4B5C-B8A4-B255CD364090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71CF9742-4D08-450F-B88D-EDF992D05381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71CF9742-4D08-450F-B88D-EDF992D05381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71CF9742-4D08-450F-B88D-EDF992D05381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71CF9742-4D08-450F-B88D-EDF992D05381}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31167C8D-47E7-4C6B-848A-C6369BF89E76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31167C8D-47E7-4C6B-848A-C6369BF89E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31167C8D-47E7-4C6B-848A-C6369BF89E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31167C8D-47E7-4C6B-848A-C6369BF89E76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1091E92F-A6F3-4B4F-939D-F2377B5D243D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1091E92F-A6F3-4B4F-939D-F2377B5D243D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1091E92F-A6F3-4B4F-939D-F2377B5D243D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1091E92F-A6F3-4B4F-939D-F2377B5D243D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -171,6 +191,9 @@ Global
 		{071A8705-5343-4685-A3CE-42B770505EE0} = {6F8C841C-0951-4088-9A87-AE1B669D5CE8}
 		{6CF07C18-9C5F-4440-AB38-7B128BE8041D} = {6F8C841C-0951-4088-9A87-AE1B669D5CE8}
 		{AB60261A-3E89-4B5C-B8A4-B255CD364090} = {6F8C841C-0951-4088-9A87-AE1B669D5CE8}
+		{71CF9742-4D08-450F-B88D-EDF992D05381} = {69DBCCB8-FF7F-42B8-952C-8D4F09B0C4C4}
+		{31167C8D-47E7-4C6B-848A-C6369BF89E76} = {69DBCCB8-FF7F-42B8-952C-8D4F09B0C4C4}
+		{1091E92F-A6F3-4B4F-939D-F2377B5D243D} = {69DBCCB8-FF7F-42B8-952C-8D4F09B0C4C4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {037E8DD3-6CB9-4A55-BB67-CD24D471F05A}

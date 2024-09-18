@@ -16,7 +16,7 @@ namespace MaterialTests
             Strain failureStrain = new Strain(0.2, OasysUnits.Units.StrainUnit.Percent);
 
             // Act
-            IElastoPlasticMaterial material = new ElastoPlasticMaterial(type, elasticModulus, yieldStrength, ultimateStrength, failureStrain);
+            IBiLinearMaterial material = new BiLinearMaterial(type, elasticModulus, yieldStrength, ultimateStrength, failureStrain);
 
             // Assert
             Assert.Equal(MaterialType.Steel, material.Type);
@@ -39,7 +39,7 @@ namespace MaterialTests
 
             // Act
             ILinearElasticMaterial linearElastic = new LinearElasticMaterial(type, elasticModulus, yieldStrength);
-            IElastoPlasticMaterial material = new ElastoPlasticMaterial(linearElastic, ultimateStrength, failureStrain);
+            IBiLinearMaterial material = new BiLinearMaterial(linearElastic, ultimateStrength, failureStrain);
 
             // Assert
             Assert.Equal(MaterialType.Steel, material.Type);

@@ -1,5 +1,6 @@
 using MagmaWorks.Taxonomy.Materials;
 using OasysUnits;
+using OasysUnits.Units;
 
 namespace MaterialTests
 {
@@ -10,8 +11,8 @@ namespace MaterialTests
         {
             // Assemble
             MaterialType type = MaterialType.Timber;
-            Pressure elasticModulus = new Pressure(8100, OasysUnits.Units.PressureUnit.Megapascal);
-            Pressure strength = new Pressure(32, OasysUnits.Units.PressureUnit.Megapascal);
+            Pressure elasticModulus = new Pressure(8100, PressureUnit.Megapascal);
+            Pressure strength = new Pressure(32, PressureUnit.Megapascal);
 
             // Act
             ILinearElasticMaterial material = new LinearElasticMaterial(type, elasticModulus, strength);

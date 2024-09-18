@@ -1,4 +1,6 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Standards;
+using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
@@ -6,6 +8,26 @@ namespace MaterialTests
 {
     public class ENRebarFactoryTests
     {
+        [Fact]
+        public void CreateStandardB500BConcreteMaterialTests()
+        {
+            // Assemble
+            NationalAnnex nationalAnnex = NationalAnnex.RecommendedValues;
+            ENRebarGrade grade = ENRebarGrade.B500B;
+
+            // Act
+            IStandardMaterial material = ENRebarFactory.CreateStandardMaterial(grade, nationalAnnex);
+
+            // Assert
+            Assert.Equal(MaterialType.Reinforcement, material.Type);
+            Assert.Equal(StandardBody.EN, material.Standard.Body);
+            Assert.Equal(Eurocode.EN1992, material.Standard.Code);
+            Assert.Equal(
+                "EN 1992-1-1: Eurocode 2: Design of Concrete Structures - Part 1-1: General rules and rules for buildings",
+                material.Standard.Title);
+            Assert.Equal(ENRebarGrade.B500B, material.Grade);
+        }
+
         [Theory]
         [MemberData(nameof(EnumValues))]
         public void CreateLinearElasticTests(ENRebarGrade grade)
@@ -31,7 +53,7 @@ namespace MaterialTests
         {
             // Assemble
             // Act
-            IElastoPlasticMaterial material = ENRebarFactory.CreateElastoPlastic(grade);
+            IBiLinearMaterial material = ENRebarFactory.CreateBiLinear(grade);
 
             // Assert
             double expectedStrength = double.Parse(string.Concat(grade.ToString().Where(Char.IsDigit)));
