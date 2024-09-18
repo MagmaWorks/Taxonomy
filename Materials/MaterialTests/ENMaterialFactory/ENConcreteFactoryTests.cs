@@ -34,7 +34,7 @@ namespace MaterialTests
         {
             // Assemble
             // Act
-            ILinearElasticMaterial material = ENConcreteFactory.CreateLinearElasticAnalysisMaterial(grade);
+            ILinearElasticMaterial material = ENConcreteFactory.CreateLinearElastic(grade);
 
             // Assert
             double expectedStrength = double.Parse(grade.ToString().Split('C', '_')[1]);

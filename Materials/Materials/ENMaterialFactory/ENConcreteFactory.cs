@@ -13,7 +13,7 @@ namespace MagmaWorks.Taxonomy.Materials
             return new StandardMaterial(MaterialType.Concrete, standard, grade);
         }
 
-        public static ILinearElasticMaterial CreateLinearElasticAnalysisMaterial(ENConcreteGrade grade)
+        public static ILinearElasticMaterial CreateLinearElastic(ENConcreteGrade grade)
         {
             MaterialType type = MaterialType.Concrete;
             double strength = double.Parse(grade.ToString().Split('C', '_')[1]);
