@@ -1,4 +1,7 @@
 ﻿namespace MagmaWorks.Taxonomy.Sections
 {
-    public interface ILongitudinalReinforcement : IRebar, IComposite { }
+    public interface ILongitudinalReinforcement : IComposite
+    {
+        IRebar Rebar { get; set; }
+    }
 }
