@@ -1,7 +1,6 @@
 using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
-using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
@@ -14,8 +13,7 @@ namespace SectionTests
         public void CreateSteelSectionTest()
         {
             // Assemble
-            IStandard standard = new EN1993(EN1993Part.Part1_1, NationalAnnex.UnitedKingdom);
-            IStandardMaterial material = new StandardMaterial(MaterialType.Steel, standard, ENSteelGrade.S355);
+            IStandardMaterial material = ENSteelFactory.CreateStandardMaterial(ENSteelGrade.S355, NationalAnnex.UnitedKingdom);
             ICatalogue profile = new HE500B();
 
             // Act
