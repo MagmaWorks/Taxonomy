@@ -7,14 +7,14 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
     {
         public static IPerimeter CreateParallelFlange(IIParallelFlange profile, int filletDivisions)
         {
-            List<IPoint2d> pts = PerimeterFactoryUtility.CreateCustomIPoints(profile.Height, profile.Width, profile.Width,
+            List<ILocalPoint2d> pts = PerimeterFactoryUtility.CreateCustomIPoints(profile.Height, profile.Width, profile.Width,
                 profile.FlangeThickness, profile.FlangeThickness, profile.WebThickness);
-            List<IPoint2d> filletCircle = PerimeterFactoryUtility.CreateEllipsePoints(
+            List<ILocalPoint2d> filletCircle = PerimeterFactoryUtility.CreateEllipsePoints(
                 profile.FilletRadius * 2, profile.FilletRadius * 2, filletDivisions * 4);
-            List<IPoint2d> filletBottomRight = filletCircle.GetRange(0, filletDivisions + 1);
-            List<IPoint2d> filletBottomLeft = filletCircle.GetRange(filletDivisions, filletDivisions + 1);
-            List<IPoint2d> filletTopLeft = filletCircle.GetRange(2 * filletDivisions, filletDivisions + 1);
-            List<IPoint2d> filletTopRight = filletCircle.GetRange(3 * filletDivisions, filletDivisions + 1);
+            List<ILocalPoint2d> filletBottomRight = filletCircle.GetRange(0, filletDivisions + 1);
+            List<ILocalPoint2d> filletBottomLeft = filletCircle.GetRange(filletDivisions, filletDivisions + 1);
+            List<ILocalPoint2d> filletTopLeft = filletCircle.GetRange(2 * filletDivisions, filletDivisions + 1);
+            List<ILocalPoint2d> filletTopRight = filletCircle.GetRange(3 * filletDivisions, filletDivisions + 1);
 
             filletBottomRight.MovePoints(
                 -profile.FilletRadius - profile.WebThickness / 2,

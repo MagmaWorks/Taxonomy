@@ -15,14 +15,14 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
             return Math.Max(8, divisions);
         }
 
-        internal static List<IPoint2d> CreateCirclePoints(Length diameter, int divisions, double factorU = 1, double factorV = 1)
+        internal static List<ILocalPoint2d> CreateCirclePoints(Length diameter, int divisions, double factorU = 1, double factorV = 1)
         {
             Length radius = diameter / 2;
             double radian = 2 * Math.PI / divisions;
-            var pts = new List<IPoint2d>();
+            var pts = new List<ILocalPoint2d>();
             for (int i = divisions + 1; i-- > 0;)
             {
-                pts.Add(new Point2d(
+                pts.Add(new LocalPoint2d(
                     factorU * radius * Math.Cos(radian * i),
                     factorV * radius * Math.Sin(radian * i))
                 );
@@ -31,37 +31,37 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
             return pts;
         }
 
-        internal static void MovePoints(this List<IPoint2d> pts, Length u, Length v)
+        internal static void MovePoints(this List<ILocalPoint2d> pts, Length y, Length z)
         {
             for (int i = 0; i < pts.Count; i++)
             {
-                pts[i] = new Point2d(pts[i].U + u, pts[i].V + v);
+                pts[i] = new LocalPoint2d(pts[i].Y + y, pts[i].Z + z);
             }
         }
 
-        internal static List<IPoint2d> CreateCustomIPoints(
+        internal static List<ILocalPoint2d> CreateCustomIPoints(
             Length height, Length topWidth, Length bottomWidth,
             Length topFlangeThk, Length bottomFlangeThk, Length webThk)
         {
-            return new List<IPoint2d>()
+            return new List<ILocalPoint2d>()
             {
-                new Point2d(-topWidth / 2, height / 2),
-                new Point2d(topWidth / 2, height / 2),
-                new Point2d(topWidth / 2, height / 2 - topFlangeThk),
-                new Point2d(webThk / 2, height / 2 - topFlangeThk),
-                new Point2d(webThk / 2, -height / 2 + bottomFlangeThk),
-                new Point2d(bottomWidth / 2, -height / 2 + bottomFlangeThk),
-                new Point2d(bottomWidth / 2, -height / 2),
-                new Point2d(-bottomWidth / 2, -height / 2),
-                new Point2d(-bottomWidth / 2, -height / 2 + bottomFlangeThk),
-                new Point2d(-webThk / 2, -height / 2 + bottomFlangeThk),
-                new Point2d(-webThk / 2, height / 2 - topFlangeThk),
-                new Point2d(-topWidth / 2, height / 2 - topFlangeThk),
-                new Point2d(-topWidth / 2, height / 2)
+                new LocalPoint2d(-topWidth / 2, height / 2),
+                new LocalPoint2d(topWidth / 2, height / 2),
+                new LocalPoint2d(topWidth / 2, height / 2 - topFlangeThk),
+                new LocalPoint2d(webThk / 2, height / 2 - topFlangeThk),
+                new LocalPoint2d(webThk / 2, -height / 2 + bottomFlangeThk),
+                new LocalPoint2d(bottomWidth / 2, -height / 2 + bottomFlangeThk),
+                new LocalPoint2d(bottomWidth / 2, -height / 2),
+                new LocalPoint2d(-bottomWidth / 2, -height / 2),
+                new LocalPoint2d(-bottomWidth / 2, -height / 2 + bottomFlangeThk),
+                new LocalPoint2d(-webThk / 2, -height / 2 + bottomFlangeThk),
+                new LocalPoint2d(-webThk / 2, height / 2 - topFlangeThk),
+                new LocalPoint2d(-topWidth / 2, height / 2 - topFlangeThk),
+                new LocalPoint2d(-topWidth / 2, height / 2)
             };
         }
 
-        internal static List<IPoint2d> CreateEllipsePoints(Length height, Length width, int divisions)
+        internal static List<ILocalPoint2d> CreateEllipsePoints(Length height, Length width, int divisions)
         {
             bool isVertical = height > width;
             double factorU = isVertical ? width / height : 1;
@@ -70,32 +70,32 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
             return CreateCirclePoints(diameter, divisions, factorU, factorV);
         }
 
-        internal static List<IPoint2d> CreateRectanglePoints(Length height, Length width)
+        internal static List<ILocalPoint2d> CreateRectanglePoints(Length height, Length width)
         {
-            return new List<IPoint2d>()
+            return new List<ILocalPoint2d>()
             {
-                new Point2d(-width / 2, height / 2),
-                new Point2d(width / 2, height / 2),
-                new Point2d(width / 2, -height / 2),
-                new Point2d(-width / 2, -height / 2),
-                new Point2d(-width / 2, height / 2),
+                new LocalPoint2d(-width / 2, height / 2),
+                new LocalPoint2d(width / 2, height / 2),
+                new LocalPoint2d(width / 2, -height / 2),
+                new LocalPoint2d(-width / 2, -height / 2),
+                new LocalPoint2d(-width / 2, height / 2),
             };
         }
 
-        internal static List<IPoint2d> CreateRoundedRectanglePoints(Length height, Length width, Length flatHeight, Length flatWidth, int filletDivisions)
+        internal static List<ILocalPoint2d> CreateRoundedRectanglePoints(Length height, Length width, Length flatHeight, Length flatWidth, int filletDivisions)
         {
             Length filletRadiusW = (width - flatWidth) / 2;
             Length filletRadiusH = (height - flatHeight) / 2;
-            List<IPoint2d> filletCircle = CreateEllipsePoints(filletRadiusH * 2, filletRadiusW * 2, filletDivisions * 4);
-            List<IPoint2d> fillet1 = filletCircle.GetRange(0, filletDivisions + 1);
-            List<IPoint2d> fillet2 = filletCircle.GetRange(filletDivisions, filletDivisions + 1);
-            List<IPoint2d> fillet3 = filletCircle.GetRange(2 * filletDivisions, filletDivisions + 1);
-            List<IPoint2d> fillet4 = filletCircle.GetRange(3 * filletDivisions, filletDivisions + 1);
+            List<ILocalPoint2d> filletCircle = CreateEllipsePoints(filletRadiusH * 2, filletRadiusW * 2, filletDivisions * 4);
+            List<ILocalPoint2d> fillet1 = filletCircle.GetRange(0, filletDivisions + 1);
+            List<ILocalPoint2d> fillet2 = filletCircle.GetRange(filletDivisions, filletDivisions + 1);
+            List<ILocalPoint2d> fillet3 = filletCircle.GetRange(2 * filletDivisions, filletDivisions + 1);
+            List<ILocalPoint2d> fillet4 = filletCircle.GetRange(3 * filletDivisions, filletDivisions + 1);
             fillet1.MovePoints(width / 2 - filletRadiusW, -height / 2 + filletRadiusH);
             fillet2.MovePoints(-width / 2 + filletRadiusW, -height / 2 + filletRadiusH);
             fillet3.MovePoints(-width / 2 + filletRadiusW, height / 2 - filletRadiusH);
             fillet4.MovePoints(width / 2 - filletRadiusW, height / 2 - filletRadiusH);
-            var pts = new List<IPoint2d>();
+            var pts = new List<ILocalPoint2d>();
             pts.AddRange(fillet1);
             pts.AddRange(fillet2);
             pts.AddRange(fillet3);
@@ -104,13 +104,13 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
             return pts;
         }
 
-        internal static (IPerimeter, IPerimeter) CreateBackToBackMirror(IList<IPoint2d> original, Length backToBackDistance)
+        internal static (IPerimeter, IPerimeter) CreateBackToBackMirror(IList<ILocalPoint2d> original, Length backToBackDistance)
         {
-            var mirror = new List<IPoint2d>();
+            var mirror = new List<ILocalPoint2d>();
             for (int i = 0; i < original.Count; i++)
             {
-                original[i] = new Point2d(original[i].U + backToBackDistance / 2, original[i].V);
-                mirror.Add(new Point2d(-original[i].U, original[i].V));
+                original[i] = new LocalPoint2d(original[i].Y + backToBackDistance / 2, original[i].Z);
+                mirror.Add(new LocalPoint2d(-original[i].Y, original[i].Z));
             }
 
             return (new Perimeter(original), new Perimeter(mirror));

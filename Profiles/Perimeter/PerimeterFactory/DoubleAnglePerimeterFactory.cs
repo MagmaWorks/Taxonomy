@@ -7,7 +7,7 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
     {
         public static (IPerimeter, IPerimeter) CreateDoubleAngle(IDoubleAngle profile)
         {
-            IList<IPoint2d> anglePoints = CreateAngle(profile).OuterEdge.Points;
+            IList<ILocalPoint2d> anglePoints = CreateAngle(profile).OuterEdge.Points;
             return PerimeterFactoryUtility.CreateBackToBackMirror(anglePoints, profile.BackToBackDistance);
         }
     }

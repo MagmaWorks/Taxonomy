@@ -84,8 +84,8 @@ namespace ProfileTests
 
             // Assert
             Assert.Equal(9, perimeter.OuterEdge.Points.Count);
-            List<double> u = perimeter.OuterEdge.Points.Select(x => x.U.Millimeters).ToList();
-            List<double> v = perimeter.OuterEdge.Points.Select(x => x.V.Millimeters).ToList();
+            List<double> u = perimeter.OuterEdge.Points.Select(x => x.Y.Millimeters).ToList();
+            List<double> v = perimeter.OuterEdge.Points.Select(x => x.Z.Millimeters).ToList();
 
             var expectedU = new List<double>()
             {

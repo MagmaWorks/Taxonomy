@@ -8,15 +8,15 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
     {
         public static IPerimeter CreateAngle(IAngle profile)
         {
-            return new Perimeter(new List<IPoint2d>()
+            return new Perimeter(new List<ILocalPoint2d>()
             {
-                new Point2d(Length.Zero, Length.Zero),
-                new Point2d(Length.Zero, profile.Height),
-                new Point2d(profile.WebThickness, profile.Height),
-                new Point2d(profile.WebThickness, profile.FlangeThickness),
-                new Point2d(profile.Width, profile.FlangeThickness),
-                new Point2d(profile.Width, Length.Zero),
-                new Point2d(Length.Zero, Length.Zero),
+                new LocalPoint2d(Length.Zero, Length.Zero),
+                new LocalPoint2d(Length.Zero, profile.Height),
+                new LocalPoint2d(profile.WebThickness, profile.Height),
+                new LocalPoint2d(profile.WebThickness, profile.FlangeThickness),
+                new LocalPoint2d(profile.Width, profile.FlangeThickness),
+                new LocalPoint2d(profile.Width, Length.Zero),
+                new LocalPoint2d(Length.Zero, Length.Zero),
             });
         }
     }
