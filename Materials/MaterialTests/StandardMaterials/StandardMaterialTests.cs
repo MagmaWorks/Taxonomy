@@ -1,4 +1,5 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Serialization.Standards.Extensions;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
@@ -25,6 +26,20 @@ namespace MaterialTests
                 "EN 1992-1-1: Eurocode 2: Design of Concrete Structures - Part 1-1: General rules and rules for buildings",
                 material.Standard.Title);
             Assert.Equal(ENConcreteGrade.C30_37, material.Grade);
+        }
+
+        [Fact]
+        public void InterfaceSurvivesRoundtripDeserializationTest()
+        {
+            // Assemble
+            IStandard standard = new EN1992();
+
+            // Act
+            string json = standard.ToJson();
+            IStandard stdrdDeserialized = json.FromJson<IStandard>();
+
+            // Assert
+            Assert.Equivalent(standard, stdrdDeserialized);
         }
     }
 }
