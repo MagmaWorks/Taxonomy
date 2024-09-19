@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IStandards\MagmaWorks.Taxonomy.IStandards.csproj" />
+    <ProjectReference Include="..\Serialization\MagmaWorks.Taxonomy.Serialization.Standards.csproj" />
     <ProjectReference Include="..\Standards\MagmaWorks.Taxonomy.Standards.csproj" />
   </ItemGroup>
 

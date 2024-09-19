@@ -5,12 +5,19 @@ namespace MagmaWorks.Taxonomy.Standards.Eurocode
     public class EN1996 : IEurocode
     {
         public StandardBody Body => StandardBody.EN;
-        public Enum Code => Eurocode.EN1996;
+        public Enum Code { get; } = Eurocode.EN1996;
         public Enum Part => EN1996Part;
         public NationalAnnex NationalAnnex { get; set; }
         public string Title => GetTitle();
 
         private EN1996Part EN1996Part;
+
+        public EN1996()
+        {
+            Code = Eurocode.EN1996;
+            EN1996Part = EN1996Part.Part1_1;
+            NationalAnnex = NationalAnnex.RecommendedValues;
+        }
 
         public EN1996(EN1996Part part, NationalAnnex nationalAnnex)
         {
