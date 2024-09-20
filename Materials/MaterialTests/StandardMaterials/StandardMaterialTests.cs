@@ -1,5 +1,5 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Serialization.Standards.Extensions;
+using MagmaWorks.Taxonomy.Serialization.Materials.Extensions;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
@@ -32,14 +32,17 @@ namespace MaterialTests
         public void InterfaceSurvivesRoundtripDeserializationTest()
         {
             // Assemble
+            MaterialType type = MaterialType.Concrete;
             IStandard standard = new EN1992();
+            ENConcreteGrade grade = ENConcreteGrade.C30_37;
+            IStandardMaterial material = new StandardMaterial(type, standard, grade);
 
             // Act
-            string json = standard.ToJson();
-            IStandard stdrdDeserialized = json.FromJson<IStandard>();
+            string json = material.ToJson();
+            IStandardMaterial matDeserialized = json.FromJson<IStandardMaterial>();
 
             // Assert
-            Assert.Equivalent(standard, stdrdDeserialized);
+            Assert.Equivalent(material, matDeserialized);
         }
     }
 }
