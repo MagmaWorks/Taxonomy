@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using MagmaWorks.Taxonomy.Serialization.Sections.Extensions;
-using MagmaWorks.Taxonomy.Sections;
-using OasysUnits;
+using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Geometry;
+using MagmaWorks.Taxonomy.Sections;
+using MagmaWorks.Taxonomy.Serialization.Sections.Extensions;
+using OasysUnits;
 
 namespace SectionTests
 {
@@ -28,8 +28,14 @@ namespace SectionTests
         private static OasysUnits.Angle _angle { get { return new OasysUnits.Angle(33, OasysUnits.Units.AngleUnit.Degree); } }
         private static Pressure _stress { get { return new Pressure(45, OasysUnits.Units.PressureUnit.Megapascal); } }
         private static Strain _strain { get { return new Strain(7.5, OasysUnits.Units.StrainUnit.Percent); } }
-        private static IMaterial _material { get { return ENConcreteFactory.CreateStandardMaterial(
-            ENConcreteGrade.C30_37, MagmaWorks.Taxonomy.Standards.Eurocode.NationalAnnex.RecommendedValues); } }
+        private static IMaterial _material
+        {
+            get
+            {
+                return ENConcreteFactory.CreateStandardMaterial(
+            ENConcreteGrade.C30_37, MagmaWorks.Taxonomy.Standards.Eurocode.NationalAnnex.RecommendedValues);
+            }
+        }
         private static IProfile _profile { get { return new HE320B(); } }
         private static ILocalPoint2d _point { get { return new LocalPoint2d(); } }
 
