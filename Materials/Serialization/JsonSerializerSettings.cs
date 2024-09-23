@@ -18,7 +18,7 @@ namespace MagmaWorks.Taxonomy.Serialization
                     TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
 
                 };
-                
+
                 return settings;
             }
         }
