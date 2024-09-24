@@ -7,7 +7,6 @@ namespace MagmaWorks.Taxonomy.Loads
         Pressure X { get; }
         Pressure Y { get; }
         Pressure Z { get; }
-        bool IsProjected { get; }
-        bool IsLocal { get; }
+        LoadApplication Application { get; }
     }
 }
