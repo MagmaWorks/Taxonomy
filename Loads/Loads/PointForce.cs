@@ -6,7 +6,8 @@ namespace MagmaWorks.Taxonomy.Loads
     {
         public Force Y { get; set; } = Force.Zero;
 
-        public PointForce(Force x, Force y, Force z) {
+        public PointForce(Force x, Force y, Force z)
+        {
             X = x;
             Y = y;
             Z = z;

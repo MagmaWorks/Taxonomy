@@ -11,10 +11,12 @@ namespace MagmaWorks.Taxonomy.Loads
 
         private AreaForce() { }
 
-        public AreaForce(Pressure z) {
+        public AreaForce(Pressure z)
+        {
             Z = z;
         }
-        public AreaForce(Pressure x, Pressure y, Pressure z, LoadApplication application) {
+        public AreaForce(Pressure x, Pressure y, Pressure z, LoadApplication application)
+        {
             X = x;
             Y = y;
             Z = z;

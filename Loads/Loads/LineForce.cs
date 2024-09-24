@@ -2,7 +2,8 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public class LineForce : Line2dForce, ILineForce {
+    public class LineForce : Line2dForce, ILineForce
+    {
 
         public ForcePerLength Y { get; } = ForcePerLength.Zero;
 
