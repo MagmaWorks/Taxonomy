@@ -1,6 +1,7 @@
 ﻿namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface ILoad {
+    public interface ILoad
+    {
         char Symbol { get; }
     }
 }
