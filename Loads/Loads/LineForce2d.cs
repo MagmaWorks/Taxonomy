@@ -6,7 +6,7 @@ namespace MagmaWorks.Taxonomy.Loads
     {
         public ForcePerLength X { get; set; } = ForcePerLength.Zero;
         public ForcePerLength Z { get; set; } = ForcePerLength.Zero;
-        public LoadApplication Application { get; set;} = LoadApplication.Global;
+        public LoadApplication Application { get; set; } = LoadApplication.Global;
 
         internal Line2dForce() { }
 
@@ -15,7 +15,8 @@ namespace MagmaWorks.Taxonomy.Loads
             Z = z;
         }
 
-        public Line2dForce(ForcePerLength x, ForcePerLength z, LoadApplication application) {
+        public Line2dForce(ForcePerLength x, ForcePerLength z, LoadApplication application)
+        {
             X = x;
             Z = z;
             Application = application;

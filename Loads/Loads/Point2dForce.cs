@@ -9,7 +9,8 @@ namespace MagmaWorks.Taxonomy.Loads
 
         internal Point2dForce() { }
 
-        public Point2dForce(Force z) {
+        public Point2dForce(Force z)
+        {
             Z = z;
         }
 
