@@ -4,6 +4,7 @@ namespace MagmaWorks.Taxonomy.Loads
 {
     public class Line2dForce : ILine2dForce
     {
+        public char Symbol { get; set; }
         public ForcePerLength X { get; set; } = ForcePerLength.Zero;
         public ForcePerLength Z { get; set; } = ForcePerLength.Zero;
         public LoadApplication Application { get; set; } = LoadApplication.Global;
