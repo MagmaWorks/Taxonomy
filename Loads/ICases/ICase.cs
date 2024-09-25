@@ -1,4 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface ICase { }
+    public interface ICase {
+        string Name { get; }
+    }
 }
