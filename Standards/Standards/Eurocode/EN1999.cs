@@ -7,17 +7,11 @@ namespace MagmaWorks.Taxonomy.Standards.Eurocode
         public StandardBody Body => StandardBody.EN;
         public Enum Code { get; } = Eurocode.EN1999;
         public Enum Part => EN1999Part;
-        public NationalAnnex NationalAnnex { get; set; }
+        public NationalAnnex NationalAnnex { get; set; } = NationalAnnex.RecommendedValues;
         public string Title => GetTitle();
+        private EN1999Part EN1999Part = EN1999Part.Part1_1;
 
-        private EN1999Part EN1999Part;
-
-        public EN1999()
-        {
-            Code = Eurocode.EN1999;
-            EN1999Part = EN1999Part.Part1_1;
-            NationalAnnex = NationalAnnex.RecommendedValues;
-        }
+        public EN1999() { }
 
         public EN1999(EN1999Part part, NationalAnnex nationalAnnex)
         {
