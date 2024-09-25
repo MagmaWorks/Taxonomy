@@ -1,4 +1,4 @@
 ﻿namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface IFrequentCombination : IServiceabilityLimitState { }
+    public interface IQuasiPermanentCombination : IServiceabilityLimitState { }
 }
