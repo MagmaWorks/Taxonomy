@@ -2,7 +2,7 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public class PointDisplacement : Point2dDisplacement, IPointDisplacement
+    public class PointDisplacement : PointDisplacement2d, IPointDisplacement
     {
         public Length Y { get; set; } = Length.Zero;
 

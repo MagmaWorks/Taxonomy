@@ -2,14 +2,14 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public class Point2dMoment : IPoint2dMoment
+    public class PointMoment2d : IPointMoment2d
     {
         public Moment Yy { get; set; } = Moment.Zero;
         public Moment Zz { get; set; } = Moment.Zero;
 
-        internal Point2dMoment() { }
+        internal PointMoment2d() { }
 
-        public Point2dMoment(Moment yy, Moment zz)
+        public PointMoment2d(Moment yy, Moment zz)
         {
             Yy = yy;
             Zz = zz;

@@ -2,7 +2,7 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public class PointMoment : Point2dMoment, IPointMoment
+    public class PointMoment : PointMoment2d, IPointMoment
     {
         public Moment Xx { get; set; } = Moment.Zero;
 

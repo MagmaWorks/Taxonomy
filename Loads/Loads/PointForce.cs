@@ -2,7 +2,7 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public class PointForce : Point2dForce, IPointForce
+    public class PointForce : PointForce2d, IPointForce
     {
         public Force Y { get; set; } = Force.Zero;
 

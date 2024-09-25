@@ -13,7 +13,7 @@ namespace LoadTests
             var f = new Force(15.4, ForceUnit.Kilonewton);
 
             // Act
-            Point2dForce load = (Point2dForce)f;
+            PointForce2d load = (PointForce2d)f;
 
             // Assert
             Assert.Equal(f, load.Z);

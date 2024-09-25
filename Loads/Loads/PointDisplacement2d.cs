@@ -2,14 +2,14 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public class Point2dDisplacement : IPoint2dDisplacement
+    public class PointDisplacement2d : IPointDisplacement2d
     {
         public Length X { get; set; } = Length.Zero;
         public Length Z { get; set; } = Length.Zero;
 
-        internal Point2dDisplacement() { }
+        internal PointDisplacement2d() { }
 
-        public Point2dDisplacement(Length x, Length z)
+        public PointDisplacement2d(Length x, Length z)
         {
             X = x;
             Z = z;

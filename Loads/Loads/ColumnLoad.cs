@@ -5,8 +5,8 @@ namespace MagmaWorks.Taxonomy.Loads
     public class ColumnLoad : IColumnLoad
     {
         public Force Force { get; set; } = Force.Zero;
-        public IPoint2dMoment TopMoment { get; set; } = new Point2dMoment();
-        public IPoint2dMoment BottomMoment { get; set; } = new Point2dMoment();
+        public IPointMoment2d TopMoment { get; set; } = new PointMoment2d();
+        public IPointMoment2d BottomMoment { get; set; } = new PointMoment2d();
 
         private ColumnLoad() { }
 
@@ -15,7 +15,7 @@ namespace MagmaWorks.Taxonomy.Loads
             Force = force;
         }
 
-        public ColumnLoad(Force force, IPoint2dMoment topMoment, IPoint2dMoment bottomMoment)
+        public ColumnLoad(Force force, IPointMoment2d topMoment, IPointMoment2d bottomMoment)
         {
             Force = force;
             TopMoment = topMoment;

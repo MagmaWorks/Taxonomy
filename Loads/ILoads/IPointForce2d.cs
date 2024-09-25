@@ -2,7 +2,7 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface IPoint2dForce : ILoad
+    public interface IPointForce2d : ILoad
     {
         Force X { get; }
         Force Z { get; }

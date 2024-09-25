@@ -75,7 +75,7 @@ namespace LoadTests
             private static List<object[]> GetAllComponents()
             {
                 var data = new List<object[]>();
-                Type[] typelist = Assembly.GetAssembly(typeof(Point2dForce)).GetTypes();
+                Type[] typelist = Assembly.GetAssembly(typeof(PointForce2d)).GetTypes();
                 foreach (Type type in typelist)
                 {
                     if (type.Namespace == null)
@@ -226,7 +226,7 @@ namespace LoadTests
             }
 
             // reflect on assembly to find concrete implementation of interface
-            Type[] typelist = Assembly.GetAssembly(typeof(Point2dForce)).GetTypes();
+            Type[] typelist = Assembly.GetAssembly(typeof(PointForce2d)).GetTypes();
             foreach (Type concreteType in typelist)
             {
                 if (type.IsAssignableFrom(concreteType))

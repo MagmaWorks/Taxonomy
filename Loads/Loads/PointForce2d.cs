@@ -2,27 +2,27 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public class Point2dForce : IPoint2dForce
+    public class PointForce2d : IPointForce2d
     {
         public Force X { get; set; } = Force.Zero;
         public Force Z { get; set; } = Force.Zero;
 
-        internal Point2dForce() { }
+        internal PointForce2d() { }
 
-        public Point2dForce(Force z)
+        public PointForce2d(Force z)
         {
             Z = z;
         }
 
-        public Point2dForce(Force x, Force z)
+        public PointForce2d(Force x, Force z)
         {
             X = x;
             Z = z;
         }
 
-        public static implicit operator Point2dForce(Force f)
+        public static implicit operator PointForce2d(Force f)
         {
-            return new Point2dForce(f);
+            return new PointForce2d(f);
         }
     }
 }
