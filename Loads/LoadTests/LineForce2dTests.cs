@@ -4,7 +4,7 @@ using OasysUnits.Units;
 
 namespace LoadTests
 {
-    public class LineForceTests
+    public class LineForce2dTests
     {
         [Fact]
         public void ImplicitOperatorTest()
@@ -13,7 +13,7 @@ namespace LoadTests
             var f = new ForcePerLength(15.4, ForcePerLengthUnit.KilonewtonPerMeter);
 
             // Act
-            LineForce load = (LineForce)f;
+            LineForce2d load = (LineForce2d)f;
 
             // Assert
             Assert.Equal(f, load.Z);
@@ -24,23 +24,21 @@ namespace LoadTests
         {
             // Assemble
             var f = new ForcePerLength(15.4, ForcePerLengthUnit.KilonewtonPerMeter);
-            LineForce load = new LineForce(f)
+            LineForce2d load = new LineForce2d(f)
             {
                 Label = "myLoad",
-                Application = LoadApplication.Local,
-                X = new ForcePerLength(-25.4, ForcePerLengthUnit.KilonewtonPerMeter),
-                Y = new ForcePerLength(-25.3, ForcePerLengthUnit.KilonewtonPerMeter),
+                Application = LoadApplication.Projected,
+                X = new ForcePerLength(-25.4, ForcePerLengthUnit.KilonewtonPerMeter)
             };
             var factor = new Ratio(2, RatioUnit.DecimalFraction);
 
             // Act
-            ILineForce factored = (ILineForce)load.Factor(factor);
+            ILineForce2d factored = (ILineForce2d)load.Factor(factor);
 
             // Assert
             Assert.Equal(f * 2, factored.Z);
             Assert.Equal(-25.4 * 2, factored.X.KilonewtonsPerMeter);
-            Assert.Equal(-25.3 * 2, factored.Y.KilonewtonsPerMeter);
-            Assert.Equal(LoadApplication.Local, factored.Application);
+            Assert.Equal(LoadApplication.Projected, factored.Application);
             Assert.Equal("myLoad", factored.Label);
         }
     }

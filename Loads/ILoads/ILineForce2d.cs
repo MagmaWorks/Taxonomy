@@ -2,7 +2,7 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface ILine2dForce : ILoad
+    public interface ILineForce2d : ILoad
     {
         ForcePerLength X { get; }
         ForcePerLength Z { get; }

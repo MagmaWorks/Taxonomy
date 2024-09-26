@@ -2,33 +2,33 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public class Line2dForce : ILine2dForce
+    public class LineForce2d : ILineForce2d
     {
         public string Label { get; set; }
         public LoadApplication Application { get; set; } = LoadApplication.Global;
         public ForcePerLength X { get; set; } = ForcePerLength.Zero;
         public ForcePerLength Z { get; set; } = ForcePerLength.Zero;
 
-        internal Line2dForce() { }
+        internal LineForce2d() { }
 
-        public Line2dForce(ForcePerLength z)
+        public LineForce2d(ForcePerLength z)
         {
             Z = z;
         }
 
-        public Line2dForce(ForcePerLength x, ForcePerLength z, LoadApplication application)
+        public LineForce2d(ForcePerLength x, ForcePerLength z, LoadApplication application)
         {
             X = x;
             Z = z;
             Application = application;
         }
 
-        public static implicit operator Line2dForce(ForcePerLength f)
+        public static implicit operator LineForce2d(ForcePerLength f)
         {
-            return new Line2dForce(f);
+            return new LineForce2d(f);
         }
 
-        public virtual ILoad Factor(Ratio factor) => new Line2dForce()
+        public virtual ILoad Factor(Ratio factor) => new LineForce2d()
         {
             Label = this.Label,
             Application = this.Application,

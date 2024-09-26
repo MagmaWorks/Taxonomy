@@ -10,12 +10,15 @@ namespace MagmaWorks.Taxonomy.Loads
 
         public Gravity(Ratio z) : base(z) { }
 
-        public override ILoad Factor(Ratio factor) => new Gravity()
+        public override ILoad Factor(Ratio factor)
         {
-            Label = this.Label,
-            X = this.X * factor.DecimalFractions,
-            Y = this.Y * factor.DecimalFractions,
-            Z = this.Z * factor.DecimalFractions,
-        };
+            return new Gravity()
+            {
+                Label = this.Label,
+                X = this.X * factor.DecimalFractions,
+                Y = this.Y * factor.DecimalFractions,
+                Z = this.Z * factor.DecimalFractions,
+            };
+        }
     }
 }
