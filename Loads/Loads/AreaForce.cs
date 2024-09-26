@@ -4,7 +4,7 @@ namespace MagmaWorks.Taxonomy.Loads
 {
     public class AreaForce : IAreaForce
     {
-        public char Symbol { get; set; }
+        public string Label { get; set; }
         public Pressure X { get; set; } = Pressure.Zero;
         public Pressure Y { get; set; } = Pressure.Zero;
         public Pressure Z { get; set; } = Pressure.Zero;

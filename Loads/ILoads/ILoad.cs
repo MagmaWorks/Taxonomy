@@ -2,6 +2,6 @@
 {
     public interface ILoad
     {
-        char Symbol { get; }
+        string Label { get; }
     }
 }

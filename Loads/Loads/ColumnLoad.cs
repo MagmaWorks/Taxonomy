@@ -4,7 +4,7 @@ namespace MagmaWorks.Taxonomy.Loads
 {
     public class ColumnLoad : IColumnLoad
     {
-        public char Symbol { get; set; }
+        public string Label { get; set; }
         public Force Force { get; set; } = Force.Zero;
         public IPointMoment2d TopMoment { get; set; } = new PointMoment2d();
         public IPointMoment2d BottomMoment { get; set; } = new PointMoment2d();

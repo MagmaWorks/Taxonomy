@@ -5,7 +5,7 @@ namespace MagmaWorks.Taxonomy.Loads
 {
     public class Gravity2d : IGravity2d
     {
-        public char Symbol { get; set; } = 'G';
+        public string Label { get; set; }
         public Ratio X { get; set; } = Ratio.Zero;
         public Ratio Z { get; set; } = new Ratio(1, RatioUnit.DecimalFraction);
 
