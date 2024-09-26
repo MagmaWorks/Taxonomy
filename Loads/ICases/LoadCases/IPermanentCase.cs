@@ -1,9 +1,4 @@
-﻿using OasysUnits;
-
-namespace MagmaWorks.Taxonomy.Loads
+﻿namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface IPermanentCase : ILoadCase
-    {
-        
-    }
+    public interface IPermanentCase : ILoadCase { }
 }

@@ -1,4 +1,10 @@
-﻿namespace MagmaWorks.Taxonomy.Loads
+﻿using OasysUnits;
+
+namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface IMemberDesignCombination : IUltimateLimitState { }
+    public interface IMemberDesignCombination : IUltimateLimitState {
+        Ratio PermanentPartialFactor { get; }
+        Ratio LeadingVariablePartialFactor { get; }
+        Ratio OtherVariablePartialFactor { get; }
+    }
 }

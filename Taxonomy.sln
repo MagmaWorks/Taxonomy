@@ -75,6 +75,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTests", "Loads\LoadTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagmaWorks.Taxonomy.ICases", "Loads\ICases\MagmaWorks.Taxonomy.ICases.csproj", "{6B92B8E9-FD08-449B-8EBB-F63E2ADE7043}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagmaWorks.Taxonomy.Cases", "Loads\Cases\MagmaWorks.Taxonomy.Cases.csproj", "{8ED7E8B2-BD1C-419F-9FEB-23F51788085E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -197,6 +199,10 @@ Global
 		{6B92B8E9-FD08-449B-8EBB-F63E2ADE7043}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B92B8E9-FD08-449B-8EBB-F63E2ADE7043}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B92B8E9-FD08-449B-8EBB-F63E2ADE7043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ED7E8B2-BD1C-419F-9FEB-23F51788085E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ED7E8B2-BD1C-419F-9FEB-23F51788085E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ED7E8B2-BD1C-419F-9FEB-23F51788085E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ED7E8B2-BD1C-419F-9FEB-23F51788085E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -231,6 +237,7 @@ Global
 		{0DB384BD-6270-4A1D-95D4-ED3972AE63B0} = {41A2BC38-4EBB-4B17-A305-46BEEB81FE1C}
 		{D9EF311B-6C73-4EA3-9F87-63D660C24CEE} = {41A2BC38-4EBB-4B17-A305-46BEEB81FE1C}
 		{6B92B8E9-FD08-449B-8EBB-F63E2ADE7043} = {41A2BC38-4EBB-4B17-A305-46BEEB81FE1C}
+		{8ED7E8B2-BD1C-419F-9FEB-23F51788085E} = {41A2BC38-4EBB-4B17-A305-46BEEB81FE1C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {037E8DD3-6CB9-4A55-BB67-CD24D471F05A}
