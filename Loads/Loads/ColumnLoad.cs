@@ -27,5 +27,16 @@ namespace MagmaWorks.Taxonomy.Loads
         {
             return new ColumnLoad(f);
         }
+
+        public ILoad Factor(Ratio factor)
+        {
+            return new ColumnLoad()
+            {
+                Force = this.Force * factor.DecimalFractions,
+                TopMoment = (IPointMoment2d)this.TopMoment.Factor(factor),
+                BottomMoment = (IPointMoment2d)this.BottomMoment.Factor(factor),
+                Label = this.Label
+            };
+        }
     }
 }

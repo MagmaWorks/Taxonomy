@@ -12,5 +12,13 @@ namespace MagmaWorks.Taxonomy.Loads
             Y = y;
             Z = z;
         }
+
+        public override ILoad Factor(Ratio factor) => new PointDisplacement(
+            this.X * factor.DecimalFractions,
+            this.Y * factor.DecimalFractions,
+            this.Z * factor.DecimalFractions)
+        {
+            Label = this.Label,
+        };
     }
 }

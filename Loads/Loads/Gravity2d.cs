@@ -15,5 +15,12 @@ namespace MagmaWorks.Taxonomy.Loads
         {
             Z = z;
         }
+
+        public virtual ILoad Factor(Ratio factor) => new Gravity2d()
+        {
+            Label = this.Label,
+            X = this.X * factor.DecimalFractions,
+            Z = this.Z * factor.DecimalFractions,
+        };
     }
 }

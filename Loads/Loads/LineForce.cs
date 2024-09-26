@@ -5,7 +5,7 @@ namespace MagmaWorks.Taxonomy.Loads
     public class LineForce : Line2dForce, ILineForce
     {
 
-        public ForcePerLength Y { get; } = ForcePerLength.Zero;
+        public ForcePerLength Y { get; set; } = ForcePerLength.Zero;
 
         private LineForce() { }
 
@@ -23,5 +23,14 @@ namespace MagmaWorks.Taxonomy.Loads
         {
             return new LineForce(f);
         }
+
+        public override ILoad Factor(Ratio factor) => new LineForce()
+        {
+            Label = this.Label,
+            Application = this.Application,
+            X = this.X * factor.DecimalFractions,
+            Y = this.Y * factor.DecimalFractions,
+            Z = this.Z * factor.DecimalFractions,
+        };
     }
 }

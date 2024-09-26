@@ -17,5 +17,13 @@ namespace MagmaWorks.Taxonomy.Loads
         {
             return new PointForce(Force.Zero, Force.Zero, f);
         }
+
+        public override ILoad Factor(Ratio factor) => new PointForce(
+            this.X * factor.DecimalFractions,
+            this.Y * factor.DecimalFractions,
+            this.Z * factor.DecimalFractions)
+        {
+            Label = this.Label,
+        };
     }
 }

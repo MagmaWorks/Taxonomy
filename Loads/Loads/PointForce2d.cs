@@ -25,5 +25,12 @@ namespace MagmaWorks.Taxonomy.Loads
         {
             return new PointForce2d(f);
         }
+
+        public virtual ILoad Factor(Ratio factor) => new PointForce2d()
+        {
+            Label = this.Label,
+            X = this.X * factor.DecimalFractions,
+            Z = this.Z * factor.DecimalFractions
+        };
     }
 }

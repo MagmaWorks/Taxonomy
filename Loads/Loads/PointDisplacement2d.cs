@@ -15,5 +15,12 @@ namespace MagmaWorks.Taxonomy.Loads
             X = x;
             Z = z;
         }
+
+        public virtual ILoad Factor(Ratio factor) => new PointDisplacement2d()
+        {
+            Label = this.Label,
+            X = this.X * factor.DecimalFractions,
+            Z = this.Z * factor.DecimalFractions
+        };
     }
 }
