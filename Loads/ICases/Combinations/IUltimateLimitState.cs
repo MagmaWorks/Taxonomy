@@ -2,7 +2,8 @@
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface IUltimateLimitState : ILoadCombination {
-        
+    public interface IUltimateLimitState : ILoadCombination
+    {
+
     }
 }
