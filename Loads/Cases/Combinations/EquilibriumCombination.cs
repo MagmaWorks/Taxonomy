@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using OasysUnits;
-using OasysUnits.Units;
+﻿using OasysUnits;
+using System.Collections.Generic;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public class MemberDesignCombination : IMemberDesignCombination
+    public class EquilibriumCombination : IEquilibriumCombination
     {
         public string Name { get; set; }
         public Ratio PermanentPartialFactor { get; set; }
-        public Ratio PermanentReductionFactor { get; set; } = new Ratio(1, RatioUnit.DecimalFraction);
         public Ratio LeadingVariablePartialFactor { get; set; }
         public Ratio AccompanyingPartialFactor { get; set; }
         public IList<IPermanentCase> PermanentCases { get; set; }
@@ -16,15 +14,16 @@ namespace MagmaWorks.Taxonomy.Loads
         public IList<IVariableCase> MainAccompanyingVariableCases { get; set; }
         public IList<IVariableCase> OtherAccompanyingVariableCases { get; set; }
 
-        public MemberDesignCombination() : base() { }
 
-        public IList<ILoad> GetFactoredLoads()
+        public EquilibriumCombination() { }
+
+        public virtual IList<ILoad> GetFactoredLoads()
         {
             var factoredLoads = new List<ILoad>();
             if (PermanentCases != null)
             {
                 factoredLoads.AddRange(
-                    Utility.FactorLoads(PermanentPartialFactor * PermanentReductionFactor.DecimalFractions, PermanentCases));
+                    Utility.FactorLoads(PermanentPartialFactor, PermanentCases));
             }
 
             if (LeadingVariableCases != null)
@@ -49,6 +48,5 @@ namespace MagmaWorks.Taxonomy.Loads
 
             return factoredLoads;
         }
-
     }
 }

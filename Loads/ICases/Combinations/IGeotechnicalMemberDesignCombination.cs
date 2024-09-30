@@ -2,7 +2,7 @@
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface IEquilibriumCombination : IUltimateLimitState
+    public interface IGeotechnicalMemberDesignCombination : IUltimateLimitState
     {
         /// <summary>
         /// γ_G,j (sup or inf) permanent partial factor

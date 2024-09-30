@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
-using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
     public class PermanentCase : IPermanentCase
     {
-        public string Name { get; set; }
-        public IList<ILoad> Loads { get; set; }
+        public bool IsFavourable { get; set; } = false;
+        public bool IsHorizontal { get; set; } = false;
+        public string Name { get; set; } = "Permanent Loads";
+        public IList<ILoad> Loads { get; set; } = new List<ILoad>();
 
         public PermanentCase() { }
     }
