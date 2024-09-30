@@ -4,7 +4,7 @@ namespace MagmaWorks.Taxonomy.Loads
 {
     public class PointForce2d : IPointForce2d
     {
-        public string Label { get; set; }
+        public string Label { get; set; } = string.Empty;
         public Force X { get; set; } = Force.Zero;
         public Force Z { get; set; } = Force.Zero;
 
