@@ -38,8 +38,8 @@ namespace LoadTests
 
             // Assert
             Assert.Equal(f * 2, factored.Z);
-            Assert.Equal(13.2 * 2, factored.Y.KilonewtonsPerSquareMeter);
-            Assert.Equal(22.1 * 2, factored.Z.KilonewtonsPerSquareMeter);
+            Assert.Equal(13.2 * 2, factored.X.KilonewtonsPerSquareMeter);
+            Assert.Equal(22.1 * 2, factored.Y.KilonewtonsPerSquareMeter);
             Assert.Equal(LoadApplication.Global, factored.Application);
             Assert.Equal("myLoad", factored.Label);
         }
