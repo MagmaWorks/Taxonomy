@@ -1,4 +1,5 @@
-﻿using OasysUnits;
+﻿using System.Collections.Generic;
+using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
@@ -23,5 +24,8 @@ namespace MagmaWorks.Taxonomy.Loads
         /// ξ permanent load reduction factor
         /// </summary>
         Ratio PermanentReductionFactor { get; }
+
+        IList<IVariableCase> MainAccompanyingVariableCases { get; }
+        IList<IVariableCase> OtherAccompanyingVariableCases { get; }
     }
 }

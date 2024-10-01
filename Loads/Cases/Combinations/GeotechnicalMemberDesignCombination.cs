@@ -6,18 +6,17 @@ namespace MagmaWorks.Taxonomy.Loads
     public class GeotechnicalMemberDesignCombination : IGeotechnicalMemberDesignCombination
     {
         public string Name { get; set; }
+        public string Definition => GetDefinition();
         public Ratio PermanentPartialFactor { get; set; }
         public Ratio LeadingVariablePartialFactor { get; set; }
         public Ratio AccompanyingPartialFactor { get; set; }
         public IList<IPermanentCase> PermanentCases { get; set; }
         public IList<IVariableCase> LeadingVariableCases { get; set; }
-        public IList<IVariableCase> MainAccompanyingVariableCases { get; set; }
-        public IList<IVariableCase> OtherAccompanyingVariableCases { get; set; }
-
+        public IList<IVariableCase> AccompanyingVariableCases { get; set; }
 
         public GeotechnicalMemberDesignCombination() { }
 
-        public virtual IList<ILoad> GetFactoredLoads()
+        public IList<ILoad> GetFactoredLoads()
         {
             var factoredLoads = new List<ILoad>();
             if (PermanentCases != null)
@@ -32,21 +31,23 @@ namespace MagmaWorks.Taxonomy.Loads
                     Utility.FactorLoads(LeadingVariablePartialFactor, LeadingVariableCases));
             }
 
-            if (MainAccompanyingVariableCases != null)
+            if (AccompanyingVariableCases != null)
             {
                 factoredLoads.AddRange(
                     Utility.FactorAccompanyingVariableLoads(
-                        LeadingVariablePartialFactor, OtherAccompanyingVariableCases, ld => ld.Characteristic));
-            }
-
-            if (OtherAccompanyingVariableCases != null)
-            {
-                factoredLoads.AddRange(
-                    Utility.FactorAccompanyingVariableLoads(
-                        AccompanyingPartialFactor, OtherAccompanyingVariableCases, ld => ld.Characteristic));
+                        AccompanyingPartialFactor, AccompanyingVariableCases, ld => ld.Characteristic));
             }
 
             return factoredLoads;
+        }
+
+        private string GetDefinition()
+        {
+            string perm = Utility.DescriptionHelper(PermanentCases, PermanentPartialFactor);
+            string lead = Utility.DescriptionHelper(LeadingVariableCases, LeadingVariablePartialFactor);
+            string other = Utility.DescriptionHelper(
+                    AccompanyingVariableCases, AccompanyingPartialFactor, ld => ld.Characteristic);
+            return Utility.JoinDescriptions(new string[] { perm, lead, other });
         }
     }
 }

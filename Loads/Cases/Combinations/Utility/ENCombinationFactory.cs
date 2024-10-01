@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits.Units;
 using OasysUnits;
-using System.Linq;
+using System.Xml.Linq;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public static class ENCombinationFactory
+    public static partial class ENCombinationFactory
     {
         public static IList<IEquilibriumCombination> CreateEquSetA(IList<ILoadCase> cases)
         {
@@ -28,7 +29,7 @@ namespace MagmaWorks.Taxonomy.Loads
                     PermanentPartialFactor = factors.Gamma_Gsup,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                     LeadingVariablePartialFactor = factors.Gamma_Q1,
-                    OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
+                    AccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
                     AccompanyingPartialFactor = factors.Gamma_Qi,
                 });
 
@@ -41,7 +42,7 @@ namespace MagmaWorks.Taxonomy.Loads
                         PermanentPartialFactor = factors.Gamma_Ginf,
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                         LeadingVariablePartialFactor = factors.Gamma_Q1,
-                        OtherAccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
+                        AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
                         AccompanyingPartialFactor = factors.Gamma_Qi,
                     });
                 }
@@ -87,7 +88,7 @@ namespace MagmaWorks.Taxonomy.Loads
                     PermanentPartialFactor = factors.Gamma_Gsup,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                     LeadingVariablePartialFactor = factors.Gamma_Q1,
-                    OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
+                    AccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
                     AccompanyingPartialFactor = factors.Gamma_Qi,
                 });
 
@@ -100,13 +101,61 @@ namespace MagmaWorks.Taxonomy.Loads
                         PermanentPartialFactor = factors.Gamma_Ginf,
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                         LeadingVariablePartialFactor = factors.Gamma_Q1,
-                        OtherAccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
+                        AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
                         AccompanyingPartialFactor = factors.Gamma_Qi,
                     });
                 }
             }
 
             return combinations;
+        }
+
+        public static IList<IAccidentialCombination> CreateAccidential(IVariableCase accidentalCase, Ratio partialFactor,
+            IList<ILoadCase> otherCases, NationalAnnex nationalAnnex, bool useFrequentCombinationFactorForMainAccompanying)
+        {
+            (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(otherCases);
+            int caseId = 1;
+            TableA1Properties factors = EN1990_TableA1_1[nationalAnnex];
+            var combinations = new List<IAccidentialCombination>();
+            if (!useFrequentCombinationFactorForMainAccompanying)
+            {
+                combinations.Add(new AccidentialCombination()
+                {
+                    Name = $"Accidential, Eq. 6.11a/b - Leading {accidentalCase.Name}",
+                    PermanentCases = permanents,
+                    OtherAccompanyingVariableCases = variables,
+                    UseFrequentCombinationFactorForMainAccompanying = false
+                });
+                return combinations;
+            }
+
+            for (int i = 0; i < variables.Count; i++)
+            {
+                combinations.Add(new AccidentialCombination()
+                {
+                    Name = $"LC{caseId++}: Accidential, Eq. 6.11a/b - Leading {accidentalCase.Name} combined with {variables[i].Name} as main accompanying variable action",
+                    PermanentCases = permanents,
+                    LeadingAccidentialPartialFactor = partialFactor,
+                    LeadingVariableCases = new List<IVariableCase>() { variables[i] },
+                    OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
+                    UseFrequentCombinationFactorForMainAccompanying = true
+                });
+            }
+
+            return combinations;
+        }
+
+        public static ISeismicCombination CreateSeismic(IVariableCase seismicCase, Ratio partialFactor, IList<ILoadCase> otherCases, NationalAnnex nationalAnnex)
+        {
+            (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(otherCases);
+            return new SeismicCombination()
+            {
+                Name = $"Seismic, Eq. 6.12a/b - Leading {seismicCase.Name}",
+                PermanentCases = permanents,
+                LeadingVariableCases = new List<IVariableCase>() { seismicCase },
+                LeadingSeismicPartialFactor = partialFactor,
+                AccompanyingVariableCases = variables,
+            };
         }
 
         private static IList<IMemberDesignCombination> CreateSTR6_10(IList<ILoadCase> cases, NationalAnnex nationalAnnex)

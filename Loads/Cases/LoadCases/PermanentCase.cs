@@ -4,9 +4,10 @@ namespace MagmaWorks.Taxonomy.Loads
 {
     public class PermanentCase : IPermanentCase
     {
+        public string Nickname { get; set; } = "G";
         public bool IsFavourable { get; set; } = false;
         public bool IsHorizontal { get; set; } = false;
-        public string Name { get; set; } = "Permanent Loads";
+        public string Name { get; set; } = "Dead Load";
         public IList<ILoad> Loads { get; set; } = new List<ILoad>();
 
         public PermanentCase() { }

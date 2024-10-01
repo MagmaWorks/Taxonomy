@@ -1,4 +1,5 @@
-﻿using OasysUnits;
+﻿using System.Collections.Generic;
+using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
@@ -18,5 +19,7 @@ namespace MagmaWorks.Taxonomy.Loads
         /// γ_Q,i other variable partial factor
         /// </summary>
         Ratio AccompanyingPartialFactor { get; }
+
+        IList<IVariableCase> AccompanyingVariableCases { get; }
     }
 }

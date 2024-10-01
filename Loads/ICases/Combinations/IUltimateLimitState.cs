@@ -2,9 +2,5 @@
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface IUltimateLimitState : ILoadCombination
-    {
-        IList<IVariableCase> MainAccompanyingVariableCases { get; }
-        IList<IVariableCase> OtherAccompanyingVariableCases { get; }
-    }
+    public interface IUltimateLimitState : ILoadCombination { }
 }

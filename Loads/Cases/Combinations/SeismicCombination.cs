@@ -1,41 +1,39 @@
 ﻿using System.Collections.Generic;
 using OasysUnits;
+using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public class EquilibriumCombination : IEquilibriumCombination
+    public class SeismicCombination : ISeismicCombination
     {
         public string Name { get; set; }
         public string Definition => GetDefinition();
-        public Ratio PermanentPartialFactor { get; set; }
-        public Ratio LeadingVariablePartialFactor { get; set; }
-        public Ratio AccompanyingPartialFactor { get; set; }
+        public Ratio LeadingSeismicPartialFactor { get; set; } = new Ratio(1, RatioUnit.DecimalFraction);
         public IList<IPermanentCase> PermanentCases { get; set; }
         public IList<IVariableCase> LeadingVariableCases { get; set; }
         public IList<IVariableCase> AccompanyingVariableCases { get; set; }
 
-        public EquilibriumCombination() { }
+        public SeismicCombination() { }
 
-        public IList<ILoad> GetFactoredLoads()
+        public virtual IList<ILoad> GetFactoredLoads()
         {
             var factoredLoads = new List<ILoad>();
             if (PermanentCases != null)
             {
-                factoredLoads.AddRange(
-                    Utility.FactorLoads(PermanentPartialFactor, PermanentCases));
+                factoredLoads.AddRange((IList<ILoad>)PermanentCases);
             }
 
             if (LeadingVariableCases != null)
             {
                 factoredLoads.AddRange(
-                    Utility.FactorLoads(LeadingVariablePartialFactor, LeadingVariableCases));
+                    Utility.FactorLoads(LeadingSeismicPartialFactor, LeadingVariableCases));
             }
 
             if (AccompanyingVariableCases != null)
             {
                 factoredLoads.AddRange(
-                    Utility.FactorAccompanyingVariableLoads(
-                        AccompanyingPartialFactor, AccompanyingVariableCases, ld => ld.Characteristic));
+                    Utility.SelectAccompanyingVariableLoads(
+                        AccompanyingVariableCases, ld => ld.QuasiPermanent));
             }
 
             return factoredLoads;
@@ -43,10 +41,10 @@ namespace MagmaWorks.Taxonomy.Loads
 
         private string GetDefinition()
         {
-            string perm = Utility.DescriptionHelper(PermanentCases, PermanentPartialFactor);
-            string lead = Utility.DescriptionHelper(LeadingVariableCases, LeadingVariablePartialFactor);
+            string perm = Utility.DescriptionHelper(PermanentCases, new Ratio(1, RatioUnit.DecimalFraction));
+            string lead = Utility.DescriptionHelper(LeadingVariableCases, LeadingSeismicPartialFactor);
             string other = Utility.DescriptionHelper(
-                    AccompanyingVariableCases, AccompanyingPartialFactor, ld => ld.Characteristic);
+                    AccompanyingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.QuasiPermanent);
             return Utility.JoinDescriptions(new string[] { perm, lead, other });
         }
     }
