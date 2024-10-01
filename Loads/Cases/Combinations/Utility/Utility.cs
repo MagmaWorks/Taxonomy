@@ -152,7 +152,7 @@ namespace MagmaWorks.Taxonomy.Loads
 
         internal static string JoinDescriptions(string[] strings)
         {
-            return string.Join(" + ", strings).Replace(" + + ", string.Empty).Trim(new char[] {' ', '+'});
+            return string.Join(" + ", strings).Replace(" + + ", string.Empty).Trim(new char[] { ' ', '+' });
         }
     }
 }
