@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits.Units;
 using OasysUnits;
-using System.Xml.Linq;
+using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Loads
 {

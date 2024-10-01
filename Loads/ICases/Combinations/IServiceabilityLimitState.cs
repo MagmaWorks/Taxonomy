@@ -2,7 +2,8 @@
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface IServiceabilityLimitState : ILoadCombination {
+    public interface IServiceabilityLimitState : ILoadCombination
+    {
         IList<IVariableCase> AccompanyingVariableCases { get; }
     }
 }
