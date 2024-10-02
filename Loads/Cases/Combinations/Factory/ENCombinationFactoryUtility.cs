@@ -59,6 +59,6 @@ namespace MagmaWorks.Taxonomy.Loads
             return (permanent, variable);
         }
 
-        
+
     }
 }

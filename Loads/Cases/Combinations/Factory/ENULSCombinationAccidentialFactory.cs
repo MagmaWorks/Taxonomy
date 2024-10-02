@@ -55,7 +55,7 @@ namespace MagmaWorks.Taxonomy.Loads
                     LeadingVariableCases = new List<IVariableCase>() { seismicCases[i] },
                     LeadingSeismicPartialFactor = partialFactor,
                     AccompanyingVariableCases = variables,
-                } );
+                });
             }
 
             return combinations;

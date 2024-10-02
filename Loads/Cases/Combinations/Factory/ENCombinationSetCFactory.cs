@@ -14,7 +14,8 @@ namespace MagmaWorks.Taxonomy.Loads
         public static IList<IGeotechnicalMemberDesignCombination> CreateStrGeoSetC(IList<ILoadCase> cases, NationalAnnex nationalAnnex, int firstCaseId = 1)
         {
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
-            if (!EN1990_TableA1_2C.TryGetValue(nationalAnnex, out TableA1Properties factors)){
+            if (!EN1990_TableA1_2C.TryGetValue(nationalAnnex, out TableA1Properties factors))
+            {
                 throw new System.NotImplementedException($"NA {nationalAnnex} not implemented for EN1990 Table A1.2(C) values");
             };
 
