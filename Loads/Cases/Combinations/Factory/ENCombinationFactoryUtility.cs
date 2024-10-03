@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MagmaWorks.Taxonomy.Loads.Cases;
 using OasysUnits;
 using OasysUnits.Units;
 
@@ -58,7 +59,5 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
             return (permanent, variable);
         }
-
-
     }
 }

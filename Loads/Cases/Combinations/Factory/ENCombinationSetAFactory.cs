@@ -1,11 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MagmaWorks.Taxonomy.Loads.Cases;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {
+        private static readonly Dictionary<NationalAnnex, TableA1Properties> EN1990_TableA1_2A = new()
+        {
+            { NationalAnnex.RecommendedValues, new TableA1Properties(1.1, 0.9, 1.5, 1.5) },
+            { NationalAnnex.UnitedKingdom, new TableA1Properties(1.1, 0.9, 1.5, 1.5) },
+
+        };
+
         public static IList<IEquilibriumCombination> CreateEquSetA(IList<ILoadCase> cases)
         {
             return CreateEquSetA(cases, NationalAnnex.RecommendedValues);
@@ -50,12 +58,5 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
             return combinations;
         }
-
-        private static readonly Dictionary<NationalAnnex, TableA1Properties> EN1990_TableA1_2A = new()
-        {
-            { NationalAnnex.RecommendedValues, new TableA1Properties(1.1, 0.9, 1.5, 1.5) },
-            { NationalAnnex.UnitedKingdom, new TableA1Properties(1.1, 0.9, 1.5, 1.5) },
-
-        };
     }
 }

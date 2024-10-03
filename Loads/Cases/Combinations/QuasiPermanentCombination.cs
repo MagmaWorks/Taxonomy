@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MagmaWorks.Taxonomy.Loads.Cases;
 using OasysUnits;
 using OasysUnits.Units;
 

@@ -1,11 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MagmaWorks.Taxonomy.Loads.Cases;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {
+        private static readonly Dictionary<NationalAnnex, TableA1Properties> EN1990_TableA1_2B = new()
+        {
+            { NationalAnnex.RecommendedValues, new TableA1Properties(1.35, 1.0, 1.5, 1.5, 0.85) },
+            { NationalAnnex.UnitedKingdom, new TableA1Properties(1.35, 1.0, 1.5, 1.5, 0.925) },
+
+        };
+
         public static IList<IMemberDesignCombination> CreateStrGeoSetB(IList<ILoadCase> cases, int firstCaseId = 1)
         {
             return CreateStrGeoSetB(cases, NationalAnnex.RecommendedValues, true, firstCaseId);
@@ -131,12 +139,5 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
             return combinations;
         }
-
-        private static readonly Dictionary<NationalAnnex, TableA1Properties> EN1990_TableA1_2B = new()
-        {
-            { NationalAnnex.RecommendedValues, new TableA1Properties(1.35, 1.0, 1.5, 1.5, 0.85) },
-            { NationalAnnex.UnitedKingdom, new TableA1Properties(1.35, 1.0, 1.5, 1.5, 0.925) },
-
-        };
     }
 }
