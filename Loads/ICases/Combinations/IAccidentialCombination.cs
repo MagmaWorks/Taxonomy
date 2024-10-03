@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using OasysUnits;
 
-namespace MagmaWorks.Taxonomy.Loads
+namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public interface IAccidentialCombination : IUltimateLimitState
     {

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using OasysUnits;
 
-namespace MagmaWorks.Taxonomy.Loads
+namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     internal static class Utility
     {

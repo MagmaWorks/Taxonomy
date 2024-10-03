@@ -2,7 +2,7 @@
 using System.Linq;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
-namespace MagmaWorks.Taxonomy.Loads
+namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Loads
+namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public class MemberDesignCombination : IMemberDesignCombination
     {

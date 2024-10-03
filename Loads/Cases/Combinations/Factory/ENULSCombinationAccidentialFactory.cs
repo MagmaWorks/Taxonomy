@@ -2,9 +2,8 @@
 using System.Linq;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
-using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Loads
+namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {

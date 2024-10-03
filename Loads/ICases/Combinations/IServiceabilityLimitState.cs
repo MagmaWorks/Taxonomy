@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MagmaWorks.Taxonomy.Loads
+namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public interface IServiceabilityLimitState : ILoadCombination
     {
