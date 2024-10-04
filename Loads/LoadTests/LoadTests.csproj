@@ -17,12 +17,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cases\MagmaWorks.Taxonomy.Cases.csproj" />
+    <ProjectReference Include="..\ICases\MagmaWorks.Taxonomy.ICases.csproj" />
     <ProjectReference Include="..\Loads\MagmaWorks.Taxonomy.Loads.csproj" />
     <ProjectReference Include="..\Serialization\MagmaWorks.Taxonomy.Loads.Serialization.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Cases\Combinations\" />
   </ItemGroup>
 
 </Project>
