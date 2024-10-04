@@ -24,8 +24,8 @@ namespace MagmaWorks.Taxonomy.Loads.Cases
                 Characteristic = factors.Phi_0,
                 Frequent = factors.Phi_1,
                 QuasiPermanent = factors.Phi_2,
-                Name = $"Snow loads",
-                Nickname = "S",
+                Name = $"Wind loads",
+                Nickname = "W",
             };
         }
 
