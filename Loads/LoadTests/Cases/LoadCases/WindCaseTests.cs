@@ -8,6 +8,27 @@ namespace LoadCaseTests
 {
     public class WindCaseTests
     {
+        public static IVariableCase Create()
+        {
+            return ENLoadCaseFactory.CreateWind(NationalAnnex.UnitedKingdom);
+        }
+
+        [Fact]
+        public void CreateImposedTest()
+        {
+            // Assemble
+            // Act
+            IVariableCase variableCase = Create();
+
+            // Assert
+            Assert.Equal("Wind loads", variableCase.Name);
+            Assert.Equal("W", variableCase.Nickname);
+            Assert.Equal(0.6, variableCase.Characteristic.DecimalFractions);
+            Assert.Equal(0.2, variableCase.Frequent.DecimalFractions);
+            Assert.Equal(0.0, variableCase.QuasiPermanent.DecimalFractions);
+        }
+
+
         [Theory]
         [InlineData(NationalAnnex.RecommendedValues, 0.6, 0.2, 0.0)]
         [InlineData(NationalAnnex.UnitedKingdom, 0.6, 0.2, 0.0)]

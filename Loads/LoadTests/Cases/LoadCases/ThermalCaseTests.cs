@@ -8,6 +8,26 @@ namespace LoadCaseTests
 {
     public class ThermalCaseTests
     {
+        public static IVariableCase Create()
+        {
+            return ENLoadCaseFactory.CreateThermal(NationalAnnex.UnitedKingdom);
+        }
+
+        [Fact]
+        public void CreateImposedTest()
+        {
+            // Assemble
+            // Act
+            IVariableCase variableCase = Create();
+
+            // Assert
+            Assert.Equal("Thermal loads", variableCase.Name);
+            Assert.Equal("T", variableCase.Nickname);
+            Assert.Equal(0.6, variableCase.Characteristic.DecimalFractions);
+            Assert.Equal(0.5, variableCase.Frequent.DecimalFractions);
+            Assert.Equal(0.0, variableCase.QuasiPermanent.DecimalFractions);
+        }
+
         [Theory]
         [InlineData(NationalAnnex.RecommendedValues, 0.6, 0.5, 0.0)]
         [InlineData(NationalAnnex.UnitedKingdom, 0.6, 0.5, 0.0)]

@@ -8,6 +8,26 @@ namespace LoadCaseTests
 {
     public class ImposedCaseTests
     {
+        public static IVariableCase Create()
+        {
+            return ENLoadCaseFactory.CreateImposed(
+                ImposedLoadCategory.CategoryB, NationalAnnex.UnitedKingdom);
+        }
+
+        [Fact]
+        public void CreateImposedTest()
+        {
+            // Assemble
+            IVariableCase variableCase = Create();
+
+            // Assert
+            Assert.Equal("Live loads Category B", variableCase.Name);
+            Assert.Equal("Q_B", variableCase.Nickname);
+            Assert.Equal(0.7, variableCase.Characteristic.DecimalFractions);
+            Assert.Equal(0.5, variableCase.Frequent.DecimalFractions);
+            Assert.Equal(0.3, variableCase.QuasiPermanent.DecimalFractions);
+        }
+
         [Theory]
         [InlineData(ImposedLoadCategory.CategoryA, NationalAnnex.RecommendedValues, 0.7, 0.5, 0.3)]
         [InlineData(ImposedLoadCategory.CategoryB, NationalAnnex.RecommendedValues, 0.7, 0.5, 0.3)]

@@ -8,6 +8,26 @@ namespace LoadCaseTests
 {
     public class SnowCaseTests
     {
+        public static IVariableCase Create()
+        {
+            return ENLoadCaseFactory.CreateSnow(NationalAnnex.UnitedKingdom, false);
+        }
+
+        [Fact]
+        public void CreateImposedTest()
+        {
+            // Assemble
+            // Act
+            IVariableCase variableCase = Create();
+
+            // Assert
+            Assert.Equal("Snow loads", variableCase.Name);
+            Assert.Equal("S", variableCase.Nickname);
+            Assert.Equal(0.5, variableCase.Characteristic.DecimalFractions);
+            Assert.Equal(0.2, variableCase.Frequent.DecimalFractions);
+            Assert.Equal(0.0, variableCase.QuasiPermanent.DecimalFractions);
+        }
+
         [Theory]
         [InlineData(NationalAnnex.RecommendedValues, true, 0.7, 0.5, 0.2)]
         [InlineData(NationalAnnex.RecommendedValues, false, 0.5, 0.2, 0.0)]
