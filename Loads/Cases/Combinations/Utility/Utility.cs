@@ -77,7 +77,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             StringBuilder desc = new StringBuilder();
             if (factor.Value != 1)
             {
-                desc.AppendLine($"{factor}·(");
+                desc.Append($"{factor}·(");
             }
 
             foreach (ILoadCase lc in cases)
@@ -88,7 +88,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             desc.Remove(desc.Length - 3, 3);
             if (factor.Value != 1)
             {
-                desc.AppendLine(")");
+                desc.Append(")");
             }
 
             return desc.ToString();
@@ -108,14 +108,14 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             }
 
             StringBuilder desc = new StringBuilder();
-            desc.AppendLine($"{factor1}·{f2}(");
+            desc.Append($"{factor1}·{f2}(");
             foreach (ILoadCase lc in cases)
             {
                 desc.Append($"{GetNickname(lc)} + ");
             }
 
             desc.Remove(desc.Length - 3, 3);
-            desc.AppendLine(")");
+            desc.Append(")");
             return desc.ToString();
         }
 
@@ -143,7 +143,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             StringBuilder desc = new StringBuilder();
             if (factor.Value != 1)
             {
-                desc.AppendLine($"{factor}·(");
+                desc.Append($"{factor}·(");
             }
 
             foreach (ILoadCase lc in cases)
@@ -162,7 +162,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
             if (factor.Value != 1)
             {
-                desc.AppendLine(")");
+                desc.Append(")");
             }
 
             return desc.ToString();
