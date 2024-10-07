@@ -26,6 +26,7 @@ namespace MagmaWorks.Taxonomy.Loads.Cases
                 QuasiPermanent = factors.Phi_2,
                 Name = $"Wind loads",
                 Nickname = "W",
+                IsHorizontal = true,
             };
         }
 

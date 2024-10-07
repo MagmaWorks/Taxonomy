@@ -10,7 +10,8 @@ namespace LoadCaseTests
     {
         public static IVariableCase Create()
         {
-            return ENLoadCaseFactory.CreateThermal(NationalAnnex.UnitedKingdom);
+            var load = new PointDisplacement(Length.Zero, Length.Zero, new Length(0.01, LengthUnit.Centimeter));
+            return ENLoadCaseFactory.CreateThermal(new List<ILoad> { load }, NationalAnnex.UnitedKingdom);
         }
 
         [Fact]

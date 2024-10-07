@@ -10,7 +10,9 @@ namespace LoadCaseTests
     {
         public static IVariableCase Create()
         {
-            return ENLoadCaseFactory.CreateWind(NationalAnnex.UnitedKingdom);
+            var load = new PointForce2d(new Force(90, ForceUnit.Kilonewton));
+            return ENLoadCaseFactory.CreateWind(
+                new List<ILoad>() { load }, NationalAnnex.UnitedKingdom);
         }
 
         [Fact]
@@ -26,6 +28,7 @@ namespace LoadCaseTests
             Assert.Equal(0.6, variableCase.Characteristic.DecimalFractions);
             Assert.Equal(0.2, variableCase.Frequent.DecimalFractions);
             Assert.Equal(0.0, variableCase.QuasiPermanent.DecimalFractions);
+            Assert.True(variableCase.IsHorizontal);
         }
 
 
@@ -49,6 +52,7 @@ namespace LoadCaseTests
             Assert.Equal(expectedPhi_0, variableCase.Characteristic.DecimalFractions);
             Assert.Equal(expectedPhi_1, variableCase.Frequent.DecimalFractions);
             Assert.Equal(expectedPhi_2, variableCase.QuasiPermanent.DecimalFractions);
+            Assert.True(variableCase.IsHorizontal);
         }
 
         [Theory]
@@ -70,6 +74,7 @@ namespace LoadCaseTests
             // Assert
             Assert.Equal(expectedName, variableCase.Name);
             Assert.Equal(expectedNickname, variableCase.Nickname);
+            Assert.True(variableCase.IsHorizontal);
             Assert.Equal(expectedPhi_0, variableCase.Characteristic.DecimalFractions);
             Assert.Equal(expectedPhi_1, variableCase.Frequent.DecimalFractions);
             Assert.Equal(expectedPhi_2, variableCase.QuasiPermanent.DecimalFractions);

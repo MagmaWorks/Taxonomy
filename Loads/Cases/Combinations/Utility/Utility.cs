@@ -77,16 +77,20 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             StringBuilder desc = new StringBuilder();
             if (factor.Value != 1)
             {
-                desc.AppendLine($"{factor}·");
+                desc.AppendLine($"{factor}·(");
             }
 
-            desc.AppendLine("(");
             foreach (ILoadCase lc in cases)
             {
                 desc.Append($"{lc.Nickname} + ");
             }
 
-            desc.AppendLine(")");
+            desc.Remove(desc.Length - 3, 3);
+            if (factor.Value != 1)
+            {
+                desc.AppendLine(")");
+            }
+
             return desc.ToString();
         }
 
@@ -110,6 +114,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 desc.Append($"{lc.Nickname} + ");
             }
 
+            desc.Remove(desc.Length - 3, 3);
             desc.AppendLine(")");
             return desc.ToString();
         }
@@ -124,35 +129,54 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
             if (cases.Count == 1)
             {
+                Ratio phi = selector(cases.First());
                 if (factor.DecimalFractions == 1)
                 {
-                    return cases.First().Nickname;
+                    return $"{phi}·{cases.First().Nickname}";
                 }
                 else
                 {
-                    return $"{factor}·{selector(cases.First())}·{cases.First().Nickname}";
+                    return $"{factor}·{phi}·{cases.First().Nickname}";
                 }
             }
 
             StringBuilder desc = new StringBuilder();
             if (factor.Value != 1)
             {
-                desc.AppendLine($"{factor}·");
+                desc.AppendLine($"{factor}·(");
             }
 
-            desc.AppendLine("(");
             foreach (ILoadCase lc in cases)
             {
-                desc.Append($"{selector(cases.First())}·{lc.Nickname} + ");
+                Ratio phi = selector((T)lc);
+                if (phi.Value != 0)
+                {
+                    desc.Append($"{phi}·{lc.Nickname} + ");
+                }
             }
 
-            desc.AppendLine(")");
+            if (desc.Length > 3)
+            {
+                desc.Remove(desc.Length - 3, 3);
+            }
+
+            if (factor.Value != 1)
+            {
+                desc.AppendLine(")");
+            }
+
             return desc.ToString();
         }
 
         internal static string JoinDescriptions(string[] strings)
         {
-            return string.Join(" + ", strings).Replace(" + + ", string.Empty).Trim(new char[] { ' ', '+' });
+            string joined = string.Join(" + ", strings).Replace(" +  + ", " + ");
+            if (!joined.EndsWith(" + "))
+            {
+                return joined;
+            }
+
+            return joined.Remove(joined.LastIndexOf(" + "));
         }
     }
 }

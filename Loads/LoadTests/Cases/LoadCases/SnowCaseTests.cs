@@ -8,9 +8,11 @@ namespace LoadCaseTests
 {
     public class SnowCaseTests
     {
-        public static IVariableCase Create()
+        public static IVariableCase Create(bool above1000m = false)
         {
-            return ENLoadCaseFactory.CreateSnow(NationalAnnex.UnitedKingdom, false);
+            var load = new LineForce(new ForcePerLength(-15, ForcePerLengthUnit.KilonewtonPerMeter));
+            return ENLoadCaseFactory.CreateSnow(new List<ILoad> { load },
+                NationalAnnex.UnitedKingdom, above1000m);
         }
 
         [Fact]

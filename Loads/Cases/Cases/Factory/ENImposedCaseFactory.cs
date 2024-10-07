@@ -74,7 +74,7 @@ namespace MagmaWorks.Taxonomy.Loads.Cases
                 Frequent = factors.Phi_1,
                 QuasiPermanent = factors.Phi_2,
                 Name = $"Live loads Category {category.ToString().Last()}",
-                Nickname = $"Q_{category.ToString().Last()}",
+                Nickname = $"Q",
             };
         }
 

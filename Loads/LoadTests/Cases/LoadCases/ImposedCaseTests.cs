@@ -10,7 +10,8 @@ namespace LoadCaseTests
     {
         public static IVariableCase Create()
         {
-            return ENLoadCaseFactory.CreateImposed(
+            var load = new AreaForce(new Pressure(5.0, PressureUnit.KilonewtonPerSquareMeter));
+            return ENLoadCaseFactory.CreateImposed(new List<ILoad> { load },
                 ImposedLoadCategory.CategoryB, NationalAnnex.UnitedKingdom);
         }
 
@@ -22,7 +23,7 @@ namespace LoadCaseTests
 
             // Assert
             Assert.Equal("Live loads Category B", variableCase.Name);
-            Assert.Equal("Q_B", variableCase.Nickname);
+            Assert.Equal("Q", variableCase.Nickname);
             Assert.Equal(0.7, variableCase.Characteristic.DecimalFractions);
             Assert.Equal(0.5, variableCase.Frequent.DecimalFractions);
             Assert.Equal(0.3, variableCase.QuasiPermanent.DecimalFractions);
@@ -58,7 +59,7 @@ namespace LoadCaseTests
         {
             // Assemble
             string expectedName = $"Live loads Category {category.ToString().Last()}";
-            string expectedNickname = $"Q_{category.ToString().Last()}";
+            string expectedNickname = $"Q";
 
             // Act
             IVariableCase variableCase = ENLoadCaseFactory.CreateImposed(category, nationalAnnex);
@@ -101,7 +102,7 @@ namespace LoadCaseTests
         {
             // Assemble
             string expectedName = $"Live loads Category {category.ToString().Last()}";
-            string expectedNickname = $"Q_{category.ToString().Last()}";
+            string expectedNickname = $"Q";
             var load = new LineForce2d(new ForcePerLength(-15, ForcePerLengthUnit.KilonewtonPerMeter));
 
             // Act

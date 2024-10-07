@@ -17,8 +17,10 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 combinations.Add(new AccidentialCombination()
                 {
-                    Name = $"Accidential, Eq. 6.11a/b - Leading {accidentalCase.Name}",
+                    Name = $"LC{firstCaseId++}: Accidential, Eq. 6.11a/b - Leading {accidentalCase.Name}",
                     PermanentCases = permanents,
+                    LeadingAccidentialPartialFactor = partialFactor,
+                    LeadingVariableCases = new List<IVariableCase>() { accidentalCase },
                     OtherAccompanyingVariableCases = variables,
                     UseFrequentCombinationFactorForMainAccompanying = false
                 });
@@ -32,7 +34,8 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                     Name = $"LC{firstCaseId++}: Accidential, Eq. 6.11a/b - Leading {accidentalCase.Name} combined with {variables[i].Name} as main accompanying variable action",
                     PermanentCases = permanents,
                     LeadingAccidentialPartialFactor = partialFactor,
-                    LeadingVariableCases = new List<IVariableCase>() { variables[i] },
+                    LeadingVariableCases = new List<IVariableCase>() { accidentalCase },
+                    MainAccompanyingVariableCases = new List<IVariableCase>() { variables[i] },
                     OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
                     UseFrequentCombinationFactorForMainAccompanying = true
                 });
