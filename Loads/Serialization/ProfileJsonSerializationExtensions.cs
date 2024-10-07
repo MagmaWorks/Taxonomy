@@ -1,7 +1,7 @@
-﻿using MagmaWorks.Taxonomy.Serialization;
+﻿using MagmaWorks.Taxonomy.Loads;
 using Newtonsoft.Json;
 
-namespace MagmaWorks.Taxonomy.Loads.Serialization
+namespace MagmaWorks.Taxonomy.Serialization.Loads
 {
     public static class LoadJsonSerializationExtensions
     {

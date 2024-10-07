@@ -69,18 +69,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.ILoads"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Loads", "Loads\Loads\MagmaWorks.Taxonomy.Loads.csproj", "{2BE8AF39-9677-44E1-AE6C-CE9A14DF5B5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagmaWorks.Taxonomy.Loads.Serialization", "Loads\Serialization\MagmaWorks.Taxonomy.Loads.Serialization.csproj", "{0DB384BD-6270-4A1D-95D4-ED3972AE63B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Serialization.Loads", "Loads\Serialization\MagmaWorks.Taxonomy.Serialization.Loads.csproj", "{0DB384BD-6270-4A1D-95D4-ED3972AE63B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTests", "Loads\LoadTests\LoadTests.csproj", "{D9EF311B-6C73-4EA3-9F87-63D660C24CEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoadTests", "Loads\LoadTests\LoadTests.csproj", "{D9EF311B-6C73-4EA3-9F87-63D660C24CEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagmaWorks.Taxonomy.ICases", "Loads\ICases\MagmaWorks.Taxonomy.ICases.csproj", "{6B92B8E9-FD08-449B-8EBB-F63E2ADE7043}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.ICases", "Loads\ICases\MagmaWorks.Taxonomy.ICases.csproj", "{6B92B8E9-FD08-449B-8EBB-F63E2ADE7043}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagmaWorks.Taxonomy.Cases", "Loads\Cases\MagmaWorks.Taxonomy.Cases.csproj", "{8ED7E8B2-BD1C-419F-9FEB-23F51788085E}"
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagmaWorks.Taxonomy.Serialization.Standards", "Standards\Serialization\MagmaWorks.Taxonomy.Serialization.Standards.csproj", "{A76C4493-75AB-4F55-8DC4-4D806F7B86FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Cases", "Loads\Cases\MagmaWorks.Taxonomy.Cases.csproj", "{8ED7E8B2-BD1C-419F-9FEB-23F51788085E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagmaWorks.Taxonomy.Serialization.Materials", "Materials\Serialization\MagmaWorks.Taxonomy.Serialization.Materials.csproj", "{FC999BF3-6232-4564-8035-9F8753AAF387}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Serialization.Standards", "Standards\Serialization\MagmaWorks.Taxonomy.Serialization.Standards.csproj", "{A76C4493-75AB-4F55-8DC4-4D806F7B86FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagmaWorks.Taxonomy.Serialization.Sections", "Sections\Serialization\MagmaWorks.Taxonomy.Serialization.Sections.csproj", "{0374F525-1D2C-49F5-818F-187A04D8A779}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Serialization.Materials", "Materials\Serialization\MagmaWorks.Taxonomy.Serialization.Materials.csproj", "{FC999BF3-6232-4564-8035-9F8753AAF387}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Serialization.Sections", "Sections\Serialization\MagmaWorks.Taxonomy.Serialization.Sections.csproj", "{0374F525-1D2C-49F5-818F-187A04D8A779}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

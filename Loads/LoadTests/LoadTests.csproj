@@ -20,7 +20,7 @@
     <ProjectReference Include="..\Cases\MagmaWorks.Taxonomy.Cases.csproj" />
     <ProjectReference Include="..\ICases\MagmaWorks.Taxonomy.ICases.csproj" />
     <ProjectReference Include="..\Loads\MagmaWorks.Taxonomy.Loads.csproj" />
-    <ProjectReference Include="..\Serialization\MagmaWorks.Taxonomy.Loads.Serialization.csproj" />
+    <ProjectReference Include="..\Serialization\MagmaWorks.Taxonomy.Serialization.Loads.csproj" />
   </ItemGroup>
 
   <ItemGroup>

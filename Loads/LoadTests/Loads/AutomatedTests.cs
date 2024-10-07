@@ -2,7 +2,7 @@ using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using MagmaWorks.Taxonomy.Loads;
-using MagmaWorks.Taxonomy.Loads.Serialization;
+using MagmaWorks.Taxonomy.Serialization.Loads;
 using OasysUnits;
 using OasysUnits.Units;
 
