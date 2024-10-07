@@ -7,32 +7,32 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {
-        private static readonly Dictionary<NationalAnnex, TableA1Properties> EN1990_TableA1_2A = new()
-        {
-            { NationalAnnex.RecommendedValues, new TableA1Properties(1.1, 0.9, 1.5, 1.5) },
-            { NationalAnnex.UnitedKingdom, new TableA1Properties(1.1, 0.9, 1.5, 1.5) },
 
+        private static readonly Dictionary<NationalAnnex, TableA1Properties> EN1990_TableA1_2C = new()
+        {
+            { NationalAnnex.RecommendedValues, new TableA1Properties(1.0, 1.0, 1.3, 1.3) },
+            { NationalAnnex.UnitedKingdom, new TableA1Properties(1.0, 1.0, 1.3, 1.3) },
         };
 
-        public static IList<IEquilibriumCombination> CreateEquSetA(IList<ILoadCase> cases)
+        public static IList<IGeotechnicalMemberDesignCombination> CreateStrGeoSetC(IList<ILoadCase> cases, string prefix = "LC", int firstCaseId = 1)
         {
-            return CreateEquSetA(cases, NationalAnnex.RecommendedValues);
+            return CreateStrGeoSetC(cases, NationalAnnex.RecommendedValues, prefix, firstCaseId);
         }
 
-        public static IList<IEquilibriumCombination> CreateEquSetA(IList<ILoadCase> cases, NationalAnnex nationalAnnex, int firstCaseId = 1)
+        public static IList<IGeotechnicalMemberDesignCombination> CreateStrGeoSetC(IList<ILoadCase> cases, NationalAnnex nationalAnnex, string prefix = "LC",  int firstCaseId = 1)
         {
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
-            if (!EN1990_TableA1_2A.TryGetValue(nationalAnnex, out TableA1Properties factors))
+            if (!EN1990_TableA1_2C.TryGetValue(nationalAnnex, out TableA1Properties factors))
             {
-                throw new System.NotImplementedException($"NA {nationalAnnex} not implemented for EN1990 Table A1.2(A) values");
+                throw new System.NotImplementedException($"NA {nationalAnnex} not implemented for EN1990 Table A1.2(C) values");
             };
 
-            var combinations = new List<IEquilibriumCombination>();
+            var combinations = new List<IGeotechnicalMemberDesignCombination>();
             for (int i = 0; i < variables.Count; i++)
             {
-                combinations.Add(new EquilibriumCombination()
+                combinations.Add(new GeotechnicalMemberDesignCombination()
                 {
-                    Name = $"LC{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[i].Name}",
+                    Name = $"{prefix}{firstCaseId++}: STR/GEO Set C, Eq. 6.10 - Leading {variables[i].Name}",
                     PermanentCases = permanents,
                     PermanentPartialFactor = factors.Gamma_Gsup,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
@@ -43,9 +43,9 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
                 if (variables[i].IsHorizontal)
                 {
-                    combinations.Add(new EquilibriumCombination()
+                    combinations.Add(new GeotechnicalMemberDesignCombination()
                     {
-                        Name = $"LC{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[i].Name} with unfavourable permanent",
+                        Name = $"{prefix}{firstCaseId++}: STR/GEO Set C, Eq. 6.10 - Leading {variables[i].Name} with unfavourable permanent",
                         PermanentCases = permanents.Where((item, index) => !item.IsFavourable).ToList(),
                         PermanentPartialFactor = factors.Gamma_Ginf,
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },

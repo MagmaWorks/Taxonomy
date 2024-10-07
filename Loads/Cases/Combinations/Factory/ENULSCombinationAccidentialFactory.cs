@@ -9,7 +9,8 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
     public static partial class ENCombinationFactory
     {
         public static IList<IAccidentialCombination> CreateAccidential(IVariableCase accidentalCase, Ratio partialFactor,
-            IList<ILoadCase> otherCases, NationalAnnex nationalAnnex, bool useFrequentCombinationFactorForMainAccompanying, int firstCaseId = 1)
+            IList<ILoadCase> otherCases, NationalAnnex nationalAnnex, bool useFrequentCombinationFactorForMainAccompanying,
+            string prefix = "LC", int firstCaseId = 1)
         {
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(otherCases);
             var combinations = new List<IAccidentialCombination>();
@@ -17,7 +18,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 combinations.Add(new AccidentialCombination()
                 {
-                    Name = $"LC{firstCaseId++}: Accidential, Eq. 6.11a/b - Leading {accidentalCase.Name}",
+                    Name = $"{prefix}{firstCaseId++}: Accidential, Eq. 6.11a/b - Leading {accidentalCase.Name}",
                     PermanentCases = permanents,
                     LeadingAccidentialPartialFactor = partialFactor,
                     LeadingVariableCases = new List<IVariableCase>() { accidentalCase },
@@ -31,7 +32,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 combinations.Add(new AccidentialCombination()
                 {
-                    Name = $"LC{firstCaseId++}: Accidential, Eq. 6.11a/b - Leading {accidentalCase.Name} combined with {variables[i].Name} as main accompanying variable action",
+                    Name = $"{prefix}{firstCaseId++}: Accidential, Eq. 6.11a/b - Leading {accidentalCase.Name} combined with {variables[i].Name} as main accompanying variable action",
                     PermanentCases = permanents,
                     LeadingAccidentialPartialFactor = partialFactor,
                     LeadingVariableCases = new List<IVariableCase>() { accidentalCase },
@@ -45,7 +46,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         }
 
         public static IList<ISeismicCombination> CreateSeismic(IList<IVariableCase> seismicCases, Ratio partialFactor,
-            IList<ILoadCase> otherCases, NationalAnnex nationalAnnex, int firstCaseId = 1)
+            IList<ILoadCase> otherCases, NationalAnnex nationalAnnex, string prefix = "LC", int firstCaseId = 1)
         {
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(otherCases);
             var combinations = new List<ISeismicCombination>();
@@ -53,7 +54,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 combinations.Add(new SeismicCombination()
                 {
-                    Name = $"LC{firstCaseId++}: Seismic, Eq. 6.12a/b - Leading {seismicCases[i].Name}",
+                    Name = $"{prefix}{firstCaseId++}: Seismic, Eq. 6.12a/b - Leading {seismicCases[i].Name}",
                     PermanentCases = permanents,
                     LeadingVariableCases = new List<IVariableCase>() { seismicCases[i] },
                     LeadingSeismicPartialFactor = partialFactor,

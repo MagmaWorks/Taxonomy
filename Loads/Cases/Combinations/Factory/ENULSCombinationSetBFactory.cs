@@ -14,24 +14,24 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
         };
 
-        public static IList<IMemberDesignCombination> CreateStrGeoSetB(IList<ILoadCase> cases, int firstCaseId = 1)
+        public static IList<IMemberDesignCombination> CreateStrGeoSetB(IList<ILoadCase> cases, string prefix = "LC", int firstCaseId = 1)
         {
-            return CreateStrGeoSetB(cases, NationalAnnex.RecommendedValues, true, firstCaseId);
+            return CreateStrGeoSetB(cases, NationalAnnex.RecommendedValues, true, prefix, firstCaseId);
         }
 
-        public static IList<IMemberDesignCombination> CreateStrGeoSetB(IList<ILoadCase> cases, NationalAnnex nationalAnnex, bool use6_10aAnd6_10b, int firstCaseId = 1)
+        public static IList<IMemberDesignCombination> CreateStrGeoSetB(IList<ILoadCase> cases, NationalAnnex nationalAnnex, bool use6_10aAnd6_10b, string prefix = "LC", int firstCaseId = 1)
         {
             if (use6_10aAnd6_10b)
             {
-                return CreateSTR6_10aAnd6_10b(cases, nationalAnnex, firstCaseId);
+                return CreateSTR6_10aAnd6_10b(cases, nationalAnnex, prefix, firstCaseId);
             }
             else
             {
-                return CreateSTR6_10(cases, nationalAnnex, firstCaseId);
+                return CreateSTR6_10(cases, nationalAnnex, prefix, firstCaseId);
             }
         }
 
-        private static IList<IMemberDesignCombination> CreateSTR6_10(IList<ILoadCase> cases, NationalAnnex nationalAnnex, int firstCaseId = 1)
+        private static IList<IMemberDesignCombination> CreateSTR6_10(IList<ILoadCase> cases, NationalAnnex nationalAnnex, string prefix = "LC", int firstCaseId = 1)
         {
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
             if (!EN1990_TableA1_2B.TryGetValue(nationalAnnex, out TableA1Properties factors))
@@ -44,7 +44,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 combinations.Add(new MemberDesignCombination()
                 {
-                    Name = $"LC{firstCaseId++}: STR/GEO Set B, Eq. 6.10 - Leading {variables[i].Name}",
+                    Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10 - Leading {variables[i].Name}",
                     PermanentCases = permanents,
                     PermanentPartialFactor = factors.Gamma_Gsup,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
@@ -57,7 +57,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     combinations.Add(new MemberDesignCombination()
                     {
-                        Name = $"LC{firstCaseId++}: STR/GEO Set B, Eq. 6.10 - Leading {variables[i].Name} with unfavourable permanent",
+                        Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10 - Leading {variables[i].Name} with unfavourable permanent",
                         PermanentCases = permanents.Where((item, index) => !item.IsFavourable).ToList(),
                         PermanentPartialFactor = factors.Gamma_Ginf,
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
@@ -71,7 +71,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return combinations;
         }
 
-        private static IList<IMemberDesignCombination> CreateSTR6_10aAnd6_10b(IList<ILoadCase> cases, NationalAnnex nationalAnnex, int firstCaseId = 1)
+        private static IList<IMemberDesignCombination> CreateSTR6_10aAnd6_10b(IList<ILoadCase> cases, NationalAnnex nationalAnnex, string prefix = "LC", int firstCaseId = 1)
         {
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
             if (!EN1990_TableA1_2B.TryGetValue(nationalAnnex, out TableA1Properties factors))
@@ -85,7 +85,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 combinations.Add(new MemberDesignCombination()
                 {
-                    Name = $"LC{firstCaseId++}: STR/GEO Set B, Eq. 6.10a - Leading Permanent combined with accompanying variable actions",
+                    Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10a - Leading Permanent combined with accompanying variable actions",
                     PermanentCases = permanents,
                     PermanentPartialFactor = factors.Gamma_Gsup,
                     OtherAccompanyingVariableCases = variables,
@@ -99,7 +99,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     combinations.Add(new MemberDesignCombination()
                     {
-                        Name = $"LC{firstCaseId++}: STR/GEO Set B, Eq. 6.10a - Leading Permanent combined with {variables[i].Name} as main accompanying variable action",
+                        Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10a - Leading Permanent combined with {variables[i].Name} as main accompanying variable action",
                         PermanentCases = permanents,
                         PermanentPartialFactor = factors.Gamma_Gsup,
                         MainAccompanyingVariableCases = new List<IVariableCase>() { variables[i] },
@@ -111,7 +111,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
                 combinations.Add(new MemberDesignCombination()
                 {
-                    Name = $"LC{firstCaseId++}: STR/GEO Set B, Eq. 6.10b - Leading {variables[i].Name}",
+                    Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10b - Leading {variables[i].Name}",
                     PermanentCases = permanents,
                     PermanentPartialFactor = factors.Gamma_Gsup,
                     PermanentReductionFactor = factors.Xi,
@@ -125,7 +125,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     combinations.Add(new MemberDesignCombination()
                     {
-                        Name = $"LC{firstCaseId++}: STR/GEO Set B, Eq. 6.10b - Leading {variables[i].Name} with unfavourable permanent",
+                        Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10b - Leading {variables[i].Name} with unfavourable permanent",
                         PermanentCases = permanents.Where((item, index) => !item.IsFavourable).ToList(),
                         PermanentPartialFactor = factors.Gamma_Ginf,
                         PermanentReductionFactor = factors.Xi,

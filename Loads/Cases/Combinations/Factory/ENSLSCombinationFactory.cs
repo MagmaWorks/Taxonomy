@@ -6,7 +6,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {
-        public static IList<ICharacteristicCombination> CreateCharacteristic(IList<ILoadCase> cases, int firstCaseId = 1)
+        public static IList<ICharacteristicCombination> CreateCharacteristic(IList<ILoadCase> cases, string prefix = "LC", int firstCaseId = 1)
         {
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
             var combinations = new List<ICharacteristicCombination>();
@@ -14,7 +14,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 combinations.Add(new CharacteristicCombination()
                 {
-                    Name = $"LC{firstCaseId++}: SLS Characteristic - Leading {variables[i].Name}",
+                    Name = $"{prefix}{firstCaseId++}: SLS Characteristic - Leading {variables[i].Name}",
                     PermanentCases = permanents,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                     AccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
@@ -24,7 +24,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     combinations.Add(new CharacteristicCombination()
                     {
-                        Name = $"LC{firstCaseId++}: SLS Characteristic - Leading {variables[i].Name} with unfavourable permanent",
+                        Name = $"{prefix}{firstCaseId++}: SLS Characteristic - Leading {variables[i].Name} with unfavourable permanent",
                         PermanentCases = permanents.Where((item, index) => !item.IsFavourable).ToList(),
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                         AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
@@ -35,7 +35,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return combinations;
         }
 
-        public static IList<IFrequentCombination> CreateFrequent(IList<ILoadCase> cases, int firstCaseId = 1)
+        public static IList<IFrequentCombination> CreateFrequent(IList<ILoadCase> cases, string prefix = "LC", int firstCaseId = 1)
         {
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
             var combinations = new List<IFrequentCombination>();
@@ -43,7 +43,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 combinations.Add(new FrequentCombination()
                 {
-                    Name = $"LC{firstCaseId++}: SLS Frequent - Leading {variables[i].Name}",
+                    Name = $"{prefix}{firstCaseId++}: SLS Frequent - Leading {variables[i].Name}",
                     PermanentCases = permanents,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                     AccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
@@ -53,7 +53,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     combinations.Add(new FrequentCombination()
                     {
-                        Name = $"LC{firstCaseId++}: SLS Frequent - Leading {variables[i].Name} with unfavourable permanent",
+                        Name = $"{prefix}{firstCaseId++}: SLS Frequent - Leading {variables[i].Name} with unfavourable permanent",
                         PermanentCases = permanents.Where((item, index) => !item.IsFavourable).ToList(),
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                         AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
@@ -64,7 +64,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return combinations;
         }
 
-        public static IList<IQuasiPermanentCombination> CreateQuasiPermanent(IList<ILoadCase> cases, int firstCaseId = 1)
+        public static IList<IQuasiPermanentCombination> CreateQuasiPermanent(IList<ILoadCase> cases, string prefix = "LC", int firstCaseId = 1)
         {
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
             var combinations = new List<IQuasiPermanentCombination>();
@@ -72,7 +72,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 combinations.Add(new QuasiPermanentCombination()
                 {
-                    Name = $"LC{firstCaseId++}: SLS Quasi-permanent - Leading {variables[i].Name}",
+                    Name = $"{prefix}{firstCaseId++}: SLS Quasi-permanent - Leading {variables[i].Name}",
                     PermanentCases = permanents,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                     AccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
@@ -82,7 +82,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     combinations.Add(new QuasiPermanentCombination()
                     {
-                        Name = $"LC{firstCaseId++}: SLS Quasi-permanent - Leading {variables[i].Name} with unfavourable permanent",
+                        Name = $"{prefix}{firstCaseId++}: SLS Quasi-permanent - Leading {variables[i].Name} with unfavourable permanent",
                         PermanentCases = permanents.Where((item, index) => !item.IsFavourable).ToList(),
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                         AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),

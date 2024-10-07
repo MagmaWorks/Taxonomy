@@ -66,11 +66,11 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 if (factor.DecimalFractions == 1)
                 {
-                    return cases.First().Nickname;
+                    return GetNickname(cases.First());
                 }
                 else
                 {
-                    return $"{factor}·{cases.First().Nickname}";
+                    return $"{factor}·{GetNickname(cases.First())}";
                 }
             }
 
@@ -82,7 +82,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
             foreach (ILoadCase lc in cases)
             {
-                desc.Append($"{lc.Nickname} + ");
+                desc.Append($"{GetNickname(lc)} + ");
             }
 
             desc.Remove(desc.Length - 3, 3);
@@ -104,14 +104,14 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
             if (cases.Count == 1)
             {
-                return $"{factor1}·{f2}{cases.First().Nickname}";
+                return $"{factor1}·{f2}{GetNickname(cases.First())}";
             }
 
             StringBuilder desc = new StringBuilder();
             desc.AppendLine($"{factor1}·{f2}(");
             foreach (ILoadCase lc in cases)
             {
-                desc.Append($"{lc.Nickname} + ");
+                desc.Append($"{GetNickname(lc)} + ");
             }
 
             desc.Remove(desc.Length - 3, 3);
@@ -132,11 +132,11 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 Ratio phi = selector(cases.First());
                 if (factor.DecimalFractions == 1)
                 {
-                    return $"{phi}·{cases.First().Nickname}";
+                    return $"{phi}·{GetNickname(cases.First())}";
                 }
                 else
                 {
-                    return $"{factor}·{phi}·{cases.First().Nickname}";
+                    return $"{factor}·{phi}·{GetNickname(cases.First())}";
                 }
             }
 
@@ -151,7 +151,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 Ratio phi = selector((T)lc);
                 if (phi.Value != 0)
                 {
-                    desc.Append($"{phi}·{lc.Nickname} + ");
+                    desc.Append($"{phi}·{GetNickname(lc)} + ");
                 }
             }
 
@@ -177,6 +177,16 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             }
 
             return joined.Remove(joined.LastIndexOf(" + "));
+        }
+
+        private static string GetNickname(ILoadCase loadCase)
+        {
+            if (loadCase.Nickname.Contains(' '))
+            {
+                return $"'{loadCase.Nickname}'";
+            }
+
+            return loadCase.Nickname;
         }
     }
 }
