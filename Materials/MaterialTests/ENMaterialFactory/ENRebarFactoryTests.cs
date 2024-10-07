@@ -63,7 +63,6 @@ namespace MaterialTests
             char rebarClass = grade.ToString()[grade.ToString().Length - 1];
             Assert.True(rebarClass == 'A' || rebarClass == 'B' || rebarClass == 'C');
             Strain strain;
-            double k;
             switch (rebarClass)
             {
                 case 'A':
@@ -74,7 +73,6 @@ namespace MaterialTests
                 case 'B':
                     Assert.Equal(1.08, material.UltimateStrength / material.YieldStrength);
                     Assert.Equal(5.0, material.FailureStrain.Percent);
-                    k = 1.08;
                     strain = new Strain(5.0, StrainUnit.Percent);
                     break;
 

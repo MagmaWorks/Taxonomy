@@ -5,7 +5,7 @@ using MagmaWorks.Taxonomy.Serialization.Stages.Extensions;
 using MagmaWorks.Taxonomy.Stages;
 using MagmaWorks.Taxonomy.Stages.RIBA;
 
-namespace CountryTests
+namespace StageTests
 {
     public class AutomatedTests
     {

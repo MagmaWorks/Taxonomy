@@ -10,10 +10,15 @@ namespace MagmaWorks.Taxonomy.Serialization
             {
                 var settings = new JsonSerializerSettings
                 {
-                    Converters = { new Newtonsoft.Json.Converters.StringEnumConverter(), },
+                    Converters = {
+                        new Newtonsoft.Json.Converters.StringEnumConverter(),
+                        new OasysUnits.Serialization.JsonNet.OasysUnitsIQuantityJsonConverter(),
+                    },
                     TypeNameHandling = TypeNameHandling.Objects,
-                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple
+                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+
                 };
+
                 return settings;
             }
         }
