@@ -5,12 +5,13 @@ namespace MagmaWorks.Taxonomy.Standards.Eurocode
     public class EN1991 : IEurocode
     {
         public StandardBody Body => StandardBody.EN;
-        public Enum Code => Eurocode.EN1991;
+        public Enum Code { get; } = Eurocode.EN1991;
         public Enum Part => EN1991Part;
-        public NationalAnnex NationalAnnex { get; set; }
+        public NationalAnnex NationalAnnex { get; set; } = NationalAnnex.RecommendedValues;
         public string Title => GetTitle();
+        private EN1991Part EN1991Part = EN1991Part.Part1_1;
 
-        private EN1991Part EN1991Part;
+        public EN1991() { }
 
         public EN1991(EN1991Part part, NationalAnnex nationalAnnex)
         {

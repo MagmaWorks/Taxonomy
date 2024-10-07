@@ -23,9 +23,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Standards\IStandards\MagmaWorks.Taxonomy.IStandards.csproj" />
+    <ProjectReference Include="..\..\Standards\Serialization\MagmaWorks.Taxonomy.Serialization.Standards.csproj" />
     <ProjectReference Include="..\..\Standards\Standards\MagmaWorks.Taxonomy.Standards.csproj" />
     <ProjectReference Include="..\IMaterials\MagmaWorks.Taxonomy.IMaterials.csproj" />
     <ProjectReference Include="..\Materials\MagmaWorks.Taxonomy.Materials.csproj" />
+    <ProjectReference Include="..\Serialization\MagmaWorks.Taxonomy.Serialization.Materials.csproj" />
   </ItemGroup>
 
 </Project>

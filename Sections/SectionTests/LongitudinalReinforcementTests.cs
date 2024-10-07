@@ -15,7 +15,7 @@ namespace SectionTests
             return new LongitudinalReinforcement(rebar, position);
         }
 
-        public static ICollection<ILongitudinalReinforcement> CreateLongitudinalReinforcements()
+        public static IList<ILongitudinalReinforcement> CreateLongitudinalReinforcements()
         {
             IRebar rebar = RebarTests.CreateRebar();
             LengthUnit unit = LengthUnit.Centimeter;

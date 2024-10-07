@@ -10,6 +10,7 @@ namespace MagmaWorks.Taxonomy.Serialization
             {
                 var settings = new JsonSerializerSettings
                 {
+                    Converters = { new Newtonsoft.Json.Converters.StringEnumConverter(), },
                     TypeNameHandling = TypeNameHandling.Objects,
                     TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple
                 };

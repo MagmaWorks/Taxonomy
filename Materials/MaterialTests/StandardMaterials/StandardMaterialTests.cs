@@ -1,4 +1,5 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Serialization.Materials.Extensions;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
@@ -26,5 +27,23 @@ namespace MaterialTests
                 material.Standard.Title);
             Assert.Equal(ENConcreteGrade.C30_37, material.Grade);
         }
+
+        // TO-DO: add custom JSON converter for IStandardMaterial grade enum
+        //[Fact]
+        //public void InterfaceSurvivesRoundtripDeserializationTest()
+        //{
+        //    // Assemble
+        //    MaterialType type = MaterialType.Concrete;
+        //    IStandard standard = new EN1992();
+        //    ENConcreteGrade grade = ENConcreteGrade.C30_37;
+        //    IStandardMaterial material = new StandardMaterial(type, standard, grade);
+
+        //    // Act
+        //    string json = material.ToJson();
+        //    IStandardMaterial matDeserialized = json.FromJson<IStandardMaterial>();
+
+        //    // Assert
+        //    Assert.Equivalent(material, matDeserialized);
+        //}
     }
 }

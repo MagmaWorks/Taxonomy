@@ -12,6 +12,8 @@ namespace MagmaWorks.Taxonomy.Materials
         public Strain FailureStrain { get; set; }
         public MaterialType Type { get; set; }
 
+        private BiLinearMaterial() { }
+
         public BiLinearMaterial(MaterialType type, Pressure elasticModulus, Pressure yieldStrength, Pressure ultimateStrength, Strain failureStrain)
         {
             Type = type;

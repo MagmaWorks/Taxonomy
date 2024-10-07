@@ -32,6 +32,7 @@
     <ProjectReference Include="..\..\Standards\Standards\MagmaWorks.Taxonomy.Standards.csproj" />
     <ProjectReference Include="..\ISections\MagmaWorks.Taxonomy.ISections.csproj" />
     <ProjectReference Include="..\Sections\MagmaWorks.Taxonomy.Sections.csproj" />
+    <ProjectReference Include="..\Serialization\MagmaWorks.Taxonomy.Serialization.Sections.csproj" />
   </ItemGroup>
 
   <ItemGroup>

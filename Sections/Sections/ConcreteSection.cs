@@ -8,10 +8,10 @@ namespace MagmaWorks.Taxonomy.Sections
     {
         public IMaterial Material { get; set; }
         public IProfile Profile { get; set; }
-        public ICollection<ILongitudinalReinforcement> Rebars { get; set; }
+        public IList<ILongitudinalReinforcement> Rebars { get; set; }
         public IRebar Link { get; set; }
 
-        public ConcreteSection(IMaterial material, IProfile profile, ICollection<ILongitudinalReinforcement> rebars, IRebar link)
+        public ConcreteSection(IMaterial material, IProfile profile, IList<ILongitudinalReinforcement> rebars, IRebar link)
         {
             Material = material;
             Profile = profile;
@@ -26,7 +26,7 @@ namespace MagmaWorks.Taxonomy.Sections
             Rebars.Add(rebar);
         }
 
-        public void AddRebars(ICollection<ILongitudinalReinforcement> rebars)
+        public void AddRebars(IList<ILongitudinalReinforcement> rebars)
         {
             Rebars ??= new List<ILongitudinalReinforcement>();
 
