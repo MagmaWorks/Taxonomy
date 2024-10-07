@@ -37,7 +37,7 @@ namespace LoadCaseTests
         [InlineData(NationalAnnex.UnitedKingdom, false, 0.5, 0.2, 0.0)]
         [InlineData(NationalAnnex.Germany, true, 0.7, 0.5, 0.2)]
         [InlineData(NationalAnnex.Germany, false, 0.5, 0.2, 0.0)]
-        public void CreateSnowCaseTest(NationalAnnex nationalAnnex, bool above1000m, 
+        public void CreateSnowCaseTest(NationalAnnex nationalAnnex, bool above1000m,
             double expectedPhi_0, double expectedPhi_1, double expectedPhi_2)
         {
             // Assemble
