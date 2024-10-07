@@ -19,7 +19,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return CreateStrGeoSetC(cases, NationalAnnex.RecommendedValues, prefix, firstCaseId);
         }
 
-        public static IList<IGeotechnicalMemberDesignCombination> CreateStrGeoSetC(IList<ILoadCase> cases, NationalAnnex nationalAnnex, string prefix = "LC",  int firstCaseId = 1)
+        public static IList<IGeotechnicalMemberDesignCombination> CreateStrGeoSetC(IList<ILoadCase> cases, NationalAnnex nationalAnnex, string prefix = "LC", int firstCaseId = 1)
         {
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
             if (!EN1990_TableA1_2C.TryGetValue(nationalAnnex, out TableA1Properties factors))
