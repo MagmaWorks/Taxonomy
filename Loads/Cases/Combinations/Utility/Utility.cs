@@ -100,22 +100,29 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 return string.Empty;
             }
-            string f2 = factor2.DecimalFractions == 1 ? string.Empty : $"{factor2}·";
 
             if (cases.Count == 1)
             {
-                return $"{factor1}·{f2}{GetNickname(cases.First())}";
+                return $"{MultiFactor(factor1, factor2)}·{GetNickname(cases.First())}";
             }
 
             StringBuilder desc = new StringBuilder();
-            desc.Append($"{factor1}·{f2}(");
+            if (factor1.DecimalFractions != 1 || factor2.DecimalFractions != 1)
+            {
+                desc.Append($"{MultiFactor(factor1, factor2)}·(");
+            }
+
             foreach (ILoadCase lc in cases)
             {
                 desc.Append($"{GetNickname(lc)} + ");
             }
 
             desc.Remove(desc.Length - 3, 3);
-            desc.Append(")");
+            if (factor1.DecimalFractions != 1 || factor2.DecimalFractions != 1)
+            {
+                desc.Append(")");
+            }
+
             return desc.ToString();
         }
 
@@ -130,14 +137,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             if (cases.Count == 1)
             {
                 Ratio phi = selector(cases.First());
-                if (factor.DecimalFractions == 1)
-                {
-                    return $"{phi}·{GetNickname(cases.First())}";
-                }
-                else
-                {
-                    return $"{factor}·{phi}·{GetNickname(cases.First())}";
-                }
+                return $"{MultiFactor(factor, phi)}·{GetNickname(cases.First())}";
             }
 
             StringBuilder desc = new StringBuilder();
@@ -168,15 +168,10 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return desc.ToString();
         }
 
-        internal static string JoinDescriptions(string[] strings)
+        internal static string JoinDescriptions(string[] strings, string separator = " + ")
         {
-            string joined = string.Join(" + ", strings).Replace(" +  + ", " + ");
-            if (!joined.EndsWith(" + "))
-            {
-                return joined;
-            }
-
-            return joined.Remove(joined.LastIndexOf(" + "));
+            strings = strings.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            return string.Join(separator, strings);
         }
 
         private static string GetNickname(ILoadCase loadCase)
@@ -187,6 +182,13 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             }
 
             return loadCase.Nickname;
+        }
+
+        private static string MultiFactor(Ratio factor1, Ratio factor2)
+        {
+            string f1 = factor1.DecimalFractions == 1 ? string.Empty : $"{factor1}";
+            string f2 = factor2.DecimalFractions == 1 ? string.Empty : $"{factor2}";
+            return JoinDescriptions(new string[] { f1, f2 }, "·");
         }
     }
 }
