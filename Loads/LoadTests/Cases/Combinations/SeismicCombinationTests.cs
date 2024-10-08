@@ -55,12 +55,6 @@ namespace CombinationTests
         public void CasesTest()
         {
             // Assemble
-            IPermanentCase dl = PermanentCaseTests.CreateDLCase();
-            IPermanentCase sdl = PermanentCaseTests.CreateSDLCase();
-            IVariableCase ll = ImposedCaseTests.Create();
-            IVariableCase w = WindCaseTests.Create();
-            IVariableCase s = SnowCaseTests.Create(true);
-            IVariableCase t = ThermalCaseTests.Create();
             IVariableCase seismic = new VariableCase()
             {
                 Name = "Seismic Equivalent Horizontal Load in X-direction",
@@ -69,10 +63,6 @@ namespace CombinationTests
                 {
                     new ColumnLoad(new Force(50, ForceUnit.Kilonewton))
                 }
-            };
-            var otherCases = new List<ILoadCase>()
-            {
-                dl, sdl, ll, w, s, t
             };
 
             // Act
@@ -111,9 +101,7 @@ namespace CombinationTests
             TestFactoredLoad(lc1Loads[i++], 1.0, sdl);
             TestFactoredLoad(lc1Loads[i++], 1.5, impact);
             TestFactoredLoad(lc1Loads[i++], 0.3, ll);
-            TestFactoredLoad(lc1Loads[i++], 0.0, w);
             TestFactoredLoad(lc1Loads[i++], 0.2, s);
-            TestFactoredLoad(lc1Loads[i++], 0.0, t);
         }
 
         private void TestFactoredLoad(ILoad actual, double factor, ILoad expectedUnfactored)

@@ -24,6 +24,21 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return factoredLoads;
         }
 
+        public static IList<ILoad> GetLoads<T>(IList<T> loadCases)
+            where T : ILoadCase
+        {
+            var factoredLoads = new List<ILoad>();
+            foreach (T loadCase in loadCases)
+            {
+                foreach (ILoad load in loadCase.Loads)
+                {
+                    factoredLoads.Add(load);
+                }
+            }
+
+            return factoredLoads;
+        }
+
         public static IList<ILoad> FactorAccompanyingVariableLoads<T>(Ratio partialFactor, IList<T> loadCases, Func<T, Ratio> selector)
             where T : IVariableCase
         {
@@ -33,7 +48,10 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 foreach (ILoad load in loadCase.Loads)
                 {
                     Ratio factor = partialFactor * selector(loadCase).DecimalFractions;
-                    factoredLoads.Add(load.Factor(factor));
+                    if (factor.Value != 0)
+                    {
+                        factoredLoads.Add(load.Factor(factor));
+                    }
                 }
             }
 
@@ -48,7 +66,11 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 foreach (ILoad load in loadCase.Loads)
                 {
-                    factoredLoads.Add(load.Factor(selector(loadCase)));
+                    Ratio phi = selector(loadCase);
+                    if (phi.Value != 0)
+                    {
+                        factoredLoads.Add(load.Factor(phi));
+                    }
                 }
             }
 

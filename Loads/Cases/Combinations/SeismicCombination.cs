@@ -21,8 +21,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             var factoredLoads = new List<ILoad>();
             if (PermanentCases != null)
             {
-                factoredLoads.AddRange(
-                    Utility.FactorLoads(new Ratio(1, RatioUnit.DecimalFraction), PermanentCases));
+                factoredLoads.AddRange(Utility.GetLoads(PermanentCases));
             }
 
             if (LeadingVariableCases != null)

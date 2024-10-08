@@ -20,12 +20,12 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             var factoredLoads = new List<ILoad>();
             if (PermanentCases != null)
             {
-                factoredLoads.AddRange((IList<ILoad>)PermanentCases);
+                factoredLoads.AddRange(Utility.GetLoads(PermanentCases));
             }
 
             if (LeadingVariableCases != null)
             {
-                factoredLoads.AddRange((IEnumerable<ILoad>)LeadingVariableCases);
+                factoredLoads.AddRange(Utility.GetLoads(LeadingVariableCases));
             }
 
             if (AccompanyingVariableCases != null)

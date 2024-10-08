@@ -61,17 +61,6 @@ namespace CombinationTests
         public void CasesTest()
         {
             // Assemble
-            IPermanentCase dl = PermanentCaseTests.CreateDLCase();
-            IPermanentCase sdl = PermanentCaseTests.CreateSDLCase();
-            IVariableCase ll = ImposedCaseTests.Create();
-            IVariableCase w = WindCaseTests.Create();
-            IVariableCase s = SnowCaseTests.Create(true);
-            IVariableCase t = ThermalCaseTests.Create();
-            var otherCases = new List<ILoadCase>()
-            {
-                dl, sdl, ll, w, s, t
-            };
-
             // Act
             IList<IMemberDesignCombination> combinations = Create();
 

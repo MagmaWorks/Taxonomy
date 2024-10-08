@@ -179,9 +179,7 @@ namespace CombinationTests
             TestFactoredLoad(lc1Loads[i++], 1.0, sdl);
             TestFactoredLoad(lc1Loads[i++], 1.5, impact);
             TestFactoredLoad(lc1Loads[i++], 0.5, ll);
-            TestFactoredLoad(lc1Loads[i++], 0.0, w);
             TestFactoredLoad(lc1Loads[i++], 0.2, s);
-            TestFactoredLoad(lc1Loads[i++], 0.0, t);
 
             // LC2: DL + SDL + 1.5·A + 0.2·W + 0.3·Q + 0.2·S
             i = 0;
@@ -191,7 +189,6 @@ namespace CombinationTests
             TestFactoredLoad(lc2Loads[i++], 0.2, w);
             TestFactoredLoad(lc2Loads[i++], 0.3, ll);
             TestFactoredLoad(lc2Loads[i++], 0.2, s);
-            TestFactoredLoad(lc2Loads[i++], 0.0, t);
 
             // LC3: DL + SDL + 1.5·A + 0.5·S + 0.3·Q
             i = 0;
@@ -200,8 +197,6 @@ namespace CombinationTests
             TestFactoredLoad(lc3Loads[i++], 1.5, impact);
             TestFactoredLoad(lc3Loads[i++], 0.5, s);
             TestFactoredLoad(lc3Loads[i++], 0.3, ll);
-            TestFactoredLoad(lc3Loads[i++], 0.0, w);
-            TestFactoredLoad(lc3Loads[i++], 0.0, t);
 
             // LC4: DL + SDL + 1.5·A + 0.5·T + 0.3·Q + 0.2·S
             i = 0;
@@ -210,7 +205,6 @@ namespace CombinationTests
             TestFactoredLoad(lc4Loads[i++], 1.5, impact);
             TestFactoredLoad(lc4Loads[i++], 0.5, t);
             TestFactoredLoad(lc4Loads[i++], 0.3, ll);
-            TestFactoredLoad(lc4Loads[i++], 0.0, w);
             TestFactoredLoad(lc4Loads[i++], 0.2, s);
         }
 
@@ -238,9 +232,7 @@ namespace CombinationTests
             TestFactoredLoad(lc1Loads[i++], 1.0, sdl);
             TestFactoredLoad(lc1Loads[i++], 1.5, impact);
             TestFactoredLoad(lc1Loads[i++], 0.3, ll);
-            TestFactoredLoad(lc1Loads[i++], 0.0, w);
             TestFactoredLoad(lc1Loads[i++], 0.2, s);
-            TestFactoredLoad(lc1Loads[i++], 0.0, t);
         }
 
         private void TestFactoredLoad(ILoad actual, double factor, ILoad expectedUnfactored)
