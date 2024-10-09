@@ -70,7 +70,7 @@ namespace CombinationTests
             {
                 Assert.Equal(2, combinations[i].PermanentCases.Count);
                 Assert.Single(combinations[i].LeadingVariableCases);
-                Assert.Null(combinations[i].MainAccompanyingVariableCases);
+                Assert.Empty(combinations[i].MainAccompanyingVariableCases);
                 if (!combinations[i].LeadingVariableCases.First().IsHorizontal)
                 {
                     Assert.Equal(3, combinations[i].OtherAccompanyingVariableCases.Count);

@@ -71,15 +71,15 @@ namespace CombinationTests
             // Assert
             Assert.Equal(6, combinations.Count);
             Assert.Equal(2, combinations[0].PermanentCases.Count);
-            Assert.Null(combinations[0].LeadingVariableCases);
-            Assert.Null(combinations[0].MainAccompanyingVariableCases);
+            Assert.Empty(combinations[0].LeadingVariableCases);
+            Assert.Empty(combinations[0].MainAccompanyingVariableCases);
             Assert.Equal(4, combinations[0].OtherAccompanyingVariableCases.Count);
 
             for (int i = 1; i < combinations.Count; i++)
             {
                 Assert.Equal(2, combinations[i].PermanentCases.Count);
                 Assert.Single(combinations[i].LeadingVariableCases);
-                Assert.Null(combinations[i].MainAccompanyingVariableCases);
+                Assert.Empty(combinations[i].MainAccompanyingVariableCases);
                 if (!combinations[i].LeadingVariableCases.First().IsHorizontal)
                 {
                     Assert.Equal(3, combinations[i].OtherAccompanyingVariableCases.Count);

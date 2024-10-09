@@ -2,6 +2,8 @@
 using System.Linq;
 using MagmaWorks.Taxonomy.Loads.Cases;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
+using OasysUnits;
+using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
@@ -11,7 +13,6 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         {
             { NationalAnnex.RecommendedValues, new TableA1Properties(1.35, 1.0, 1.5, 1.5, 0.85) },
             { NationalAnnex.UnitedKingdom, new TableA1Properties(1.35, 1.0, 1.5, 1.5, 0.925) },
-
         };
 
         public static IList<IMemberDesignCombination> CreateStrGeoSetB(IList<ILoadCase> cases, string prefix = "LC", int firstCaseId = 1)
@@ -47,6 +48,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                     Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10 - Leading {variables[i].Name}",
                     PermanentCases = permanents,
                     PermanentPartialFactor = factors.Gamma_Gsup,
+                    PermanentReductionFactor = new Ratio(1.0, RatioUnit.DecimalFraction),
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                     LeadingVariablePartialFactor = factors.Gamma_Q1,
                     OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
@@ -60,6 +62,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                         Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10 - Leading {variables[i].Name} with unfavourable permanent",
                         PermanentCases = permanents.Where((item, index) => !item.IsFavourable).ToList(),
                         PermanentPartialFactor = factors.Gamma_Ginf,
+                        PermanentReductionFactor = new Ratio(1.0, RatioUnit.DecimalFraction),
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                         LeadingVariablePartialFactor = factors.Gamma_Q1,
                         OtherAccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
@@ -88,6 +91,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                     Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10a - Leading Permanent combined with accompanying variable actions",
                     PermanentCases = permanents,
                     PermanentPartialFactor = factors.Gamma_Gsup,
+                    PermanentReductionFactor = new Ratio(1.0, RatioUnit.DecimalFraction),
                     OtherAccompanyingVariableCases = variables,
                     AccompanyingPartialFactor = factors.Gamma_Qi,
                 });
@@ -102,6 +106,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                         Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10a - Leading Permanent combined with {variables[i].Name} as main accompanying variable action",
                         PermanentCases = permanents,
                         PermanentPartialFactor = factors.Gamma_Gsup,
+                        PermanentReductionFactor = new Ratio(1.0, RatioUnit.DecimalFraction),
                         MainAccompanyingVariableCases = new List<IVariableCase>() { variables[i] },
                         LeadingVariablePartialFactor = factors.Gamma_Q1,
                         OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),

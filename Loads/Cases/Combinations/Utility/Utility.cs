@@ -13,6 +13,11 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             where T : ILoadCase
         {
             var factoredLoads = new List<ILoad>();
+            if (loadCases == null || loadCases.Count == 0)
+            {
+                return factoredLoads;
+            }
+
             foreach (T loadCase in loadCases)
             {
                 foreach (ILoad load in loadCase.Loads)
@@ -28,6 +33,11 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             where T : ILoadCase
         {
             var factoredLoads = new List<ILoad>();
+            if (loadCases == null || loadCases.Count == 0)
+            {
+                return factoredLoads;
+            }
+
             foreach (T loadCase in loadCases)
             {
                 foreach (ILoad load in loadCase.Loads)
@@ -43,6 +53,11 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             where T : IVariableCase
         {
             var factoredLoads = new List<ILoad>();
+            if (loadCases == null || loadCases.Count == 0)
+            {
+                return factoredLoads;
+            }
+
             foreach (T loadCase in loadCases)
             {
                 foreach (ILoad load in loadCase.Loads)
@@ -62,6 +77,11 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             where T : IVariableCase
         {
             var factoredLoads = new List<ILoad>();
+            if (loadCases == null || loadCases.Count == 0)
+            {
+                return factoredLoads;
+            }
+
             foreach (T loadCase in loadCases)
             {
                 foreach (ILoad load in loadCase.Loads)

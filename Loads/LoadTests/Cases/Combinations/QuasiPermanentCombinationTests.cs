@@ -50,7 +50,7 @@ namespace CombinationTests
             // Assert
             Assert.Single(combinations);
             Assert.Equal(2, combinations[0].PermanentCases.Count);
-            Assert.Null(combinations[0].LeadingVariableCases);
+            Assert.Empty(combinations[0].LeadingVariableCases);
             Assert.Equal(2, combinations[0].AccompanyingVariableCases.Count);
         }
 

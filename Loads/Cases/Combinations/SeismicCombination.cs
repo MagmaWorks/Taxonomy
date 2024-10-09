@@ -10,33 +10,20 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         public string Name { get; set; }
         public string Definition => GetDefinition();
         public Ratio LeadingSeismicPartialFactor { get; set; } = new Ratio(1, RatioUnit.DecimalFraction);
-        public IList<IPermanentCase> PermanentCases { get; set; }
-        public IList<IVariableCase> LeadingVariableCases { get; set; }
-        public IList<IVariableCase> AccompanyingVariableCases { get; set; }
+        public IList<IPermanentCase> PermanentCases { get; set; } = new List<IPermanentCase>();
+        public IList<IVariableCase> LeadingVariableCases { get; set; } = new List<IVariableCase>();
+        public IList<IVariableCase> AccompanyingVariableCases { get; set; } = new List<IVariableCase>();
 
         public SeismicCombination() { }
 
         public virtual IList<ILoad> GetFactoredLoads()
         {
             var factoredLoads = new List<ILoad>();
-            if (PermanentCases != null)
-            {
-                factoredLoads.AddRange(Utility.GetLoads(PermanentCases));
-            }
-
-            if (LeadingVariableCases != null)
-            {
-                factoredLoads.AddRange(
-                    Utility.FactorLoads(LeadingSeismicPartialFactor, LeadingVariableCases));
-            }
-
-            if (AccompanyingVariableCases != null)
-            {
-                factoredLoads.AddRange(
-                    Utility.SelectAccompanyingVariableLoads(
-                        AccompanyingVariableCases, ld => ld.QuasiPermanent));
-            }
-
+            factoredLoads.AddRange(Utility.GetLoads(PermanentCases));
+            factoredLoads.AddRange(
+                Utility.FactorLoads(LeadingSeismicPartialFactor, LeadingVariableCases));
+            factoredLoads.AddRange(
+                Utility.SelectAccompanyingVariableLoads(AccompanyingVariableCases, ld => ld.QuasiPermanent));
             return factoredLoads;
         }
 
@@ -45,7 +32,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             string perm = Utility.DescriptionHelper(PermanentCases, new Ratio(1, RatioUnit.DecimalFraction));
             string lead = Utility.DescriptionHelper(LeadingVariableCases, LeadingSeismicPartialFactor);
             string other = Utility.DescriptionHelper(
-                    AccompanyingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.QuasiPermanent);
+                AccompanyingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.QuasiPermanent);
             return Utility.JoinDescriptions(new string[] { perm, lead, other });
         }
     }

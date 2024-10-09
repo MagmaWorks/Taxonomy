@@ -7,34 +7,21 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public class CharacteristicCombination : ICharacteristicCombination
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         public string Definition => GetDefinition();
-        public IList<IPermanentCase> PermanentCases { get; set; }
-        public IList<IVariableCase> LeadingVariableCases { get; set; }
-        public IList<IVariableCase> AccompanyingVariableCases { get; set; }
+        public IList<IPermanentCase> PermanentCases { get; set; } = new List<IPermanentCase>();
+        public IList<IVariableCase> LeadingVariableCases { get; set; } = new List<IVariableCase>();
+        public IList<IVariableCase> AccompanyingVariableCases { get; set; } = new List<IVariableCase>();
 
         public CharacteristicCombination() { }
 
         public IList<ILoad> GetFactoredLoads()
         {
             var factoredLoads = new List<ILoad>();
-            if (PermanentCases != null)
-            {
-                factoredLoads.AddRange(Utility.GetLoads(PermanentCases));
-            }
-
-            if (LeadingVariableCases != null)
-            {
-                factoredLoads.AddRange(Utility.GetLoads(LeadingVariableCases));
-            }
-
-            if (AccompanyingVariableCases != null)
-            {
-                factoredLoads.AddRange(
-                    Utility.SelectAccompanyingVariableLoads(
-                        AccompanyingVariableCases, ld => ld.Characteristic));
-            }
-
+            factoredLoads.AddRange(Utility.GetLoads(PermanentCases));
+            factoredLoads.AddRange(Utility.GetLoads(LeadingVariableCases));
+            factoredLoads.AddRange(
+                Utility.SelectAccompanyingVariableLoads(AccompanyingVariableCases, ld => ld.Characteristic));
             return factoredLoads;
         }
 
@@ -43,7 +30,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             string perm = Utility.DescriptionHelper(PermanentCases, new Ratio(1, RatioUnit.DecimalFraction));
             string lead = Utility.DescriptionHelper(LeadingVariableCases, new Ratio(1, RatioUnit.DecimalFraction));
             string other = Utility.DescriptionHelper(
-                    AccompanyingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.Characteristic);
+                AccompanyingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.Characteristic);
             return Utility.JoinDescriptions(new string[] { perm, lead, other });
         }
     }

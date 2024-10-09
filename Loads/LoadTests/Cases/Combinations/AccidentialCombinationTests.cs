@@ -147,7 +147,7 @@ namespace CombinationTests
             Assert.Equal(2, combinations[0].PermanentCases.Count);
             Assert.Single(combinations[0].LeadingVariableCases);
             Assert.Equivalent(impact, combinations[0].LeadingVariableCases.FirstOrDefault());
-            Assert.Null(combinations[0].MainAccompanyingVariableCases);
+            Assert.Empty(combinations[0].MainAccompanyingVariableCases);
             Assert.Equal(4, combinations[0].OtherAccompanyingVariableCases.Count);
             Assert.Equal(1.5, combinations[0].LeadingAccidentialPartialFactor.DecimalFractions);
         }
