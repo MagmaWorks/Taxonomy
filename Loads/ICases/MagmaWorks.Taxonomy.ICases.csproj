@@ -49,6 +49,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Standards\IStandards\MagmaWorks.Taxonomy.IStandards.csproj" />
     <ProjectReference Include="..\ILoads\MagmaWorks.Taxonomy.ILoads.csproj" />
   </ItemGroup>
 

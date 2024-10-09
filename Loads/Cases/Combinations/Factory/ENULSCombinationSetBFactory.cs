@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MagmaWorks.Taxonomy.Loads.Cases;
+using MagmaWorks.Taxonomy.Loads.Combinations.EN;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
@@ -9,12 +10,6 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {
-        private static readonly Dictionary<NationalAnnex, TableA1Properties> EN1990_TableA1_2B = new()
-        {
-            { NationalAnnex.RecommendedValues, new TableA1Properties(1.35, 1.0, 1.5, 1.5, 0.85) },
-            { NationalAnnex.UnitedKingdom, new TableA1Properties(1.35, 1.0, 1.5, 1.5, 0.925) },
-        };
-
         public static IList<IMemberDesignCombination> CreateStrGeoSetB(IList<ILoadCase> cases, string prefix = "LC", int firstCaseId = 1)
         {
             return CreateStrGeoSetB(cases, NationalAnnex.RecommendedValues, true, prefix, firstCaseId);
@@ -34,12 +29,8 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
         private static IList<IMemberDesignCombination> CreateSTR6_10(IList<ILoadCase> cases, NationalAnnex nationalAnnex, string prefix = "LC", int firstCaseId = 1)
         {
+            TableA1_2Properties factors = new ENTableA1_2B().GetProperties(nationalAnnex);
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
-            if (!EN1990_TableA1_2B.TryGetValue(nationalAnnex, out TableA1Properties factors))
-            {
-                throw new System.NotImplementedException($"NA {nationalAnnex} not implemented for EN1990 Table A1.2(B) values");
-            };
-
             var combinations = new List<IMemberDesignCombination>();
             for (int i = 0; i < variables.Count; i++)
             {
@@ -76,12 +67,8 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
         private static IList<IMemberDesignCombination> CreateSTR6_10aAnd6_10b(IList<ILoadCase> cases, NationalAnnex nationalAnnex, string prefix = "LC", int firstCaseId = 1)
         {
+            TableA1_2Properties factors = new ENTableA1_2B().GetProperties(nationalAnnex);
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
-            if (!EN1990_TableA1_2B.TryGetValue(nationalAnnex, out TableA1Properties factors))
-            {
-                throw new System.NotImplementedException($"NA {nationalAnnex} not implemented for EN1990 Table A1.2(B) values");
-            };
-
             var combinations = new List<IMemberDesignCombination>();
             bool onlyOne6_10a = Equals(factors.Gamma_Q1, factors.Gamma_Qi);
             if (onlyOne6_10a)

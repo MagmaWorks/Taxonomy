@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MagmaWorks.Taxonomy.Loads.Cases;
+using MagmaWorks.Taxonomy.Loads.Combinations.EN;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
@@ -8,10 +9,10 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
     public static partial class ENCombinationFactory
     {
 
-        private static readonly Dictionary<NationalAnnex, TableA1Properties> EN1990_TableA1_2C = new()
+        private static readonly Dictionary<NationalAnnex, TableA1_2Properties> EN1990_TableA1_2C = new()
         {
-            { NationalAnnex.RecommendedValues, new TableA1Properties(1.0, 1.0, 1.3, 1.3) },
-            { NationalAnnex.UnitedKingdom, new TableA1Properties(1.0, 1.0, 1.3, 1.3) },
+            { NationalAnnex.RecommendedValues, new TableA1_2Properties(1.0, 1.0, 1.3, 1.3) },
+            { NationalAnnex.UnitedKingdom, new TableA1_2Properties(1.0, 1.0, 1.3, 1.3) },
         };
 
         public static IList<IGeotechnicalMemberDesignCombination> CreateStrGeoSetC(IList<ILoadCase> cases, string prefix = "LC", int firstCaseId = 1)
@@ -21,12 +22,8 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
         public static IList<IGeotechnicalMemberDesignCombination> CreateStrGeoSetC(IList<ILoadCase> cases, NationalAnnex nationalAnnex, string prefix = "LC", int firstCaseId = 1)
         {
+            TableA1_2Properties factors = new ENTableA1_2C().GetProperties(nationalAnnex);
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
-            if (!EN1990_TableA1_2C.TryGetValue(nationalAnnex, out TableA1Properties factors))
-            {
-                throw new System.NotImplementedException($"NA {nationalAnnex} not implemented for EN1990 Table A1.2(C) values");
-            };
-
             var combinations = new List<IGeotechnicalMemberDesignCombination>();
             for (int i = 0; i < variables.Count; i++)
             {

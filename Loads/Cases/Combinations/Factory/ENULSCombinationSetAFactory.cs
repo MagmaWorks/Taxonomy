@@ -1,17 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MagmaWorks.Taxonomy.Loads.Cases;
+using MagmaWorks.Taxonomy.Loads.Combinations.EN;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {
-        private static readonly Dictionary<NationalAnnex, TableA1Properties> EN1990_TableA1_2A = new()
-        {
-            { NationalAnnex.RecommendedValues, new TableA1Properties(1.1, 0.9, 1.5, 1.5) },
-            { NationalAnnex.UnitedKingdom, new TableA1Properties(1.1, 0.9, 1.5, 1.5) },
-        };
+        
 
         public static IList<IEquilibriumCombination> CreateEquSetA(IList<ILoadCase> cases)
         {
@@ -20,12 +17,8 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
         public static IList<IEquilibriumCombination> CreateEquSetA(IList<ILoadCase> cases, NationalAnnex nationalAnnex, string prefix = "LC", int firstCaseId = 1)
         {
+            TableA1_2Properties factors = new ENTableA1_2A().GetProperties(nationalAnnex);
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
-            if (!EN1990_TableA1_2A.TryGetValue(nationalAnnex, out TableA1Properties factors))
-            {
-                throw new System.NotImplementedException($"NA {nationalAnnex} not implemented for EN1990 Table A1.2(A) values");
-            };
-
             var combinations = new List<IEquilibriumCombination>();
             for (int i = 0; i < variables.Count; i++)
             {
