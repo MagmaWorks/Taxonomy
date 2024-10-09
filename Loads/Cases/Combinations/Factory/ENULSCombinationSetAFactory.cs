@@ -8,7 +8,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {
-        
+
 
         public static IList<IEquilibriumCombination> CreateEquSetA(IList<ILoadCase> cases)
         {
