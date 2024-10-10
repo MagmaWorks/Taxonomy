@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Stages.AB89
 {
-    public class Byggeprogram : IPredesign
+    public class Byggeprogram : IIdea
     {
         public string Name => _name;
         public string Description => _description;
