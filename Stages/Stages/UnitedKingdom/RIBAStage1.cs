@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Stages.RIBA
 {
-    public class RIBAStage1 : IPredesign
+    public class RIBAStage1 : IBrief
     {
         public string Name => _name;
         public string Description => _description;

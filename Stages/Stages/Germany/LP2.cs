@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Stages.HOAI
 {
-    public class LP2 : IPredesign
+    public class LP2 : IBrief
     {
         public string Name => _name;
         public string Description => _description;
