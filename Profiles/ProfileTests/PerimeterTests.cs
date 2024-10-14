@@ -3,8 +3,6 @@ using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
 using OasysUnits;
 using OasysUnits.Units;
-using ProfileTests.Utility;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProfileTests
 {
