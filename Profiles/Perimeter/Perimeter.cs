@@ -9,6 +9,8 @@ namespace MagmaWorks.Taxonomy.Profiles
         public ILocalPolygon2d OuterEdge { get; set; }
         public IList<ILocalPolygon2d> VoidEdges { get; set; }
 
+        private Perimeter() { }
+
         public Perimeter(ILocalPolygon2d edge)
         {
             OuterEdge = edge;

@@ -8,6 +8,11 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
     {
         public static IPerimeter CreatePerimeter(IProfile profile)
         {
+            if (profile is IPerimeter perimeter)
+            {
+                return perimeter;
+            }
+
             int divisions = 8;
             Length tolerance = new Length(10, LengthUnit.Millimeter);
             Length diameter = Length.Zero;
@@ -82,7 +87,7 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
                 case IZ z:
                     return CreateZ(z);
 
-                default: throw new ArgumentNullException(nameof(profile));
+                default: throw new ArgumentException($"Unable to convert type {profile.GetType().Name} to IPerimeter");
             }
         }
 
