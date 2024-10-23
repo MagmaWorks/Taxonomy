@@ -23,8 +23,8 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
             for (int i = divisions + 1; i-- > 0;)
             {
                 pts.Add(new LocalPoint2d(
-                    factorU * radius * Math.Cos(radian * i),
-                    factorV * radius * Math.Sin(radian * i))
+                    factorU * radius * Math.Round(Math.Cos(radian * i), 15),
+                    factorV * radius * Math.Round(Math.Sin(radian * i), 15))
                 );
             }
 
