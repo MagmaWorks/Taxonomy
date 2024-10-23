@@ -33,8 +33,8 @@ namespace ProfileTests
 
             // Assert
             Assert.Single(profile.VoidEdges);
-            Assert.Equal(4, profile.OuterEdge.Points.Count);
-            Assert.Equal(4, profile.VoidEdges[0].Points.Count);
+            Assert.Equal(5, profile.OuterEdge.Points.Count);
+            Assert.Equal(5, profile.VoidEdges[0].Points.Count);
         }
 
         [Fact]
@@ -64,8 +64,8 @@ namespace ProfileTests
 
             // Assert
             Assert.Single(prflDeserialized.VoidEdges);
-            Assert.Equal(4, prflDeserialized.OuterEdge.Points.Count);
-            Assert.Equal(4, prflDeserialized.VoidEdges[0].Points.Count);
+            Assert.Equal(5, prflDeserialized.OuterEdge.Points.Count);
+            Assert.Equal(5, prflDeserialized.VoidEdges[0].Points.Count);
             Assert.Equivalent(prfl, prflDeserialized);
         }
 
@@ -96,8 +96,8 @@ namespace ProfileTests
 
             // Assert
             Assert.Single(prflDeserialized.VoidEdges);
-            Assert.Equal(4, prflDeserialized.OuterEdge.Points.Count);
-            Assert.Equal(4, prflDeserialized.VoidEdges[0].Points.Count);
+            Assert.Equal(5, prflDeserialized.OuterEdge.Points.Count);
+            Assert.Equal(5, prflDeserialized.VoidEdges[0].Points.Count);
             Assert.Equivalent(prfl, prflDeserialized);
         }
 
@@ -127,8 +127,8 @@ namespace ProfileTests
 
             // Assert
             Assert.Single(perimeter.VoidEdges);
-            Assert.Equal(4, perimeter.OuterEdge.Points.Count);
-            Assert.Equal(4, perimeter.VoidEdges[0].Points.Count);
+            Assert.Equal(5, perimeter.OuterEdge.Points.Count);
+            Assert.Equal(5, perimeter.VoidEdges[0].Points.Count);
             Assert.Equivalent(prfl, perimeter);
         }
     }

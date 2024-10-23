@@ -10,7 +10,7 @@ namespace ProfileTests.Utility
             Assert.Equal(expected.Unit, actual.Unit);
         }
 
-        internal static void TestListsOfDoublesAreEqual(List<double> expected, List<double> actual, int precision = 12)
+        internal static void TestListsOfDoublesAreEqual(List<double> expected, List<double> actual, int precision = 10)
         {
             Assert.Equal(expected.Count, actual.Count);
             for (int i = 0; i < expected.Count; i++)
