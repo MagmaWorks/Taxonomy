@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
 using MagmaWorks.Geometry;
 using OasysUnits;
 
@@ -6,8 +8,29 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public class Perimeter : IPerimeter
     {
-        public ILocalPolygon2d OuterEdge { get; set; }
-        public IList<ILocalPolygon2d> VoidEdges { get; set; }
+        public ILocalPolygon2d OuterEdge
+        {
+            get { return _outerEdge; }
+            set
+            {
+                _outerEdge = EnsureClosedPolygon(value);
+            }
+        }
+
+        public IList<ILocalPolygon2d> VoidEdges
+        {
+            get { return _voidEdges; }
+            set
+            {
+                if (value != null)
+                {
+                    _voidEdges = value.Select(edge => EnsureClosedPolygon(edge)).ToList();
+                }
+            }
+        }
+
+        private ILocalPolygon2d _outerEdge;
+        private IList<ILocalPolygon2d> _voidEdges;
 
         private Perimeter() { }
 
@@ -49,6 +72,18 @@ namespace MagmaWorks.Taxonomy.Profiles
             where T : IProfile, IBackToBack
         {
             return PerimeterFactory.PerimeterFactory.CreateBackToBackPerimeters(profile);
+        }
+
+        private static ILocalPolygon2d EnsureClosedPolygon(ILocalPolygon2d polygon)
+        {
+            if (polygon.IsClosed)
+            {
+                return polygon;
+            }
+
+            var closed = new LocalPolygon2d(polygon.Points);
+            closed.Points.Add(closed.Points[0]);
+            return closed;
         }
     }
 }
