@@ -26,7 +26,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="OasysUnits" Version="1.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +48,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Serialization\ISerialization\MagmaWorks.Taxonomy.ISerialization.csproj" />
     <ProjectReference Include="..\..\Standards\IStandards\MagmaWorks.Taxonomy.IStandards.csproj" />
     <ProjectReference Include="..\ILoads\MagmaWorks.Taxonomy.ILoads.csproj" />
   </ItemGroup>

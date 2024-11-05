@@ -29,6 +29,7 @@
     <ProjectReference Include="..\..\Profiles\CatalogueProfiles\MagmaWorks.Taxonomy.Profiles.Catalogue.csproj" />
     <ProjectReference Include="..\..\Profiles\IProfiles\MagmaWorks.Taxonomy.IProfiles.csproj" />
     <ProjectReference Include="..\..\Profiles\Profiles\MagmaWorks.Taxonomy.Profiles.csproj" />
+    <ProjectReference Include="..\..\Serialization\Serialization\MagmaWorks.Taxonomy.Serialization.csproj" />
     <ProjectReference Include="..\..\Standards\Standards\MagmaWorks.Taxonomy.Standards.csproj" />
     <ProjectReference Include="..\ISections\MagmaWorks.Taxonomy.ISections.csproj" />
     <ProjectReference Include="..\Sections\MagmaWorks.Taxonomy.Sections.csproj" />

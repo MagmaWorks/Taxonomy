@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
-    <PackageReference Include="OasysUnits.Serialization.JsonNet" Version="1.1.1" />
     <PackageReference Include="xunit" Version="2.9.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0-pre.42">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Serialization\Serialization\MagmaWorks.Taxonomy.Serialization.csproj" />
     <ProjectReference Include="..\CatalogueProfiles\MagmaWorks.Taxonomy.Profiles.Catalogue.csproj" />
     <ProjectReference Include="..\IProfiles\MagmaWorks.Taxonomy.IProfiles.csproj" />
     <ProjectReference Include="..\Profiles\MagmaWorks.Taxonomy.Profiles.csproj" />

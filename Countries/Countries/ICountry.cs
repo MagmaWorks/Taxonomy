@@ -1,6 +1,8 @@
-﻿namespace MagmaWorks.Taxonomy.Countries
+﻿using MagmaWorks.Taxonomy.Serialization;
+
+namespace MagmaWorks.Taxonomy.Countries
 {
-    public interface ICountry
+    public interface ICountry : ITaxonomySerializable
     {
         /// <summary>
         /// Country name

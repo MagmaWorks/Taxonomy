@@ -1,8 +1,9 @@
-﻿using OasysUnits;
+﻿using MagmaWorks.Taxonomy.Serialization;
+using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface ILoad
+    public interface ILoad : ITaxonomySerializable
     {
         string Label { get; }
         ILoad Factor(Ratio factor);

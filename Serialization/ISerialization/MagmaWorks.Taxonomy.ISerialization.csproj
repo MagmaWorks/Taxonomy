@@ -9,11 +9,11 @@
     <TargetFrameworks>net48;netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
     <LangVersion>9.0</LangVersion>
     <Platforms>AnyCPU</Platforms>
-    <RootNamespace>MagmaWorks.Taxonomy.Stages</RootNamespace>
+    <RootNamespace>MagmaWorks.Taxonomy.Serialization</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>MagmaWorks Taxonomy Stage Interfaces</Title>
+    <Title>MagmaWorks Taxonomy Serialization Interfaces</Title>
     <Company>Whitby Wood</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -37,15 +37,14 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+    <None Include="..\..\Licenses\UnitsNet">
+      <Pack>True</Pack>
+      <PackagePath>\Licenses\</PackagePath>
+    </None>
     <None Include="..\..\MagmaWorks.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Countries\Countries\MagmaWorks.Taxonomy.Countries.csproj" />
-    <ProjectReference Include="..\..\Serialization\ISerialization\MagmaWorks.Taxonomy.ISerialization.csproj" />
   </ItemGroup>
 
 </Project>

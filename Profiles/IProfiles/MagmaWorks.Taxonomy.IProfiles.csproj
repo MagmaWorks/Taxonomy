@@ -48,4 +48,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Serialization\ISerialization\MagmaWorks.Taxonomy.ISerialization.csproj" />
+  </ItemGroup>
+
 </Project>
