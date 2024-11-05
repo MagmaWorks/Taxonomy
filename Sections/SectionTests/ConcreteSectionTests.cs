@@ -18,15 +18,17 @@ namespace SectionTests
             IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
             IList<ILongitudinalReinforcement> rebars = LongitudinalReinforcementTests.CreateLongitudinalReinforcements();
             IRebar link = RebarTests.CreateRebar(8);
+            Length cover = new Length(20, LengthUnit.Millimeter);
 
             // Act
-            IConcreteSection section = new ConcreteSection(material, profile, rebars, link);
+            IConcreteSection section = new ConcreteSection(material, profile, rebars, link, cover);
 
             // Assert
             Assert.Equivalent(profile, section.Profile);
             Assert.Equivalent(material, section.Material);
             Assert.Equivalent(rebars, section.Rebars);
             Assert.Equivalent(link, section.Link);
+            Assert.Equivalent(cover, section.Cover);
         }
 
 
