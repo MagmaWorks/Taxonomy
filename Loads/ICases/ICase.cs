@@ -1,6 +1,8 @@
-﻿namespace MagmaWorks.Taxonomy.Loads
+﻿using MagmaWorks.Taxonomy.Serialization;
+
+namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface ICase
+    public interface ICase : ITaxonomySerializable
     {
         string Name { get; }
     }

@@ -1,6 +1,8 @@
-﻿namespace MagmaWorks.Taxonomy.Stages
+﻿using MagmaWorks.Taxonomy.Serialization;
+
+namespace MagmaWorks.Taxonomy.Stages
 {
-    public interface IStage
+    public interface IStage : ITaxonomySerializable
     {
         string Name { get; }
         string Description { get; }

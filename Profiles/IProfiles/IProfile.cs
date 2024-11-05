@@ -1,4 +1,6 @@
-﻿namespace MagmaWorks.Taxonomy.Profiles
+﻿using MagmaWorks.Taxonomy.Serialization;
+
+namespace MagmaWorks.Taxonomy.Profiles
 {
-    public interface IProfile { }
+    public interface IProfile : ITaxonomySerializable { }
 }
