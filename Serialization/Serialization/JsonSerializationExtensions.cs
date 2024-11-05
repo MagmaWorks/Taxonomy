@@ -8,7 +8,7 @@ namespace MagmaWorks.Taxonomy.Serialization
         {
             if (settings == null)
             {
-                return JsonConvert.SerializeObject(taxonomyObject, Formatting.Indented, TaxonomyJsonSerializer.Settings);
+                settings = TaxonomyJsonSerializer.Settings;
             }
 
             return JsonConvert.SerializeObject(taxonomyObject, Formatting.Indented, settings);
@@ -18,7 +18,7 @@ namespace MagmaWorks.Taxonomy.Serialization
         {
             if (settings == null)
             {
-                return JsonConvert.DeserializeObject<T>(json, TaxonomyJsonSerializer.Settings);
+                settings = TaxonomyJsonSerializer.Settings;
             }
 
             return JsonConvert.DeserializeObject<T>(json, settings);
