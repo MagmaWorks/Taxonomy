@@ -1,12 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <MinVerMinimumMajorMinor>0.0</MinVerMinimumMajorMinor>
     <MinVerDefaultPreReleaseIdentifiers>preview</MinVerDefaultPreReleaseIdentifiers>
   </PropertyGroup>
@@ -19,7 +13,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>MagmaWorks Taxonomy Serialization Interfaces</Title>
+    <Title>MagmaWorks Taxonomy Serialization</Title>
     <Company>Whitby Wood</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -32,17 +26,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="OasysUnits.Serialization.JsonNet" Version="1.1.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ISerialization\MagmaWorks.Taxonomy.ISerialization.csproj" />
-  </ItemGroup>
-  
   <ItemGroup>
     <None Include="..\..\README.md">
       <Pack>True</Pack>
@@ -60,6 +46,10 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ISerialization\MagmaWorks.Taxonomy.ISerialization.csproj" />
   </ItemGroup>
 
 </Project>
