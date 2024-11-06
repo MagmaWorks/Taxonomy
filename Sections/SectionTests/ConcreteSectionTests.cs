@@ -1,4 +1,5 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Serialization.Sections.Extensions;
@@ -14,7 +15,7 @@ namespace SectionTests
         public void CreateConcreteSectionTest()
         {
             // Assemble
-            IStandardMaterial material = ENConcreteFactory.CreateStandardMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
+            IStandardMaterial material = new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
             IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
             IList<ILongitudinalReinforcement> rebars = LongitudinalReinforcementTests.CreateLongitudinalReinforcements();
             IRebar link = RebarTests.CreateRebar(8);

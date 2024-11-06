@@ -1,4 +1,5 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
@@ -11,7 +12,7 @@ namespace SectionTests
         public static IRebar CreateRebar(double dia = 20)
         {
             // Assemble
-            IStandardMaterial material = ENRebarFactory.CreateStandardMaterial(ENRebarGrade.B500B, NationalAnnex.Germany);
+            IStandardMaterial material = new ENRebarMaterial(ENRebarGrade.B500B, NationalAnnex.Germany);
             Length diameter = new Length(dia, LengthUnit.Millimeter);
 
             // Act
@@ -22,7 +23,7 @@ namespace SectionTests
         public void CreateRebarTest()
         {
             // Assemble
-            IStandardMaterial expectedMaterial = ENRebarFactory.CreateStandardMaterial(ENRebarGrade.B500B, NationalAnnex.Germany);
+            IStandardMaterial expectedMaterial = new ENRebarMaterial(ENRebarGrade.B500B, NationalAnnex.Germany);
 
             // Act
             IRebar rebar = CreateRebar();
