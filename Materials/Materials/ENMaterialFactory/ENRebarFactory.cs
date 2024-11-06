@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Linq;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Materials
+namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
 {
     public static class ENRebarFactory
     {
-        public static IStandardMaterial CreateStandardMaterial(ENRebarGrade grade, NationalAnnex nationalAnnex)
-        {
-            IEurocode standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
-            return new StandardMaterial(MaterialType.Reinforcement, standard, grade);
-        }
-
         public static ILinearElasticMaterial CreateLinearElastic(ENRebarGrade grade)
         {
             MaterialType type = MaterialType.Reinforcement;

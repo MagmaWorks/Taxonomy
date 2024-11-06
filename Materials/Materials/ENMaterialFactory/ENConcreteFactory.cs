@@ -1,18 +1,11 @@
 ﻿using System;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Materials
+namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
 {
     public static class ENConcreteFactory
     {
-        public static IStandardMaterial CreateStandardMaterial(ENConcreteGrade grade, NationalAnnex nationalAnnex)
-        {
-            IEurocode standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
-            return new StandardMaterial(MaterialType.Concrete, standard, grade);
-        }
-
         public static ILinearElasticMaterial CreateLinearElastic(ENConcreteGrade grade)
         {
             MaterialType type = MaterialType.Concrete;

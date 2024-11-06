@@ -1,4 +1,5 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
@@ -16,7 +17,7 @@ namespace MaterialTests
             ENRebarGrade grade = ENRebarGrade.B500B;
 
             // Act
-            IStandardMaterial material = ENRebarFactory.CreateStandardMaterial(grade, nationalAnnex);
+            IStandardMaterial material = new ENRebarMaterial(grade, nationalAnnex);
 
             // Assert
             Assert.Equal(MaterialType.Reinforcement, material.Type);
