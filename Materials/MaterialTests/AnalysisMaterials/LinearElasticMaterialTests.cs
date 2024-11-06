@@ -2,7 +2,7 @@ using MagmaWorks.Taxonomy.Materials;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MaterialTests
+namespace MaterialTests.AnalysisMaterials
 {
     public class LinearElasticMaterialTests
     {

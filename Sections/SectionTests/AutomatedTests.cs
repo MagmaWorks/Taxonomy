@@ -3,9 +3,11 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Serialization.Sections.Extensions;
+using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 
 namespace SectionTests
@@ -32,8 +34,7 @@ namespace SectionTests
         {
             get
             {
-                return ENConcreteFactory.CreateStandardMaterial(
-            ENConcreteGrade.C30_37, MagmaWorks.Taxonomy.Standards.Eurocode.NationalAnnex.RecommendedValues);
+                return new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.RecommendedValues);
             }
         }
         private static IProfile _profile { get { return new HE320B(); } }

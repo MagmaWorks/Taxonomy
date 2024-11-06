@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Materials
+namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
 {
     public static class ENSteelFactory
     {
-        public static IStandardMaterial CreateStandardMaterial(ENSteelGrade grade, NationalAnnex nationalAnnex)
-        {
-            IEurocode standard = new EN1993(EN1993Part.Part1_1, nationalAnnex);
-            return new StandardMaterial(MaterialType.Steel, standard, grade);
-        }
-
-        public static ILinearElasticMaterial CreateLinearElastic(ENSteelGrade grade)
+        public static ILinearElasticMaterial CreateLinearElastic<T>(T grade) where T : Enum
         {
             MaterialType type = MaterialType.Steel;
             Pressure elasticModulus = new Pressure(210, PressureUnit.Gigapascal);
@@ -80,7 +73,7 @@ namespace MagmaWorks.Taxonomy.Materials
             return new BiLinearMaterial(material, ultimateStrength, failureStrain);
         }
 
-        private static readonly Dictionary<ENSteelGrade, Table3_1Properties> EN1993_1_1_Table3_1 = new()
+        private static readonly Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1 = new()
         {
             { ENSteelGrade.S235, new Table3_1Properties(235, 360, 215, 360) },
             { ENSteelGrade.S275, new Table3_1Properties(275, 430, 255, 410) },

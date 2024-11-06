@@ -1,35 +1,18 @@
 using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
-using OasysUnits.Units;
 
-namespace MaterialTests
+namespace MaterialTests.AnalysisMaterials
 {
     public class LinearElasticMaterialFactoryTests
     {
-        [Fact]
-        public void CreateFromSelfTests()
-        {
-            // Assemble
-            MaterialType type = MaterialType.Timber;
-            Pressure elasticModulus = new Pressure(8100, PressureUnit.Megapascal);
-            Pressure strength = new Pressure(32, PressureUnit.Megapascal);
-            ILinearElasticMaterial original = new LinearElasticMaterial(type, elasticModulus, strength);
-
-            // Act
-            ILinearElasticMaterial material = AnalysisMaterialFactory.CreateLinearElastic(original);
-
-            // Assert
-            Assert.Equivalent(original, material);
-        }
-
         [Fact]
         public void CreateFromENConcreteTests()
         {
             // Assemble
             NationalAnnex nationalAnnex = NationalAnnex.RecommendedValues;
             ENConcreteGrade grade = ENConcreteGrade.C30_37;
-            IStandardMaterial original = ENConcreteFactory.CreateStandardMaterial(grade, nationalAnnex);
+            IENConcreteMaterial original = new ENConcreteMaterial(grade, nationalAnnex);
 
             // Act
             ILinearElasticMaterial material = AnalysisMaterialFactory.CreateLinearElastic(original);
@@ -53,7 +36,7 @@ namespace MaterialTests
             // Assemble
             NationalAnnex nationalAnnex = NationalAnnex.RecommendedValues;
             ENRebarGrade grade = ENRebarGrade.B500B;
-            IStandardMaterial original = ENRebarFactory.CreateStandardMaterial(grade, nationalAnnex);
+            IENRebarMaterial original = new ENRebarMaterial(grade, nationalAnnex);
 
             // Act
             ILinearElasticMaterial material = AnalysisMaterialFactory.CreateLinearElastic(original);
@@ -74,7 +57,7 @@ namespace MaterialTests
             // Assemble
             NationalAnnex nationalAnnex = NationalAnnex.RecommendedValues;
             ENSteelGrade grade = ENSteelGrade.S355;
-            IStandardMaterial original = ENSteelFactory.CreateStandardMaterial(grade, nationalAnnex);
+            IENSteelMaterial original = new ENSteelMaterial(grade, nationalAnnex);
 
             // Act
             ILinearElasticMaterial material = AnalysisMaterialFactory.CreateLinearElastic(original);

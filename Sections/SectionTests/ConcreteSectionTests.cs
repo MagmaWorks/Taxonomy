@@ -1,4 +1,5 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Serialization.Sections.Extensions;
@@ -14,7 +15,7 @@ namespace SectionTests
         public void CreateConcreteSectionTest()
         {
             // Assemble
-            IStandardMaterial material = ENConcreteFactory.CreateStandardMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
+            IENConcreteMaterial material = new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
             IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
             IList<ILongitudinalReinforcement> rebars = LongitudinalReinforcementTests.CreateLongitudinalReinforcements();
             IRebar link = RebarTests.CreateRebar(8);
@@ -32,23 +33,23 @@ namespace SectionTests
         }
 
 
-        // TO-DO: add custom JSON converter for IStandardMaterial grade enum
-        //[Fact]
-        //public void InterfaceSurvivesRoundtripDeserializationTest()
-        //{
-        //    // Assemble
-        //    IStandardMaterial material = ENConcreteFactory.CreateStandardMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
-        //    IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
-        //    IList<ILongitudinalReinforcement> rebars = LongitudinalReinforcementTests.CreateLongitudinalReinforcements();
-        //    IRebar link = RebarTests.CreateRebar(8);
-        //    IConcreteSection section = new ConcreteSection(material, profile, rebars, link);
+        [Fact]
+        public void InterfaceSurvivesRoundtripDeserializationTest()
+        {
+            // Assemble
+            IENConcreteMaterial material = new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
+            IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
+            IList<ILongitudinalReinforcement> rebars = LongitudinalReinforcementTests.CreateLongitudinalReinforcements();
+            IRebar link = RebarTests.CreateRebar(8);
+            Length cover = new Length(20, LengthUnit.Millimeter);
+            IConcreteSection section = new ConcreteSection(material, profile, rebars, link, cover);
 
-        //    // Act
-        //    string json = section.ToJson();
-        //    IConcreteSection sectDeserialized = json.FromJson<IConcreteSection>();
+            // Act
+            string json = section.ToJson();
+            IConcreteSection sectDeserialized = json.FromJson<IConcreteSection>();
 
-        //    // Assert
-        //    Assert.Equivalent(section, sectDeserialized);
-        //}
+            // Assert
+            Assert.Equivalent(section, sectDeserialized);
+        }
     }
 }
