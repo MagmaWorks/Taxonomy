@@ -15,7 +15,7 @@ namespace SectionTests
         public void CreateSteelSectionTest()
         {
             // Assemble
-            IStandardMaterial material = new ENSteelMaterial(ENSteelGrade.S355, NationalAnnex.UnitedKingdom);
+            IENSteelMaterial material = new ENSteelMaterial(ENSteelGrade.S355, NationalAnnex.UnitedKingdom);
             ICatalogue profile = new HE500B();
 
             // Act

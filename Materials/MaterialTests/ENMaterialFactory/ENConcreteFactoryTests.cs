@@ -5,7 +5,7 @@ using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MaterialTests
+namespace MaterialTests.StandardMaterials
 {
     public class ENConcreteFactoryTests
     {
@@ -17,7 +17,7 @@ namespace MaterialTests
             ENConcreteGrade grade = ENConcreteGrade.C30_37;
 
             // Act
-            IStandardMaterial material = new ENConcreteMaterial(grade, nationalAnnex);
+            IENConcreteMaterial material = new ENConcreteMaterial(grade, nationalAnnex);
 
             // Assert
             Assert.Equal(MaterialType.Concrete, material.Type);

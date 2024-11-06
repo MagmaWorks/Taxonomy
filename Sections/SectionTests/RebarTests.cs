@@ -12,7 +12,7 @@ namespace SectionTests
         public static IRebar CreateRebar(double dia = 20)
         {
             // Assemble
-            IStandardMaterial material = new ENRebarMaterial(ENRebarGrade.B500B, NationalAnnex.Germany);
+            IENRebarMaterial material = new ENRebarMaterial(ENRebarGrade.B500B, NationalAnnex.Germany);
             Length diameter = new Length(dia, LengthUnit.Millimeter);
 
             // Act
@@ -23,7 +23,7 @@ namespace SectionTests
         public void CreateRebarTest()
         {
             // Assemble
-            IStandardMaterial expectedMaterial = new ENRebarMaterial(ENRebarGrade.B500B, NationalAnnex.Germany);
+            IENRebarMaterial expectedMaterial = new ENRebarMaterial(ENRebarGrade.B500B, NationalAnnex.Germany);
 
             // Act
             IRebar rebar = CreateRebar();

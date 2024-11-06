@@ -1,7 +1,7 @@
 using MagmaWorks.Taxonomy.Materials;
 using OasysUnits;
 
-namespace MaterialTests
+namespace MaterialTests.AnalysisMaterials
 {
     public class ElastoPlasticMaterialTests
     {

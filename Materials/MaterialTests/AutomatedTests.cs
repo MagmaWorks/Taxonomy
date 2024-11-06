@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
 using MagmaWorks.Taxonomy.Serialization.Materials.Extensions;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
@@ -16,7 +17,6 @@ namespace MaterialTests
         // Add manual tests of these class' constructors instead
         private static readonly List<Type> _excludedTypes =
         [
-            typeof(StandardMaterial)
         ];
 
         // static inputs used to populate constructor variables
@@ -77,7 +77,7 @@ namespace MaterialTests
             private static List<object[]> GetAllComponents()
             {
                 var data = new List<object[]>();
-                Type[] typelist = Assembly.GetAssembly(typeof(StandardMaterial)).GetTypes();
+                Type[] typelist = Assembly.GetAssembly(typeof(ENConcreteMaterial)).GetTypes();
                 foreach (Type type in typelist)
                 {
                     if (type.Namespace == null)
@@ -232,10 +232,10 @@ namespace MaterialTests
             }
 
             // reflect on assembly to find concrete implementation of interface
-            AssemblyName[] referencedNames = Assembly.GetAssembly(typeof(StandardMaterial)).GetReferencedAssemblies();
+            AssemblyName[] referencedNames = Assembly.GetAssembly(typeof(ENConcreteMaterial)).GetReferencedAssemblies();
             List<Assembly> assemblies = new List<Assembly>()
             {
-                Assembly.GetAssembly(typeof(StandardMaterial))
+                Assembly.GetAssembly(typeof(ENConcreteMaterial))
             };
             assemblies.AddRange(referencedNames.Select(a => Assembly.Load(a)).ToList());
 
