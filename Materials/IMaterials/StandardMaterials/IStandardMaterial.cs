@@ -3,9 +3,10 @@ using MagmaWorks.Taxonomy.Standards;
 
 namespace MagmaWorks.Taxonomy.Materials
 {
-    public interface IStandardMaterial : IMaterial
+    public interface IStandardMaterial<Std, Grd> : IMaterial
+        where Grd : Enum where Std : IStandard
     {
-        IStandard Standard { get; }
-        Enum Grade { get; }
+        Std Standard { get; }
+        Grd Grade { get; }
     }
 }

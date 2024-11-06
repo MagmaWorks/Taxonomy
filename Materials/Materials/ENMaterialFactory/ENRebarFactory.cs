@@ -7,7 +7,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
 {
     public static class ENRebarFactory
     {
-        public static ILinearElasticMaterial CreateLinearElastic(ENRebarGrade grade)
+        public static ILinearElasticMaterial CreateLinearElastic<T>(T grade) where T : Enum
         {
             MaterialType type = MaterialType.Reinforcement;
             double strength = double.Parse(string.Concat(grade.ToString().Where(Char.IsDigit)));

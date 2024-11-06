@@ -5,15 +5,19 @@ using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
 {
-    public class ENSteelMaterial : StandardMaterial, IENSteelMaterial
+    public class ENSteelMaterial : IENSteelMaterial
     {
-        public Ratio PartialFactor { get; private set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
-        public Ratio MemberInstabilityPartialFactor { get; private set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
-        public Ratio TensionFracturePartialFactor { get; private set; } = new Ratio(1.25, RatioUnit.DecimalFraction);
+        public ENSteelGrade Grade { get; set; } = ENSteelGrade.S355;
+        public IEurocode Standard { get; set; } = new EN1993(EN1993Part.Part1_1, NationalAnnex.RecommendedValues);
+        public MaterialType Type => MaterialType.Steel;
+        public Ratio PartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
+        public Ratio MemberInstabilityPartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
+        public Ratio TensionFracturePartialFactor { get; set; } = new Ratio(1.25, RatioUnit.DecimalFraction);
 
         public ENSteelMaterial(ENSteelGrade grade, NationalAnnex nationalAnnex)
-            : base(MaterialType.Steel, new EN1993(EN1993Part.Part1_1, nationalAnnex), grade)
         {
+            Standard = new EN1993(EN1993Part.Part1_1, nationalAnnex);
+            Grade = grade;
             SetPartialFactors(nationalAnnex);
         }
 

@@ -2,7 +2,7 @@
 
 namespace MagmaWorks.Taxonomy.Materials
 {
-    public interface IENSteelMaterial : IStandardMaterial
+    public interface IENSteelMaterial : IENMaterial<ENSteelGrade>
     {
         /// <summary>
         /// γM0 partial factor for resistance of cross-sections whatever the class is

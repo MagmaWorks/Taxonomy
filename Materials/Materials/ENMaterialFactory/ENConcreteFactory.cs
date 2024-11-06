@@ -6,7 +6,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
 {
     public static class ENConcreteFactory
     {
-        public static ILinearElasticMaterial CreateLinearElastic(ENConcreteGrade grade)
+        public static ILinearElasticMaterial CreateLinearElastic<T>(T grade) where T : Enum
         {
             MaterialType type = MaterialType.Concrete;
             double strength = double.Parse(grade.ToString().Split('C', '_')[1]);

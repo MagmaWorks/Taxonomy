@@ -5,16 +5,20 @@ using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
 {
-    public class ENConcreteMaterial : StandardMaterial, IENConcreteMaterial
+    public class ENConcreteMaterial : IENConcreteMaterial
     {
-        public Ratio PartialFactor { get; private set; } = new Ratio(1.5, RatioUnit.DecimalFraction);
-        public Ratio AccidentialPartialFactor { get; private set; } = new Ratio(1.2, RatioUnit.DecimalFraction);
-        public Ratio LongTermCompressionFactor { get; private set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
-        public Ratio LongTermTensionFactor { get; private set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
+        public ENConcreteGrade Grade { get; set; } = ENConcreteGrade.C30_37;
+        public IEurocode Standard { get; set; } = new EN1992(EN1992Part.Part1_1, NationalAnnex.RecommendedValues);
+        public MaterialType Type => MaterialType.Concrete;
+        public Ratio PartialFactor { get; set; } = new Ratio(1.5, RatioUnit.DecimalFraction);
+        public Ratio AccidentialPartialFactor { get; set; } = new Ratio(1.2, RatioUnit.DecimalFraction);
+        public Ratio LongTermCompressionFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
+        public Ratio LongTermTensionFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
 
         public ENConcreteMaterial(ENConcreteGrade grade, NationalAnnex nationalAnnex)
-            : base(MaterialType.Concrete, new EN1992(EN1992Part.Part1_1, nationalAnnex), grade)
         {
+            Standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
+            Grade = grade;
             SetPartialFactors(nationalAnnex);
         }
 

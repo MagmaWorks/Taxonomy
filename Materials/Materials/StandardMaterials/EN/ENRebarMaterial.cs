@@ -5,14 +5,18 @@ using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
 {
-    public class ENRebarMaterial : StandardMaterial, IENRebarMaterial
+    public class ENRebarMaterial : IENRebarMaterial
     {
-        public Ratio PartialFactor { get; private set; } = new Ratio(1.15, RatioUnit.DecimalFraction);
-        public Ratio AccidentialPartialFactor { get; private set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
+        public ENRebarGrade Grade { get; set; } = ENRebarGrade.B500B;
+        public IEurocode Standard { get; set; } = new EN1992(EN1992Part.Part1_1, NationalAnnex.RecommendedValues);
+        public MaterialType Type => MaterialType.Reinforcement;
+        public Ratio PartialFactor { get; set; } = new Ratio(1.15, RatioUnit.DecimalFraction);
+        public Ratio AccidentialPartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
 
         public ENRebarMaterial(ENRebarGrade grade, NationalAnnex nationalAnnex)
-            : base(MaterialType.Reinforcement, new EN1992(EN1992Part.Part1_1, nationalAnnex), grade)
         {
+            Standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
+            Grade = grade;
             SetPartialFactors(nationalAnnex);
         }
 

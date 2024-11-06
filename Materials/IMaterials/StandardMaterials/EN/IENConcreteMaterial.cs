@@ -2,7 +2,7 @@
 
 namespace MagmaWorks.Taxonomy.Materials
 {
-    public interface IENConcreteMaterial : IStandardMaterial
+    public interface IENConcreteMaterial : IENMaterial<ENConcreteGrade>
     {
         /// <summary>
         /// γc partial factor for concrete in Persistent and Transient design situations
