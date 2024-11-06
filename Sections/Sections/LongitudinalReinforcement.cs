@@ -9,6 +9,8 @@ namespace MagmaWorks.Taxonomy.Sections
         public ILocalPoint2d Position { get; set; }
         public IRebar Rebar { get; set; }
 
+        private LongitudinalReinforcement() { }
+
         public LongitudinalReinforcement(IRebar rebar, ILocalPoint2d position)
         {
             Rebar = rebar;
