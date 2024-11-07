@@ -4,6 +4,9 @@ namespace MagmaWorks.Taxonomy.Materials
 {
     public interface IENConcreteMaterial : IENMaterial<ENConcreteGrade>
     {
+        ENConcreteExposureClass ExposureClass { get; }
+        Length MaximumAggregateSize { get; }
+
         /// <summary>
         /// γc partial factor for concrete in Persistent and Transient design situations
         /// </summary>

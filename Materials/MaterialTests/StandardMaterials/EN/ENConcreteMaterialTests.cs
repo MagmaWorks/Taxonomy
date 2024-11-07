@@ -3,6 +3,8 @@ using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
 using MagmaWorks.Taxonomy.Serialization.Materials.Extensions;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
+using OasysUnits;
+using OasysUnits.Units;
 
 namespace MaterialTests.StandardMaterials.EN
 {
@@ -25,7 +27,29 @@ namespace MaterialTests.StandardMaterials.EN
             Assert.Equal(
                 "BS EN 1992-1-1: Eurocode 2: Design of Concrete Structures - Part 1-1: General rules and rules for buildings",
                 material.Standard.Title);
+            Assert.Equal(NationalAnnex.UnitedKingdom, material.Standard.NationalAnnex);
             Assert.Equal(ENConcreteGrade.C40_50, material.Grade);
+            Assert.Equal(ENConcreteExposureClass.XC1, material.ExposureClass);
+            Assert.Equal(20, material.MaximumAggregateSize.Millimeters);
+        }
+
+        [Fact]
+        public void CreateStandardENC30_37GermanNAConcreteMaterialWithExposureClassAndMaxAggregateSizeTests()
+        {
+            // Assemble
+            ENConcreteGrade grade = ENConcreteGrade.C30_37;
+            NationalAnnex nationalAnnex = NationalAnnex.Germany;
+            ENConcreteExposureClass exposureClass = ENConcreteExposureClass.XF2;
+            Length maxAggregateSize = new Length(40, LengthUnit.Millimeter);
+
+            // Act
+            IENConcreteMaterial material = new ENConcreteMaterial(grade, nationalAnnex, exposureClass, maxAggregateSize);
+
+            // Assert
+            Assert.Equal(NationalAnnex.Germany, material.Standard.NationalAnnex);
+            Assert.Equal(ENConcreteGrade.C30_37, material.Grade);
+            Assert.Equal(ENConcreteExposureClass.XF2, material.ExposureClass);
+            Assert.Equal(40, material.MaximumAggregateSize.Millimeters);
         }
 
         [Theory]
