@@ -25,6 +25,7 @@ namespace MaterialTests.StandardMaterials.EN
             Assert.Equal(
                 "BS EN 1992-1-1: Eurocode 2: Design of Concrete Structures - Part 1-1: General rules and rules for buildings",
                 material.Standard.Title);
+            Assert.Equal(NationalAnnex.UnitedKingdom, material.Standard.NationalAnnex);
             Assert.Equal(ENRebarGrade.B500B, material.Grade);
         }
 
