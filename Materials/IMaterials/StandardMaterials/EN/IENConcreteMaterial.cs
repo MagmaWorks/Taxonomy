@@ -5,6 +5,7 @@ namespace MagmaWorks.Taxonomy.Materials
     public interface IENConcreteMaterial : IENMaterial<ENConcreteGrade>
     {
         ENConcreteExposureClass ExposureClass { get; }
+        ENCementClass CementClass { get; }
         Length MaximumAggregateSize { get; }
 
         /// <summary>

@@ -7,6 +7,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
 {
     public class ENConcreteMaterial : IENConcreteMaterial
     {
+        public ENCementClass CementClass { get; set; } = ENCementClass.N;
         public ENConcreteExposureClass ExposureClass { get; set; } = ENConcreteExposureClass.XC1;
         public ENConcreteGrade Grade { get; set; } = ENConcreteGrade.C30_37;
         public IEurocode Standard { get; set; } = new EN1992(EN1992Part.Part1_1, NationalAnnex.RecommendedValues);
@@ -27,8 +28,9 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
         }
 
         public ENConcreteMaterial(ENConcreteGrade grade, NationalAnnex nationalAnnex,
-            ENConcreteExposureClass exposureClass, Length maxAggregateSize)
+            ENConcreteExposureClass exposureClass, Length maxAggregateSize, ENCementClass cementClass)
         {
+            CementClass = cementClass;
             Standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
             Grade = grade;
             ExposureClass = exposureClass;
