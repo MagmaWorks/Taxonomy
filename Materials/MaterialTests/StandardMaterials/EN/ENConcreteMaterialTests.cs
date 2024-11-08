@@ -40,15 +40,17 @@ namespace MaterialTests.StandardMaterials.EN
             ENConcreteGrade grade = ENConcreteGrade.C30_37;
             NationalAnnex nationalAnnex = NationalAnnex.Germany;
             ENConcreteExposureClass exposureClass = ENConcreteExposureClass.XF2;
+            ENCementClass cementClass = ENCementClass.S;
             Length maxAggregateSize = new Length(40, LengthUnit.Millimeter);
 
             // Act
-            IENConcreteMaterial material = new ENConcreteMaterial(grade, nationalAnnex, exposureClass, maxAggregateSize);
+            IENConcreteMaterial material = new ENConcreteMaterial(grade, nationalAnnex, exposureClass, maxAggregateSize, cementClass);
 
             // Assert
             Assert.Equal(NationalAnnex.Germany, material.Standard.NationalAnnex);
             Assert.Equal(ENConcreteGrade.C30_37, material.Grade);
             Assert.Equal(ENConcreteExposureClass.XF2, material.ExposureClass);
+            Assert.Equal(ENCementClass.S, material.CementClass);
             Assert.Equal(40, material.MaximumAggregateSize.Millimeters);
         }
 
