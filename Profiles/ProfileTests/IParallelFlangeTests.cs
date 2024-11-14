@@ -1,6 +1,6 @@
 ﻿using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits.Units;
 using OasysUnits;
+using OasysUnits.Units;
 using ProfileTests.Utility;
 
 namespace ProfileTests
