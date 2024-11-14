@@ -18,7 +18,7 @@ namespace ProfileTests
             var w1 = new Length(4, LengthUnit.Centimeter);
 
             // Act
-            IRoundedRectangle prfl = new RoundedRectangle(h, w, h1, w1);
+            IRoundedRectangle prfl = new RoundedRectangle(w, h, w1, h1);
 
             // Assert
             TestUtility.TestLengthsAreEqual(h, prfl.Height);
@@ -37,7 +37,7 @@ namespace ProfileTests
             var w1 = new Length(4, LengthUnit.Centimeter);
 
             // Act
-            IRoundedRectangle prfl = new RoundedRectangle(h, w, h1, w1);
+            IRoundedRectangle prfl = new RoundedRectangle(w, h, w1, h1);
             string json = prfl.ToJson();
             IRoundedRectangle prflDeserialized = json.FromJson<IRoundedRectangle>();
 
@@ -58,7 +58,7 @@ namespace ProfileTests
             var w1 = new Length(4, LengthUnit.Centimeter);
 
             // Act
-            IRoundedRectangle prfl = new RoundedRectangle(h, w, h1, w1);
+            IRoundedRectangle prfl = new RoundedRectangle(w, h, w1, h1);
             string json = prfl.ToJson();
             IRoundedRectangle prflDeserialized = json.FromJson<RoundedRectangle>();
 
@@ -79,7 +79,7 @@ namespace ProfileTests
             var w1 = new Length(10, LengthUnit.Centimeter);
 
             // Act
-            IRoundedRectangle prfl = new RoundedRectangle(h, w, h1, w1);
+            IRoundedRectangle prfl = new RoundedRectangle(w, h, w1, h1);
             IPerimeter perimeter = new Perimeter(prfl);
 
             // Assert

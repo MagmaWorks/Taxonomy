@@ -10,7 +10,7 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length FlatWidth { get; set; }
         public Length Thickness { get; set; }
 
-        public RoundedRectangularHollow(Length height, Length width, Length flatHeight, Length flatWidth, Length thickness)
+        public RoundedRectangularHollow(Length width, Length height, Length flatWidth, Length flatHeight, Length thickness)
         {
             Height = height;
             Width = width;

@@ -8,7 +8,7 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length Width { get; set; }
         public Length Thickness { get; set; }
 
-        public RectangularHollow(Length height, Length width, Length thickness)
+        public RectangularHollow(Length width, Length height, Length thickness)
         {
             Height = height;
             Width = width;

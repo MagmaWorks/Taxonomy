@@ -8,7 +8,7 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length TopWidth { get; set; }
         public Length BottomWidth { get; set; }
 
-        public Trapezoid(Length height, Length topWidth, Length bottomWidth)
+        public Trapezoid(Length topWidth, Length bottomWidth, Length height)
         {
             Height = height;
             TopWidth = topWidth;
