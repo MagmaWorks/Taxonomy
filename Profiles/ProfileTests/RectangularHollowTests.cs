@@ -17,7 +17,7 @@ namespace ProfileTests
             var thk = new Length(10.9, LengthUnit.Millimeter);
 
             // Act
-            IRectangularHollow prfl = new RectangularHollow(h, w, thk);
+            IRectangularHollow prfl = new RectangularHollow(w, h, thk);
 
             // Assert
             TestUtility.TestLengthsAreEqual(h, prfl.Height);
@@ -34,7 +34,7 @@ namespace ProfileTests
             var thk = new Length(10.9, LengthUnit.Millimeter);
 
             // Act
-            IRectangularHollow prfl = new RectangularHollow(h, w, thk);
+            IRectangularHollow prfl = new RectangularHollow(w, h, thk);
             string json = prfl.ToJson();
             IRectangularHollow prflDeserialized = json.FromJson<IRectangularHollow>();
 
@@ -53,7 +53,7 @@ namespace ProfileTests
             var thk = new Length(10.9, LengthUnit.Millimeter);
 
             // Act
-            IRectangularHollow prfl = new RectangularHollow(h, w, thk);
+            IRectangularHollow prfl = new RectangularHollow(w, h, thk);
             string json = prfl.ToJson();
             IRectangularHollow prflDeserialized = json.FromJson<RectangularHollow>();
 
@@ -72,7 +72,7 @@ namespace ProfileTests
             var thk = new Length(10.9, LengthUnit.Millimeter);
 
             // Act
-            IRectangularHollow prfl = new RectangularHollow(h, w, thk);
+            IRectangularHollow prfl = new RectangularHollow(w, h, thk);
             IPerimeter perimeter = new Perimeter(prfl);
 
             // Assert

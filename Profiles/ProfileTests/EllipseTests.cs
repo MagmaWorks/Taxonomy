@@ -16,7 +16,7 @@ namespace ProfileTests
             var w = new Length(5.4, LengthUnit.Centimeter);
 
             // Act
-            IEllipse prfl = new Ellipse(h, w);
+            IEllipse prfl = new Ellipse(w, h);
 
             // Assert
             TestUtility.TestLengthsAreEqual(h, prfl.Height);
@@ -31,7 +31,7 @@ namespace ProfileTests
             var w = new Length(5.4, LengthUnit.Centimeter);
 
             // Act
-            IEllipse prfl = new Ellipse(h, w);
+            IEllipse prfl = new Ellipse(w, h);
             string json = prfl.ToJson();
             IEllipse prflDeserialized = json.FromJson<IEllipse>();
 
@@ -48,7 +48,7 @@ namespace ProfileTests
             var w = new Length(5.4, LengthUnit.Centimeter);
 
             // Act
-            IEllipse prfl = new Ellipse(h, w);
+            IEllipse prfl = new Ellipse(w, h);
             string json = prfl.ToJson();
             IEllipse prflDeserialized = json.FromJson<Ellipse>();
 
@@ -65,7 +65,7 @@ namespace ProfileTests
             var w = new Length(18, LengthUnit.Centimeter);
 
             // Act
-            IEllipse prfl = new Ellipse(h, w);
+            IEllipse prfl = new Ellipse(w, h);
             IPerimeter perimeter = new Perimeter(prfl, 57);
 
             // Assert

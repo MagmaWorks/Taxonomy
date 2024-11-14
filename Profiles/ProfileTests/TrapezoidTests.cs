@@ -17,7 +17,7 @@ namespace ProfileTests
             var wBottom = new Length(0.5, LengthUnit.Meter);
 
             // Act
-            ITrapezoid prfl = new Trapezoid(h, wTop, wBottom);
+            ITrapezoid prfl = new Trapezoid(wTop, wBottom, h);
 
             // Assert
             TestUtility.TestLengthsAreEqual(h, prfl.Height);
@@ -34,7 +34,7 @@ namespace ProfileTests
             var wBottom = new Length(0.5, LengthUnit.Meter);
 
             // Act
-            ITrapezoid prfl = new Trapezoid(h, wTop, wBottom);
+            ITrapezoid prfl = new Trapezoid(wTop, wBottom, h);
             string json = prfl.ToJson();
             ITrapezoid prflDeserialized = json.FromJson<ITrapezoid>();
 
@@ -53,7 +53,7 @@ namespace ProfileTests
             var wBottom = new Length(0.5, LengthUnit.Meter);
 
             // Act
-            ITrapezoid prfl = new Trapezoid(h, wTop, wBottom);
+            ITrapezoid prfl = new Trapezoid(wTop, wBottom, h);
             string json = prfl.ToJson();
             ITrapezoid prflDeserialized = json.FromJson<Trapezoid>();
 
@@ -72,7 +72,7 @@ namespace ProfileTests
             var wBottom = new Length(0.5, LengthUnit.Meter);
 
             // Act
-            ITrapezoid prfl = new Trapezoid(h, wTop, wBottom);
+            ITrapezoid prfl = new Trapezoid(wTop, wBottom, h);
             IPerimeter perimeter = new Perimeter(prfl);
 
             // Assert

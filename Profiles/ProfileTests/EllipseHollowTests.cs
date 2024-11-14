@@ -17,7 +17,7 @@ namespace ProfileTests
             var thk = new Length(10.9, LengthUnit.Millimeter);
 
             // Act
-            IEllipseHollow prfl = new EllipseHollow(h, w, thk);
+            IEllipseHollow prfl = new EllipseHollow(w, h, thk);
 
             // Assert
             TestUtility.TestLengthsAreEqual(h, prfl.Height);
@@ -34,7 +34,7 @@ namespace ProfileTests
             var thk = new Length(10.9, LengthUnit.Millimeter);
 
             // Act
-            IEllipseHollow prfl = new EllipseHollow(h, w, thk);
+            IEllipseHollow prfl = new EllipseHollow(w, h, thk);
             string json = prfl.ToJson();
             IEllipseHollow prflDeserialized = json.FromJson<IEllipseHollow>();
 
@@ -53,7 +53,7 @@ namespace ProfileTests
             var thk = new Length(10.9, LengthUnit.Millimeter);
 
             // Act
-            IEllipseHollow prfl = new EllipseHollow(h, w, thk);
+            IEllipseHollow prfl = new EllipseHollow(w, h, thk);
             string json = prfl.ToJson();
             IEllipseHollow prflDeserialized = json.FromJson<EllipseHollow>();
 
@@ -72,7 +72,7 @@ namespace ProfileTests
             var thk = new Length(14.3, LengthUnit.Millimeter);
 
             // Act
-            IEllipseHollow prfl = new EllipseHollow(h, w, thk);
+            IEllipseHollow prfl = new EllipseHollow(w, h, thk);
             IPerimeter perimeter = new Perimeter(prfl, 57);
 
             // Assert

@@ -7,7 +7,7 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length Height { get; set; }
         public Length Width { get; set; }
 
-        public Ellipse(Length height, Length width)
+        public Ellipse(Length width, Length height)
         {
             Height = height;
             Width = width;
