@@ -5,18 +5,17 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections
 {
-    public class ConcreteSection : IConcreteSection
+    public class ConcreteSection : Section, IConcreteSection
     {
-        public IMaterial Material { get; set; }
-        public IProfile Profile { get; set; }
         public IList<ILongitudinalReinforcement> Rebars { get; set; } = new List<ILongitudinalReinforcement>();
         public IRebar Link { get; set; }
-        public Length Cover { get; set; }
+        public Length Cover { get; set; } = Length.Zero;
 
-        public ConcreteSection(IMaterial material, IProfile profile, IList<ILongitudinalReinforcement> rebars, IRebar link, Length cover)
+        public ConcreteSection(IProfile profile, IMaterial material) : base (profile, material) { }
+
+        public ConcreteSection(IProfile profile, IMaterial material, IList<ILongitudinalReinforcement> rebars, IRebar link, Length cover)
+            : base(profile, material)
         {
-            Material = material;
-            Profile = profile;
             Rebars = rebars;
             Link = link;
             Cover = cover;
