@@ -19,7 +19,7 @@ namespace SectionTests
             ICatalogue profile = new HE500B();
 
             // Act
-            ISection section = new Section(material, profile);
+            ISection section = new Section(profile, material);
 
             // Assert
             Assert.Equivalent(profile, section.Profile);
@@ -36,7 +36,7 @@ namespace SectionTests
             IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
 
             // Act
-            ISection section = new Section(material, profile);
+            ISection section = new Section(profile, material);
 
             // Assert
             Assert.Equivalent(profile, section.Profile);
@@ -51,7 +51,7 @@ namespace SectionTests
             Pressure strength = new Pressure(32, PressureUnit.Megapascal);
             ILinearElasticMaterial material = new LinearElasticMaterial(MaterialType.Timber, elasticModulus, strength);
             IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
-            ISection section = new Section(material, profile);
+            ISection section = new Section(profile, material);
 
             // Act
             string json = section.ToJson();
