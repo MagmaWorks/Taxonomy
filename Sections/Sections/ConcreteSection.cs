@@ -25,7 +25,7 @@ namespace MagmaWorks.Taxonomy.Sections
         {
             if (material.Type != MaterialType.Concrete)
             {
-                throw new System.ArgumentException("Material type must be Concrete");
+                throw new InvalidMaterialTypeException("Material type must be Concrete");
             }
 
             Rebars = rebars;
