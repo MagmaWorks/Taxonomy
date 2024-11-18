@@ -8,6 +8,7 @@ namespace MagmaWorks.Taxonomy.Sections
     {
         public ILocalPoint2d Position { get; set; }
         public IRebar Rebar { get; set; }
+        public int CountPerBundle { get; set; } = 1;
 
         private LongitudinalReinforcement() { }
 

@@ -41,6 +41,7 @@ namespace SectionTests
             Assert.Equivalent(expectedRebar, longitudinalReinforcment.Rebar);
             Assert.Equal(22, longitudinalReinforcment.Position.Y.Centimeters);
             Assert.Equal(47, longitudinalReinforcment.Position.Z.Centimeters);
+            Assert.Equal(1, longitudinalReinforcment.CountPerBundle);
         }
     }
 }
