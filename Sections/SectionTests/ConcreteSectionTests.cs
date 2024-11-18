@@ -22,7 +22,7 @@ namespace SectionTests
             Length cover = new Length(20, LengthUnit.Millimeter);
 
             // Act
-            IConcreteSection section = new ConcreteSection(material, profile, rebars, link, cover);
+            IConcreteSection section = new ConcreteSection(profile, material, rebars, link, cover);
 
             // Assert
             Assert.Equivalent(profile, section.Profile);
@@ -42,7 +42,7 @@ namespace SectionTests
             IList<ILongitudinalReinforcement> rebars = LongitudinalReinforcementTests.CreateLongitudinalReinforcements();
             IRebar link = RebarTests.CreateRebar(8);
             Length cover = new Length(20, LengthUnit.Millimeter);
-            IConcreteSection section = new ConcreteSection(material, profile, rebars, link, cover);
+            IConcreteSection section = new ConcreteSection(profile, material, rebars, link, cover);
 
             // Act
             string json = section.ToJson();
