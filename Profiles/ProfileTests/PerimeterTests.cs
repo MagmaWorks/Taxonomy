@@ -13,14 +13,14 @@ namespace ProfileTests
         {
             // Assemble
             LengthUnit unit = LengthUnit.Centimeter;
-            var solidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var solidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(25, unit), Z = new Length(50, unit)},
                 new LocalPoint2d() { Y = new Length(-25, unit), Z = new Length(50, unit)},
                 new LocalPoint2d() { Y = new Length(-25, unit), Z = new Length(-50, unit)},
                 new LocalPoint2d() { Y = new Length(25, unit), Z = new Length(-50, unit)},
             });
-            var voidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var voidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(10, unit), Z = new Length(15, unit)},
                 new LocalPoint2d() { Y = new Length(-10, unit), Z = new Length(15, unit)},
@@ -29,7 +29,7 @@ namespace ProfileTests
             });
 
             // Act
-            IPerimeter profile = new Perimeter(solidEdge, new List<ILocalPolygon2d>() { voidEdge });
+            IPerimeter profile = new Perimeter(solidEdge, new List<ILocalPolyline2d>() { voidEdge });
 
             // Assert
             Assert.Single(profile.VoidEdges);
@@ -42,14 +42,14 @@ namespace ProfileTests
         {
             // Assemble
             LengthUnit unit = LengthUnit.Centimeter;
-            var solidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var solidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(25, unit), Z = new Length(50, unit)},
                 new LocalPoint2d() { Y = new Length(-25, unit), Z = new Length(50, unit)},
                 new LocalPoint2d() { Y = new Length(-25, unit), Z = new Length(-50, unit)},
                 new LocalPoint2d() { Y = new Length(25, unit), Z = new Length(-50, unit)},
             });
-            var voidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var voidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(10, unit), Z = new Length(15, unit)},
                 new LocalPoint2d() { Y = new Length(-10, unit), Z = new Length(15, unit)},
@@ -58,7 +58,7 @@ namespace ProfileTests
             });
 
             // Act
-            IPerimeter prfl = new Perimeter(solidEdge, new List<ILocalPolygon2d>() { voidEdge });
+            IPerimeter prfl = new Perimeter(solidEdge, new List<ILocalPolyline2d>() { voidEdge });
             string json = prfl.ToJson();
             IPerimeter prflDeserialized = json.FromJson<IPerimeter>();
 
@@ -74,14 +74,14 @@ namespace ProfileTests
         {
             // Assemble
             LengthUnit unit = LengthUnit.Centimeter;
-            var solidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var solidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(25, unit), Z = new Length(50, unit)},
                 new LocalPoint2d() { Y = new Length(-25, unit), Z = new Length(50, unit)},
                 new LocalPoint2d() { Y = new Length(-25, unit), Z = new Length(-50, unit)},
                 new LocalPoint2d() { Y = new Length(25, unit), Z = new Length(-50, unit)},
             });
-            var voidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var voidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(10, unit), Z = new Length(15, unit)},
                 new LocalPoint2d() { Y = new Length(-10, unit), Z = new Length(15, unit)},
@@ -90,7 +90,7 @@ namespace ProfileTests
             });
 
             // Act
-            IPerimeter prfl = new Perimeter(solidEdge, new List<ILocalPolygon2d>() { voidEdge });
+            IPerimeter prfl = new Perimeter(solidEdge, new List<ILocalPolyline2d>() { voidEdge });
             string json = prfl.ToJson();
             IPerimeter prflDeserialized = json.FromJson<Perimeter>();
 
@@ -106,14 +106,14 @@ namespace ProfileTests
         {
             // Assemble
             LengthUnit unit = LengthUnit.Centimeter;
-            var solidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var solidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(25, unit), Z = new Length(50, unit)},
                 new LocalPoint2d() { Y = new Length(-25, unit), Z = new Length(50, unit)},
                 new LocalPoint2d() { Y = new Length(-25, unit), Z = new Length(-50, unit)},
                 new LocalPoint2d() { Y = new Length(25, unit), Z = new Length(-50, unit)},
             });
-            var voidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var voidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(10, unit), Z = new Length(15, unit)},
                 new LocalPoint2d() { Y = new Length(-10, unit), Z = new Length(15, unit)},
@@ -122,7 +122,7 @@ namespace ProfileTests
             });
 
             // Act
-            IPerimeter prfl = new Perimeter(solidEdge, new List<ILocalPolygon2d>() { voidEdge });
+            IPerimeter prfl = new Perimeter(solidEdge, new List<ILocalPolyline2d>() { voidEdge });
             IPerimeter perimeter = new Perimeter(prfl);
 
             // Assert

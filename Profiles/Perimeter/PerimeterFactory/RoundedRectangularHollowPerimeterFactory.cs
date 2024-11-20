@@ -12,7 +12,7 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
             List<ILocalPoint2d> voidEdge = PerimeterFactoryUtility.CreateRoundedRectanglePoints(
                 profile.Height - 2 * profile.Thickness, profile.Width - 2 * profile.Thickness,
                 profile.FlatHeight - 2 * profile.Thickness, profile.FlatWidth - 2 * profile.Thickness, divisions);
-            return new Perimeter(new LocalPolygon2d(outerEdge), new List<ILocalPolygon2d>() { new LocalPolygon2d(voidEdge) });
+            return new Perimeter(new LocalPolyline2d(outerEdge), new List<ILocalPolyline2d>() { new LocalPolyline2d(voidEdge) });
         }
     }
 }

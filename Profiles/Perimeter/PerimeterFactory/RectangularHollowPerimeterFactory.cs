@@ -8,9 +8,9 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
         public static IPerimeter CreateRectangularHollow(IRectangularHollow profile)
         {
             return new Perimeter(
-                new LocalPolygon2d(PerimeterFactoryUtility.CreateRectanglePoints(profile.Height, profile.Width)),
-                new List<ILocalPolygon2d>() {
-                    new LocalPolygon2d(PerimeterFactoryUtility.CreateRectanglePoints(
+                new LocalPolyline2d(PerimeterFactoryUtility.CreateRectanglePoints(profile.Height, profile.Width)),
+                new List<ILocalPolyline2d>() {
+                    new LocalPolyline2d(PerimeterFactoryUtility.CreateRectanglePoints(
                         profile.Height - 2 * profile.Thickness, profile.Width - 2 * profile.Thickness))
                 });
         }
