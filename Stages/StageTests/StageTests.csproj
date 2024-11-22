@@ -23,7 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Serialization\Serialization\MagmaWorks.Taxonomy.Serialization.csproj" />
     <ProjectReference Include="..\IStages\MagmaWorks.Taxonomy.IStages.csproj" />
-    <ProjectReference Include="..\Serialization\MagmaWorks.Taxonomy.Serialization.Stages.csproj" />
+    <ProjectReference Include="..\Stages\MagmaWorks.Taxonomy.Stages.csproj" />
   </ItemGroup>
 
 </Project>

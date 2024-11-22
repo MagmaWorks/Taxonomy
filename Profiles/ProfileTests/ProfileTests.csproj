@@ -26,7 +26,6 @@
     <ProjectReference Include="..\IProfiles\MagmaWorks.Taxonomy.IProfiles.csproj" />
     <ProjectReference Include="..\Profiles\MagmaWorks.Taxonomy.Profiles.csproj" />
     <ProjectReference Include="..\Perimeter\MagmaWorks.Taxonomy.Profiles.Perimeter.csproj" />
-    <ProjectReference Include="..\Serialization\MagmaWorks.Taxonomy.Serialization.Profiles.csproj" />
   </ItemGroup>
 
 </Project>
