@@ -8,6 +8,8 @@ namespace MagmaWorks.Taxonomy.Materials
         IList<ENConcreteExposureClass> ExposureClasses { get; }
         ENCementClass CementClass { get; }
         Length MaximumAggregateSize { get; }
+        Length MaximumCrackWidth { get; }
+        Length MinimumCover { get; }
 
         /// <summary>
         /// γc partial factor for concrete in Persistent and Transient design situations

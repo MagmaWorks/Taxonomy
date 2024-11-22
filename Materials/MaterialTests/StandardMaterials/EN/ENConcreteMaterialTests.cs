@@ -31,6 +31,8 @@ namespace MaterialTests.StandardMaterials.EN
             Assert.Equal(ENConcreteGrade.C40_50, material.Grade);
             Assert.Equal(ENConcreteExposureClass.XC1, material.ExposureClasses[0]);
             Assert.Equal(20, material.MaximumAggregateSize.Millimeters);
+            Assert.Equal(0.3, material.MaximumCrackWidth.Millimeters);
+            Assert.Equal(30, material.MinimumCover.Millimeters);
         }
 
         [Fact]
@@ -42,9 +44,11 @@ namespace MaterialTests.StandardMaterials.EN
             ENConcreteExposureClass exposureClass = ENConcreteExposureClass.XF2;
             ENCementClass cementClass = ENCementClass.S;
             Length maxAggregateSize = new Length(40, LengthUnit.Millimeter);
+            Length crackWidth = new Length(0.2, LengthUnit.Millimeter);
+            Length cover = new Length(55, LengthUnit.Millimeter);
 
             // Act
-            IENConcreteMaterial material = new ENConcreteMaterial(grade, nationalAnnex, exposureClass, maxAggregateSize, cementClass);
+            IENConcreteMaterial material = new ENConcreteMaterial(grade, nationalAnnex, exposureClass, maxAggregateSize, cementClass, crackWidth, cover);
 
             // Assert
             Assert.Equal(NationalAnnex.Germany, material.Standard.NationalAnnex);
@@ -52,6 +56,8 @@ namespace MaterialTests.StandardMaterials.EN
             Assert.Equal(ENConcreteExposureClass.XF2, material.ExposureClasses[0]);
             Assert.Equal(ENCementClass.S, material.CementClass);
             Assert.Equal(40, material.MaximumAggregateSize.Millimeters);
+            Assert.Equal(0.2, material.MaximumCrackWidth.Millimeters);
+            Assert.Equal(55, material.MinimumCover.Millimeters);
         }
 
         [Theory]
