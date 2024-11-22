@@ -29,7 +29,7 @@ namespace MaterialTests.StandardMaterials.EN
                 material.Standard.Title);
             Assert.Equal(NationalAnnex.UnitedKingdom, material.Standard.NationalAnnex);
             Assert.Equal(ENConcreteGrade.C40_50, material.Grade);
-            Assert.Equal(ENConcreteExposureClass.XC1, material.ExposureClass);
+            Assert.Equal(ENConcreteExposureClass.XC1, material.ExposureClasses[0]);
             Assert.Equal(20, material.MaximumAggregateSize.Millimeters);
         }
 
@@ -49,7 +49,7 @@ namespace MaterialTests.StandardMaterials.EN
             // Assert
             Assert.Equal(NationalAnnex.Germany, material.Standard.NationalAnnex);
             Assert.Equal(ENConcreteGrade.C30_37, material.Grade);
-            Assert.Equal(ENConcreteExposureClass.XF2, material.ExposureClass);
+            Assert.Equal(ENConcreteExposureClass.XF2, material.ExposureClasses[0]);
             Assert.Equal(ENCementClass.S, material.CementClass);
             Assert.Equal(40, material.MaximumAggregateSize.Millimeters);
         }

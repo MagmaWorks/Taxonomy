@@ -1,10 +1,11 @@
-﻿using OasysUnits;
+﻿using System.Collections.Generic;
+using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Materials
 {
     public interface IENConcreteMaterial : IENMaterial<ENConcreteGrade>
     {
-        ENConcreteExposureClass ExposureClass { get; }
+        IList<ENConcreteExposureClass> ExposureClasses { get; }
         ENCementClass CementClass { get; }
         Length MaximumAggregateSize { get; }
 
