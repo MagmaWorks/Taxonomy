@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
-using MagmaWorks.Taxonomy.Serialization.Materials.Extensions;
+using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;

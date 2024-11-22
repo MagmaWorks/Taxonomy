@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using MagmaWorks.Taxonomy.Serialization.Stages.Extensions;
+using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Stages;
 using MagmaWorks.Taxonomy.Stages.RIBA;
 
