@@ -9,7 +9,7 @@ namespace MagmaWorks.Taxonomy.Materials
         ENCementClass CementClass { get; }
         Length MaximumAggregateSize { get; }
         Length CrackWidth { get; }
-        Length Cover {  get; }
+        Length Cover { get; }
 
         /// <summary>
         /// γc partial factor for concrete in Persistent and Transient design situations
