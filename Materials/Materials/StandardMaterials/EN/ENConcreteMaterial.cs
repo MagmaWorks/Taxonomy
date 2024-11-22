@@ -14,6 +14,8 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
         public IEurocode Standard { get; set; } = new EN1992(EN1992Part.Part1_1, NationalAnnex.RecommendedValues);
         public MaterialType Type => MaterialType.Concrete;
         public Length MaximumAggregateSize { get; set; } = new Length(20, LengthUnit.Millimeter);
+        public Length CrackWidth { get; set; } = new Length(0.3, LengthUnit.Millimeter);
+        public Length Cover { get; set; } = new Length(30, LengthUnit.Millimeter);
         public Ratio PartialFactor { get; set; } = new Ratio(1.5, RatioUnit.DecimalFraction);
         public Ratio AccidentialPartialFactor { get; set; } = new Ratio(1.2, RatioUnit.DecimalFraction);
         public Ratio LongTermCompressionFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
@@ -31,11 +33,25 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
         public ENConcreteMaterial(ENConcreteGrade grade, NationalAnnex nationalAnnex,
             ENConcreteExposureClass exposureClass, Length maxAggregateSize, ENCementClass cementClass)
         {
-            CementClass = cementClass;
             Standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
             Grade = grade;
+            CementClass = cementClass;
             ExposureClasses = new List<ENConcreteExposureClass>() { exposureClass };
             MaximumAggregateSize = maxAggregateSize;
+            SetPartialFactors(nationalAnnex);
+        }
+
+        public ENConcreteMaterial(ENConcreteGrade grade, NationalAnnex nationalAnnex,
+            ENConcreteExposureClass exposureClass, Length maxAggregateSize,
+            ENCementClass cementClass, Length crackWidth, Length cover)
+        {
+            Standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
+            Grade = grade;
+            CementClass = cementClass;
+            ExposureClasses = new List<ENConcreteExposureClass>() { exposureClass };
+            MaximumAggregateSize = maxAggregateSize;
+            CrackWidth = crackWidth;
+            Cover = cover;
             SetPartialFactors(nationalAnnex);
         }
 
