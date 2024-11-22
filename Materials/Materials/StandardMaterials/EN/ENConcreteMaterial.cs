@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
@@ -7,8 +8,8 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
 {
     public class ENConcreteMaterial : IENConcreteMaterial
     {
+        public IList<ENConcreteExposureClass> ExposureClasses { get; set; } = new List<ENConcreteExposureClass> { ENConcreteExposureClass.XC1 };
         public ENCementClass CementClass { get; set; } = ENCementClass.N;
-        public ENConcreteExposureClass ExposureClass { get; set; } = ENConcreteExposureClass.XC1;
         public ENConcreteGrade Grade { get; set; } = ENConcreteGrade.C30_37;
         public IEurocode Standard { get; set; } = new EN1992(EN1992Part.Part1_1, NationalAnnex.RecommendedValues);
         public MaterialType Type => MaterialType.Concrete;
@@ -33,7 +34,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
             CementClass = cementClass;
             Standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
             Grade = grade;
-            ExposureClass = exposureClass;
+            ExposureClasses = new List<ENConcreteExposureClass>() { exposureClass };
             MaximumAggregateSize = maxAggregateSize;
             SetPartialFactors(nationalAnnex);
         }
