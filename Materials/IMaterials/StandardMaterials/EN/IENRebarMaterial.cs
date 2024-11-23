@@ -10,8 +10,8 @@ namespace MagmaWorks.Taxonomy.Materials
         Ratio PartialFactor { get; }
 
         /// <summary>
-        /// γs partial factor for reinforcement in Accidential design situations
+        /// γs partial factor for reinforcement in Accidental design situations
         /// </summary>
-        Ratio AccidentialPartialFactor { get; }
+        Ratio AccidentalPartialFactor { get; }
     }
 }

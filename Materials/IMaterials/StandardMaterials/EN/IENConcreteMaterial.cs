@@ -15,9 +15,9 @@ namespace MagmaWorks.Taxonomy.Materials
         Ratio PartialFactor { get; }
 
         /// <summary>
-        /// γc partial factor for concrete in Accidential design situations
+        /// γc partial factor for concrete in Accidental design situations
         /// </summary>
-        Ratio AccidentialPartialFactor { get; }
+        Ratio AccidentalPartialFactor { get; }
 
         /// <summary>
         /// αcc coefficient taking account of long term effects on the compressive strength

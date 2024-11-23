@@ -8,19 +8,19 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {
-        public static IList<IAccidentialCombination> CreateAccidential(IVariableCase accidentalCase, Ratio partialFactor,
+        public static IList<IAccidentalCombination> CreateAccidental(IVariableCase accidentalCase, Ratio partialFactor,
             IList<ILoadCase> otherCases, NationalAnnex nationalAnnex, bool useFrequentCombinationFactorForMainAccompanying,
             string prefix = "LC", int firstCaseId = 1)
         {
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(otherCases);
-            var combinations = new List<IAccidentialCombination>();
+            var combinations = new List<IAccidentalCombination>();
             if (!useFrequentCombinationFactorForMainAccompanying)
             {
-                combinations.Add(new AccidentialCombination()
+                combinations.Add(new AccidentalCombination()
                 {
-                    Name = $"{prefix}{firstCaseId++}: Accidential, Eq. 6.11a/b - Leading {accidentalCase.Name}",
+                    Name = $"{prefix}{firstCaseId++}: Accidental, Eq. 6.11a/b - Leading {accidentalCase.Name}",
                     PermanentCases = permanents,
-                    LeadingAccidentialPartialFactor = partialFactor,
+                    LeadingAccidentalPartialFactor = partialFactor,
                     LeadingVariableCases = new List<IVariableCase>() { accidentalCase },
                     OtherAccompanyingVariableCases = variables,
                     UseFrequentCombinationFactorForMainAccompanying = false
@@ -30,11 +30,11 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
             for (int i = 0; i < variables.Count; i++)
             {
-                combinations.Add(new AccidentialCombination()
+                combinations.Add(new AccidentalCombination()
                 {
-                    Name = $"{prefix}{firstCaseId++}: Accidential, Eq. 6.11a/b - Leading {accidentalCase.Name} combined with {variables[i].Name} as main accompanying variable action",
+                    Name = $"{prefix}{firstCaseId++}: Accidental, Eq. 6.11a/b - Leading {accidentalCase.Name} combined with {variables[i].Name} as main accompanying variable action",
                     PermanentCases = permanents,
-                    LeadingAccidentialPartialFactor = partialFactor,
+                    LeadingAccidentalPartialFactor = partialFactor,
                     LeadingVariableCases = new List<IVariableCase>() { accidentalCase },
                     MainAccompanyingVariableCases = new List<IVariableCase>() { variables[i] },
                     OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
