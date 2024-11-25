@@ -1,5 +1,5 @@
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
+using MagmaWorks.Taxonomy.Serialization;
 
 namespace ProfileTests
 {

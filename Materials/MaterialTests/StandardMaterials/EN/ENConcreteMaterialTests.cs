@@ -1,6 +1,6 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
-using MagmaWorks.Taxonomy.Serialization.Materials.Extensions;
+using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
@@ -29,8 +29,10 @@ namespace MaterialTests.StandardMaterials.EN
                 material.Standard.Title);
             Assert.Equal(NationalAnnex.UnitedKingdom, material.Standard.NationalAnnex);
             Assert.Equal(ENConcreteGrade.C40_50, material.Grade);
-            Assert.Equal(ENConcreteExposureClass.XC1, material.ExposureClass);
+            Assert.Equal(ENConcreteExposureClass.XC1, material.ExposureClasses[0]);
             Assert.Equal(20, material.MaximumAggregateSize.Millimeters);
+            Assert.Equal(0.3, material.MaximumCrackWidth.Millimeters);
+            Assert.Equal(30, material.MinimumCover.Millimeters);
         }
 
         [Fact]
@@ -42,23 +44,27 @@ namespace MaterialTests.StandardMaterials.EN
             ENConcreteExposureClass exposureClass = ENConcreteExposureClass.XF2;
             ENCementClass cementClass = ENCementClass.S;
             Length maxAggregateSize = new Length(40, LengthUnit.Millimeter);
+            Length crackWidth = new Length(0.2, LengthUnit.Millimeter);
+            Length cover = new Length(55, LengthUnit.Millimeter);
 
             // Act
-            IENConcreteMaterial material = new ENConcreteMaterial(grade, nationalAnnex, exposureClass, maxAggregateSize, cementClass);
+            IENConcreteMaterial material = new ENConcreteMaterial(grade, nationalAnnex, exposureClass, maxAggregateSize, cementClass, crackWidth, cover);
 
             // Assert
             Assert.Equal(NationalAnnex.Germany, material.Standard.NationalAnnex);
             Assert.Equal(ENConcreteGrade.C30_37, material.Grade);
-            Assert.Equal(ENConcreteExposureClass.XF2, material.ExposureClass);
+            Assert.Equal(ENConcreteExposureClass.XF2, material.ExposureClasses[0]);
             Assert.Equal(ENCementClass.S, material.CementClass);
             Assert.Equal(40, material.MaximumAggregateSize.Millimeters);
+            Assert.Equal(0.2, material.MaximumCrackWidth.Millimeters);
+            Assert.Equal(55, material.MinimumCover.Millimeters);
         }
 
         [Theory]
         [InlineData(NationalAnnex.RecommendedValues, 1.5, 1.2, 1.0, 1.0)]
         [InlineData(NationalAnnex.Germany, 1.5, 1.3, 0.85, 0.85)]
         [InlineData(NationalAnnex.UnitedKingdom, 1.5, 1.2, 0.85, 1.0)]
-        public void PartialFactorsTest(NationalAnnex na, double expectedGammaC, double expectedGammaCAccidential, double expectedAlphaCC, double expectedAlphaCT)
+        public void PartialFactorsTest(NationalAnnex na, double expectedGammaC, double expectedGammaCAccidental, double expectedAlphaCC, double expectedAlphaCT)
         {
             // Assemble
             ENConcreteGrade grade = ENConcreteGrade.C40_50;
@@ -68,7 +74,7 @@ namespace MaterialTests.StandardMaterials.EN
 
             // Assert
             Assert.Equal(expectedGammaC, material.PartialFactor.DecimalFractions);
-            Assert.Equal(expectedGammaCAccidential, material.AccidentialPartialFactor.DecimalFractions);
+            Assert.Equal(expectedGammaCAccidental, material.AccidentalPartialFactor.DecimalFractions);
             Assert.Equal(expectedAlphaCC, material.LongTermCompressionFactor.DecimalFractions);
             Assert.Equal(expectedAlphaCT, material.LongTermTensionFactor.DecimalFractions);
         }

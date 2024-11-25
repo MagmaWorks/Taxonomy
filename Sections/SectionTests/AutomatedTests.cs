@@ -8,7 +8,7 @@ using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
 using MagmaWorks.Taxonomy.Sections.Reinforcement;
-using MagmaWorks.Taxonomy.Serialization.Sections.Extensions;
+using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 

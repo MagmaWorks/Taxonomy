@@ -1,7 +1,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
+using MagmaWorks.Taxonomy.Serialization;
 
 namespace ProfileTests.Catalogue
 {

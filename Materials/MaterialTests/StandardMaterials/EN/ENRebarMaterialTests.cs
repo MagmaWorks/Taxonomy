@@ -1,6 +1,6 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
-using MagmaWorks.Taxonomy.Serialization.Materials.Extensions;
+using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
@@ -33,7 +33,7 @@ namespace MaterialTests.StandardMaterials.EN
         [InlineData(NationalAnnex.RecommendedValues, 1.15, 1.0)]
         [InlineData(NationalAnnex.Germany, 1.15, 1.0)]
         [InlineData(NationalAnnex.UnitedKingdom, 1.15, 1.0)]
-        public void PartialFactorsTest(NationalAnnex na, double expectedGammaS, double expectedGammaCAccidential)
+        public void PartialFactorsTest(NationalAnnex na, double expectedGammaS, double expectedGammaCAccidental)
         {
             // Assemble
             ENRebarGrade grade = ENRebarGrade.B500B;
@@ -43,7 +43,7 @@ namespace MaterialTests.StandardMaterials.EN
 
             // Assert
             Assert.Equal(expectedGammaS, material.PartialFactor.DecimalFractions);
-            Assert.Equal(expectedGammaCAccidential, material.AccidentialPartialFactor.DecimalFractions);
+            Assert.Equal(expectedGammaCAccidental, material.AccidentalPartialFactor.DecimalFractions);
         }
 
         [Fact]

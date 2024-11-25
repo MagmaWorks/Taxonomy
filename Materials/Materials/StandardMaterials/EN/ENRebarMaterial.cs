@@ -11,7 +11,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
         public IEurocode Standard { get; set; } = new EN1992(EN1992Part.Part1_1, NationalAnnex.RecommendedValues);
         public MaterialType Type => MaterialType.Reinforcement;
         public Ratio PartialFactor { get; set; } = new Ratio(1.15, RatioUnit.DecimalFraction);
-        public Ratio AccidentialPartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
+        public Ratio AccidentalPartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
 
         public ENRebarMaterial(ENRebarGrade grade, NationalAnnex nationalAnnex)
         {

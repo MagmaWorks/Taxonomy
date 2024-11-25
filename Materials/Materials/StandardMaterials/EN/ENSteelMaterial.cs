@@ -10,14 +10,16 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
         public ENSteelGrade Grade { get; set; } = ENSteelGrade.S355;
         public IEurocode Standard { get; set; } = new EN1993(EN1993Part.Part1_1, NationalAnnex.RecommendedValues);
         public MaterialType Type => MaterialType.Steel;
+        public EnExecutionClass ExecutionClassforStaticOrLowSeismicLoading { get; set; } = EnExecutionClass.EXC3;
+        public EnExecutionClass ExecutionClassforFatigueOrHighSeismicLoading { get; set; } = EnExecutionClass.EXC3;
         public Ratio PartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
         public Ratio MemberInstabilityPartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
         public Ratio TensionFracturePartialFactor { get; set; } = new Ratio(1.25, RatioUnit.DecimalFraction);
 
         public ENSteelMaterial(ENSteelGrade grade, NationalAnnex nationalAnnex)
         {
-            Standard = new EN1993(EN1993Part.Part1_1, nationalAnnex);
             Grade = grade;
+            Standard = new EN1993(EN1993Part.Part1_1, nationalAnnex);
             SetPartialFactors(nationalAnnex);
         }
 

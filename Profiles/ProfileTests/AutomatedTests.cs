@@ -2,7 +2,7 @@ using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization.Profiles.Extensions;
+using MagmaWorks.Taxonomy.Serialization;
 using OasysUnits;
 using Angle = MagmaWorks.Taxonomy.Profiles.Angle;
 

@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
-using MagmaWorks.Taxonomy.Materials;
+﻿using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
-using MagmaWorks.Taxonomy.Serialization.Materials.Extensions;
+using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
@@ -20,13 +19,15 @@ namespace MaterialTests.StandardMaterials.EN
             IENSteelMaterial material = new ENSteelMaterial(grade, nationalAnnex);
 
             // Assert
-            Assert.Equal(MaterialType.Steel, material.Type);
+            Assert.Equal(ENSteelGrade.S235, material.Grade);
             Assert.Equal(StandardBody.EN, material.Standard.Body);
             Assert.Equal(Eurocode.EN1993, material.Standard.Code);
             Assert.Equal(
                 "BS EN 1993-1-1: Eurocode 3: Design of Steel Structures - Part 1-1: General rules and rules for buildings",
                 material.Standard.Title);
-            Assert.Equal(ENSteelGrade.S235, material.Grade);
+            Assert.Equal(MaterialType.Steel, material.Type);
+            Assert.Equal(EnExecutionClass.EXC3, material.ExecutionClassforStaticOrLowSeismicLoading);
+            Assert.Equal(EnExecutionClass.EXC3, material.ExecutionClassforFatigueOrHighSeismicLoading);
         }
 
         [Theory]

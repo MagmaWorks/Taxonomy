@@ -2,7 +2,7 @@ using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using MagmaWorks.Taxonomy.Countries;
-using MagmaWorks.Taxonomy.Serialization.Countries.Extensions;
+using MagmaWorks.Taxonomy.Serialization;
 
 namespace CountryTests
 {
