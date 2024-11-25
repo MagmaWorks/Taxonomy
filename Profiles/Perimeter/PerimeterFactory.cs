@@ -120,6 +120,7 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
                 case ICustomI customI:
                     return CreateCustomI(customI);
 
+
                 case IEllipseHollow ellipseHollow:
                     diameter = ellipseHollow.Height > ellipseHollow.Width ? ellipseHollow.Height : ellipseHollow.Width;
                     divisions = PerimeterFactoryUtility.CalculateDivisions(diameter / 2, tolerance);
@@ -133,6 +134,9 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
                 case IIParallelFlange parallelFlange:
                     divisions = PerimeterFactoryUtility.CalculateDivisions(parallelFlange.FilletRadius / 2, tolerance);
                     return CreateParallelFlange(parallelFlange, divisions);
+
+                case II i:
+                    return CreateI(i);
 
                 case IRectangularHollow rectangularHollow:
                     return CreateRectangularHollow(rectangularHollow);
@@ -200,6 +204,9 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
 
                 case IIParallelFlange parallelFlange:
                     return CreateParallelFlange(parallelFlange, divisions);
+
+                case II i:
+                    return CreateI(i);
 
                 case IRectangularHollow rectangularHollow:
                     return CreateRectangularHollow(rectangularHollow);
