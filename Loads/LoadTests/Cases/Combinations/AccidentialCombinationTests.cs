@@ -8,9 +8,9 @@ using OasysUnits.Units;
 
 namespace CombinationTests
 {
-    public class AccidentialCombinationTests
+    public class AccidentalCombinationTests
     {
-        public static IList<IAccidentialCombination> Create(bool useFrequent)
+        public static IList<IAccidentalCombination> Create(bool useFrequent)
         {
             IPermanentCase dl = PermanentCaseTests.CreateDLCase();
             IPermanentCase sdl = PermanentCaseTests.CreateSDLCase();
@@ -32,7 +32,7 @@ namespace CombinationTests
                 dl, sdl, ll, w, s, t
             };
 
-            return ENCombinationFactory.CreateAccidential(
+            return ENCombinationFactory.CreateAccidental(
                 impact, new Ratio(1.5, RatioUnit.DecimalFraction), otherCases,
                 NationalAnnex.RecommendedValues, useFrequent);
         }
@@ -42,22 +42,22 @@ namespace CombinationTests
         {
             // Assemble
             // Act
-            IList<IAccidentialCombination> combinations = Create(true);
+            IList<IAccidentalCombination> combinations = Create(true);
 
             // Assert
-            Assert.Equal("LC1: Accidential, Eq. 6.11a/b - Leading Truck impact combined with Live loads Category B as main accompanying variable action",
+            Assert.Equal("LC1: Accidental, Eq. 6.11a/b - Leading Truck impact combined with Live loads Category B as main accompanying variable action",
                 combinations[0].Name);
             Assert.Equal("DL + SDL + 1.5·A + 0.5·Q + 0.2·S", combinations[0].Definition);
 
-            Assert.Equal("LC2: Accidential, Eq. 6.11a/b - Leading Truck impact combined with Wind loads as main accompanying variable action",
+            Assert.Equal("LC2: Accidental, Eq. 6.11a/b - Leading Truck impact combined with Wind loads as main accompanying variable action",
                 combinations[1].Name);
             Assert.Equal("DL + SDL + 1.5·A + 0.2·W + 0.3·Q + 0.2·S", combinations[1].Definition);
 
-            Assert.Equal("LC3: Accidential, Eq. 6.11a/b - Leading Truck impact combined with Snow loads as main accompanying variable action",
+            Assert.Equal("LC3: Accidental, Eq. 6.11a/b - Leading Truck impact combined with Snow loads as main accompanying variable action",
                 combinations[2].Name);
             Assert.Equal("DL + SDL + 1.5·A + 0.5·S + 0.3·Q", combinations[2].Definition);
 
-            Assert.Equal("LC4: Accidential, Eq. 6.11a/b - Leading Truck impact combined with Thermal loads as main accompanying variable action",
+            Assert.Equal("LC4: Accidental, Eq. 6.11a/b - Leading Truck impact combined with Thermal loads as main accompanying variable action",
                 combinations[3].Name);
             Assert.Equal("DL + SDL + 1.5·A + 0.5·T + 0.3·Q + 0.2·S", combinations[3].Definition);
         }
@@ -67,10 +67,10 @@ namespace CombinationTests
         {
             // Assemble
             // Act
-            IList<IAccidentialCombination> combinations = Create(false);
+            IList<IAccidentalCombination> combinations = Create(false);
 
             // Assert
-            Assert.Equal("LC1: Accidential, Eq. 6.11a/b - Leading Truck impact", combinations[0].Name);
+            Assert.Equal("LC1: Accidental, Eq. 6.11a/b - Leading Truck impact", combinations[0].Name);
             Assert.Equal("DL + SDL + 1.5·A + 0.3·Q + 0.2·S", combinations[0].Definition);
         }
 
@@ -99,7 +99,7 @@ namespace CombinationTests
             };
 
             // Act
-            IList<IAccidentialCombination> combinations = Create(true);
+            IList<IAccidentalCombination> combinations = Create(true);
 
             // Assert
             Assert.Equal(4, combinations.Count);
@@ -111,7 +111,7 @@ namespace CombinationTests
                 Assert.Single(combinations[i].MainAccompanyingVariableCases);
                 Assert.DoesNotContain(otherCases[i + 2], combinations[i].OtherAccompanyingVariableCases);
                 Assert.Equal(3, combinations[i].OtherAccompanyingVariableCases.Count);
-                Assert.Equal(1.5, combinations[i].LeadingAccidentialPartialFactor.DecimalFractions);
+                Assert.Equal(1.5, combinations[i].LeadingAccidentalPartialFactor.DecimalFractions);
             }
         }
 
@@ -140,7 +140,7 @@ namespace CombinationTests
             };
 
             // Act
-            IList<IAccidentialCombination> combinations = Create(false);
+            IList<IAccidentalCombination> combinations = Create(false);
 
             // Assert
             Assert.Single(combinations);
@@ -149,7 +149,7 @@ namespace CombinationTests
             Assert.Equivalent(impact, combinations[0].LeadingVariableCases.FirstOrDefault());
             Assert.Empty(combinations[0].MainAccompanyingVariableCases);
             Assert.Equal(4, combinations[0].OtherAccompanyingVariableCases.Count);
-            Assert.Equal(1.5, combinations[0].LeadingAccidentialPartialFactor.DecimalFractions);
+            Assert.Equal(1.5, combinations[0].LeadingAccidentalPartialFactor.DecimalFractions);
         }
 
         [Fact]
@@ -164,7 +164,7 @@ namespace CombinationTests
             ILoad t = new PointDisplacement(Length.Zero, Length.Zero, new Length(0.01, LengthUnit.Centimeter));
             ILoad impact = new ColumnLoad(new Force(50, ForceUnit.Kilonewton));
 
-            IList<IAccidentialCombination> combinations = Create(true);
+            IList<IAccidentalCombination> combinations = Create(true);
 
             // Act
             IList<ILoad> lc1Loads = combinations[0].GetFactoredLoads();
@@ -220,7 +220,7 @@ namespace CombinationTests
             ILoad t = new PointDisplacement(Length.Zero, Length.Zero, new Length(0.01, LengthUnit.Centimeter));
             ILoad impact = new ColumnLoad(new Force(50, ForceUnit.Kilonewton));
 
-            IList<IAccidentialCombination> combinations = Create(false);
+            IList<IAccidentalCombination> combinations = Create(false);
 
             // Act
             IList<ILoad> lc1Loads = combinations[0].GetFactoredLoads();

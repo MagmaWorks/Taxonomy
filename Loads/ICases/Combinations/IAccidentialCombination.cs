@@ -4,10 +4,10 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
-    public interface IAccidentialCombination : IUltimateLimitState
+    public interface IAccidentalCombination : IUltimateLimitState
     {
         bool UseFrequentCombinationFactorForMainAccompanying { get; }
-        Ratio LeadingAccidentialPartialFactor { get; }
+        Ratio LeadingAccidentalPartialFactor { get; }
         IList<IVariableCase> MainAccompanyingVariableCases { get; }
         IList<IVariableCase> OtherAccompanyingVariableCases { get; }
     }

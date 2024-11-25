@@ -17,7 +17,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
         public Length MaximumCrackWidth { get; set; } = new Length(0.3, LengthUnit.Millimeter);
         public Length MinimumCover { get; set; } = new Length(30, LengthUnit.Millimeter);
         public Ratio PartialFactor { get; set; } = new Ratio(1.5, RatioUnit.DecimalFraction);
-        public Ratio AccidentialPartialFactor { get; set; } = new Ratio(1.2, RatioUnit.DecimalFraction);
+        public Ratio AccidentalPartialFactor { get; set; } = new Ratio(1.2, RatioUnit.DecimalFraction);
         public Ratio LongTermCompressionFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
         public Ratio LongTermTensionFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
 
@@ -67,7 +67,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
                     break;
 
                 case NationalAnnex.Germany:
-                    AccidentialPartialFactor = new Ratio(1.3, RatioUnit.DecimalFraction);
+                    AccidentalPartialFactor = new Ratio(1.3, RatioUnit.DecimalFraction);
                     LongTermCompressionFactor = new Ratio(0.85, RatioUnit.DecimalFraction);
                     LongTermTensionFactor = new Ratio(0.85, RatioUnit.DecimalFraction);
                     break;

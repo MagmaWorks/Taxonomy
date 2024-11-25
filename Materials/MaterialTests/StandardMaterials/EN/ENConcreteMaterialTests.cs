@@ -64,7 +64,7 @@ namespace MaterialTests.StandardMaterials.EN
         [InlineData(NationalAnnex.RecommendedValues, 1.5, 1.2, 1.0, 1.0)]
         [InlineData(NationalAnnex.Germany, 1.5, 1.3, 0.85, 0.85)]
         [InlineData(NationalAnnex.UnitedKingdom, 1.5, 1.2, 0.85, 1.0)]
-        public void PartialFactorsTest(NationalAnnex na, double expectedGammaC, double expectedGammaCAccidential, double expectedAlphaCC, double expectedAlphaCT)
+        public void PartialFactorsTest(NationalAnnex na, double expectedGammaC, double expectedGammaCAccidental, double expectedAlphaCC, double expectedAlphaCT)
         {
             // Assemble
             ENConcreteGrade grade = ENConcreteGrade.C40_50;
@@ -74,7 +74,7 @@ namespace MaterialTests.StandardMaterials.EN
 
             // Assert
             Assert.Equal(expectedGammaC, material.PartialFactor.DecimalFractions);
-            Assert.Equal(expectedGammaCAccidential, material.AccidentialPartialFactor.DecimalFractions);
+            Assert.Equal(expectedGammaCAccidental, material.AccidentalPartialFactor.DecimalFractions);
             Assert.Equal(expectedAlphaCC, material.LongTermCompressionFactor.DecimalFractions);
             Assert.Equal(expectedAlphaCT, material.LongTermTensionFactor.DecimalFractions);
         }
