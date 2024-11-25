@@ -2,8 +2,8 @@
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.Reinforcement;
-using OasysUnits.Units;
 using OasysUnits;
+using OasysUnits.Units;
 
 namespace SectionTests.ReinforcementTests
 {
@@ -97,8 +97,8 @@ namespace SectionTests.ReinforcementTests
             Assert.Equal(5, path.Points.Count);
             double toRebarCentre = 35.0 + 12.0 / 2;
             int i = 0;
-            Assert.Equal(-400/2 + toRebarCentre, path.Points[i].Y.As(u), 2);
-            Assert.Equal(800/2 - toRebarCentre, path.Points[i++].Z.As(u), 2);
+            Assert.Equal(-400 / 2 + toRebarCentre, path.Points[i].Y.As(u), 2);
+            Assert.Equal(800 / 2 - toRebarCentre, path.Points[i++].Z.As(u), 2);
             Assert.Equal(400 / 2 - toRebarCentre, path.Points[i].Y.As(u), 2);
             Assert.Equal(800 / 2 - toRebarCentre, path.Points[i++].Z.As(u), 2);
             Assert.Equal(400 / 2 - toRebarCentre, path.Points[i].Y.As(u), 2);

@@ -1,10 +1,10 @@
 ﻿using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
-using MagmaWorks.Taxonomy.Sections.Reinforcement;
-using OasysUnits.Units;
-using OasysUnits;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
+using MagmaWorks.Taxonomy.Sections.Reinforcement;
+using OasysUnits;
+using OasysUnits.Units;
 using Angle = MagmaWorks.Taxonomy.Profiles.Angle;
 
 namespace SectionTests.ReinforcementTests

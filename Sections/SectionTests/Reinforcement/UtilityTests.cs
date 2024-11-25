@@ -1,6 +1,6 @@
-﻿using OasysUnits.Units;
+﻿using MagmaWorks.Geometry;
 using OasysUnits;
-using MagmaWorks.Geometry;
+using OasysUnits.Units;
 using Utility = MagmaWorks.Taxonomy.Sections.Reinforcement.Utility;
 
 namespace SectionTests.ReinforcementTests

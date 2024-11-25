@@ -29,7 +29,7 @@ namespace MagmaWorks.Taxonomy.Sections.Reinforcement
         {
             LengthUnit unit = start.Y.Unit;
             double area = Math.Pow(start.Y.As(unit) - end.Y.As(unit), 2) + Math.Pow(start.Z.As(unit) - end.Z.As(unit), 2);
-            var distance =  Math.Sqrt(area);
+            var distance = Math.Sqrt(area);
             int count = 1 + (int)Math.Ceiling(distance / spacing.As(unit));
             return PositionsByCount(start, end, count, includeStartAndEnd);
         }

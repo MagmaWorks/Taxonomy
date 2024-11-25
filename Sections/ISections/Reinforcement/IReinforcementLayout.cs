@@ -1,6 +1,7 @@
 ﻿namespace MagmaWorks.Taxonomy.Sections
 {
-    public interface IReinforcementLayout {
+    public interface IReinforcementLayout
+    {
         IRebar Rebar { get; }
     }
 }

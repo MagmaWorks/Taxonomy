@@ -5,7 +5,7 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections
 {
-    public interface IReinforcementLayer 
+    public interface IReinforcementLayer
     {
         IReinforcementLayout Layout { get; }
         IList<ILongitudinalReinforcement> GetRebars(ILocalPolyline2d path);

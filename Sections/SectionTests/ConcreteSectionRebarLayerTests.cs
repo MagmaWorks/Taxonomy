@@ -111,7 +111,7 @@ namespace SectionTests
             Assert.Equal(5, section.Rebars.Count);
             double coverToFirstLayerCentre = 35.0 + 20 / 2;
             Assert.Equal(400 / 2 - coverToFirstLayerCentre, section.Rebars[0].Position.Y.As(u), 2);
-            Assert.Equal(-800/2 + coverToFirstLayerCentre, section.Rebars[0].Position.Z.As(u), 2);
+            Assert.Equal(-800 / 2 + coverToFirstLayerCentre, section.Rebars[0].Position.Z.As(u), 2);
             Assert.Equal(0, section.Rebars[1].Position.Y.As(u), 2);
             Assert.Equal(-800 / 2 + coverToFirstLayerCentre, section.Rebars[1].Position.Z.As(u), 2);
             Assert.Equal(-400 / 2 + coverToFirstLayerCentre, section.Rebars[2].Position.Y.As(u), 2);
