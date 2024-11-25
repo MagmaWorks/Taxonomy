@@ -7,7 +7,6 @@ using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
-using MagmaWorks.Taxonomy.Sections.Reinforcement;
 using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
@@ -22,6 +21,7 @@ namespace SectionTests
         [
             typeof(ConcreteSection),
             typeof(InvalidMaterialTypeException),
+            typeof(InvalidProfileTypeException),
         ];
 
         // static inputs used to populate constructor variables
