@@ -3,8 +3,9 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Materials
 {
-    public interface IEnSteelMaterial : IEnMaterial<EnSteelGrade>
+    public interface IEnSteelMaterial : IEnMaterial
     {
+        EnSteelGrade Grade { get; }
         EnExecutionClass ExecutionClassforStaticOrLowSeismicLoading { get; }
         EnExecutionClass ExecutionClassforFatigueOrHighSeismicLoading { get; }
         /// <summary>
