@@ -3,10 +3,10 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Materials
 {
-    public interface IENConcreteMaterial : IENMaterial<ENConcreteGrade>
+    public interface IEnConcreteMaterial : IEnMaterial<EnConcreteGrade>
     {
-        IList<ENConcreteExposureClass> ExposureClasses { get; }
-        ENCementClass CementClass { get; }
+        IList<EnConcreteExposureClass> ExposureClasses { get; }
+        EnCementClass CementClass { get; }
         Length MaximumAggregateSize { get; }
         Length MaximumCrackWidth { get; }
         Length MinimumCover { get; }

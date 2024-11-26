@@ -1,6 +1,4 @@
-﻿using MagmaWorks.Taxonomy.Stages.RIBA;
-
-namespace MagmaWorks.Taxonomy.Stages
+﻿namespace MagmaWorks.Taxonomy.Stages
 {
     public class Idea : IIdea
     {

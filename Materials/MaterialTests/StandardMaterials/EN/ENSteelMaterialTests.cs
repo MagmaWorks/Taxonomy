@@ -1,25 +1,25 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
 namespace MaterialTests.StandardMaterials.EN
 {
-    public class ENSteelMaterialTests
+    public class EnSteelMaterialTests
     {
         [Fact]
-        public void CreateStandardENS235UKSteelMaterialTests()
+        public void CreateStandardEnS235UKSteelMaterialTests()
         {
             // Assemble
-            ENSteelGrade grade = ENSteelGrade.S235;
+            EnSteelGrade grade = EnSteelGrade.S235;
             NationalAnnex nationalAnnex = NationalAnnex.UnitedKingdom;
 
             // Act
-            IENSteelMaterial material = new ENSteelMaterial(grade, nationalAnnex);
+            IEnSteelMaterial material = new EnSteelMaterial(grade, nationalAnnex);
 
             // Assert
-            Assert.Equal(ENSteelGrade.S235, material.Grade);
+            Assert.Equal(EnSteelGrade.S235, material.Grade);
             Assert.Equal(StandardBody.EN, material.Standard.Body);
             Assert.Equal(Eurocode.EN1993, material.Standard.Code);
             Assert.Equal(
@@ -37,10 +37,10 @@ namespace MaterialTests.StandardMaterials.EN
         public void PartialFactorsTest(NationalAnnex na, double expectedGammaM0, double expectedGammaM1, double expectedGammaM2)
         {
             // Assemble
-            ENSteelGrade grade = ENSteelGrade.S235;
+            EnSteelGrade grade = EnSteelGrade.S235;
 
             // Act
-            IENSteelMaterial material = new ENSteelMaterial(grade, na);
+            IEnSteelMaterial material = new EnSteelMaterial(grade, na);
 
             // Assert
             Assert.Equal(expectedGammaM0, material.PartialFactor.DecimalFractions);
@@ -52,11 +52,11 @@ namespace MaterialTests.StandardMaterials.EN
         public void InterfaceSurvivesRoundtripDeserializationTest()
         {
             // Assemble
-            IENSteelMaterial material = new ENSteelMaterial(ENSteelGrade.S450, NationalAnnex.Germany);
+            IEnSteelMaterial material = new EnSteelMaterial(EnSteelGrade.S450, NationalAnnex.Germany);
 
             // Act
             string json = material.ToJson();
-            IENSteelMaterial matDeserialized = json.FromJson<IENSteelMaterial>();
+            IEnSteelMaterial matDeserialized = json.FromJson<IEnSteelMaterial>();
 
             // Assert
             Assert.Equivalent(material, matDeserialized);

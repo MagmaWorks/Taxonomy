@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Materials
 {
-    public enum ENConcreteGrade
+    public enum EnConcreteGrade
     {
         C12_15,
         C16_20,

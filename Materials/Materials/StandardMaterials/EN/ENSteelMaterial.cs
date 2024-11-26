@@ -3,11 +3,12 @@ using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
+namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
-    public class ENSteelMaterial : IENSteelMaterial
+    public class EnSteelMaterial
+        : IEnSteelMaterial
     {
-        public ENSteelGrade Grade { get; set; } = ENSteelGrade.S355;
+        public EnSteelGrade Grade { get; set; } = EnSteelGrade.S355;
         public IEurocode Standard { get; set; } = new EN1993(EN1993Part.Part1_1, NationalAnnex.RecommendedValues);
         public MaterialType Type => MaterialType.Steel;
         public EnExecutionClass ExecutionClassforStaticOrLowSeismicLoading { get; set; } = EnExecutionClass.EXC3;
@@ -16,7 +17,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
         public Ratio MemberInstabilityPartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
         public Ratio TensionFracturePartialFactor { get; set; } = new Ratio(1.25, RatioUnit.DecimalFraction);
 
-        public ENSteelMaterial(ENSteelGrade grade, NationalAnnex nationalAnnex)
+        public EnSteelMaterial(EnSteelGrade grade, NationalAnnex nationalAnnex)
         {
             Grade = grade;
             Standard = new EN1993(EN1993Part.Part1_1, nationalAnnex);
@@ -39,7 +40,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
                     break;
 
                 default:
-                    throw new MissingNationalAnnexException(nationalAnnex);
+                    throw new NotImplementedException($"National Annex of {nationalAnnex} not implemented");
             }
         }
     }

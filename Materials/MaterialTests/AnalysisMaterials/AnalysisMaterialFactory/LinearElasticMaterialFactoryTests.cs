@@ -1,5 +1,5 @@
 using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
 namespace MaterialTests.AnalysisMaterials
@@ -11,8 +11,8 @@ namespace MaterialTests.AnalysisMaterials
         {
             // Assemble
             NationalAnnex nationalAnnex = NationalAnnex.RecommendedValues;
-            ENConcreteGrade grade = ENConcreteGrade.C30_37;
-            IENConcreteMaterial original = new ENConcreteMaterial(grade, nationalAnnex);
+            EnConcreteGrade grade = EnConcreteGrade.C30_37;
+            IEnConcreteMaterial original = new EnConcreteMaterial(grade, nationalAnnex);
 
             // Act
             ILinearElasticMaterial material = AnalysisMaterialFactory.CreateLinearElastic(original);
@@ -35,8 +35,8 @@ namespace MaterialTests.AnalysisMaterials
         {
             // Assemble
             NationalAnnex nationalAnnex = NationalAnnex.RecommendedValues;
-            ENRebarGrade grade = ENRebarGrade.B500B;
-            IENRebarMaterial original = new ENRebarMaterial(grade, nationalAnnex);
+            EnRebarGrade grade = EnRebarGrade.B500B;
+            IEnRebarMaterial original = new EnRebarMaterial(grade, nationalAnnex);
 
             // Act
             ILinearElasticMaterial material = AnalysisMaterialFactory.CreateLinearElastic(original);
@@ -56,8 +56,8 @@ namespace MaterialTests.AnalysisMaterials
         {
             // Assemble
             NationalAnnex nationalAnnex = NationalAnnex.RecommendedValues;
-            ENSteelGrade grade = ENSteelGrade.S355;
-            IENSteelMaterial original = new ENSteelMaterial(grade, nationalAnnex);
+            EnSteelGrade grade = EnSteelGrade.S355;
+            IEnSteelMaterial original = new EnSteelMaterial(grade, nationalAnnex);
 
             // Act
             ILinearElasticMaterial material = AnalysisMaterialFactory.CreateLinearElastic(original);

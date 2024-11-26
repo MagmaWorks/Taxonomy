@@ -2,9 +2,9 @@
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
+namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
-    public static class ENConcreteFactory
+    public static class EnConcreteFactory
     {
         public static ILinearElasticMaterial CreateLinearElastic<T>(T grade) where T : Enum
         {
@@ -17,7 +17,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
             return new LinearElasticMaterial(type, elasticModulus, f_ck);
         }
 
-        public static IParabolaRectangleMaterial CreateParabolaRectangleAnalysisMaterial(ENConcreteGrade grade)
+        public static IParabolaRectangleMaterial CreateParabolaRectangleAnalysisMaterial(EnConcreteGrade grade)
         {
             MaterialType type = MaterialType.Concrete;
 

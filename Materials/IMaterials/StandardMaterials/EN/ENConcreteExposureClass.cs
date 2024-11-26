@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Materials
 {
-    public enum ENConcreteExposureClass
+    public enum EnConcreteExposureClass
     {
         X0,
         XC1,

@@ -1,5 +1,5 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
@@ -7,17 +7,17 @@ using OasysUnits.Units;
 
 namespace MaterialTests.StandardMaterials
 {
-    public class ENRebarFactoryTests
+    public class EnRebarFactoryTests
     {
         [Fact]
         public void CreateStandardB500BConcreteMaterialTests()
         {
             // Assemble
             NationalAnnex nationalAnnex = NationalAnnex.RecommendedValues;
-            ENRebarGrade grade = ENRebarGrade.B500B;
+            EnRebarGrade grade = EnRebarGrade.B500B;
 
             // Act
-            IENRebarMaterial material = new ENRebarMaterial(grade, nationalAnnex);
+            IEnRebarMaterial material = new EnRebarMaterial(grade, nationalAnnex);
 
             // Assert
             Assert.Equal(MaterialType.Reinforcement, material.Type);
@@ -26,16 +26,16 @@ namespace MaterialTests.StandardMaterials
             Assert.Equal(
                 "EN 1992-1-1: Eurocode 2: Design of Concrete Structures - Part 1-1: General rules and rules for buildings",
                 material.Standard.Title);
-            Assert.Equal(ENRebarGrade.B500B, material.Grade);
+            Assert.Equal(EnRebarGrade.B500B, material.Grade);
         }
 
         [Theory]
         [MemberData(nameof(EnumValues))]
-        public void CreateLinearElasticTests(ENRebarGrade grade)
+        public void CreateLinearElasticTests(EnRebarGrade grade)
         {
             // Assemble
             // Act
-            ILinearElasticMaterial material = ENRebarFactory.CreateLinearElastic(grade);
+            ILinearElasticMaterial material = EnRebarFactory.CreateLinearElastic(grade);
 
             // Assert
             double expectedStrength = double.Parse(string.Concat(grade.ToString().Where(Char.IsDigit)));
@@ -50,11 +50,11 @@ namespace MaterialTests.StandardMaterials
 
         [Theory]
         [MemberData(nameof(EnumValues))]
-        public void CreateElastoPlasticTests(ENRebarGrade grade)
+        public void CreateElastoPlasticTests(EnRebarGrade grade)
         {
             // Assemble
             // Act
-            IBiLinearMaterial material = ENRebarFactory.CreateBiLinear(grade);
+            IBiLinearMaterial material = EnRebarFactory.CreateBiLinear(grade);
 
             // Assert
             double expectedStrength = double.Parse(string.Concat(grade.ToString().Where(Char.IsDigit)));
@@ -88,7 +88,7 @@ namespace MaterialTests.StandardMaterials
 
         public static IEnumerable<object[]> EnumValues()
         {
-            foreach (var enumValue in Enum.GetValues(typeof(ENRebarGrade)))
+            foreach (var enumValue in Enum.GetValues(typeof(EnRebarGrade)))
             {
                 yield return new object[] { enumValue };
             }

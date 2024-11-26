@@ -3,17 +3,17 @@ using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
+namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
-    public class ENRebarMaterial : IENRebarMaterial
+    public class EnRebarMaterial : IEnRebarMaterial
     {
-        public ENRebarGrade Grade { get; set; } = ENRebarGrade.B500B;
+        public EnRebarGrade Grade { get; set; } = EnRebarGrade.B500B;
         public IEurocode Standard { get; set; } = new EN1992(EN1992Part.Part1_1, NationalAnnex.RecommendedValues);
         public MaterialType Type => MaterialType.Reinforcement;
         public Ratio PartialFactor { get; set; } = new Ratio(1.15, RatioUnit.DecimalFraction);
         public Ratio AccidentalPartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
 
-        public ENRebarMaterial(ENRebarGrade grade, NationalAnnex nationalAnnex)
+        public EnRebarMaterial(EnRebarGrade grade, NationalAnnex nationalAnnex)
         {
             Standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
             Grade = grade;
@@ -30,7 +30,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
                     break;
 
                 default:
-                    throw new MissingNationalAnnexException(nationalAnnex);
+                    throw new NotImplementedException($"National Annex of {nationalAnnex} not implemented");
             }
         }
     }

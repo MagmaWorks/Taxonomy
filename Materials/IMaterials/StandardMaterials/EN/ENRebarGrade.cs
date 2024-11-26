@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Materials
 {
-    public enum ENRebarGrade
+    public enum EnRebarGrade
     {
         B450A,
         B450C,

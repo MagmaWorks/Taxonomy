@@ -2,7 +2,7 @@ using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
@@ -29,7 +29,7 @@ namespace MaterialTests
         private static Pressure _stress { get { return new Pressure(45, OasysUnits.Units.PressureUnit.Megapascal); } }
         private static Strain _strain { get { return new Strain(7.5, OasysUnits.Units.StrainUnit.Percent); } }
         private static IStandard _standard { get { return new EN1992(); } }
-        private static Enum _grade { get { return ENConcreteGrade.C30_37; } }
+        private static Enum _grade { get { return EnConcreteGrade.C30_37; } }
 
         [Theory]
         [ClassData(typeof(TestDataGenerator))]
@@ -76,7 +76,7 @@ namespace MaterialTests
             private static List<object[]> GetAllComponents()
             {
                 var data = new List<object[]>();
-                Type[] typelist = Assembly.GetAssembly(typeof(ENConcreteMaterial)).GetTypes();
+                Type[] typelist = Assembly.GetAssembly(typeof(EnConcreteMaterial)).GetTypes();
                 foreach (Type type in typelist)
                 {
                     if (type.Namespace == null)
@@ -231,10 +231,10 @@ namespace MaterialTests
             }
 
             // reflect on assembly to find concrete implementation of interface
-            AssemblyName[] referencedNames = Assembly.GetAssembly(typeof(ENConcreteMaterial)).GetReferencedAssemblies();
+            AssemblyName[] referencedNames = Assembly.GetAssembly(typeof(EnConcreteMaterial)).GetReferencedAssemblies();
             List<Assembly> assemblies = new List<Assembly>()
             {
-                Assembly.GetAssembly(typeof(ENConcreteMaterial))
+                Assembly.GetAssembly(typeof(EnConcreteMaterial))
             };
             assemblies.AddRange(referencedNames.Select(a => Assembly.Load(a)).ToList());
 

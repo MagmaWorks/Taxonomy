@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
+namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
-    public class ENConcreteMaterial : IENConcreteMaterial
+    public class EnConcreteMaterial : IEnConcreteMaterial
     {
-        public IList<ENConcreteExposureClass> ExposureClasses { get; set; } = new List<ENConcreteExposureClass> { ENConcreteExposureClass.XC1 };
-        public ENCementClass CementClass { get; set; } = ENCementClass.N;
-        public ENConcreteGrade Grade { get; set; } = ENConcreteGrade.C30_37;
+        public IList<EnConcreteExposureClass> ExposureClasses { get; set; } = new List<EnConcreteExposureClass> { EnConcreteExposureClass.XC1 };
+        public EnCementClass CementClass { get; set; } = EnCementClass.N;
+        public EnConcreteGrade Grade { get; set; } = EnConcreteGrade.C30_37;
         public IEurocode Standard { get; set; } = new EN1992(EN1992Part.Part1_1, NationalAnnex.RecommendedValues);
         public MaterialType Type => MaterialType.Concrete;
         public Length MaximumAggregateSize { get; set; } = new Length(20, LengthUnit.Millimeter);
@@ -21,34 +20,34 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
         public Ratio LongTermCompressionFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
         public Ratio LongTermTensionFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
 
-        private ENConcreteMaterial() { }
+        private EnConcreteMaterial() { }
 
-        public ENConcreteMaterial(ENConcreteGrade grade, NationalAnnex nationalAnnex)
+        public EnConcreteMaterial(EnConcreteGrade grade, NationalAnnex nationalAnnex)
         {
             Standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
             Grade = grade;
             SetPartialFactors(nationalAnnex);
         }
 
-        public ENConcreteMaterial(ENConcreteGrade grade, NationalAnnex nationalAnnex,
-            ENConcreteExposureClass exposureClass, Length maxAggregateSize, ENCementClass cementClass)
+        public EnConcreteMaterial(EnConcreteGrade grade, NationalAnnex nationalAnnex,
+            EnConcreteExposureClass exposureClass, Length maxAggregateSize, EnCementClass cementClass)
         {
             Standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
             Grade = grade;
             CementClass = cementClass;
-            ExposureClasses = new List<ENConcreteExposureClass>() { exposureClass };
+            ExposureClasses = new List<EnConcreteExposureClass>() { exposureClass };
             MaximumAggregateSize = maxAggregateSize;
             SetPartialFactors(nationalAnnex);
         }
 
-        public ENConcreteMaterial(ENConcreteGrade grade, NationalAnnex nationalAnnex,
-            ENConcreteExposureClass exposureClass, Length maxAggregateSize,
-            ENCementClass cementClass, Length crackWidth, Length cover)
+        public EnConcreteMaterial(EnConcreteGrade grade, NationalAnnex nationalAnnex,
+            EnConcreteExposureClass exposureClass, Length maxAggregateSize,
+            EnCementClass cementClass, Length crackWidth, Length cover)
         {
             Standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
             Grade = grade;
             CementClass = cementClass;
-            ExposureClasses = new List<ENConcreteExposureClass>() { exposureClass };
+            ExposureClasses = new List<EnConcreteExposureClass>() { exposureClass };
             MaximumAggregateSize = maxAggregateSize;
             MaximumCrackWidth = crackWidth;
             MinimumCover = cover;

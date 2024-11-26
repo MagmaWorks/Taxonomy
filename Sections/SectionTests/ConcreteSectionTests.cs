@@ -1,5 +1,5 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
@@ -15,7 +15,7 @@ namespace SectionTests
         public void CreateConcreteSectionFromProfileAndMaterialTest()
         {
             // Assemble
-            IENConcreteMaterial material = new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
+            IEnConcreteMaterial material = new EnConcreteMaterial(EnConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
             IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
 
             // Act
@@ -30,7 +30,7 @@ namespace SectionTests
         public void CreateConcreteSectionFromProfileEnMaterialAndLinkTest()
         {
             // Assemble
-            var material = new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
+            var material = new EnConcreteMaterial(EnConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
             material.MinimumCover = new Length(50, LengthUnit.Centimeter);
             IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
             IRebar link = RebarTests.CreateRebar(8);
@@ -49,7 +49,7 @@ namespace SectionTests
         public void CreateConcreteSectionFromProfileMaterialLinkAndCoverTest()
         {
             // Assemble
-            IENConcreteMaterial material = new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
+            IEnConcreteMaterial material = new EnConcreteMaterial(EnConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
             IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
             IRebar link = RebarTests.CreateRebar(8);
             Length cover = new Length(20, LengthUnit.Millimeter);
@@ -68,7 +68,7 @@ namespace SectionTests
         public void CreateConcreteSectionFromProfileMaterialLinkCoverAndRebarsTest()
         {
             // Assemble
-            IENConcreteMaterial material = new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
+            IEnConcreteMaterial material = new EnConcreteMaterial(EnConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
             IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
             IList<ILongitudinalReinforcement> rebars = LongitudinalReinforcementTests.CreateLongitudinalReinforcements();
             IRebar link = RebarTests.CreateRebar(8);
@@ -89,7 +89,7 @@ namespace SectionTests
         public void MinimumReinforcementSpacingTest()
         {
             // Assemble
-            IENConcreteMaterial material = new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
+            IEnConcreteMaterial material = new EnConcreteMaterial(EnConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
             IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
             IList<ILongitudinalReinforcement> rebars = LongitudinalReinforcementTests.CreateLongitudinalReinforcements();
             IRebar link = RebarTests.CreateRebar(8);
@@ -118,7 +118,7 @@ namespace SectionTests
         public void ConcreteSectionWithInvalidMaterialTest()
         {
             // Assemble
-            IENRebarMaterial material = new ENRebarMaterial(ENRebarGrade.B500B, NationalAnnex.UnitedKingdom);
+            IEnRebarMaterial material = new EnRebarMaterial(EnRebarGrade.B500B, NationalAnnex.UnitedKingdom);
             IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
             IList<ILongitudinalReinforcement> rebars = LongitudinalReinforcementTests.CreateLongitudinalReinforcements();
             IRebar link = RebarTests.CreateRebar(8);

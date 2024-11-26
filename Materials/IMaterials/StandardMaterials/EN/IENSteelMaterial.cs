@@ -1,9 +1,9 @@
-﻿using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
+﻿using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Materials
 {
-    public interface IENSteelMaterial : IENMaterial<ENSteelGrade>
+    public interface IEnSteelMaterial : IEnMaterial<EnSteelGrade>
     {
         EnExecutionClass ExecutionClassforStaticOrLowSeismicLoading { get; }
         EnExecutionClass ExecutionClassforFatigueOrHighSeismicLoading { get; }

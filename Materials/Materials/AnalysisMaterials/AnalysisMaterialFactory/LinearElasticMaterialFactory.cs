@@ -1,5 +1,5 @@
 ﻿using System;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
@@ -16,13 +16,13 @@ namespace MagmaWorks.Taxonomy.Materials
                     switch (material.Type)
                     {
                         case MaterialType.Concrete:
-                            return ENConcreteFactory.CreateLinearElastic(material.Grade);
+                            return EnConcreteFactory.CreateLinearElastic(material.Grade);
 
                         case MaterialType.Reinforcement:
-                            return ENRebarFactory.CreateLinearElastic(material.Grade);
+                            return EnRebarFactory.CreateLinearElastic(material.Grade);
 
                         case MaterialType.Steel:
-                            return ENSteelFactory.CreateLinearElastic(material.Grade);
+                            return EnSteelFactory.CreateLinearElastic(material.Grade);
 
                         default:
                             throw new ArgumentException($"{material.Type} material type not implemented for Eurocode");

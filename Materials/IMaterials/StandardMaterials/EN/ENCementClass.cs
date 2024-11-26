@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Materials
 {
-    public enum ENCementClass
+    public enum EnCementClass
     {
         S,
         N,

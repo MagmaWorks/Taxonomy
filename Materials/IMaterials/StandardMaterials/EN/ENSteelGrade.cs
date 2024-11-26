@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Materials
 {
-    public enum ENSteelGrade
+    public enum EnSteelGrade
     {
         S235,
         S275,

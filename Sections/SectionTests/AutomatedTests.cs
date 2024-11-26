@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
@@ -38,7 +38,7 @@ namespace SectionTests
         {
             get
             {
-                return new ENRebarMaterial(ENRebarGrade.B500B, NationalAnnex.RecommendedValues);
+                return new EnRebarMaterial(EnRebarGrade.B500B, NationalAnnex.RecommendedValues);
             }
         }
         private static IProfile _profile { get { return new HE320B(); } }

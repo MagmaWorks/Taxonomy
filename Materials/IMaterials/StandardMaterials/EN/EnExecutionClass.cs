@@ -1,4 +1,4 @@
-﻿namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
+﻿namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
     public enum EnExecutionClass
     {
