@@ -3,7 +3,6 @@ using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
-using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
@@ -25,6 +24,25 @@ namespace SectionTests
             // Assert
             Assert.Equivalent(profile, section.Profile);
             Assert.Equivalent(material, section.Material);
+        }
+
+        [Fact]
+        public void CreateConcreteSectionFromProfileEnMaterialAndLinkTest()
+        {
+            // Assemble
+            var material = new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
+            material.MinimumCover = new Length(50, LengthUnit.Centimeter);
+            IRectangle profile = new Rectangle(new Length(50, LengthUnit.Centimeter), new Length(100, LengthUnit.Centimeter));
+            IRebar link = RebarTests.CreateRebar(8);
+
+            // Act
+            IConcreteSection section = new ConcreteSection(profile, material, link);
+
+            // Assert
+            Assert.Equivalent(profile, section.Profile);
+            Assert.Equivalent(material, section.Material);
+            Assert.Equivalent(link, section.Link);
+            Assert.Equivalent(material.MinimumCover, section.Cover);
         }
 
         [Fact]
