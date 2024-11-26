@@ -30,6 +30,13 @@ namespace MagmaWorks.Taxonomy.Sections
             ValidateMaterial();
         }
 
+        public ConcreteSection(IProfile profile, IMaterial material, IRebar link)
+            : base(profile, material)
+        {
+            ValidateMaterial();
+            Link = link;
+        }
+
         public ConcreteSection(IProfile profile, IMaterial material, IRebar link, Length cover)
             : base(profile, material)
         {
@@ -182,6 +189,7 @@ namespace MagmaWorks.Taxonomy.Sections
             if (Material is IENConcreteMaterial en)
             {
                 ((MinimumReinforcementSpacing)MinimumReinforcementSpacing).MaximumAggregateSize = en.MaximumAggregateSize;
+                Cover = en.MinimumCover;
             }
         }
 
