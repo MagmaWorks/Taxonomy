@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
 using MagmaWorks.Geometry;
 using OasysUnits;
 
@@ -13,7 +12,7 @@ namespace MagmaWorks.Taxonomy.Profiles
             get { return _outerEdge; }
             set
             {
-                _outerEdge = EnsureClosedPolyline(value);
+                _outerEdge = EnsureClosedPolygon(value);
             }
         }
 
@@ -24,7 +23,7 @@ namespace MagmaWorks.Taxonomy.Profiles
             {
                 if (value != null)
                 {
-                    _voidEdges = value.Select(edge => EnsureClosedPolyline(edge)).ToList();
+                    _voidEdges = value.Select(edge => EnsureClosedPolygon(edge)).ToList();
                 }
             }
         }
@@ -74,14 +73,14 @@ namespace MagmaWorks.Taxonomy.Profiles
             return PerimeterFactory.PerimeterFactory.CreateBackToBackPerimeters(profile);
         }
 
-        private static ILocalPolyline2d EnsureClosedPolyline(ILocalPolyline2d Polyline)
+        private static ILocalPolyline2d EnsureClosedPolygon(ILocalPolyline2d polygon)
         {
-            if (Polyline.IsClosed)
+            if (polygon.IsClosed)
             {
-                return Polyline;
+                return polygon;
             }
 
-            var closed = new LocalPolyline2d(Polyline.Points);
+            var closed = new LocalPolyline2d(polygon.Points);
             closed.Points.Add(closed.Points[0]);
             return closed;
         }

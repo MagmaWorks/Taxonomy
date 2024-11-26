@@ -1,22 +1,22 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
 namespace MaterialTests.StandardMaterials.EN
 {
-    public class ENRebarMaterialTests
+    public class EnRebarMaterialTests
     {
         [Fact]
         public void CreateStandardENB500BUKRebarMaterialTests()
         {
             // Assemble
-            ENRebarGrade grade = ENRebarGrade.B500B;
+            EnRebarGrade grade = EnRebarGrade.B500B;
             NationalAnnex nationalAnnex = NationalAnnex.UnitedKingdom;
 
             // Act
-            IENRebarMaterial material = new ENRebarMaterial(grade, nationalAnnex);
+            IEnRebarMaterial material = new EnRebarMaterial(grade, nationalAnnex);
 
             // Assert
             Assert.Equal(MaterialType.Reinforcement, material.Type);
@@ -26,7 +26,7 @@ namespace MaterialTests.StandardMaterials.EN
                 "BS EN 1992-1-1: Eurocode 2: Design of Concrete Structures - Part 1-1: General rules and rules for buildings",
                 material.Standard.Title);
             Assert.Equal(NationalAnnex.UnitedKingdom, material.Standard.NationalAnnex);
-            Assert.Equal(ENRebarGrade.B500B, material.Grade);
+            Assert.Equal(EnRebarGrade.B500B, material.Grade);
         }
 
         [Theory]
@@ -36,10 +36,10 @@ namespace MaterialTests.StandardMaterials.EN
         public void PartialFactorsTest(NationalAnnex na, double expectedGammaS, double expectedGammaCAccidental)
         {
             // Assemble
-            ENRebarGrade grade = ENRebarGrade.B500B;
+            EnRebarGrade grade = EnRebarGrade.B500B;
 
             // Act
-            IENRebarMaterial material = new ENRebarMaterial(grade, na);
+            IEnRebarMaterial material = new EnRebarMaterial(grade, na);
 
             // Assert
             Assert.Equal(expectedGammaS, material.PartialFactor.DecimalFractions);
@@ -50,11 +50,11 @@ namespace MaterialTests.StandardMaterials.EN
         public void InterfaceSurvivesRoundtripDeserializationTest()
         {
             // Assemble
-            IENRebarMaterial material = new ENRebarMaterial(ENRebarGrade.B550B, NationalAnnex.Germany);
+            IEnRebarMaterial material = new EnRebarMaterial(EnRebarGrade.B550B, NationalAnnex.Germany);
 
             // Act
             string json = material.ToJson();
-            IENRebarMaterial matDeserialized = json.FromJson<IENRebarMaterial>();
+            IEnRebarMaterial matDeserialized = json.FromJson<IEnRebarMaterial>();
 
             // Assert
             Assert.Equivalent(material, matDeserialized);

@@ -1,5 +1,5 @@
 using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
@@ -7,17 +7,17 @@ using OasysUnits.Units;
 
 namespace MaterialTests.StandardMaterials
 {
-    public class ENConcreteFactoryTests
+    public class EnConcreteFactoryTests
     {
         [Fact]
         public void CreateStandardENC30_37ConcreteMaterialTests()
         {
             // Assemble
             NationalAnnex nationalAnnex = NationalAnnex.RecommendedValues;
-            ENConcreteGrade grade = ENConcreteGrade.C30_37;
+            EnConcreteGrade grade = EnConcreteGrade.C30_37;
 
             // Act
-            IENConcreteMaterial material = new ENConcreteMaterial(grade, nationalAnnex);
+            IEnConcreteMaterial material = new EnConcreteMaterial(grade, nationalAnnex);
 
             // Assert
             Assert.Equal(MaterialType.Concrete, material.Type);
@@ -26,16 +26,16 @@ namespace MaterialTests.StandardMaterials
             Assert.Equal(
                 "EN 1992-1-1: Eurocode 2: Design of Concrete Structures - Part 1-1: General rules and rules for buildings",
                 material.Standard.Title);
-            Assert.Equal(ENConcreteGrade.C30_37, material.Grade);
+            Assert.Equal(EnConcreteGrade.C30_37, material.Grade);
         }
 
         [Theory]
         [MemberData(nameof(EnumValues))]
-        public void CreateLinearElasticTests(ENConcreteGrade grade)
+        public void CreateLinearElasticTests(EnConcreteGrade grade)
         {
             // Assemble
             // Act
-            ILinearElasticMaterial material = ENConcreteFactory.CreateLinearElastic(grade);
+            ILinearElasticMaterial material = EnConcreteFactory.CreateLinearElastic(grade);
 
             // Assert
             double expectedStrength = double.Parse(grade.ToString().Split('C', '_')[1]);
@@ -55,11 +55,11 @@ namespace MaterialTests.StandardMaterials
 
         [Theory]
         [MemberData(nameof(EnumValues))]
-        public void CreateParabolaRectangleTests(ENConcreteGrade grade)
+        public void CreateParabolaRectangleTests(EnConcreteGrade grade)
         {
             // Assemble
             // Act
-            IParabolaRectangleMaterial material = ENConcreteFactory.CreateParabolaRectangleAnalysisMaterial(grade);
+            IParabolaRectangleMaterial material = EnConcreteFactory.CreateParabolaRectangleAnalysisMaterial(grade);
 
             // Assert
             double expectedStrength = double.Parse(grade.ToString().Split('C', '_')[1]);
@@ -83,9 +83,9 @@ namespace MaterialTests.StandardMaterials
 
         [Theory]
         [MemberData(nameof(EnumValues))]
-        public void GetStressFromParabolaRectangleTests(ENConcreteGrade grade)
+        public void GetStressFromParabolaRectangleTests(EnConcreteGrade grade)
         {
-            IParabolaRectangleMaterial material = ENConcreteFactory.CreateParabolaRectangleAnalysisMaterial(grade);
+            IParabolaRectangleMaterial material = EnConcreteFactory.CreateParabolaRectangleAnalysisMaterial(grade);
             List<Strain> strains = new List<Strain>()
             {
                 new Strain(0, StrainUnit.MilliStrain),
@@ -119,7 +119,7 @@ namespace MaterialTests.StandardMaterials
 
         public static IEnumerable<object[]> EnumValues()
         {
-            foreach (var enumValue in Enum.GetValues(typeof(ENConcreteGrade)))
+            foreach (var enumValue in Enum.GetValues(typeof(EnConcreteGrade)))
             {
                 yield return new object[] { enumValue };
             }

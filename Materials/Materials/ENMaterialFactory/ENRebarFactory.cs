@@ -3,9 +3,9 @@ using System.Linq;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
+namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
-    public static class ENRebarFactory
+    public static class EnRebarFactory
     {
         public static ILinearElasticMaterial CreateLinearElastic<T>(T grade) where T : Enum
         {
@@ -16,7 +16,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
             return new LinearElasticMaterial(type, elasticModulus, f_yk);
         }
 
-        public static IBiLinearMaterial CreateBiLinear(ENRebarGrade grade)
+        public static IBiLinearMaterial CreateBiLinear(EnRebarGrade grade)
         {
             ILinearElasticMaterial material = CreateLinearElastic(grade);
             char rebarClass = grade.ToString()[grade.ToString().Length - 1];

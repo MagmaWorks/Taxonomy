@@ -1,5 +1,5 @@
 using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Serialization;
@@ -15,7 +15,7 @@ namespace SectionTests
         public void CreateSteelSectionTest()
         {
             // Assemble
-            IENSteelMaterial material = new ENSteelMaterial(ENSteelGrade.S355, NationalAnnex.UnitedKingdom);
+            IEnSteelMaterial material = new EnSteelMaterial(EnSteelGrade.S355, NationalAnnex.UnitedKingdom);
             ICatalogue profile = new HE500B();
 
             // Act

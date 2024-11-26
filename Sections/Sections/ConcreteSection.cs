@@ -186,7 +186,7 @@ namespace MagmaWorks.Taxonomy.Sections
                 throw new InvalidMaterialTypeException("Material type must be Concrete");
             }
 
-            if (Material is IENConcreteMaterial en)
+            if (Material is IEnConcreteMaterial en)
             {
                 ((MinimumReinforcementSpacing)MinimumReinforcementSpacing).MaximumAggregateSize = en.MaximumAggregateSize;
                 Cover = en.MinimumCover;

@@ -1,6 +1,5 @@
-﻿using System.Security.Cryptography;
-using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
+﻿using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
@@ -14,7 +13,7 @@ namespace SectionTests
         public static IRebar CreateRebar(double dia = 20)
         {
             // Assemble
-            IENRebarMaterial material = new ENRebarMaterial(ENRebarGrade.B500B, NationalAnnex.Germany);
+            IEnRebarMaterial material = new EnRebarMaterial(EnRebarGrade.B500B, NationalAnnex.Germany);
             Length diameter = new Length(dia, LengthUnit.Millimeter);
 
             // Act
@@ -25,7 +24,7 @@ namespace SectionTests
         public void CreateRebarTest()
         {
             // Assemble
-            IENRebarMaterial expectedMaterial = new ENRebarMaterial(ENRebarGrade.B500B, NationalAnnex.Germany);
+            IEnRebarMaterial expectedMaterial = new EnRebarMaterial(EnRebarGrade.B500B, NationalAnnex.Germany);
 
             // Act
             IRebar rebar = CreateRebar();
@@ -39,7 +38,7 @@ namespace SectionTests
         public void RebarWithInvalidMaterialTest()
         {
             // Assemble
-            IENConcreteMaterial material = new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
+            IEnConcreteMaterial material = new EnConcreteMaterial(EnConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
             Length diameter = new Length(8, LengthUnit.Millimeter);
 
             // Act
