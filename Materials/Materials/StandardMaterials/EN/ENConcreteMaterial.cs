@@ -13,7 +13,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
         public IEurocode Standard { get; set; } = new EN1992(EN1992Part.Part1_1, NationalAnnex.RecommendedValues);
         public MaterialType Type => MaterialType.Concrete;
         public Length MaximumAggregateSize { get; set; } = new Length(20, LengthUnit.Millimeter);
-        public Length MaximumCrackWidth { get; set; } = new Length(0.3, LengthUnit.Millimeter);
+        public Length CrackWidthLimit { get; set; } = new Length(0.3, LengthUnit.Millimeter);
         public Length MinimumCover { get; set; } = new Length(30, LengthUnit.Millimeter);
         public Ratio PartialFactor { get; set; } = new Ratio(1.5, RatioUnit.DecimalFraction);
         public Ratio AccidentalPartialFactor { get; set; } = new Ratio(1.2, RatioUnit.DecimalFraction);
@@ -42,15 +42,15 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 
         public EnConcreteMaterial(EnConcreteGrade grade, NationalAnnex nationalAnnex,
             EnConcreteExposureClass exposureClass, Length maxAggregateSize,
-            EnCementClass cementClass, Length crackWidth, Length cover)
+            EnCementClass cementClass, Length crackWidthLimit, Length minimumCover)
         {
             Standard = new EN1992(EN1992Part.Part1_1, nationalAnnex);
             Grade = grade;
             CementClass = cementClass;
             ExposureClasses = new List<EnConcreteExposureClass>() { exposureClass };
             MaximumAggregateSize = maxAggregateSize;
-            MaximumCrackWidth = crackWidth;
-            MinimumCover = cover;
+            CrackWidthLimit = crackWidthLimit;
+            MinimumCover = minimumCover;
             SetPartialFactors(nationalAnnex);
         }
 
