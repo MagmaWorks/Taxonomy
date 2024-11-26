@@ -8,40 +8,40 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public class Perimeter : IPerimeter
     {
-        public ILocalPolygon2d OuterEdge
+        public ILocalPolyline2d OuterEdge
         {
             get { return _outerEdge; }
             set
             {
-                _outerEdge = EnsureClosedPolygon(value);
+                _outerEdge = EnsureClosedPolyline(value);
             }
         }
 
-        public IList<ILocalPolygon2d> VoidEdges
+        public IList<ILocalPolyline2d> VoidEdges
         {
             get { return _voidEdges; }
             set
             {
                 if (value != null)
                 {
-                    _voidEdges = value.Select(edge => EnsureClosedPolygon(edge)).ToList();
+                    _voidEdges = value.Select(edge => EnsureClosedPolyline(edge)).ToList();
                 }
             }
         }
 
-        private ILocalPolygon2d _outerEdge;
-        private IList<ILocalPolygon2d> _voidEdges;
+        private ILocalPolyline2d _outerEdge;
+        private IList<ILocalPolyline2d> _voidEdges;
 
         private Perimeter() { }
 
-        public Perimeter(ILocalPolygon2d edge)
+        public Perimeter(ILocalPolyline2d edge)
         {
             OuterEdge = edge;
         }
 
-        public Perimeter(IList<ILocalPoint2d> edgePoints) : this(new LocalPolygon2d(edgePoints)) { }
+        public Perimeter(IList<ILocalPoint2d> edgePoints) : this(new LocalPolyline2d(edgePoints)) { }
 
-        public Perimeter(ILocalPolygon2d outerEdge, IList<ILocalPolygon2d> voidEdges)
+        public Perimeter(ILocalPolyline2d outerEdge, IList<ILocalPolyline2d> voidEdges)
         {
             OuterEdge = outerEdge;
             VoidEdges = voidEdges;
@@ -74,14 +74,14 @@ namespace MagmaWorks.Taxonomy.Profiles
             return PerimeterFactory.PerimeterFactory.CreateBackToBackPerimeters(profile);
         }
 
-        private static ILocalPolygon2d EnsureClosedPolygon(ILocalPolygon2d polygon)
+        private static ILocalPolyline2d EnsureClosedPolyline(ILocalPolyline2d Polyline)
         {
-            if (polygon.IsClosed)
+            if (Polyline.IsClosed)
             {
-                return polygon;
+                return Polyline;
             }
 
-            var closed = new LocalPolygon2d(polygon.Points);
+            var closed = new LocalPolyline2d(Polyline.Points);
             closed.Points.Add(closed.Points[0]);
             return closed;
         }

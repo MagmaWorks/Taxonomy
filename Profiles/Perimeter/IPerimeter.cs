@@ -5,7 +5,7 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public interface IPerimeter : IProfile
     {
-        ILocalPolygon2d OuterEdge { get; }
-        IList<ILocalPolygon2d> VoidEdges { get; }
+        ILocalPolyline2d OuterEdge { get; }
+        IList<ILocalPolyline2d> VoidEdges { get; }
     }
 }

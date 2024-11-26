@@ -9,7 +9,7 @@ namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
         {
             List<ILocalPoint2d> outerEdge = PerimeterFactoryUtility.CreateCirclePoints(profile.Diameter, divisions);
             List<ILocalPoint2d> voidEdge = PerimeterFactoryUtility.CreateCirclePoints(profile.Diameter - 2 * profile.Thickness, divisions);
-            return new Perimeter(new LocalPolygon2d(outerEdge), new List<ILocalPolygon2d>() { new LocalPolygon2d(voidEdge) });
+            return new Perimeter(new LocalPolyline2d(outerEdge), new List<ILocalPolyline2d>() { new LocalPolyline2d(voidEdge) });
         }
     }
 }

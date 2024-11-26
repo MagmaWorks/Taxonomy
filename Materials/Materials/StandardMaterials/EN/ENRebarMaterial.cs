@@ -30,7 +30,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
                     break;
 
                 default:
-                    throw new NotImplementedException($"National Annex of {nationalAnnex} not implemented");
+                    throw new MissingNationalAnnexException(nationalAnnex);
             }
         }
     }

@@ -1,6 +1,8 @@
-﻿using MagmaWorks.Taxonomy.Materials;
+﻿using System.Security.Cryptography;
+using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
 using MagmaWorks.Taxonomy.Sections;
+using MagmaWorks.Taxonomy.Sections.Exceptions;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
@@ -31,6 +33,18 @@ namespace SectionTests
             // Assert
             Assert.Equal(20, rebar.Diameter.Millimeters);
             Assert.Equivalent(expectedMaterial, rebar.Material);
+        }
+
+        [Fact]
+        public void RebarWithInvalidMaterialTest()
+        {
+            // Assemble
+            IENConcreteMaterial material = new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
+            Length diameter = new Length(8, LengthUnit.Millimeter);
+
+            // Act
+            // Assert
+            Assert.Throws<InvalidMaterialTypeException>(() => new Rebar(material, diameter));
         }
     }
 }

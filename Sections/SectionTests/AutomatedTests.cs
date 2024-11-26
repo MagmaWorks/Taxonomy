@@ -6,6 +6,7 @@ using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Materials.StandardMaterials.EN;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
+using MagmaWorks.Taxonomy.Sections.Exceptions;
 using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
@@ -18,6 +19,9 @@ namespace SectionTests
         // Add manual tests of these class' constructors instead
         private static readonly List<Type> _excludedTypes =
         [
+            typeof(ConcreteSection),
+            typeof(InvalidMaterialTypeException),
+            typeof(InvalidProfileTypeException),
         ];
 
         // static inputs used to populate constructor variables
@@ -34,7 +38,7 @@ namespace SectionTests
         {
             get
             {
-                return new ENConcreteMaterial(ENConcreteGrade.C30_37, NationalAnnex.RecommendedValues);
+                return new ENRebarMaterial(ENRebarGrade.B500B, NationalAnnex.RecommendedValues);
             }
         }
         private static IProfile _profile { get { return new HE320B(); } }

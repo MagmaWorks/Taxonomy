@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <MinVerMinimumMajorMinor>0.0</MinVerMinimumMajorMinor>
@@ -22,7 +22,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MagmaWorks.IGeometry" Version="0.0.7" />
+    <PackageReference Include="MagmaWorks.Geometry" Version="0.0.8" />
+    <PackageReference Include="MagmaWorks.IGeometry" Version="0.0.8" />
     <PackageReference Include="MinVer" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -30,7 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Profiles\Perimeter\MagmaWorks.Taxonomy.Profiles.Perimeter.csproj" />
     <ProjectReference Include="..\ISections\MagmaWorks.Taxonomy.ISections.csproj" />
+    <ProjectReference Include="..\..\Materials\IMaterials\MagmaWorks.Taxonomy.IMaterials.csproj" />
+    <ProjectReference Include="..\..\Profiles\IProfiles\MagmaWorks.Taxonomy.IProfiles.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,8 +53,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Materials\IMaterials\MagmaWorks.Taxonomy.IMaterials.csproj" />
-    <ProjectReference Include="..\..\Profiles\IProfiles\MagmaWorks.Taxonomy.IProfiles.csproj" />
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>SectionTests</_Parameter1>
+    </AssemblyAttribute>
   </ItemGroup>
 
 </Project>

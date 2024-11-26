@@ -2,6 +2,7 @@
 {
     public interface ILongitudinalReinforcement : IComposite
     {
-        IRebar Rebar { get; set; }
+        IRebar Rebar { get; }
+        int CountPerBundle { get; }
     }
 }

@@ -8,7 +8,7 @@ namespace MagmaWorks.Taxonomy.Sections
         public IMaterial Material { get; set; }
         public IProfile Profile { get; set; }
 
-        public Section(IMaterial material, IProfile profile)
+        public Section(IProfile profile, IMaterial material)
         {
             Material = material;
             Profile = profile;
