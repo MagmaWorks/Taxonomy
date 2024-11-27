@@ -2,18 +2,6 @@
 {
     internal static class EurocodeUtility
     {
-        internal static string GetCodeNumber(IEurocode eurocode)
-        {
-            string part = string.Empty;
-            if (eurocode.Part.ToString() != "None")
-            {
-                part = '-' + eurocode.Part.ToString()
-                .Replace("Part", string.Empty).Replace('_', '-').Replace("None", string.Empty);
-            }
-
-            return eurocode.Code.ToString().Replace("EN", "EN ") + part;
-        }
-
         internal static string GetCodeTitle(Eurocode eurocode)
         {
             return eurocode switch
