@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using OasysUnits;
 
-namespace MagmaWorks.Taxonomy.Materials
+namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
     public interface IEnConcreteMaterial : IEnMaterial
     {

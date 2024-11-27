@@ -1,7 +1,7 @@
 ﻿using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using OasysUnits;
 
-namespace MagmaWorks.Taxonomy.Materials
+namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
     public interface IEnSteelMaterial : IEnMaterial
     {
