@@ -1,15 +1,15 @@
 ﻿namespace MagmaWorks.Taxonomy.Standards.Eurocode
 {
-    public class EN1990 : IEurocode
+    public class En1990 : IEurocode
     {
         public StandardBody Body => StandardBody.EN;
         public Eurocode Code { get; } = Eurocode.EN1990;
         public NationalAnnex NationalAnnex { get; set; } = NationalAnnex.RecommendedValues;
         public string Title => GetTitle();
 
-        public EN1990() { }
+        public En1990() { }
 
-        public EN1990(NationalAnnex nationalAnnex)
+        public En1990(NationalAnnex nationalAnnex)
         {
             NationalAnnex = nationalAnnex;
         }

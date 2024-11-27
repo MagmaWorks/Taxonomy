@@ -1,15 +1,13 @@
-﻿using System;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
+﻿using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
+namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.EN
 {
-    public class EnSteelMaterial
-        : IEnSteelMaterial
+    public class ENSteelMaterial : IENSteelMaterial
     {
-        public EnSteelGrade Grade { get; set; } = EnSteelGrade.S355;
-        public IEurocode Standard { get; set; } = new EN1993(EN1993Part.Part1_1, NationalAnnex.RecommendedValues);
+        public ENSteelGrade Grade { get; set; } = ENSteelGrade.S355;
+        public IEurocode Standard { get; set; } = new En1993(En1993Part.Part1_1, NationalAnnex.RecommendedValues);
         public MaterialType Type => MaterialType.Steel;
         public EnExecutionClass ExecutionClassforStaticOrLowSeismicLoading { get; set; } = EnExecutionClass.EXC3;
         public EnExecutionClass ExecutionClassforFatigueOrHighSeismicLoading { get; set; } = EnExecutionClass.EXC3;
@@ -17,10 +15,10 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
         public Ratio MemberInstabilityPartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
         public Ratio TensionFracturePartialFactor { get; set; } = new Ratio(1.25, RatioUnit.DecimalFraction);
 
-        public EnSteelMaterial(EnSteelGrade grade, NationalAnnex nationalAnnex)
+        public ENSteelMaterial(ENSteelGrade grade, NationalAnnex nationalAnnex)
         {
             Grade = grade;
-            Standard = new EN1993(EN1993Part.Part1_1, nationalAnnex);
+            Standard = new En1993(En1993Part.Part1_1, nationalAnnex);
             SetPartialFactors(nationalAnnex);
         }
 
@@ -40,7 +38,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
                     break;
 
                 default:
-                    throw new NotImplementedException($"National Annex of {nationalAnnex} not implemented");
+                    throw new MissingNationalAnnexException(nationalAnnex);
             }
         }
     }

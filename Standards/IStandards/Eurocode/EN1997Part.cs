@@ -2,7 +2,7 @@
 
 namespace MagmaWorks.Taxonomy.Standards.Eurocode
 {
-    public enum EN1997Part
+    public enum En1997Part
     {
         [Description("General")]
         Part1,

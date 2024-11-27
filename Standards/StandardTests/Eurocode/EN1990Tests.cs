@@ -11,7 +11,7 @@ namespace StandardTests
         [InlineData(NationalAnnex.UnitedKingdom, "BS EN 1990: Eurocode - Basis of Structural Design")]
         public void ConstructorTest(NationalAnnex na, string expectedTitle)
         {
-            var standard = new EN1990(na);
+            var standard = new En1990(na);
             Assert.Equal(expectedTitle, standard.Title);
         }
     }

@@ -2,7 +2,7 @@
 
 namespace MagmaWorks.Taxonomy.Standards.Eurocode
 {
-    public enum EN1991Part
+    public enum En1991Part
     {
         [Description("Dead loads")]
         Part1_1,

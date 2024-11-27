@@ -1,18 +1,16 @@
-﻿using System;
-
-namespace MagmaWorks.Taxonomy.Standards.Eurocode
+﻿namespace MagmaWorks.Taxonomy.Standards.Eurocode
 {
-    public class EN1995 : IEurocode
+    public class En1995 : IEurocode
     {
         public StandardBody Body => StandardBody.EN;
         public Eurocode Code { get; } = Eurocode.EN1995;
-        public EN1995Part Part { get; set; } = EN1995Part.Part1_1;
+        public En1995Part Part { get; set; } = En1995Part.Part1_1;
         public NationalAnnex NationalAnnex { get; set; } = NationalAnnex.RecommendedValues;
         public string Title => GetTitle();
 
-        public EN1995() { }
+        public En1995() { }
 
-        public EN1995(EN1995Part part, NationalAnnex nationalAnnex)
+        public En1995(En1995Part part, NationalAnnex nationalAnnex)
         {
             Part = part;
             NationalAnnex = nationalAnnex;
@@ -24,7 +22,7 @@ namespace MagmaWorks.Taxonomy.Standards.Eurocode
             string codeNo = Code.ToString().Replace("EN", "EN ")
                 + Part.ToString().Replace("Part", "-").Replace("_", "-");
             string name = EurocodeUtility.GetCodeTitle(Code);
-            string part = EN1995Utility.GetPartDescription(Part);
+            string part = En1995Utility.GetPartDescription(Part);
             return $"{prefix} {codeNo}: {name} - {part}".TrimStart(' ');
         }
     }
