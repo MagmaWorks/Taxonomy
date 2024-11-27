@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MagmaWorks.Taxonomy.Standards.Eurocode
+﻿namespace MagmaWorks.Taxonomy.Standards.Eurocode
 {
     public interface IEurocode : IStandard
     {

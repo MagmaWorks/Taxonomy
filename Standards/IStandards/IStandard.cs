@@ -1,5 +1,4 @@
-﻿using System;
-using MagmaWorks.Taxonomy.Serialization;
+﻿using MagmaWorks.Taxonomy.Serialization;
 
 namespace MagmaWorks.Taxonomy.Standards
 {

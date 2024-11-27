@@ -1,4 +1,4 @@
-﻿namespace MagmaWorks.Taxonomy.Materials
+﻿namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.ACI318
 {
     public enum ACI318ConcreteGrade
     {

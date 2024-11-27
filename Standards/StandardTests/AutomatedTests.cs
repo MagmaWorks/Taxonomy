@@ -71,7 +71,7 @@ namespace StandardTests
             private static List<object[]> GetAllComponents()
             {
                 var data = new List<object[]>();
-                Type[] typelist = Assembly.GetAssembly(typeof(EN1990)).GetTypes();
+                Type[] typelist = Assembly.GetAssembly(typeof(En1990)).GetTypes();
                 foreach (Type type in typelist)
                 {
                     if (type.Namespace == null)
@@ -206,7 +206,7 @@ namespace StandardTests
             }
 
             // reflect on assembly to find concrete implementation of interface
-            Type[] typelist = Assembly.GetAssembly(typeof(EN1990)).GetTypes();
+            Type[] typelist = Assembly.GetAssembly(typeof(En1990)).GetTypes();
             foreach (Type concreteType in typelist)
             {
                 if (type.IsAssignableFrom(concreteType))

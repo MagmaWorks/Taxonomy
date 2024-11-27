@@ -2,6 +2,7 @@
 using System.Linq;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Materials;
+using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
 using MagmaWorks.Taxonomy.Sections.Reinforcement;

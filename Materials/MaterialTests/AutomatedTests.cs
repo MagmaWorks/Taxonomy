@@ -28,7 +28,7 @@ namespace MaterialTests
         private static Angle _angle { get { return new Angle(33, OasysUnits.Units.AngleUnit.Degree); } }
         private static Pressure _stress { get { return new Pressure(45, OasysUnits.Units.PressureUnit.Megapascal); } }
         private static Strain _strain { get { return new Strain(7.5, OasysUnits.Units.StrainUnit.Percent); } }
-        private static IStandard _standard { get { return new EN1992(); } }
+        private static IStandard _standard { get { return new En1992(); } }
         private static Enum _grade { get { return EnConcreteGrade.C30_37; } }
 
         [Theory]

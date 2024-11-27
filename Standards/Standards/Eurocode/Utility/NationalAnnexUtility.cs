@@ -43,7 +43,7 @@
                 NationalAnnex.Turkey => "TS",
                 NationalAnnex.UnitedKingdom => "BS",
                 NationalAnnex.Singapore => "SS",
-                _ => throw new System.ArgumentException("Unknown National Annex"),
+                _ => throw new MissingNationalAnnexException(na),
             };
         }
     }

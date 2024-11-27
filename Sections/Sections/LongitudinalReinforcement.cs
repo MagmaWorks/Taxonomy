@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using MagmaWorks.Geometry;
+﻿using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Materials;
 using OasysUnits;
 

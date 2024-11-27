@@ -6,7 +6,7 @@ using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MaterialTests.StandardMaterials.EN
+namespace MaterialTests.StandardMaterials.En
 {
     public class EnConcreteMaterialTests
     {
