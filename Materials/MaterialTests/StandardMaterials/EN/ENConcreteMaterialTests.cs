@@ -31,7 +31,7 @@ namespace MaterialTests.StandardMaterials.EN
             Assert.Equal(EnConcreteGrade.C40_50, material.Grade);
             Assert.Equal(EnConcreteExposureClass.XC1, material.ExposureClasses[0]);
             Assert.Equal(20, material.MaximumAggregateSize.Millimeters);
-            Assert.Equal(0.3, material.MaximumCrackWidth.Millimeters);
+            Assert.Equal(0.3, material.CrackWidthLimit.Millimeters);
             Assert.Equal(30, material.MinimumCover.Millimeters);
         }
 
@@ -56,7 +56,7 @@ namespace MaterialTests.StandardMaterials.EN
             Assert.Equal(EnConcreteExposureClass.XF2, material.ExposureClasses[0]);
             Assert.Equal(EnCementClass.S, material.CementClass);
             Assert.Equal(40, material.MaximumAggregateSize.Millimeters);
-            Assert.Equal(0.2, material.MaximumCrackWidth.Millimeters);
+            Assert.Equal(0.2, material.CrackWidthLimit.Millimeters);
             Assert.Equal(55, material.MinimumCover.Millimeters);
         }
 
