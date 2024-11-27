@@ -4,7 +4,7 @@ using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
-    public class ENSteelMaterial : IEnSteelMaterial
+    public class EnSteelMaterial : IEnSteelMaterial
     {
         public EnSteelGrade Grade { get; set; } = EnSteelGrade.S355;
         public IEurocode Standard { get; set; } = new En1993(En1993Part.Part1_1, NationalAnnex.RecommendedValues);
@@ -15,7 +15,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
         public Ratio MemberInstabilityPartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
         public Ratio TensionFracturePartialFactor { get; set; } = new Ratio(1.25, RatioUnit.DecimalFraction);
 
-        public ENSteelMaterial(EnSteelGrade grade, NationalAnnex nationalAnnex)
+        public EnSteelMaterial(EnSteelGrade grade, NationalAnnex nationalAnnex)
         {
             Grade = grade;
             Standard = new En1993(En1993Part.Part1_1, nationalAnnex);
