@@ -2,8 +2,10 @@
 
 namespace MagmaWorks.Taxonomy.Materials
 {
-    public interface IEnRebarMaterial : IEnMaterial<EnRebarGrade>
+    public interface IEnRebarMaterial : IEnMaterial
     {
+        EnRebarGrade Grade { get; }
+
         /// <summary>
         /// γs partial factor for reinforcement in Persistent and Transient design situations
         /// </summary>

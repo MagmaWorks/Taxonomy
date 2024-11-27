@@ -7,22 +7,22 @@ namespace MagmaWorks.Taxonomy.Materials
 {
     public static partial class AnalysisMaterialFactory
     {
-        public static ILinearElasticMaterial CreateLinearElastic<Std, Grd>(IStandardMaterial<Std, Grd> material)
-            where Std : IStandard where Grd : Enum
+        public static ILinearElasticMaterial CreateLinearElastic<Std>(IStandardMaterial<Std> material)
+            where Std : IStandard
         {
             switch (material.Standard)
             {
                 case IEurocode:
-                    switch (material.Type)
+                    switch (material)
                     {
-                        case MaterialType.Concrete:
-                            return EnConcreteFactory.CreateLinearElastic(material.Grade);
+                        case IEnConcreteMaterial enConcrete:
+                            return EnConcreteFactory.CreateLinearElastic(enConcrete.Grade);
 
-                        case MaterialType.Reinforcement:
-                            return EnRebarFactory.CreateLinearElastic(material.Grade);
+                        case IEnRebarMaterial enRebar:
+                            return EnRebarFactory.CreateLinearElastic(enRebar.Grade);
 
-                        case MaterialType.Steel:
-                            return EnSteelFactory.CreateLinearElastic(material.Grade);
+                        case IEnSteelMaterial enSteel:
+                            return EnSteelFactory.CreateLinearElastic(enSteel.Grade);
 
                         default:
                             throw new ArgumentException($"{material.Type} material type not implemented for Eurocode");
