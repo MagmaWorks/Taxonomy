@@ -9,7 +9,7 @@ namespace MagmaWorks.Taxonomy.Materials
         IList<EnConcreteExposureClass> ExposureClasses { get; }
         EnCementClass CementClass { get; }
         Length MaximumAggregateSize { get; }
-        Length MaximumCrackWidth { get; }
+        Length CrackWidthLimit { get; }
         Length MinimumCover { get; }
 
         /// <summary>
