@@ -1,7 +1,10 @@
-﻿using MagmaWorks.Taxonomy.Materials;
+﻿using System;
+using System.Reflection;
+using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
+using MagmaWorks.Taxonomy.Sections.Reinforcement;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
@@ -34,6 +37,33 @@ namespace SectionTests
             Assert.Equivalent(expectedMaterial, rebar.Material);
         }
 
+        [Theory]
+        [InlineData(BarDiameter.D8)]
+        [InlineData(BarDiameter.D10)]
+        [InlineData(BarDiameter.D12)]
+        [InlineData(BarDiameter.D13)]
+        [InlineData(BarDiameter.D14)]
+        [InlineData(BarDiameter.D16)]
+        [InlineData(BarDiameter.D20)]
+        [InlineData(BarDiameter.D25)]
+        [InlineData(BarDiameter.D28)]
+        [InlineData(BarDiameter.D32)]
+        [InlineData(BarDiameter.D40)]
+        [InlineData(BarDiameter.D50)]
+        public void CreateRebarFromBarDiameterEnumTest(BarDiameter diameter)
+        {
+            // Assemble
+            var material = new EnRebarMaterial(EnRebarGrade.B500B, NationalAnnex.UnitedKingdom);
+
+            // Act
+            var rebar = new Rebar(material, diameter);
+
+            // Assert
+            double expected = double.Parse(diameter.ToString().Remove(0, 1));
+            Assert.Equal(expected, rebar.Diameter.Millimeters);
+            Assert.Equivalent(material, rebar.Material);
+        }
+
         [Fact]
         public void RebarWithInvalidMaterialTest()
         {
@@ -46,4 +76,5 @@ namespace SectionTests
             Assert.Throws<InvalidMaterialTypeException>(() => new Rebar(material, diameter));
         }
     }
+        
 }
