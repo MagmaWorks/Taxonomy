@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <MinVerMinimumMajorMinor>0.0</MinVerMinimumMajorMinor>
+    <MinVerDefaultPreReleaseIdentifiers>preview</MinVerDefaultPreReleaseIdentifiers>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFrameworks>net48;netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <LangVersion>9.0</LangVersion>
+    <Platforms>AnyCPU</Platforms>
+    <RootNamespace>MagmaWorks.Taxonomy.Fire</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Title>MagmaWorks Taxonomy Fire</Title>
+    <Company>Whitby Wood</Company>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/MagmaWorks/Taxonomy/</RepositoryUrl>
+    <PackageIcon>MagmaWorks.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MinVer" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Profiles\IProfiles\MagmaWorks.Taxonomy.IProfiles.csproj" />
+    <ProjectReference Include="..\IFire\MagmaWorks.Taxonomy.IFire.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\Licenses\UnitsNet">
+      <Pack>True</Pack>
+      <PackagePath>\Licenses\</PackagePath>
+    </None>
+    <None Include="..\..\MagmaWorks.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
