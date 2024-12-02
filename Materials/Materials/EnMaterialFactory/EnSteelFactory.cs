@@ -7,107 +7,162 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
     public static class EnSteelFactory
     {
-        public static ILinearElasticMaterial CreateLinearElastic<T>(T grade) where T : Enum
+        public static ILinearElasticMaterial CreateLinearElastic(IEnSteelMaterial material)
         {
-            MaterialType type = MaterialType.Steel;
-            Pressure elasticModulus = new Pressure(210, PressureUnit.Gigapascal);
-            Pressure yieldStrength = EN1993_1_1_Table3_1[grade].F_y_40mmOrLess;
-            return new LinearElasticMaterial(type, elasticModulus, yieldStrength);
+            return CreateLinearElastic(material, new Length(40, LengthUnit.Millimeter));
         }
 
-        public static ILinearElasticMaterial CreateLinearElastic(EnSteelGrade grade, Length elementThickness)
+        public static ILinearElasticMaterial CreateLinearElastic(IEnSteelMaterial material, Length elementThickness)
         {
             MaterialType type = MaterialType.Steel;
             Pressure elasticModulus = new Pressure(210, PressureUnit.Gigapascal);
             Pressure yieldStrength;
+            Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1 = GetTable3_1Properties(material.Specification);
             if (elementThickness.Millimeters > 80)
             {
                 throw new ArgumentException($"Nominal thickness of the element ({elementThickness}) must be less or equal to 80mm");
             }
             else if (elementThickness.Millimeters <= 40)
             {
-                yieldStrength = EN1993_1_1_Table3_1[grade].F_y_40mmOrLess;
+                yieldStrength = EN1993_1_1_Table3_1[material.Grade].F_y_40mmOrLess;
                 if (yieldStrength.Value == 0)
                 {
-                    throw new ArgumentException($"Nominal thickness of the element ({elementThickness}) must be less or equal to 40mm for Grade {grade}");
+                    throw new ArgumentException($"Nominal thickness of the element ({elementThickness}) must be less or equal to 40mm for Grade {material.Grade}");
                 }
             }
             else
             {
-                yieldStrength = EN1993_1_1_Table3_1[grade].F_y_40To80mm;
+                yieldStrength = EN1993_1_1_Table3_1[material.Grade].F_y_40To80mm;
             }
 
             return new LinearElasticMaterial(type, elasticModulus, yieldStrength);
         }
 
-        public static IBiLinearMaterial CreateBiLinear(EnSteelGrade grade)
+        public static IBiLinearMaterial CreateBiLinear(IEnSteelMaterial material)
         {
-            ILinearElasticMaterial material = CreateLinearElastic(grade);
-            Pressure ultimateStrength = EN1993_1_1_Table3_1[grade].F_u_40mmOrLess;
-            Strain failureStrain = new Strain(15 * material.Strength / material.ElasticModulus, StrainUnit.Ratio);
-            return new BiLinearMaterial(material, ultimateStrength, failureStrain);
+            ILinearElasticMaterial analysisMaterial = CreateLinearElastic(material, new Length(40, LengthUnit.Millimeter));
+            Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1 = GetTable3_1Properties(material.Specification);
+            Pressure ultimateStrength = EN1993_1_1_Table3_1[material.Grade].F_u_40mmOrLess;
+            Strain failureStrain = new Strain(15 * analysisMaterial.Strength / analysisMaterial.ElasticModulus, StrainUnit.Ratio);
+            return new BiLinearMaterial(analysisMaterial, ultimateStrength, failureStrain);
         }
 
-        public static IBiLinearMaterial CreateBiLinear(EnSteelGrade grade, Length elementThickness)
+        public static IBiLinearMaterial CreateBiLinear(IEnSteelMaterial material, Length elementThickness)
         {
-            ILinearElasticMaterial material = CreateLinearElastic(grade, elementThickness);
+            ILinearElasticMaterial analysisMaterial = CreateLinearElastic(material, elementThickness);
             Pressure ultimateStrength;
+            Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1 = GetTable3_1Properties(material.Specification);
             if (elementThickness.Millimeters > 80)
             {
                 throw new ArgumentException($"Nominal thickness of the element ({elementThickness}) must be less or equal to 80mm");
             }
             else if (elementThickness.Millimeters <= 40)
             {
-                ultimateStrength = EN1993_1_1_Table3_1[grade].F_u_40mmOrLess;
+                ultimateStrength = EN1993_1_1_Table3_1[material.Grade].F_u_40mmOrLess;
             }
             else
             {
-                ultimateStrength = EN1993_1_1_Table3_1[grade].F_u_40To80mm;
+                ultimateStrength = EN1993_1_1_Table3_1[material.Grade].F_u_40To80mm;
                 if (ultimateStrength.Value == 0)
                 {
-                    throw new ArgumentException($"Nominal thickness of the element ({elementThickness}) must be less or equal to 40mm for grade {grade}");
+                    throw new ArgumentException($"Nominal thickness of the element ({elementThickness}) must be less or equal to 40mm for grade {material.Grade}");
                 }
             }
 
-            Strain failureStrain = new Strain(15 * material.Strength / material.ElasticModulus, StrainUnit.Ratio);
-            return new BiLinearMaterial(material, ultimateStrength, failureStrain);
+            Strain failureStrain = new Strain(15 * analysisMaterial.Strength / analysisMaterial.ElasticModulus, StrainUnit.Ratio);
+            return new BiLinearMaterial(analysisMaterial, ultimateStrength, failureStrain);
         }
 
-        private static readonly Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1 = new()
+        private static Dictionary<Enum, Table3_1Properties> GetTable3_1Properties(IEnSteelSpecification specification)
+        {
+            if (specification.FormingTemperature == EnSteelFormingTemperature.ColdFormed)
+            {
+                throw new ArgumentException("Unable to get EN1993-1-1, Table 3.1 values for Cold Formed steel. ");
+            }
+
+            switch (specification.DeliveryCondition)
+            {
+                case EnSteelDeliveryCondition.AR:
+                    return specification.HollowSection ? EN1993_1_1_Table3_1_ARH : EN1993_1_1_Table3_1_AR;
+
+                case EnSteelDeliveryCondition.N:
+                    return specification.HollowSection ? EN1993_1_1_Table3_1_NH : EN1993_1_1_Table3_1_N;
+
+                case EnSteelDeliveryCondition.M:
+                    return specification.HollowSection ? EN1993_1_1_Table3_1_MH : EN1993_1_1_Table3_1_M;
+
+                case EnSteelDeliveryCondition.Q:
+                    if (specification.HollowSection)
+                    {
+                        throw new ArgumentException("Unable to get EN1993-1-1, Table 3.1 values for Hollow Sections" +
+                            "using quenched and tempered delivery condition steel. ");
+                    }
+
+                    return EN1993_1_1_Table3_1_Q;
+
+                default:
+                    throw new ArgumentException("Unable to get EN1993-1-1, Table 3.1 values for unknown" +
+                        $" Delivery Condition: {specification.DeliveryCondition}");
+            }
+        }
+
+        private static readonly Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1_AR = new()
         {
             { EnSteelGrade.S235, new Table3_1Properties(235, 360, 215, 360) },
             { EnSteelGrade.S275, new Table3_1Properties(275, 430, 255, 410) },
             { EnSteelGrade.S355, new Table3_1Properties(355, 490, 335, 470) },
             { EnSteelGrade.S450, new Table3_1Properties(440, 550, 410, 550) },
+        };
 
-            { EnSteelGrade.S275N, new Table3_1Properties(275, 390, 255, 370) },
-            { EnSteelGrade.S355N, new Table3_1Properties(355, 490, 335, 470) },
-            { EnSteelGrade.S420N, new Table3_1Properties(420, 520, 390, 520) },
-            { EnSteelGrade.S460N, new Table3_1Properties(460, 540, 430, 540) },
+        private static readonly Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1_N = new()
+        {
+            { EnSteelGrade.S275, new Table3_1Properties(275, 390, 255, 370) },
+            { EnSteelGrade.S355, new Table3_1Properties(355, 490, 335, 470) },
+            { EnSteelGrade.S420, new Table3_1Properties(420, 520, 390, 520) },
+            { EnSteelGrade.S460, new Table3_1Properties(460, 540, 430, 540) },
+        };
 
-            { EnSteelGrade.S275M, new Table3_1Properties(275, 370, 255, 360) },
-            { EnSteelGrade.S355M, new Table3_1Properties(355, 470, 335, 450) },
-            { EnSteelGrade.S420M, new Table3_1Properties(420, 520, 390, 500) },
-            { EnSteelGrade.S460M, new Table3_1Properties(460, 540, 430, 530) },
+        private static readonly Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1_M = new()
+        {
+            { EnSteelGrade.S275, new Table3_1Properties(275, 370, 255, 360) },
+            { EnSteelGrade.S355, new Table3_1Properties(355, 470, 335, 450) },
+            { EnSteelGrade.S420, new Table3_1Properties(420, 520, 390, 500) },
+            { EnSteelGrade.S460, new Table3_1Properties(460, 540, 430, 530) },
+        };
 
-            { EnSteelGrade.S235W, new Table3_1Properties(235, 360, 215, 340) },
-            { EnSteelGrade.S355W, new Table3_1Properties(355, 490, 335, 490) },
+        private static readonly Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1_W = new()
+        {
+            { EnSteelGrade.S235, new Table3_1Properties(235, 360, 215, 340) },
+            { EnSteelGrade.S355, new Table3_1Properties(355, 490, 335, 490) },
+        };
 
-            { EnSteelGrade.S460Q, new Table3_1Properties(460, 570, 440, 550) },
+        private static readonly Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1_Q = new()
+        {
+            { EnSteelGrade.S460, new Table3_1Properties(460, 570, 440, 550) },
+        };
 
-            { EnSteelGrade.S235H, new Table3_1Properties(235, 360, 215, 340) },
-            { EnSteelGrade.S275H, new Table3_1Properties(275, 430, 255, 410) },
-            { EnSteelGrade.S355H, new Table3_1Properties(355, 510, 335, 490) },
+        private static readonly Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1_ARH = new()
+        {
 
-            { EnSteelGrade.S275NH, new Table3_1Properties(275, 390, 255, 370) },
-            { EnSteelGrade.S355NH, new Table3_1Properties(355, 490, 335, 470) },
-            { EnSteelGrade.S420NH, new Table3_1Properties(420, 540, 390, 520) },
-            { EnSteelGrade.S460NH, new Table3_1Properties(460, 560, 430, 550) },
+            { EnSteelGrade.S235, new Table3_1Properties(235, 360, 215, 340) },
+            { EnSteelGrade.S275, new Table3_1Properties(275, 430, 255, 410) },
+            { EnSteelGrade.S355, new Table3_1Properties(355, 510, 335, 490) },
+        };
 
-            { EnSteelGrade.S275MH, new Table3_1Properties(275, 360, 0, 0) },
-            { EnSteelGrade.S355MH, new Table3_1Properties(355, 470, 0, 0) },
-            { EnSteelGrade.S420MH, new Table3_1Properties(420, 500, 0, 0) },
-            { EnSteelGrade.S460MH, new Table3_1Properties(460, 530, 0, 0) },
+        private static readonly Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1_NH = new()
+        {
+            { EnSteelGrade.S275, new Table3_1Properties(275, 390, 255, 370) },
+            { EnSteelGrade.S355, new Table3_1Properties(355, 490, 335, 470) },
+            { EnSteelGrade.S420, new Table3_1Properties(420, 540, 390, 520) },
+            { EnSteelGrade.S460, new Table3_1Properties(460, 560, 430, 550) },
+        };
+
+        private static readonly Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1_MH = new()
+        {
+            { EnSteelGrade.S275, new Table3_1Properties(275, 360, 0, 0) },
+            { EnSteelGrade.S355, new Table3_1Properties(355, 470, 0, 0) },
+            { EnSteelGrade.S420, new Table3_1Properties(420, 500, 0, 0) },
+            { EnSteelGrade.S460, new Table3_1Properties(460, 530, 0, 0) },
         };
 
         private struct Table3_1Properties

@@ -23,7 +23,7 @@ namespace MagmaWorks.Taxonomy.Materials
                             return EnRebarFactory.CreateLinearElastic(enRebar.Grade);
 
                         case IEnSteelMaterial enSteel:
-                            return EnSteelFactory.CreateLinearElastic(enSteel.Grade);
+                            return EnSteelFactory.CreateLinearElastic(enSteel);
 
                         default:
                             throw new ArgumentException($"{material.Type} material type not implemented for Eurocode");
