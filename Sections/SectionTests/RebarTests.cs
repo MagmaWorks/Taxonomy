@@ -76,5 +76,5 @@ namespace SectionTests
             Assert.Throws<InvalidMaterialTypeException>(() => new Rebar(material, diameter));
         }
     }
-        
+
 }
