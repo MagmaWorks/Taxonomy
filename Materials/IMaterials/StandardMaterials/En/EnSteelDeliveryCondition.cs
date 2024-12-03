@@ -4,7 +4,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
     public enum EnSteelDeliveryCondition
     {
-        [Description("As-rolled")]
+        [Description("As-rolled - EN10025-2")]
         AR,
         [Description("Normalised rolled in accordance with EN 10025-3")]
         N,

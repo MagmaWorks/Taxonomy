@@ -24,8 +24,11 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
             }
             else if (elementThickness.Millimeters <= 40)
             {
-                yieldStrength = EN1993_1_1_Table3_1[material.Grade].F_y_40mmOrLess;
-                if (yieldStrength.Value == 0)
+                if (EN1993_1_1_Table3_1.ContainsKey(material.Grade))
+                {
+                    yieldStrength = EN1993_1_1_Table3_1[material.Grade].F_y_40mmOrLess;
+                }
+                else
                 {
                     throw new ArgumentException($"Nominal thickness of the element ({elementThickness}) must be less or equal to 40mm for Grade {material.Grade}");
                 }

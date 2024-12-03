@@ -30,11 +30,10 @@ namespace MaterialTests.StandardMaterials
         }
 
         [Theory]
-        [MemberData(nameof(EnumValues))]
-        public void CreateLinearElasticTests(EnSteelGrade grade)
+        [MemberData(nameof(AllEnTable3_1SteelMaterials))]
+        public void CreateLinearElasticTests(EnSteelMaterial material)
         {
             // Assemble
-            var material = new EnSteelMaterial(grade, NationalAnnex.RecommendedValues);
             string materialGrade = GetGradeName(material);
 
             // Act
@@ -51,11 +50,10 @@ namespace MaterialTests.StandardMaterials
         }
 
         [Theory]
-        [MemberData(nameof(EnumValues))]
-        public void CreateLinearElasticThickPlatedTests(EnSteelGrade grade)
+        [MemberData(nameof(AllEnTable3_1SteelMaterials))]
+        public void CreateLinearElasticThickPlatedTests(EnSteelMaterial material)
         {
             // Assemble
-            var material = new EnSteelMaterial(grade, NationalAnnex.RecommendedValues);
             string materialGrade = GetGradeName(material);
             Length thickness = new Length(60, LengthUnit.Millimeter);
 
@@ -73,11 +71,10 @@ namespace MaterialTests.StandardMaterials
         }
 
         [Theory]
-        [MemberData(nameof(EnumValues))]
-        public void CreateBiLinearTests(EnSteelGrade grade)
+        [MemberData(nameof(AllEnTable3_1SteelMaterials))]
+        public void CreateBiLinearTests(EnSteelMaterial material)
         {
             // Assemble
-            var material = new EnSteelMaterial(grade, NationalAnnex.RecommendedValues);
             string materialGrade = GetGradeName(material);
 
             // Act
@@ -97,21 +94,20 @@ namespace MaterialTests.StandardMaterials
         }
 
         [Theory]
-        [MemberData(nameof(EnumValues))]
-        public void CreateBiLinearThickPlatedTests(EnSteelGrade grade)
+        [MemberData(nameof(AllEnTable3_1SteelMaterials))]
+        public void CreateBiLinearThickPlatedTests(EnSteelMaterial material)
         {
-            if ((int)grade > 21)
-            {
-                CreateBiLinearThrowsExpectionForSomeGradesTests(grade);
-                return;
-            }
-
             // Assemble
-            var material = new EnSteelMaterial(grade, NationalAnnex.RecommendedValues);
             string materialGrade = GetGradeName(material);
             Length thickness = new Length(60, LengthUnit.Millimeter);
 
             // Act
+            if (material.Specification.HollowSection && material.Specification.DeliveryCondition == EnSteelDeliveryCondition.M)
+            {
+                Assert.Throws<ArgumentException>(() => EnSteelFactory.CreateBiLinear(material, thickness));
+                return;
+            }
+
             IBiLinearMaterial analysisMaterial = EnSteelFactory.CreateBiLinear(material, thickness);
 
             // Assert
@@ -157,12 +153,34 @@ namespace MaterialTests.StandardMaterials
             Assert.Throws<ArgumentException>(() => EnSteelFactory.CreateBiLinear(material, thickness));
         }
 
-        public static IEnumerable<object[]> EnumValues()
+        public static IEnumerable<object[]> AllEnTable3_1SteelMaterials()
         {
-            foreach (var enumValue in Enum.GetValues(typeof(EnSteelGrade)))
-            {
-                yield return new object[] { enumValue };
-            }
+            yield return new object[] { CreateMaterial("S235") };
+            yield return new object[] { CreateMaterial("S275") };
+            yield return new object[] { CreateMaterial("S355") };
+            yield return new object[] { CreateMaterial("S450") };
+            yield return new object[] { CreateMaterial("S275N") };
+            yield return new object[] { CreateMaterial("S355 NL") };
+            yield return new object[] { CreateMaterial("S420 N") };
+            yield return new object[] { CreateMaterial("S460 NL") };
+            yield return new object[] { CreateMaterial("S275 M") };
+            yield return new object[] { CreateMaterial("S355 ML") };
+            yield return new object[] { CreateMaterial("S420 M") };
+            yield return new object[] { CreateMaterial("S460 ML") };
+            yield return new object[] { CreateMaterial("S235 W") };
+            yield return new object[] { CreateMaterial("S355 W") };
+            yield return new object[] { CreateMaterial("S460 Q") };
+            yield return new object[] { CreateMaterial("S235H") };
+            yield return new object[] { CreateMaterial("S275H") };
+            yield return new object[] { CreateMaterial("S355H") };
+            yield return new object[] { CreateMaterial("S275NH") };
+            yield return new object[] { CreateMaterial("S355NHL") };
+            yield return new object[] { CreateMaterial("S420NH") };
+            yield return new object[] { CreateMaterial("S460NHL") };
+            yield return new object[] { CreateMaterial("S275MH") };
+            yield return new object[] { CreateMaterial("S355MHL") };
+            yield return new object[] { CreateMaterial("S420MH") };
+            yield return new object[] { CreateMaterial("S460MHL") };
         }
 
         private static string GetGradeName(IEnSteelMaterial material)
@@ -207,5 +225,11 @@ namespace MaterialTests.StandardMaterials
             { "S420MH", (420, 500, 0, 0) },
             { "S460MH", (460, 530, 0, 0) },
         };
+
+        private static EnSteelMaterial CreateMaterial(string s)
+        {
+            EnSteelMaterial.TryCreateFromDesignition(s, NationalAnnex.RecommendedValues, out EnSteelMaterial material);
+            return material;
+        }
     }
 }

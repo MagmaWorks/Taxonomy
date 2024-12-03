@@ -12,5 +12,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
         EnSteelImpactTemperatureProperty ImpactTemperatureProperty { get; set; }
         EnSteelQuality Quality { get; set; }
         bool HollowSection { get; set; }
+
+        string GetDesignation(EnSteelGrade grade);
     }
 }

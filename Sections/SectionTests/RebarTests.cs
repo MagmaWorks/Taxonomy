@@ -1,5 +1,4 @@
-﻿using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
+﻿using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
 using MagmaWorks.Taxonomy.Standards.Eurocode;

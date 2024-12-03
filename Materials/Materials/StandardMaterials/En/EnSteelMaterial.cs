@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 using OasysUnits;
 using OasysUnits.Units;
@@ -9,7 +8,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
     public class EnSteelMaterial : IEnSteelMaterial
     {
         public EnSteelGrade Grade { get; set; } = EnSteelGrade.S355;
-        public IEnSteelSpecification Specification { get; set; } = new EnSteelSpecification();
+        public IEnSteelSpecification Specification { get; } = new EnSteelSpecification();
         public IEurocode Standard { get; set; } = new En1993(En1993Part.Part1_1, NationalAnnex.RecommendedValues);
         public MaterialType Type => MaterialType.Steel;
         public Ratio PartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
@@ -23,77 +22,90 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
             SetPartialFactors(nationalAnnex);
         }
 
-        public static bool TryCastFromString(string steel, NationalAnnex nationalAnnex, out EnSteelMaterial material)
+        public static bool TryCreateFromDesignition(string designition, NationalAnnex nationalAnnex, out EnSteelMaterial material)
         {
             material = null;
-            string s = steel.Trim().ToLower();
-            if (Enum.TryParse(s.Substring(0, 4), true, out EnSteelGrade grade))
+            string s = designition.Replace(" ", string.Empty).ToLower();
+            if (!Enum.TryParse(s.Substring(0, 4), true, out EnSteelGrade grade))
             {
                 return false;
             }
 
             material = new EnSteelMaterial(grade, nationalAnnex);
-            if (steel.Contains("n"))
+            if (s.Contains("n"))
             {
                 material.Specification.DeliveryCondition = EnSteelDeliveryCondition.N;
             }
 
-            if (steel.Contains("m"))
+            if (s.Contains("m"))
             {
                 material.Specification.DeliveryCondition = EnSteelDeliveryCondition.M;
             }
 
-            if (steel.Contains("q"))
+            if (s.Contains("q"))
             {
                 material.Specification.DeliveryCondition = EnSteelDeliveryCondition.Q;
             }
 
-            if (steel.Contains("h"))
+            if (s.Contains("h"))
             {
                 material.Specification.HollowSection = true;
             }
 
-            if (steel.Contains("w"))
+            if (s.Contains("w"))
             {
                 material.Specification.CorrosionResistance = EnSteelCorrosionResistance.W;
             }
 
-            if (steel.Contains("wp"))
+            if (s.Contains("wp"))
             {
                 material.Specification.CorrosionResistance = EnSteelCorrosionResistance.WP;
             }
 
-            if (steel.Contains("l"))
+            if (s.Contains("l"))
             {
                 material.Specification.ImpactTemperatureProperty = EnSteelImpactTemperatureProperty.L;
             }
 
-            if (steel.Contains("l1"))
+            if (s.Contains("l1"))
             {
                 material.Specification.ImpactTemperatureProperty = EnSteelImpactTemperatureProperty.L1;
             }
 
-            if (steel.Contains("jr"))
+            if (s.Contains("jr"))
             {
                 material.Specification.Quality = EnSteelQuality.JR;
             }
 
-            if (steel.Contains("j0"))
+            if (s.Contains("j0"))
             {
                 material.Specification.Quality = EnSteelQuality.J0;
             }
 
-            if (steel.Contains("j2"))
+            if (s.Contains("j2"))
             {
                 material.Specification.Quality = EnSteelQuality.J2;
             }
 
-            if (steel.Contains("k2"))
+            if (s.Contains("k2"))
             {
                 material.Specification.Quality = EnSteelQuality.K2;
             }
 
-            return true;
+            try
+            {
+                ((EnSteelSpecification)material.Specification).Validate(grade);
+                return true;
+            }
+            catch (InvalidSteelSpecificationException e)
+            {
+                return false;
+            }
+        }
+
+        public string GetDesignation()
+        {
+            return Specification.GetDesignation(Grade);
         }
 
         private void SetPartialFactors(NationalAnnex nationalAnnex)
