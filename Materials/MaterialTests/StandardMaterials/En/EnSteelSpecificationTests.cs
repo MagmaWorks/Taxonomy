@@ -181,6 +181,7 @@ namespace MaterialTests.StandardMaterials.En
         [InlineData("S450 M")]
         [InlineData("S235 Q")]
         [InlineData("S460 QH")]
+        [InlineData("S235 L1")]
         public void SpecificationFromInvalidDesignationTests(string steelDesignation)
         {
             // Assemble

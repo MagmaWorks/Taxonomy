@@ -57,6 +57,16 @@
                 }
             }
 
+            if (ImpactTemperatureProperty == EnSteelImpactTemperatureProperty.L1)
+            {
+                if (!(grade == EnSteelGrade.S460 && DeliveryCondition == EnSteelDeliveryCondition.Q))
+                {
+                    throw new InvalidSteelSpecificationException(
+                    $"Only steel grades S460 in quenched and tempered delivery condition according to EN 10025-5, " +
+                    $"may use L1 designition for minimum values of impact energy at low temperatures");
+                }
+            }
+
             switch (DeliveryCondition)
             {
                 case EnSteelDeliveryCondition.AR:
