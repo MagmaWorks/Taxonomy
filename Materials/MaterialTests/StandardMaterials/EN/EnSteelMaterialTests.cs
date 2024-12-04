@@ -26,8 +26,6 @@ namespace MaterialTests.StandardMaterials.En
                 "BS EN 1993-1-1: Eurocode 3: Design of Steel Structures - Part 1-1: General rules and rules for buildings",
                 material.Standard.Title);
             Assert.Equal(MaterialType.Steel, material.Type);
-            Assert.Equal(EnExecutionClass.EXC3, material.ExecutionClassforStaticOrLowSeismicLoading);
-            Assert.Equal(EnExecutionClass.EXC3, material.ExecutionClassforFatigueOrHighSeismicLoading);
         }
 
         [Theory]

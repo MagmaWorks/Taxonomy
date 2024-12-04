@@ -1,6 +1,3 @@
-﻿using System;
-using System.Reflection;
-using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.Exceptions;

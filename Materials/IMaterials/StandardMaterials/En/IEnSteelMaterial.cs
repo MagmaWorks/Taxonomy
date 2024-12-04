@@ -1,13 +1,12 @@
-﻿using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
-using OasysUnits;
+﻿using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
     public interface IEnSteelMaterial : IEnMaterial
     {
+        IEnSteelSpecification Specification { get; }
         EnSteelGrade Grade { get; }
-        EnExecutionClass ExecutionClassforStaticOrLowSeismicLoading { get; }
-        EnExecutionClass ExecutionClassforFatigueOrHighSeismicLoading { get; }
+
         /// <summary>
         /// γM0 partial factor for resistance of cross-sections whatever the class is
         /// </summary>
