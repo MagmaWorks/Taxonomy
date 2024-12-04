@@ -21,7 +21,5 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
         /// γM2 partial factor for resistance of cross-sections in tension to fracture
         /// </summary>
         Ratio TensionFracturePartialFactor { get; }
-
-        string GetDesignation();
     }
 }

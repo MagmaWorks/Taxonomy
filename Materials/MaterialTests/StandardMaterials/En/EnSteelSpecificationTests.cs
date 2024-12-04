@@ -207,7 +207,7 @@ namespace MaterialTests.StandardMaterials.En
             Assert.True(EnSteelMaterial.TryCreateFromDesignition(steelDesignation, nationalAnnex, out EnSteelMaterial material));
 
             // Assert
-            Assert.Equal(expected, material.GetDesignation());
+            Assert.Equal(expected, material.GetCodeDesignation());
         }
 
         [Fact]

@@ -13,7 +13,7 @@
 
         internal EnSteelSpecification() { }
 
-        public void Validate(EnSteelGrade grade)
+        internal void Validate(EnSteelGrade grade)
         {
             if (CorrosionResistance != EnSteelCorrosionResistance.None)
             {
@@ -147,7 +147,7 @@
             }
         }
 
-        public string GetDesignation(EnSteelGrade grade)
+        internal string GetShortDesignation(EnSteelGrade grade)
         {
             Validate(grade);
             string j0 = Quality.ToString();
@@ -169,25 +169,35 @@
                     description = (j0 + w + n + l + h).Replace("None", string.Empty);
                 }
 
-                return $"Steel EN 10025-5 - {grade}{description}";
+            }
+
+            return $"{grade}{description}";
+        }
+
+        internal string GetCodeDesignation(EnSteelGrade grade)
+        {
+            string designation = GetShortDesignation(grade);
+            if (CorrosionResistance != EnSteelCorrosionResistance.None)
+            {
+                return $"Steel EN 10025-5 - {designation}";
             }
 
             switch (DeliveryCondition)
             {
                 case EnSteelDeliveryCondition.AR:
-                    return $"Steel EN 10025-2 - {grade}{description}";
+                    return $"Steel EN 10025-2 - {designation}";
 
                 case EnSteelDeliveryCondition.N:
-                    return $"Steel EN 10025-3 - {grade}{description}";
+                    return $"Steel EN 10025-3 - {designation}";
 
                 case EnSteelDeliveryCondition.M:
-                    return $"Steel EN 10025-4 - {grade}{description}";
+                    return $"Steel EN 10025-4 - {designation}";
 
                 case EnSteelDeliveryCondition.Q:
-                    return $"Steel EN 10025-6 - {grade}{description}";
+                    return $"Steel EN 10025-6 - {designation}";
 
                 default:
-                    return $"Steel EN 10025 - {grade}{description}";
+                    return $"Steel EN 10025 - {designation}";
             }
         }
     }

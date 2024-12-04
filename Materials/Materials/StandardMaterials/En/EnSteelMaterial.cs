@@ -103,9 +103,14 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
             }
         }
 
-        public string GetDesignation()
+        public string GetShortDesignation()
         {
-            return Specification.GetDesignation(Grade);
+            return ((EnSteelSpecification)Specification).GetShortDesignation(Grade);
+        }
+
+        public string GetCodeDesignation()
+        {
+            return ((EnSteelSpecification)Specification).GetCodeDesignation(Grade);
         }
 
         private void SetPartialFactors(NationalAnnex nationalAnnex)
