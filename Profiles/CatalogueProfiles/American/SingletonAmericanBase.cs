@@ -9,6 +9,6 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Catalogue Catalogue => Catalogue.AmericanAISC;
         public abstract AmericanShape Shape { get; }
         public abstract string Label { get; }
-        public virtual string Description => Label;
+        public virtual string Description => Label.Replace(" ", string.Empty);
     }
 }

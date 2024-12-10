@@ -1,5 +1,4 @@
 ﻿using OasysUnits;
-using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
@@ -10,7 +9,7 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length FlangeThickness { get; set; }
         public Length WebThickness { get; set; }
         public string Description
-            => Utility.Description.Create(Height, Width, FlangeThickness, WebThickness);
+            => Utility.Describe(Height, Width, FlangeThickness, WebThickness);
 
         public Cruciform(Length height, Length width, Length flangeThickness, Length webThickness)
         {

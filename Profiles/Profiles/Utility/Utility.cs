@@ -3,16 +3,16 @@ using System.Linq;
 using OasysUnits;
 using OasysUnits.Units;
 
-namespace MagmaWorks.Taxonomy.Profiles.Utility
+namespace MagmaWorks.Taxonomy.Profiles
 {
-    internal static class Description
+    internal static class Utility
     {
-        internal static string Create(params Length[] values)
+        internal static string Describe(params Length[] values)
         {
-            return Create("×", values);
+            return Describe("×", values);
         }
 
-        internal static string Create(string separator, params Length[] values)
+        internal static string Describe(string separator, params Length[] values)
         {
             var lengths = values.ToList();
             LengthUnit u = lengths.FirstOrDefault().Unit;
@@ -30,18 +30,12 @@ namespace MagmaWorks.Taxonomy.Profiles.Utility
 
             List<string> strings = lengths.Select(s
                 => FormatDoubleWithSignificantDigits(s.As(u), significantDigitsAfterRadix)).ToList();
-            return $"{string.Join(separator, strings)} {Length.GetAbbreviation(u)}";
+            return $"{string.Join(separator, strings)}{Length.GetAbbreviation(u)}";
         }
 
         internal static string FormatDoubleWithSignificantDigits(double value, int significantDigitsAfterRadix)
         {
-            string s = value.ToString($"N{significantDigitsAfterRadix}");
-            while (s[s.Length - 1] == '0')
-            {
-                s = s.Remove(s.Length - 1);
-            }
-
-            return s;
+            return value.ToString($"N{significantDigitsAfterRadix}");
         }
     }
 }

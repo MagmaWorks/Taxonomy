@@ -20,9 +20,10 @@ namespace MagmaWorks.Taxonomy.Profiles
         private string GetDescription()
         {
             LengthUnit u = Height.Unit;
-            string topAndBottom = Utility.Description.Create("/", TopWidth.ToUnit(u), BottomWidth);
-            string height = Utility.Description.Create(Height);
-            return $"{topAndBottom}x{height}";
+            string topAndBottom = Utility.Describe("/", TopWidth.ToUnit(u), BottomWidth);
+            topAndBottom = topAndBottom.Replace(Length.GetAbbreviation(u), string.Empty);
+            string height = Utility.Describe(Height);
+            return $"{topAndBottom}×{height}";
         }
     }
 }

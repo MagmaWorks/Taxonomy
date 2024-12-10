@@ -9,7 +9,7 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length WebThickness { get; set; }
         public Length FlangeThickness { get; set; }
         public string Description
-            => Utility.Description.Create(Height, Width, WebThickness, FlangeThickness);
+            => Utility.Describe(Height, Width, WebThickness, FlangeThickness);
 
         public Channel(Length height, Length width, Length webThickness, Length flangeThickness)
         {
