@@ -2,5 +2,8 @@
 
 namespace MagmaWorks.Taxonomy.Profiles
 {
-    public interface IProfile : ITaxonomySerializable { }
+    public interface IProfile : ITaxonomySerializable
+    {
+        string Description { get; }
+    }
 }

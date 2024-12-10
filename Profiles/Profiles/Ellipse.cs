@@ -6,6 +6,7 @@ namespace MagmaWorks.Taxonomy.Profiles
     {
         public Length Height { get; set; }
         public Length Width { get; set; }
+        public string Description => Utility.Description.Create(Height, Width);
 
         public Ellipse(Length width, Length height)
         {

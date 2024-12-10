@@ -9,5 +9,6 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Catalogue Catalogue => Catalogue.EuropeanEN10365;
         public abstract EuropeanShape Shape { get; }
         public abstract string Label { get; }
+        public virtual string Description => Label;
     }
 }
