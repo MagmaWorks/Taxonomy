@@ -8,6 +8,7 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length Width { get; set; }
         public Length FlatHeight { get; set; }
         public Length FlatWidth { get; set; }
+        public string Description => Utility.Description.Create(Height, Width, FlatHeight, FlatWidth);
 
         public RoundedRectangle(Length width, Length height, Length flatWidth, Length flatHeight)
         {

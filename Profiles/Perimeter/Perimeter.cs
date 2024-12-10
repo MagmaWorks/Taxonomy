@@ -28,6 +28,8 @@ namespace MagmaWorks.Taxonomy.Profiles
             }
         }
 
+        public string Description => GetDescription();
+
         private ILocalPolyline2d _outerEdge;
         private IList<ILocalPolyline2d> _voidEdges;
 
@@ -83,6 +85,16 @@ namespace MagmaWorks.Taxonomy.Profiles
             var closed = new LocalPolyline2d(polygon.Points);
             closed.Points.Add(closed.Points[0]);
             return closed;
+        }
+
+        private string GetDescription()
+        {
+            if (VoidEdges != null && VoidEdges.Count > 0)
+            {
+                return $"Outer Edge with {OuterEdge.Points.Count} Vertices and {VoidEdges.Count} void(s)";
+            }
+
+            return $"{OuterEdge.Points.Count} Vertices";
         }
     }
 }

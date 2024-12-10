@@ -7,6 +7,7 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length Height { get; set; }
         public Length Width { get; set; }
         public Length Thickness { get; set; }
+        public string Description => Utility.Description.Create(Height, Width, Thickness);
 
         public EllipseHollow(Length width, Length height, Length thickness)
         {
