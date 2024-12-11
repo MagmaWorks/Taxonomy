@@ -1,4 +1,4 @@
-using MagmaWorks.Taxonomy.Profiles;
+﻿using MagmaWorks.Taxonomy.Profiles;
 using OasysUnits;
 using OasysUnits.Units;
 
@@ -18,7 +18,7 @@ namespace ProfileTests
             string description = prfl.Description;
 
             // Assert
-            Assert.Equal("500�200mm", description);
+            Assert.Equal("500 × 200 mm", description);
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace ProfileTests
             string description = prfl.Description;
 
             // Assert
-            Assert.Equal("�2.3cm", description);
+            Assert.Equal("Ø 2.3 cm", description);
         }
 
         [Fact]
@@ -47,7 +47,7 @@ namespace ProfileTests
             string description = prfl.Description;
 
             // Assert
-            Assert.Equal("�2.3�1.1cm", description);
+            Assert.Equal("Ø 2.3 × 1.1 cm", description);
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace ProfileTests
             string description = prfl.Description;
 
             // Assert
-            Assert.Equal("2.3�5.4�1.1�1.5cm B2B:2.5mm", description);
+            Assert.Equal("2.3 × 5.4 × 1.1 × 1.5 cm B2B 2.5 mm", description);
         }
 
         [Fact]
@@ -83,7 +83,7 @@ namespace ProfileTests
             string description = prfl.Description;
 
             // Assert
-            Assert.Equal("2.3�5.4�1.1�1.5cm B2B:2.5mm", description);
+            Assert.Equal("2.3 × 5.4 × 1.1 × 1.5 cm B2B 2.5 mm", description);
         }
 
         [Fact]
@@ -99,7 +99,7 @@ namespace ProfileTests
             string description = prfl.Description;
 
             // Assert
-            Assert.Equal("5.4/50.0�2.3cm", description);
+            Assert.Equal("5.4 / 50.0 × 2.3 cm", description);
         }
 
         [Fact]
@@ -112,7 +112,7 @@ namespace ProfileTests
             string description = prfl.Description;
 
             // Assert
-            Assert.Equal("HE300B", description);
+            Assert.Equal("HE 300 B", description);
         }
     }
 }

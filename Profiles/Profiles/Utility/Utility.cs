@@ -30,7 +30,7 @@ namespace MagmaWorks.Taxonomy.Profiles
 
             List<string> strings = lengths.Select(s
                 => FormatDoubleWithSignificantDigits(s.As(u), significantDigitsAfterRadix)).ToList();
-            return $"{string.Join(separator, strings)}{Length.GetAbbreviation(u)}";
+            return $"{string.Join($"\u2009{separator}\u2009", strings)}\u2009{Length.GetAbbreviation(u)}";
         }
 
         internal static string FormatDoubleWithSignificantDigits(double value, int significantDigitsAfterRadix)

@@ -7,7 +7,7 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length Diameter { get; set; }
         public Length Thickness { get; set; }
         public string Description
-            => $"Ø{Utility.Describe(Diameter, Thickness)}";
+            => $"Ø\u2009{Utility.Describe(Diameter, Thickness)}";
 
         public CircularHollow(Length diameter, Length thickness)
         {

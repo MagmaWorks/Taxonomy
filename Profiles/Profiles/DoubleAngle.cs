@@ -22,10 +22,10 @@ namespace MagmaWorks.Taxonomy.Profiles
 
         private string GetDescription()
         {
-            string description = $"{Utility.Describe(Height, Width, WebThickness, FlangeThickness)} B2B";
+            string description = $"{Utility.Describe(Height, Width, WebThickness, FlangeThickness)} B2B\u2009";
             if (BackToBackDistance.Value != 0)
             {
-                description += $":{BackToBackDistance.ToString().Replace(" ", string.Empty)}";
+                description += $"{BackToBackDistance.ToString().Replace(" ", "\u2009")}";
             }
 
             return description;

@@ -23,7 +23,7 @@ namespace MagmaWorks.Taxonomy.Profiles
             string topAndBottom = Utility.Describe("/", TopWidth.ToUnit(u), BottomWidth);
             topAndBottom = topAndBottom.Replace(Length.GetAbbreviation(u), string.Empty);
             string height = Utility.Describe(Height);
-            return $"{topAndBottom}×{height}";
+            return $"{topAndBottom}× {height}";
         }
     }
 }
