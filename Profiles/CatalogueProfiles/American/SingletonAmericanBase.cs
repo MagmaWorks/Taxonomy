@@ -9,5 +9,6 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Catalogue Catalogue => Catalogue.AmericanAISC;
         public abstract AmericanShape Shape { get; }
         public abstract string Label { get; }
+        public virtual string Description => Label.Replace(" ", "\u2009");
     }
 }

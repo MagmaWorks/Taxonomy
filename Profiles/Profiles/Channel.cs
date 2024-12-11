@@ -8,6 +8,8 @@ namespace MagmaWorks.Taxonomy.Profiles
         public Length Width { get; set; }
         public Length WebThickness { get; set; }
         public Length FlangeThickness { get; set; }
+        public string Description
+            => Utility.Describe(Height, Width, WebThickness, FlangeThickness);
 
         public Channel(Length height, Length width, Length webThickness, Length flangeThickness)
         {

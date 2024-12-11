@@ -247,6 +247,8 @@ namespace ProfileTests
         public Length FlangeThickness => new Length(28, LengthUnit.Millimeter);
         public Length WebThickness => new Length(14.5, LengthUnit.Millimeter);
 
+        public string Description => "HE 500 B";
+
         public MockHEB500() { }
     }
 }
