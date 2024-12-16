@@ -1,7 +1,8 @@
 # Taxonomy
-A set of interfaces describing a taxonomy for structural engineering objects
+A set of interfaces describing a taxonomy for structural engineering objects.
 
 ![GitHub Actions Workflow Status](https://github.com/MagmaWorks/Taxonomy/actions/workflows/on-merge-to-main.yml/badge.svg)
+[![codecov](https://codecov.io/gh/MagmaWorks/Taxonomy/graph/badge.svg)](https://codecov.io/gh/MagmaWorks/Taxonomy)
 
 ## Latest release
 [![Releasestatus](https://github.com/MagmaWorks/Taxonomy/actions/workflows/on-release.yml/badge.svg)](https://github.com/MagmaWorks/Taxonomy/releases)
@@ -14,4 +15,3 @@ A set of interfaces describing a taxonomy for structural engineering objects
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/MagmaWorks/Taxonomy/issues)
 ![GitHub contributors](https://img.shields.io/github/contributors/MagmaWorks/Taxonomy)
 ![GitHub top language](https://img.shields.io/github/languages/top/MagmaWorks/Taxonomy)
-
