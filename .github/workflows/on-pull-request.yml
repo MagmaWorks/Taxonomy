@@ -7,5 +7,5 @@ on:
       - 'release/**'
       
 jobs:
-  pr-ci:
+  ci:
     uses: magmaworks/actions/.github/workflows/on-pull-request.yml@main
