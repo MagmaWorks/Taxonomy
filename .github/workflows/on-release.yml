@@ -9,6 +9,6 @@ jobs:
     uses: magmaworks/actions/.github/workflows/on-release.yml@main
     secrets: inherit
     permissions:
-        contents: write
-        actions: write
-        attestations: write
+      contents: write
+      actions: write
+      attestations: write
