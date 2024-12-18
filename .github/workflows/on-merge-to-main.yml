@@ -8,3 +8,7 @@ on:
 jobs:
   ci:
     uses: magmaworks/actions/.github/workflows/on-merge-to-main.yml@main
+    permissions:
+        contents: write
+        actions: write
+        attestations: write
