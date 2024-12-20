@@ -11,3 +11,4 @@ jobs:
     uses: magmaworks/actions/.github/workflows/on-pull-request.yml@main
     permissions:
       checks: write
+      contents: write
