@@ -1,12 +1,10 @@
-using OasysUnits;
-
 namespace MagmaWorks.Taxonomy.Loads
 {
     public interface IAreaForce : ILoad
     {
-        Pressure X { get; }
-        Pressure Y { get; }
-        Pressure Z { get; }
+        ForcePerArea X { get; }
+        ForcePerArea Y { get; }
+        ForcePerArea Z { get; }
         LoadApplication Application { get; }
     }
 }

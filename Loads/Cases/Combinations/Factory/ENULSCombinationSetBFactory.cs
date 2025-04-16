@@ -3,8 +3,8 @@ using System.Linq;
 using MagmaWorks.Taxonomy.Loads.Cases;
 using MagmaWorks.Taxonomy.Loads.Combinations.EN;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
-using OasysUnits.Units;
+using UnitsNet;
+using UnitsNet.Units;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {

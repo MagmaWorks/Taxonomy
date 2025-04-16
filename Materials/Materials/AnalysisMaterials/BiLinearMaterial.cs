@@ -1,20 +1,17 @@
-﻿using OasysUnits;
-using OasysUnits.Units;
-
-namespace MagmaWorks.Taxonomy.Materials
+﻿namespace MagmaWorks.Taxonomy.Materials
 {
     public class BiLinearMaterial : IBiLinearMaterial
     {
-        public Pressure ElasticModulus { get; set; }
-        public Pressure YieldStrength { get; set; }
-        public Pressure UltimateStrength { get; set; }
-        public Strain YieldStrain => new Strain(YieldStrength / ElasticModulus, StrainUnit.Ratio);
+        public Stress ElasticModulus { get; set; }
+        public Stress YieldStrength { get; set; }
+        public Stress UltimateStrength { get; set; }
+        public Strain YieldStrain => new Strain(YieldStrength / ElasticModulus, StrainUnit.DecimalFraction);
         public Strain FailureStrain { get; set; }
         public MaterialType Type { get; set; }
 
         private BiLinearMaterial() { }
 
-        public BiLinearMaterial(MaterialType type, Pressure elasticModulus, Pressure yieldStrength, Pressure ultimateStrength, Strain failureStrain)
+        public BiLinearMaterial(MaterialType type, Stress elasticModulus, Stress yieldStrength, Stress ultimateStrength, Strain failureStrain)
         {
             Type = type;
             ElasticModulus = elasticModulus;
@@ -23,7 +20,7 @@ namespace MagmaWorks.Taxonomy.Materials
             FailureStrain = failureStrain;
         }
 
-        public BiLinearMaterial(ILinearElasticMaterial linearElasticMaterial, Pressure ultimateStrength, Strain failureStrain)
+        public BiLinearMaterial(ILinearElasticMaterial linearElasticMaterial, Stress ultimateStrength, Strain failureStrain)
         {
             Type = linearElasticMaterial.Type;
             ElasticModulus = linearElasticMaterial.ElasticModulus;

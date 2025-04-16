@@ -6,7 +6,6 @@ using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
 
 namespace MaterialTests
 {
@@ -24,10 +23,10 @@ namespace MaterialTests
         private static double _double { get { return 9.8; } }
         private static bool _bool { get { return true; } }
         private static byte _byte { get { return 3; } }
-        private static Length _length { get { return new Length(2.5, OasysUnits.Units.LengthUnit.Centimeter); } }
-        private static Angle _angle { get { return new Angle(33, OasysUnits.Units.AngleUnit.Degree); } }
-        private static Pressure _stress { get { return new Pressure(45, OasysUnits.Units.PressureUnit.Megapascal); } }
-        private static Strain _strain { get { return new Strain(7.5, OasysUnits.Units.StrainUnit.Percent); } }
+        private static Length _length { get { return new Length(2.5, LengthUnit.Centimeter); } }
+        private static Angle _angle { get { return new Angle(33, AngleUnit.Degree); } }
+        private static Stress _stress { get { return new Stress(45, StressUnit.Megapascal); } }
+        private static Strain _strain { get { return new Strain(7.5, StrainUnit.Percent); } }
         private static IStandard _standard { get { return new En1992(); } }
         private static Enum _grade { get { return EnConcreteGrade.C30_37; } }
 
@@ -177,7 +176,7 @@ namespace MaterialTests
                             args.Add(_angle);
                             continue;
 
-                        case "Pressure":
+                        case "Stress":
                             args.Add(_stress);
                             continue;
 

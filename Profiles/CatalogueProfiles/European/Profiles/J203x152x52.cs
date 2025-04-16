@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class J203x152x52 : SingletonEuropeanBase<J203x152x52>, IITaperFlange

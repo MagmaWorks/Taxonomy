@@ -1,19 +1,17 @@
-﻿using OasysUnits;
-
-namespace MagmaWorks.Taxonomy.Materials
+﻿namespace MagmaWorks.Taxonomy.Materials
 {
     public class LinearElasticOrthotropicMaterial : ILinearElasticOrthotropicMaterial
     {
-        public Pressure ElasticModulusX { get; set; }
-        public Pressure ElasticModulusY { get; set; }
-        public Pressure ElasticModulusZ { get; set; }
-        public Pressure StrengthX { get; set; }
-        public Pressure StrengthY { get; set; }
-        public Pressure StrengthZ { get; set; }
+        public Stress ElasticModulusX { get; set; }
+        public Stress ElasticModulusY { get; set; }
+        public Stress ElasticModulusZ { get; set; }
+        public Stress StrengthX { get; set; }
+        public Stress StrengthY { get; set; }
+        public Stress StrengthZ { get; set; }
         public MaterialType Type { get; set; }
 
-        public LinearElasticOrthotropicMaterial(MaterialType type, Pressure elasticModulusX, Pressure strengthX,
-            Pressure elasticModulusY, Pressure strengthY, Pressure elasticModulusZ, Pressure strengthZ)
+        public LinearElasticOrthotropicMaterial(MaterialType type, Stress elasticModulusX, Stress strengthX,
+            Stress elasticModulusY, Stress strengthY, Stress elasticModulusZ, Stress strengthZ)
         {
             Type = type;
             ElasticModulusX = elasticModulusX;

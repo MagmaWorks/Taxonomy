@@ -1,8 +1,6 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
 using MagmaWorks.Taxonomy.Sections.Reinforcement;
-using OasysUnits;
-using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Sections
 {

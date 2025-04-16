@@ -3,8 +3,8 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using MagmaWorks.Taxonomy.Loads;
 using MagmaWorks.Taxonomy.Serialization;
-using OasysUnits;
-using OasysUnits.Units;
+using UnitsNet;
+using UnitsNet.Units;
 
 namespace LoadTests
 {

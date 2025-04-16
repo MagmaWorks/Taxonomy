@@ -1,5 +1,3 @@
-using OasysUnits;
-
 namespace MagmaWorks.Taxonomy.Loads
 {
     public class PointForce : PointForce2d, IPointForce

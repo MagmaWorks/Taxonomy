@@ -1,14 +1,12 @@
-﻿using OasysUnits;
-
-namespace MagmaWorks.Taxonomy.Materials
+﻿namespace MagmaWorks.Taxonomy.Materials
 {
     public interface ILinearElasticOrthotropicMaterial : IAnalysisMaterial
     {
-        Pressure ElasticModulusX { get; }
-        Pressure ElasticModulusY { get; }
-        Pressure ElasticModulusZ { get; }
-        Pressure StrengthX { get; }
-        Pressure StrengthY { get; }
-        Pressure StrengthZ { get; }
+        Stress ElasticModulusX { get; }
+        Stress ElasticModulusY { get; }
+        Stress ElasticModulusZ { get; }
+        Stress StrengthX { get; }
+        Stress StrengthY { get; }
+        Stress StrengthZ { get; }
     }
 }

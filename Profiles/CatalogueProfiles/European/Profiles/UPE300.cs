@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class UPE300 : SingletonEuropeanBase<UPE300>, IChannelParallelFlange

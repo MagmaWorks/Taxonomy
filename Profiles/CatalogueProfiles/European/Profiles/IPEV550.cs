@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class IPEV550 : SingletonEuropeanBase<IPEV550>, IIParallelFlange

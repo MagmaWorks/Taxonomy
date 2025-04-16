@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
+using UnitsNet;
 
 namespace StandardTests
 {
@@ -23,8 +23,8 @@ namespace StandardTests
         private static double _double { get { return 9.8; } }
         private static bool _bool { get { return true; } }
         private static byte _byte { get { return 3; } }
-        private static Length _length { get { return new Length(2.5, OasysUnits.Units.LengthUnit.Centimeter); } }
-        private static Angle _angle { get { return new Angle(33, OasysUnits.Units.AngleUnit.Degree); } }
+        private static Length _length { get { return new Length(2.5, UnitsNet.Units.LengthUnit.Centimeter); } }
+        private static Angle _angle { get { return new Angle(33, UnitsNet.Units.AngleUnit.Degree); } }
 
         [Theory]
         [ClassData(typeof(TestDataGenerator))]

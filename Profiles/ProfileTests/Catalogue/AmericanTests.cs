@@ -2,8 +2,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Serialization;
-using OasysUnits;
-using OasysUnits.Units;
+using UnitsNet;
+using UnitsNet.Units;
 
 namespace ProfileTests.Catalogue
 {

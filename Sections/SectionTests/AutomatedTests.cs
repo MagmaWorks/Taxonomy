@@ -9,7 +9,6 @@ using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
 using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
 
 namespace SectionTests
 {
@@ -30,10 +29,10 @@ namespace SectionTests
         private static double _double { get { return 9.8; } }
         private static bool _bool { get { return true; } }
         private static byte _byte { get { return 3; } }
-        private static Length _length { get { return new Length(2.5, OasysUnits.Units.LengthUnit.Centimeter); } }
-        private static OasysUnits.Angle _angle { get { return new OasysUnits.Angle(33, OasysUnits.Units.AngleUnit.Degree); } }
-        private static Pressure _stress { get { return new Pressure(45, OasysUnits.Units.PressureUnit.Megapascal); } }
-        private static Strain _strain { get { return new Strain(7.5, OasysUnits.Units.StrainUnit.Percent); } }
+        private static Length _length { get { return new Length(2.5, LengthUnit.Centimeter); } }
+        private static UnitsNet.Angle _angle { get { return new UnitsNet.Angle(33, AngleUnit.Degree); } }
+        private static Pressure _stress { get { return new Pressure(45, PressureUnit.Megapascal); } }
+        private static Strain _strain { get { return new Strain(7.5, StrainUnit.Percent); } }
         private static IMaterial _material
         {
             get

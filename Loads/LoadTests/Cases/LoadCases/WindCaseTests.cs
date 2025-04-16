@@ -1,8 +1,8 @@
 ﻿using MagmaWorks.Taxonomy.Loads;
 using MagmaWorks.Taxonomy.Loads.Cases;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
-using OasysUnits.Units;
+using UnitsNet;
+using UnitsNet.Units;
 
 namespace LoadCaseTests
 {

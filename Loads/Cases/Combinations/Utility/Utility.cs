@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MagmaWorks.Taxonomy.Loads.Cases;
-using OasysUnits;
+using UnitsNet;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {

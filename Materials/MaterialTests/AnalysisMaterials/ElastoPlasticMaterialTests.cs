@@ -1,5 +1,4 @@
 using MagmaWorks.Taxonomy.Materials;
-using OasysUnits;
 
 namespace MaterialTests.AnalysisMaterials
 {
@@ -10,10 +9,10 @@ namespace MaterialTests.AnalysisMaterials
         {
             // Assemble
             MaterialType type = MaterialType.Steel;
-            Pressure elasticModulus = new Pressure(205, OasysUnits.Units.PressureUnit.Gigapascal);
-            Pressure yieldStrength = new Pressure(355, OasysUnits.Units.PressureUnit.Megapascal);
-            Pressure ultimateStrength = new Pressure(490, OasysUnits.Units.PressureUnit.Megapascal);
-            Strain failureStrain = new Strain(0.2, OasysUnits.Units.StrainUnit.Percent);
+            Stress elasticModulus = new Stress(205, StressUnit.Gigapascal);
+            Stress yieldStrength = new Stress(355, StressUnit.Megapascal);
+            Stress ultimateStrength = new Stress(490, StressUnit.Megapascal);
+            Strain failureStrain = new Strain(0.2, StrainUnit.Percent);
 
             // Act
             IBiLinearMaterial material = new BiLinearMaterial(type, elasticModulus, yieldStrength, ultimateStrength, failureStrain);
@@ -24,7 +23,7 @@ namespace MaterialTests.AnalysisMaterials
             Assert.Equal(355, material.YieldStrength.Megapascals);
             Assert.Equal(490, material.UltimateStrength.Megapascals);
             Assert.Equal(0.2, material.FailureStrain.Percent);
-            Assert.Equal(0.0017, material.YieldStrain.Ratio, 4);
+            Assert.Equal(0.0017, material.YieldStrain.DecimalFractions, 4);
         }
 
         [Fact]
@@ -32,10 +31,10 @@ namespace MaterialTests.AnalysisMaterials
         {
             // Assemble
             MaterialType type = MaterialType.Steel;
-            Pressure elasticModulus = new Pressure(205, OasysUnits.Units.PressureUnit.Gigapascal);
-            Pressure yieldStrength = new Pressure(355, OasysUnits.Units.PressureUnit.Megapascal);
-            Pressure ultimateStrength = new Pressure(490, OasysUnits.Units.PressureUnit.Megapascal);
-            Strain failureStrain = new Strain(0.2, OasysUnits.Units.StrainUnit.Percent);
+            Stress elasticModulus = new Stress(205, StressUnit.Gigapascal);
+            Stress yieldStrength = new Stress(355, StressUnit.Megapascal);
+            Stress ultimateStrength = new Stress(490, StressUnit.Megapascal);
+            Strain failureStrain = new Strain(0.2, StrainUnit.Percent);
 
             // Act
             ILinearElasticMaterial linearElastic = new LinearElasticMaterial(type, elasticModulus, yieldStrength);
@@ -47,7 +46,7 @@ namespace MaterialTests.AnalysisMaterials
             Assert.Equal(355, material.YieldStrength.Megapascals);
             Assert.Equal(490, material.UltimateStrength.Megapascals);
             Assert.Equal(0.2, material.FailureStrain.Percent);
-            Assert.Equal(0.0017, material.YieldStrain.Ratio, 4);
+            Assert.Equal(0.0017, material.YieldStrain.DecimalFractions, 4);
         }
     }
 }

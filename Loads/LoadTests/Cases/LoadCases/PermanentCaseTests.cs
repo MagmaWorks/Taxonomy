@@ -1,7 +1,7 @@
 ﻿using MagmaWorks.Taxonomy.Loads;
 using MagmaWorks.Taxonomy.Loads.Cases;
-using OasysUnits;
-using OasysUnits.Units;
+using UnitsNet;
+using UnitsNet.Units;
 
 namespace LoadCaseTests
 {

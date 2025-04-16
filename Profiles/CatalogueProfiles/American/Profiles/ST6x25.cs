@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class ST6x25 : SingletonAmericanBase<ST6x25>, ICutTeeTaperFlange

@@ -1,6 +1,6 @@
 ﻿using MagmaWorks.Taxonomy.Loads;
-using OasysUnits;
-using OasysUnits.Units;
+using UnitsNet;
+using UnitsNet.Units;
 
 namespace LoadTests
 {

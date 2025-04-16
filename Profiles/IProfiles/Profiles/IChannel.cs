@@ -1,6 +1,4 @@
-﻿using OasysUnits;
-
-namespace MagmaWorks.Taxonomy.Profiles
+﻿namespace MagmaWorks.Taxonomy.Profiles
 {
     public interface IChannel : IProfile
     {

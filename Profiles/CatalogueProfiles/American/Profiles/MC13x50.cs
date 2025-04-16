@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class MC13x50 : SingletonAmericanBase<MC13x50>, IChannelTaperFlange

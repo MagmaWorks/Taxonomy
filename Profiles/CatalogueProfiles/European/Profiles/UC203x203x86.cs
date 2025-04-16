@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class UC203x203x86 : SingletonEuropeanBase<UC203x203x86>, IIParallelFlange

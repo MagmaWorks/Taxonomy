@@ -2,8 +2,6 @@ using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
 using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
-using OasysUnits.Units;
 
 namespace MaterialTests.StandardMaterials
 {
@@ -44,7 +42,7 @@ namespace MaterialTests.StandardMaterials
 
             double expectedStrain = expectedStrength <= 50 ? 1.75 : 1.75 + 0.55 * ((expectedStrength - 50) / 40);
             Assert.True((decimal)expectedStrain >= (decimal)1.75 && (decimal)expectedStrain <= (decimal)2.4);
-            Assert.Equal(expectedStrain, material.PeakStrain.MilliStrain, 12);
+            Assert.Equal(expectedStrain, material.PeakStrain.PartsPerThousand, 12);
 
             double expectedElasticModulus = expectedStrength / expectedStrain;
             Assert.True(expectedElasticModulus > 6 && expectedElasticModulus < 40);
@@ -68,11 +66,11 @@ namespace MaterialTests.StandardMaterials
 
             double expectedEpsilon_c2 = expectedStrength <= 50 ? 2 : 2 + 0.085 * Math.Pow(expectedStrength - 50, 0.53);
             Assert.True((decimal)expectedEpsilon_c2 >= (decimal)2.0 && (decimal)expectedEpsilon_c2 <= (decimal)2.6005);
-            Assert.Equal(expectedEpsilon_c2, material.YieldStrain.MilliStrain, 12);
+            Assert.Equal(expectedEpsilon_c2, material.YieldStrain.PartsPerThousand, 12);
 
             double expectedEpsilon_cu2 = expectedStrength <= 50 ? 3.5 : 2.6 + 35 * Math.Pow((90 - expectedStrength) / 100, 4);
             Assert.True((decimal)expectedEpsilon_cu2 <= (decimal)3.5 && (decimal)expectedEpsilon_cu2 >= (decimal)2.6);
-            Assert.Equal(expectedEpsilon_cu2, material.FailureStrain.MilliStrain, 12);
+            Assert.Equal(expectedEpsilon_cu2, material.FailureStrain.PartsPerThousand, 12);
 
             double expectedExponent = expectedStrength <= 50 ? 2.0 : 1.4 + 23.4 * Math.Pow((90 - expectedStrength) / 100, 4);
             Assert.True((decimal)expectedExponent <= (decimal)2.0 && (decimal)expectedExponent >= (decimal)1.4);
@@ -88,13 +86,13 @@ namespace MaterialTests.StandardMaterials
             IParabolaRectangleMaterial material = EnConcreteFactory.CreateParabolaRectangleAnalysisMaterial(grade);
             List<Strain> strains = new List<Strain>()
             {
-                new Strain(0, StrainUnit.MilliStrain),
-                new Strain(1, StrainUnit.MilliStrain),
-                new Strain(1.5, StrainUnit.MilliStrain),
-                new Strain(2, StrainUnit.MilliStrain),
-                new Strain(2.5, StrainUnit.MilliStrain),
-                new Strain(3, StrainUnit.MilliStrain),
-                new Strain(3.5, StrainUnit.MilliStrain),
+                new Strain(0, StrainUnit.PartPerThousand),
+                new Strain(1, StrainUnit.PartPerThousand),
+                new Strain(1.5, StrainUnit.PartPerThousand),
+                new Strain(2, StrainUnit.PartPerThousand),
+                new Strain(2.5, StrainUnit.PartPerThousand),
+                new Strain(3, StrainUnit.PartPerThousand),
+                new Strain(3.5, StrainUnit.PartPerThousand),
             };
 
             foreach (Strain strain in strains)
@@ -111,8 +109,8 @@ namespace MaterialTests.StandardMaterials
                     continue;
                 }
 
-                Pressure expectedStress = material.YieldStrength * (1 - Math.Pow(1 - strain / material.YieldStrain, material.Exponent));
-                Pressure stress = material.StressAt(strain);
+                Stress expectedStress = material.YieldStrength * (1 - Math.Pow(1 - strain / material.YieldStrain, material.Exponent));
+                Stress stress = material.StressAt(strain);
                 Assert.True(Equals(expectedStress, stress));
             }
         }

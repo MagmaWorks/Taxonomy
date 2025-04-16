@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
+﻿namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
     public class InvalidSteelSpecificationException : Exception
     {

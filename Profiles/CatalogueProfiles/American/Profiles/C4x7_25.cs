@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class C4x7_25 : SingletonAmericanBase<C4x7_25>, IChannelTaperFlange

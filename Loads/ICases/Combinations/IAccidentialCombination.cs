@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using MagmaWorks.Taxonomy.Loads.Cases;
-using OasysUnits;
+using UnitsNet;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {

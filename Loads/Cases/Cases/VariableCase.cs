@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using OasysUnits;
+using UnitsNet;
 
 namespace MagmaWorks.Taxonomy.Loads.Cases
 {

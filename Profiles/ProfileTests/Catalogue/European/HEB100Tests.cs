@@ -1,7 +1,7 @@
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Serialization;
-using OasysUnits;
-using OasysUnits.Units;
+using UnitsNet;
+using UnitsNet.Units;
 using ProfileTests.Utility;
 
 namespace ProfileTests.Catalogue
