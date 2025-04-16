@@ -22,8 +22,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MagmaWorks.Geometry" Version="0.0.11" />
-    <PackageReference Include="MagmaWorks.IGeometry" Version="0.0.11" />
+    <PackageReference Include="MagmaWorks.Geometry" Version="0.1.0" />
+    <PackageReference Include="MagmaWorks.IGeometry" Version="0.1.0" />
     <PackageReference Include="MinVer" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
