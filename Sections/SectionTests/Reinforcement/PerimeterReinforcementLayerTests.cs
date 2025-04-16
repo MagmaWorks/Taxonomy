@@ -1,9 +1,4 @@
 ﻿using MagmaWorks.Geometry;
-using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Sections;
-using MagmaWorks.Taxonomy.Sections.Reinforcement;
-using UnitsNet;
-using UnitsNet.Units;
 
 namespace SectionTests.ReinforcementTests
 {

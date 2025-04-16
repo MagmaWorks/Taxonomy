@@ -1,6 +1,4 @@
 ﻿using MagmaWorks.Geometry;
-using UnitsNet;
-using UnitsNet.Units;
 using Utility = MagmaWorks.Taxonomy.Sections.Reinforcement.Utility;
 
 namespace SectionTests.ReinforcementTests

@@ -1,4 +1,8 @@
 global using System;
+global using MagmaWorks.Taxonomy.Materials;
+global using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
+global using MagmaWorks.Taxonomy.Standards;
+global using MagmaWorks.Taxonomy.Standards.Eurocode;
 global using UnitsNet;
 global using UnitsNet.Units;
 global using Xunit;

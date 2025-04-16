@@ -1,7 +1,4 @@
-﻿using UnitsNet;
-using UnitsNet.Units;
-
-namespace MagmaWorks.Taxonomy.Loads.Combinations.EN
+﻿namespace MagmaWorks.Taxonomy.Loads.Combinations.EN
 {
     public struct TableA1_2Properties
     {

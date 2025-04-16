@@ -3,12 +3,8 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
-using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
 using MagmaWorks.Taxonomy.Serialization;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
 
 namespace SectionTests
 {

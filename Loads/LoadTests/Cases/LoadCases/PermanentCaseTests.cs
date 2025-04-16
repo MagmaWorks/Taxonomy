@@ -1,9 +1,4 @@
-﻿using MagmaWorks.Taxonomy.Loads;
-using MagmaWorks.Taxonomy.Loads.Cases;
-using UnitsNet;
-using UnitsNet.Units;
-
-namespace LoadCaseTests
+﻿namespace LoadCaseTests
 {
     public class PermanentCaseTests
     {

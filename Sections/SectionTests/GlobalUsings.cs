@@ -1,5 +1,10 @@
-global using Xunit;
+global using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
+global using MagmaWorks.Taxonomy.Profiles;
+global using MagmaWorks.Taxonomy.Sections;
+global using MagmaWorks.Taxonomy.Sections.Reinforcement;
+global using MagmaWorks.Taxonomy.Standards.Eurocode;
 global using UnitsNet;
 global using UnitsNet.Units;
+global using Xunit;
 global using Strain = UnitsNet.Ratio;
 global using StrainUnit = UnitsNet.Units.RatioUnit;

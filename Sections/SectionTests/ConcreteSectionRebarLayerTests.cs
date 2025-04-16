@@ -1,12 +1,4 @@
-﻿using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
-using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Sections;
-using MagmaWorks.Taxonomy.Sections.Reinforcement;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
-using UnitsNet;
-using UnitsNet.Units;
-
-namespace SectionTests
+﻿namespace SectionTests
 {
     public class ConcreteSectionRebarLayerTests
     {

@@ -1,7 +1,4 @@
 ﻿using MagmaWorks.Geometry;
-using MagmaWorks.Taxonomy.Sections;
-using UnitsNet;
-using UnitsNet.Units;
 
 namespace SectionTests
 {

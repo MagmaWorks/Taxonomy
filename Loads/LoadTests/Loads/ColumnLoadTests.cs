@@ -1,8 +1,4 @@
-﻿using MagmaWorks.Taxonomy.Loads;
-using UnitsNet;
-using UnitsNet.Units;
-
-namespace LoadTests
+﻿namespace LoadTests
 {
     public class ColumnLoadTests
     {

@@ -1,7 +1,3 @@
-using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
-
 namespace MaterialTests.AnalysisMaterials
 {
     public class LinearElasticMaterialFactoryTests

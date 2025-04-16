@@ -1,6 +1,3 @@
-using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization;
-
 namespace ProfileTests
 {
     public class NullTests

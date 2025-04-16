@@ -1,5 +1,3 @@
-using MagmaWorks.Taxonomy.Materials;
-
 namespace MaterialTests.AnalysisMaterials
 {
     public class LinearElasticMaterialTests

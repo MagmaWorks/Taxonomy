@@ -1,9 +1,3 @@
-using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization;
-using UnitsNet;
-using UnitsNet.Units;
-using ProfileTests.Utility;
-
 namespace ProfileTests.Catalogue
 {
     public class HEB100Tests

@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization;
-using UnitsNet;
-using Angle = MagmaWorks.Taxonomy.Profiles.Angle;
 
 namespace ProfileTests
 {
