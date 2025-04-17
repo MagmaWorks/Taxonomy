@@ -6,12 +6,8 @@ on:
 
 jobs:
   ci-comment:
-    if: ${{ github.event.issue.pull_request }} 
-    runs-on: [ubuntu-latest]
-    steps:
-    - name: body contains ci keyword
-      if: contains(github.event.comment.body, '/ci')
-      uses: magmaworks/actions/.github/workflows/on-pull-request.yml@needs-lint
+    if: (${{ github.event.issue.pull_request }} && contains(github.event.comment.body, '/ci'))
+    uses: magmaworks/actions/.github/workflows/on-pull-request.yml@main
     permissions:
       checks: write
       contents: write
