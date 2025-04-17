@@ -1,0 +1,17 @@
+name: On Pull Request 'CI' Comment -- Lint, Build, Test, Coverage
+
+on:
+  issue_comment:                                     
+    types: [created, edited, deleted]
+
+jobs:
+  ci-comment:
+    if: ${{ github.event.issue.pull_request }} 
+    runs-on: [ubuntu-latest]
+    steps:
+    - name: body contains ci keyword
+    if: contains(github.event.comment.body, '/ci')   # check the comment if it contains the keywords
+    uses: magmaworks/actions/.github/workflows/on-pull-request.yml@needs-lint
+    permissions:
+      checks: write
+      contents: write
