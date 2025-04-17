@@ -1,4 +1,4 @@
 ﻿namespace MagmaWorks.Taxonomy.Materials
 {
-    public interface IAnalysisMaterial : IMaterial { }
+    public interface IAnalysisMaterial : IMaterial { }  
 }
