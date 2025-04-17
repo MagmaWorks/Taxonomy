@@ -1,7 +1,3 @@
-using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
-
 namespace MaterialTests.AnalysisMaterials
 {
     public class LinearElasticMaterialFactoryTests
@@ -22,7 +18,7 @@ namespace MaterialTests.AnalysisMaterials
             Assert.Equal(expectedStrength, material.Strength.Megapascals);
 
             double expectedStrain = 1.75;
-            Assert.Equal(expectedStrain, material.PeakStrain.MilliStrain, 12);
+            Assert.Equal(expectedStrain, material.PeakStrain.PartsPerThousand, 12);
 
             double expectedElasticModulus = expectedStrength / expectedStrain;
             Assert.Equal(expectedElasticModulus, material.ElasticModulus.Gigapascals, 12);

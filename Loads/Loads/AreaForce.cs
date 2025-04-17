@@ -1,22 +1,20 @@
-using OasysUnits;
-
 namespace MagmaWorks.Taxonomy.Loads
 {
     public class AreaForce : IAreaForce
     {
         public string Label { get; set; } = string.Empty;
         public LoadApplication Application { get; set; } = LoadApplication.Local;
-        public Pressure X { get; set; } = Pressure.Zero;
-        public Pressure Y { get; set; } = Pressure.Zero;
-        public Pressure Z { get; set; } = Pressure.Zero;
+        public ForcePerArea X { get; set; } = ForcePerArea.Zero;
+        public ForcePerArea Y { get; set; } = ForcePerArea.Zero;
+        public ForcePerArea Z { get; set; } = ForcePerArea.Zero;
 
         private AreaForce() { }
 
-        public AreaForce(Pressure z)
+        public AreaForce(ForcePerArea z)
         {
             Z = z;
         }
-        public AreaForce(Pressure x, Pressure y, Pressure z, LoadApplication application)
+        public AreaForce(ForcePerArea x, ForcePerArea y, ForcePerArea z, LoadApplication application)
         {
             X = x;
             Y = y;
@@ -24,7 +22,7 @@ namespace MagmaWorks.Taxonomy.Loads
             Application = application;
         }
 
-        public static implicit operator AreaForce(Pressure f)
+        public static implicit operator AreaForce(ForcePerArea f)
         {
             return new AreaForce(f);
         }

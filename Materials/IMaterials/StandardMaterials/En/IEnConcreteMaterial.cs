@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {

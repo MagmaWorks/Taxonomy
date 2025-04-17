@@ -1,14 +1,12 @@
-﻿using OasysUnits;
-
-namespace MagmaWorks.Taxonomy.Materials
+﻿namespace MagmaWorks.Taxonomy.Materials
 {
     public interface IParabolaRectangleMaterial : IAnalysisMaterial
     {
-        Pressure YieldStrength { get; }
+        Stress YieldStrength { get; }
         Strain YieldStrain { get; }
         Strain FailureStrain { get; }
         double Exponent { get; set; }
 
-        public Pressure StressAt(Strain strain);
+        public Stress StressAt(Strain strain);
     }
 }

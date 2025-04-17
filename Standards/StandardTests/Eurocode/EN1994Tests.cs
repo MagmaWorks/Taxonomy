@@ -1,5 +1,3 @@
-using MagmaWorks.Taxonomy.Standards.Eurocode;
-
 namespace StandardTests
 {
     public class EN1994Tests

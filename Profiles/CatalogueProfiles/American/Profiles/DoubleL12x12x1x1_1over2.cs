@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class DoubleL12x12x1x1_1over2 : SingletonAmericanBase<DoubleL12x12x1x1_1over2>, IDoubleAngle

@@ -1,6 +1,4 @@
-﻿using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
-using MagmaWorks.Taxonomy.Serialization;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
+﻿using MagmaWorks.Taxonomy.Serialization;
 
 namespace MaterialTests.StandardMaterials.En
 {

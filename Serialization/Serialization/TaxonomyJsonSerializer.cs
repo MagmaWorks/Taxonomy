@@ -12,7 +12,7 @@ namespace MagmaWorks.Taxonomy.Serialization
                 {
                     Converters = {
                         new Newtonsoft.Json.Converters.StringEnumConverter(),
-                        new OasysUnits.Serialization.JsonNet.OasysUnitsIQuantityJsonConverter(),
+                        new UnitsNet.Serialization.JsonNet.UnitsNetIQuantityJsonConverter(),
                     },
                     TypeNameHandling = TypeNameHandling.Objects,
                     TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MagmaWorks.Geometry;
-using OasysUnits;
-using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Sections.Reinforcement
 {

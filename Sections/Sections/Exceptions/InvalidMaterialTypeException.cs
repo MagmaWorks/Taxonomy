@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MagmaWorks.Taxonomy.Sections.Exceptions
+﻿namespace MagmaWorks.Taxonomy.Sections.Exceptions
 {
     public class InvalidMaterialTypeException : Exception
     {

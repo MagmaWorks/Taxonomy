@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
-using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections.Reinforcement
 {

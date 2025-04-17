@@ -1,8 +1,4 @@
 using MagmaWorks.Geometry;
-using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization;
-using OasysUnits;
-using OasysUnits.Units;
 
 namespace ProfileTests
 {

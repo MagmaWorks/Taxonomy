@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class PFC125x65x15 : SingletonEuropeanBase<PFC125x65x15>, IChannelParallelFlange

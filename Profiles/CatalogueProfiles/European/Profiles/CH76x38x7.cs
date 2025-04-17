@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class CH76x38x7 : SingletonEuropeanBase<CH76x38x7>, IChannelTaperFlange

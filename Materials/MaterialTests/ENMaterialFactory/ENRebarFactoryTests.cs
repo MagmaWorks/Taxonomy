@@ -1,11 +1,4 @@
-﻿using MagmaWorks.Taxonomy.Materials;
-using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
-using MagmaWorks.Taxonomy.Standards;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
-using OasysUnits.Units;
-
-namespace MaterialTests.StandardMaterials
+﻿namespace MaterialTests.StandardMaterials
 {
     public class EnRebarFactoryTests
     {

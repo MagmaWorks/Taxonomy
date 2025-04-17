@@ -1,10 +1,3 @@
-using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization;
-using OasysUnits;
-using OasysUnits.Units;
-using ProfileTests.Utility;
-using Angle = MagmaWorks.Taxonomy.Profiles.Angle;
-
 namespace ProfileTests
 {
     public class AngleTests

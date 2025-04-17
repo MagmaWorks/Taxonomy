@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class WT5x13 : SingletonAmericanBase<WT5x13>, ICutTeeParallelFlange

@@ -1,6 +1,4 @@
-﻿using OasysUnits;
-
-namespace MagmaWorks.Taxonomy.Sections
+﻿namespace MagmaWorks.Taxonomy.Sections
 {
     public interface IReinforcementLayoutBySpacing : IReinforcementLayout
     {

@@ -1,17 +1,14 @@
-﻿using System;
-using OasysUnits;
-
-namespace MagmaWorks.Taxonomy.Materials
+﻿namespace MagmaWorks.Taxonomy.Materials
 {
     public class ParabolaRectangleMaterial : IParabolaRectangleMaterial
     {
         public MaterialType Type { get; set; }
-        public Pressure YieldStrength { get; set; }
+        public Stress YieldStrength { get; set; }
         public Strain YieldStrain { get; set; }
         public Strain FailureStrain { get; set; }
         public double Exponent { get; set; }
 
-        public ParabolaRectangleMaterial(MaterialType type, Pressure yieldStrength, Strain yieldStrain, Strain failureStrain, double exponent)
+        public ParabolaRectangleMaterial(MaterialType type, Stress yieldStrength, Strain yieldStrain, Strain failureStrain, double exponent)
         {
             Type = type;
             YieldStrength = yieldStrength;
@@ -20,7 +17,7 @@ namespace MagmaWorks.Taxonomy.Materials
             Exponent = exponent;
         }
 
-        public Pressure StressAt(Strain strain)
+        public Stress StressAt(Strain strain)
         {
             if (strain > FailureStrain)
             {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using OasysUnits;
-using OasysUnits.Units;
+﻿using System.Linq;
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
@@ -11,8 +8,8 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
         {
             MaterialType type = MaterialType.Reinforcement;
             double strength = double.Parse(string.Concat(grade.ToString().Where(Char.IsDigit)));
-            Pressure f_yk = new Pressure(strength, PressureUnit.Megapascal);
-            Pressure elasticModulus = new Pressure(200, PressureUnit.Gigapascal);
+            Stress f_yk = new Stress(strength, StressUnit.Megapascal);
+            Stress elasticModulus = new Stress(200, StressUnit.Gigapascal);
             return new LinearElasticMaterial(type, elasticModulus, f_yk);
         }
 
@@ -43,7 +40,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
                     throw new ArgumentException($"Class {rebarClass} not implemented");
             }
 
-            Pressure strength = material.Strength * k;
+            Stress strength = material.Strength * k;
             return new BiLinearMaterial(material, strength, strain);
         }
     }

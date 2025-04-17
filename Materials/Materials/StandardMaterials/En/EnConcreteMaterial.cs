@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
-using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {

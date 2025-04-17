@@ -1,9 +1,4 @@
-﻿using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits;
-using OasysUnits.Units;
-using ProfileTests.Utility;
-
-namespace ProfileTests
+﻿namespace ProfileTests
 {
     public class IParallelFlangeTests
     {
