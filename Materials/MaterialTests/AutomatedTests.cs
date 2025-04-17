@@ -172,7 +172,7 @@ namespace MaterialTests
                             args.Add(_angle);
                             continue;
 
-                        case "Stress":
+                        case "Pressure":
                             args.Add(_stress);
                             continue;
 
