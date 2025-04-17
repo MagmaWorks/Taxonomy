@@ -8,7 +8,7 @@ on:
       
 jobs:
   ci:
-    uses: magmaworks/actions/.github/workflows/on-pull-request.yml@main
+    uses: magmaworks/actions/.github/workflows/on-pull-request.yml@needs-lint
     permissions:
       checks: write
       contents: write
