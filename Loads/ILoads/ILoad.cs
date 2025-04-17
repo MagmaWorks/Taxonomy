@@ -1,5 +1,4 @@
 ﻿using MagmaWorks.Taxonomy.Serialization;
-using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads
 {

@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <MinVerMinimumMajorMinor>0.0</MinVerMinimumMajorMinor>
+    <MinVerMinimumMajorMinor>0.1</MinVerMinimumMajorMinor>
     <MinVerDefaultPreReleaseIdentifiers>preview</MinVerDefaultPreReleaseIdentifiers>
   </PropertyGroup>
 
   <PropertyGroup>
     <TargetFrameworks>net48;netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>10.0</LangVersion>
     <Platforms>AnyCPU</Platforms>
     <RootNamespace>MagmaWorks.Taxonomy.Loads</RootNamespace>
   </PropertyGroup>

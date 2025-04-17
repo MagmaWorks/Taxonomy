@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using CatalogueGenerator.Utilities;
 using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits.Units;
+using UnitsNet.Units;
 
 namespace CatalogueProfileGenerator
 {
@@ -11,8 +11,8 @@ namespace CatalogueProfileGenerator
         {
             var usngs = new List<string>()
             {
-                "OasysUnits",
-                "OasysUnits.Units"
+                "UnitsNet",
+                "UnitsNet.Units"
             };
 
             Enum? shape = null;

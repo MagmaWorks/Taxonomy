@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class HL920x537 : SingletonEuropeanBase<HL920x537>, IIParallelFlange

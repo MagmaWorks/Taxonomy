@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class HLZ1100B : SingletonEuropeanBase<HLZ1100B>, IITaperFlange

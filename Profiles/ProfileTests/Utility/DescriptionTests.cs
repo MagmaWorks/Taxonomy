@@ -1,8 +1,4 @@
-﻿using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits;
-using OasysUnits.Units;
-
-namespace ProfileTests
+﻿namespace ProfileTests
 {
     public class DescriptionTests
     {

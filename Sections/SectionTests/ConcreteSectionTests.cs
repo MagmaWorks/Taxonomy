@@ -1,10 +1,4 @@
-﻿using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
-using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Sections;
-using MagmaWorks.Taxonomy.Sections.Exceptions;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
-using OasysUnits.Units;
+﻿using MagmaWorks.Taxonomy.Sections.Exceptions;
 
 namespace SectionTests
 {

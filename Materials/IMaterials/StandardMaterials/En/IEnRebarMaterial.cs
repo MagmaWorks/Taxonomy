@@ -1,6 +1,4 @@
-﻿using OasysUnits;
-
-namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
+﻿namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
     public interface IEnRebarMaterial : IEnMaterial
     {

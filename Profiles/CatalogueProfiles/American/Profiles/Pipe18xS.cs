@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class Pipe18xS : SingletonAmericanBase<Pipe18xS>, ICircularHollow

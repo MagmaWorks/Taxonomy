@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class Pipe10SCH140 : SingletonAmericanBase<Pipe10SCH140>, ICircularHollow

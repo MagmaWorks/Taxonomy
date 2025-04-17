@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class L3x2x1over4 : SingletonAmericanBase<L3x2x1over4>, ILeg

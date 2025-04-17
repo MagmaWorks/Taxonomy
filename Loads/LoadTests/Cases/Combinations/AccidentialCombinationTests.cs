@@ -1,10 +1,5 @@
 ﻿using LoadCaseTests;
-using MagmaWorks.Taxonomy.Loads;
-using MagmaWorks.Taxonomy.Loads.Cases;
 using MagmaWorks.Taxonomy.Loads.Combinations;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
-using OasysUnits.Units;
 
 namespace CombinationTests
 {

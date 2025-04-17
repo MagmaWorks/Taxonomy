@@ -1,7 +1,4 @@
-﻿using OasysUnits;
-using OasysUnits.Units;
-
-namespace MagmaWorks.Taxonomy.Profiles
+﻿namespace MagmaWorks.Taxonomy.Profiles
 {
     public class Trapezoid : ITrapezoid
     {

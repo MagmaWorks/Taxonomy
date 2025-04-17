@@ -1,6 +1,4 @@
-﻿using OasysUnits;
-
-namespace ProfileTests.Utility
+﻿namespace ProfileTests.Utility
 {
     internal static class TestUtility
     {

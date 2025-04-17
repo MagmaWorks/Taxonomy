@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization;
-using OasysUnits;
-using Angle = MagmaWorks.Taxonomy.Profiles.Angle;
 
 namespace ProfileTests
 {
@@ -23,8 +19,8 @@ namespace ProfileTests
         private static double _double { get { return 9.8; } }
         private static bool _bool { get { return true; } }
         private static byte _byte { get { return 3; } }
-        private static Length _length { get { return new Length(2.5, OasysUnits.Units.LengthUnit.Centimeter); } }
-        private static OasysUnits.Angle _angle { get { return new OasysUnits.Angle(33, OasysUnits.Units.AngleUnit.Degree); } }
+        private static Length _length { get { return new Length(2.5, UnitsNet.Units.LengthUnit.Centimeter); } }
+        private static UnitsNet.Angle _angle { get { return new UnitsNet.Angle(33, UnitsNet.Units.AngleUnit.Degree); } }
 
         [Theory]
         [ClassData(typeof(TestDataGenerator))]

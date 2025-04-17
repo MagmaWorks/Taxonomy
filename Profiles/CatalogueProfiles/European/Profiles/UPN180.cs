@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class UPN180 : SingletonEuropeanBase<UPN180>, IChannelTaperFlange

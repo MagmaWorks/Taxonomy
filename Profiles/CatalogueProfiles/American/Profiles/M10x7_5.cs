@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class M10x7_5 : SingletonAmericanBase<M10x7_5>, IIParallelFlange

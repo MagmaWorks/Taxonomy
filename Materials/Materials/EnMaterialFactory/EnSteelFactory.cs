@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using OasysUnits;
-using OasysUnits.Units;
+﻿using System.Collections.Generic;
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
@@ -15,8 +12,8 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
         public static ILinearElasticMaterial CreateLinearElastic(IEnSteelMaterial material, Length elementThickness)
         {
             MaterialType type = MaterialType.Steel;
-            Pressure elasticModulus = new Pressure(210, PressureUnit.Gigapascal);
-            Pressure yieldStrength;
+            Stress elasticModulus = new Stress(210, StressUnit.Gigapascal);
+            Stress yieldStrength;
             Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1 = GetTable3_1Properties(material.Specification);
             if (elementThickness.Millimeters > 80)
             {
@@ -45,15 +42,15 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
         {
             ILinearElasticMaterial analysisMaterial = CreateLinearElastic(material, new Length(40, LengthUnit.Millimeter));
             Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1 = GetTable3_1Properties(material.Specification);
-            Pressure ultimateStrength = EN1993_1_1_Table3_1[material.Grade].F_u_40mmOrLess;
-            Strain failureStrain = new Strain(15 * analysisMaterial.Strength / analysisMaterial.ElasticModulus, StrainUnit.Ratio);
+            Stress ultimateStrength = EN1993_1_1_Table3_1[material.Grade].F_u_40mmOrLess;
+            Strain failureStrain = new Strain(15 * analysisMaterial.Strength / analysisMaterial.ElasticModulus, StrainUnit.DecimalFraction);
             return new BiLinearMaterial(analysisMaterial, ultimateStrength, failureStrain);
         }
 
         public static IBiLinearMaterial CreateBiLinear(IEnSteelMaterial material, Length elementThickness)
         {
             ILinearElasticMaterial analysisMaterial = CreateLinearElastic(material, elementThickness);
-            Pressure ultimateStrength;
+            Stress ultimateStrength;
             Dictionary<Enum, Table3_1Properties> EN1993_1_1_Table3_1 = GetTable3_1Properties(material.Specification);
             if (elementThickness.Millimeters > 80)
             {
@@ -72,7 +69,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
                 }
             }
 
-            Strain failureStrain = new Strain(15 * analysisMaterial.Strength / analysisMaterial.ElasticModulus, StrainUnit.Ratio);
+            Strain failureStrain = new Strain(15 * analysisMaterial.Strength / analysisMaterial.ElasticModulus, StrainUnit.DecimalFraction);
             return new BiLinearMaterial(analysisMaterial, ultimateStrength, failureStrain);
         }
 
@@ -170,18 +167,18 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 
         private struct Table3_1Properties
         {
-            internal Pressure F_y_40mmOrLess;
-            internal Pressure F_u_40mmOrLess;
-            internal Pressure F_y_40To80mm;
-            internal Pressure F_u_40To80mm;
+            internal Stress F_y_40mmOrLess;
+            internal Stress F_u_40mmOrLess;
+            internal Stress F_y_40To80mm;
+            internal Stress F_u_40To80mm;
 
             internal Table3_1Properties(double f_y_40mmOrLess, double f_u_40mmOrLess, double f_y_40To80mm, double f_u_40To80mm)
             {
-                PressureUnit unit = PressureUnit.Megapascal;
-                F_y_40mmOrLess = new Pressure(f_y_40mmOrLess, unit);
-                F_u_40mmOrLess = new Pressure(f_u_40mmOrLess, unit);
-                F_y_40To80mm = new Pressure(f_y_40To80mm, unit);
-                F_u_40To80mm = new Pressure(f_u_40To80mm, unit);
+                StressUnit unit = StressUnit.Megapascal;
+                F_y_40mmOrLess = new Stress(f_y_40mmOrLess, unit);
+                F_u_40mmOrLess = new Stress(f_u_40mmOrLess, unit);
+                F_y_40To80mm = new Stress(f_y_40To80mm, unit);
+                F_u_40To80mm = new Stress(f_u_40To80mm, unit);
             }
         }
     }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections
 {

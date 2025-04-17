@@ -2,7 +2,6 @@
 using System.Linq;
 using MagmaWorks.Taxonomy.Loads.Cases;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {

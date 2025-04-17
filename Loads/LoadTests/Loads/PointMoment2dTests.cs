@@ -1,8 +1,4 @@
-﻿using MagmaWorks.Taxonomy.Loads;
-using OasysUnits;
-using OasysUnits.Units;
-
-namespace LoadTests
+﻿namespace LoadTests
 {
     public class PointMoment2dTests
     {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MagmaWorks.Taxonomy.Profiles
+﻿namespace MagmaWorks.Taxonomy.Profiles
 {
     public interface ICatalogue : IProfile
     {

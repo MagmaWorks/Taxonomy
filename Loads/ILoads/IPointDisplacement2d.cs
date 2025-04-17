@@ -1,5 +1,3 @@
-using OasysUnits;
-
 namespace MagmaWorks.Taxonomy.Loads
 {
     public interface IPointDisplacement2d : ILoad

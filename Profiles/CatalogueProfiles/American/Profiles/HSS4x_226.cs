@@ -1,6 +1,3 @@
-using OasysUnits;
-using OasysUnits.Units;
-
 namespace MagmaWorks.Taxonomy.Profiles
 {
     public sealed class HSS4x_226 : SingletonAmericanBase<HSS4x_226>, ICircularHollow

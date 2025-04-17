@@ -1,6 +1,4 @@
-﻿using OasysUnits;
-
-namespace MagmaWorks.Taxonomy.Loads.Cases
+﻿namespace MagmaWorks.Taxonomy.Loads.Cases
 {
     public interface IVariableCase : ILoadCase
     {

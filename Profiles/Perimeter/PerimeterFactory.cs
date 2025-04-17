@@ -1,8 +1,4 @@
-﻿using System;
-using OasysUnits;
-using OasysUnits.Units;
-
-namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
+﻿namespace MagmaWorks.Taxonomy.Profiles.PerimeterFactory
 {
     public static partial class PerimeterFactory
     {

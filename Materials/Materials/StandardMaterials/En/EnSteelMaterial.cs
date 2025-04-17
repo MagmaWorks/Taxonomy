@@ -1,7 +1,4 @@
-﻿using System;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
-using OasysUnits;
-using OasysUnits.Units;
+﻿using MagmaWorks.Taxonomy.Standards.Eurocode;
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
@@ -97,7 +94,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
                 ((EnSteelSpecification)material.Specification).Validate(grade);
                 return true;
             }
-            catch (InvalidSteelSpecificationException e)
+            catch (InvalidSteelSpecificationException)
             {
                 return false;
             }

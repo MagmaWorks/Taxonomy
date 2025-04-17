@@ -1,7 +1,4 @@
-﻿using OasysUnits;
-using OasysUnits.Units;
-
-namespace MagmaWorks.Taxonomy.Loads.Cases.EN
+﻿namespace MagmaWorks.Taxonomy.Loads.Cases.EN
 {
     public struct TableA1_1Properties
     {

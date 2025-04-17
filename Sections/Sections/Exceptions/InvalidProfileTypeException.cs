@@ -1,5 +1,4 @@
-﻿using System;
-using MagmaWorks.Taxonomy.Profiles;
+﻿using MagmaWorks.Taxonomy.Profiles;
 
 namespace MagmaWorks.Taxonomy.Sections.Exceptions
 {
