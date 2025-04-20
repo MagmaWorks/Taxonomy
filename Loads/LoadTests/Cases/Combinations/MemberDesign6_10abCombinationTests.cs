@@ -32,27 +32,27 @@ namespace CombinationTests
             // Assert
             Assert.Equal("LC1: STR/GEO Set B, Eq. 6.10a - Leading Permanent combined with accompanying variable actions",
                 combinations[0].Name);
-            Assert.Equal("1.35·(DL + SDL) + 1.5·(0.7·Q + 0.6·W + 0.5·S + 0.6·T)", combinations[0].Definition);
+            Assert.Equal("" + new Ratio(1.35, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·(" + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·W + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T)", combinations[0].Definition);
 
             Assert.Equal("LC2: STR/GEO Set B, Eq. 6.10b - Leading Live loads Category B",
                 combinations[1].Name);
-            Assert.Equal("1.35·0.85·(DL + SDL) + 1.5·Q + 1.5·(0.6·W + 0.5·S + 0.6·T)", combinations[1].Definition);
+            Assert.Equal("" + new Ratio(1.35, RatioUnit.DecimalFraction) + "·" + new Ratio(0.85, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·(" + new Ratio(0.6, RatioUnit.DecimalFraction) + "·W + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T)", combinations[1].Definition);
 
             Assert.Equal("LC3: STR/GEO Set B, Eq. 6.10b - Leading Wind loads",
                 combinations[2].Name);
-            Assert.Equal("1.35·0.85·(DL + SDL) + 1.5·W + 1.5·(0.7·Q + 0.5·S + 0.6·T)", combinations[2].Definition);
+            Assert.Equal("" + new Ratio(1.35, RatioUnit.DecimalFraction) + "·" + new Ratio(0.85, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·W + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·(" + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T)", combinations[2].Definition);
 
             Assert.Equal("LC4: STR/GEO Set B, Eq. 6.10b - Leading Wind loads with unfavourable permanent",
                 combinations[3].Name);
-            Assert.Equal("0.85·(DL + SDL) + 1.5·W", combinations[3].Definition);
+            Assert.Equal("" + new Ratio(0.85, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·W", combinations[3].Definition);
 
             Assert.Equal("LC5: STR/GEO Set B, Eq. 6.10b - Leading Snow loads",
                 combinations[4].Name);
-            Assert.Equal("1.35·0.85·(DL + SDL) + 1.5·S + 1.5·(0.7·Q + 0.6·W + 0.6·T)", combinations[4].Definition);
+            Assert.Equal("" + new Ratio(1.35, RatioUnit.DecimalFraction) + "·" + new Ratio(0.85, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·(" + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·W + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T)", combinations[4].Definition);
 
             Assert.Equal("LC6: STR/GEO Set B, Eq. 6.10b - Leading Thermal loads",
                 combinations[5].Name);
-            Assert.Equal("1.35·0.85·(DL + SDL) + 1.5·T + 1.5·(0.7·Q + 0.6·W + 0.5·S)", combinations[5].Definition);
+            Assert.Equal("" + new Ratio(1.35, RatioUnit.DecimalFraction) + "·" + new Ratio(0.85, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·T + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·(" + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·W + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S)", combinations[5].Definition);
         }
 
 

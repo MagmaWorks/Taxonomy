@@ -28,7 +28,7 @@
             string description = prfl.Description;
 
             // Assert
-            Assert.Equal("Ø 2.3 cm", description);
+            Assert.Equal("Ø " + new Ratio(2.3, RatioUnit.DecimalFraction) + " cm", description);
         }
 
         [Fact]
@@ -43,7 +43,7 @@
             string description = prfl.Description;
 
             // Assert
-            Assert.Equal("Ø 2.3 × 1.1 cm", description);
+            Assert.Equal("Ø " + new Ratio(2.3, RatioUnit.DecimalFraction) + " × " + new Ratio(1.1, RatioUnit.DecimalFraction) + " cm", description);
         }
 
         [Fact]
@@ -61,7 +61,7 @@
             string description = prfl.Description;
 
             // Assert
-            Assert.Equal("2.3 × 5.4 × 1.1 × 1.5 cm B2B 2.5 mm", description);
+            Assert.Equal("" + new Ratio(2.3, RatioUnit.DecimalFraction) + " × " + new Ratio(5.4, RatioUnit.DecimalFraction) + " × " + new Ratio(1.1, RatioUnit.DecimalFraction) + " × " + new Ratio(1.5, RatioUnit.DecimalFraction) + " cm B2B " + new Ratio(2.5, RatioUnit.DecimalFraction) + " mm", description);
         }
 
         [Fact]
@@ -79,7 +79,7 @@
             string description = prfl.Description;
 
             // Assert
-            Assert.Equal("2.3 × 5.4 × 1.1 × 1.5 cm B2B 2.5 mm", description);
+            Assert.Equal("" + new Ratio(2.3, RatioUnit.DecimalFraction) + " × " + new Ratio(5.4, RatioUnit.DecimalFraction) + " × " + new Ratio(1.1, RatioUnit.DecimalFraction) + " × " + new Ratio(1.5, RatioUnit.DecimalFraction) + " cm B2B " + new Ratio(2.5, RatioUnit.DecimalFraction) + " mm", description);
         }
 
         [Fact]
@@ -95,7 +95,7 @@
             string description = prfl.Description;
 
             // Assert
-            Assert.Equal("5.4 / 50.0 × 2.3 cm", description);
+            Assert.Equal("" + new Ratio(5.4, RatioUnit.DecimalFraction) + " / " + new Ratio(50.0, RatioUnit.DecimalFraction).ToString("N1") + " × " + new Ratio(2.3, RatioUnit.DecimalFraction) + " cm", description);
         }
 
         [Fact]

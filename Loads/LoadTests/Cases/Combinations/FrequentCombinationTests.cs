@@ -32,23 +32,23 @@ namespace CombinationTests
             // Assert
             Assert.Equal("LC1: SLS Frequent - Leading Live loads Category B",
                 combinations[0].Name);
-            Assert.Equal("DL + SDL + 0.5·Q + 0.2·S", combinations[0].Definition);
+            Assert.Equal("DL + SDL + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.2, RatioUnit.DecimalFraction) + "·S", combinations[0].Definition);
 
             Assert.Equal("LC2: SLS Frequent - Leading Wind loads",
                 combinations[1].Name);
-            Assert.Equal("DL + SDL + 0.2·W + 0.3·Q + 0.2·S", combinations[1].Definition);
+            Assert.Equal("DL + SDL + " + new Ratio(0.2, RatioUnit.DecimalFraction) + "·W + " + new Ratio(0.3, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.2, RatioUnit.DecimalFraction) + "·S", combinations[1].Definition);
 
             Assert.Equal("LC3: SLS Frequent - Leading Wind loads with unfavourable permanent",
                 combinations[2].Name);
-            Assert.Equal("DL + SDL + 0.2·W", combinations[2].Definition);
+            Assert.Equal("DL + SDL + " + new Ratio(0.2, RatioUnit.DecimalFraction) + "·W", combinations[2].Definition);
 
             Assert.Equal("LC4: SLS Frequent - Leading Snow loads",
                 combinations[3].Name);
-            Assert.Equal("DL + SDL + 0.5·S + 0.3·Q", combinations[3].Definition);
+            Assert.Equal("DL + SDL + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(0.3, RatioUnit.DecimalFraction) + "·Q", combinations[3].Definition);
 
             Assert.Equal("LC5: SLS Frequent - Leading Thermal loads",
                 combinations[4].Name);
-            Assert.Equal("DL + SDL + 0.5·T + 0.3·Q + 0.2·S", combinations[4].Definition);
+            Assert.Equal("DL + SDL + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·T + " + new Ratio(0.3, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.2, RatioUnit.DecimalFraction) + "·S", combinations[4].Definition);
         }
 
 

@@ -32,11 +32,11 @@ namespace CombinationTests
             // Assert
             Assert.Equal("LC1: SLS Characteristic - Leading Live loads Category B",
                 combinations[0].Name);
-            Assert.Equal("DL + SDL + Q + 0.6·W + 0.5·S + 0.6·T", combinations[0].Definition);
+            Assert.Equal("DL + SDL + Q + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·W + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T", combinations[0].Definition);
 
             Assert.Equal("LC2: SLS Characteristic - Leading Wind loads",
                 combinations[1].Name);
-            Assert.Equal("DL + SDL + W + 0.7·Q + 0.5·S + 0.6·T", combinations[1].Definition);
+            Assert.Equal("DL + SDL + W + " + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T", combinations[1].Definition);
 
             Assert.Equal("LC3: SLS Characteristic - Leading Wind loads with unfavourable permanent",
                 combinations[2].Name);
@@ -44,11 +44,11 @@ namespace CombinationTests
 
             Assert.Equal("LC4: SLS Characteristic - Leading Snow loads",
                 combinations[3].Name);
-            Assert.Equal("DL + SDL + S + 0.7·Q + 0.6·W + 0.6·T", combinations[3].Definition);
+            Assert.Equal("DL + SDL + S + " + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·W + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T", combinations[3].Definition);
 
             Assert.Equal("LC5: SLS Characteristic - Leading Thermal loads",
                 combinations[4].Name);
-            Assert.Equal("DL + SDL + T + 0.7·Q + 0.6·W + 0.5·S", combinations[4].Definition);
+            Assert.Equal("DL + SDL + T + " + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·W + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S", combinations[4].Definition);
         }
 
 

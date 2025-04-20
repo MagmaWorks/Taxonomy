@@ -42,7 +42,7 @@ namespace CombinationTests
             // Assert
             Assert.Equal("ULS54: Seismic, Eq. 6.12a/b - Leading Seismic Equivalent Horizontal Load in X-direction",
                 combinations[0].Name);
-            Assert.Equal("DL + SDL + 1.5·'EHL X' + 0.3·Q + 0.2·S", combinations[0].Definition);
+            Assert.Equal("DL + SDL + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·'EHL X' + " + new Ratio(0.3, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.2, RatioUnit.DecimalFraction) + "·S", combinations[0].Definition);
         }
 
 
