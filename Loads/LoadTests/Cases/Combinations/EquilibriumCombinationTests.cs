@@ -32,23 +32,23 @@ namespace CombinationTests
             // Assert
             Assert.Equal("LC1: EQU Set A, Eq. 6.10 - Leading Live loads Category B",
                 combinations[0].Name);
-            Assert.Equal("1.1·(DL + SDL) + 1.5·Q + 1.5·(0.6·W + 0.5·S + 0.6·T)", combinations[0].Definition);
+            Assert.Equal("" + new Ratio(1.1, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·(" + new Ratio(0.6, RatioUnit.DecimalFraction) + "·W + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T)", combinations[0].Definition);
 
             Assert.Equal("LC2: EQU Set A, Eq. 6.10 - Leading Wind loads",
                 combinations[1].Name);
-            Assert.Equal("1.1·(DL + SDL) + 1.5·W + 1.5·(0.7·Q + 0.5·S + 0.6·T)", combinations[1].Definition);
+            Assert.Equal("" + new Ratio(1.1, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·W + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·(" + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T)", combinations[1].Definition);
 
             Assert.Equal("LC3: EQU Set A, Eq. 6.10 - Leading Wind loads with unfavourable permanent",
                 combinations[2].Name);
-            Assert.Equal("0.9·(DL + SDL) + 1.5·W", combinations[2].Definition);
+            Assert.Equal("" + new Ratio(0.9, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·W", combinations[2].Definition);
 
             Assert.Equal("LC4: EQU Set A, Eq. 6.10 - Leading Snow loads",
                 combinations[3].Name);
-            Assert.Equal("1.1·(DL + SDL) + 1.5·S + 1.5·(0.7·Q + 0.6·W + 0.6·T)", combinations[3].Definition);
+            Assert.Equal("" + new Ratio(1.1, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·(" + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·W + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T)", combinations[3].Definition);
 
             Assert.Equal("LC5: EQU Set A, Eq. 6.10 - Leading Thermal loads",
                 combinations[4].Name);
-            Assert.Equal("1.1·(DL + SDL) + 1.5·T + 1.5·(0.7·Q + 0.6·W + 0.5·S)", combinations[4].Definition);
+            Assert.Equal("" + new Ratio(1.1, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·T + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·(" + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·W + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S)", combinations[4].Definition);
         }
 
 

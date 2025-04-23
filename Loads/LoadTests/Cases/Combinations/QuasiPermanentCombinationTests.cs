@@ -32,7 +32,7 @@ namespace CombinationTests
             // Assert
             Assert.Equal("LC1: SLS Quasi-permanent",
                 combinations[0].Name);
-            Assert.Equal("DL + SDL + 0.3·Q + 0.2·S", combinations[0].Definition);
+            Assert.Equal("DL + SDL + " + new Ratio(0.3, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.2, RatioUnit.DecimalFraction) + "·S", combinations[0].Definition);
         }
 
 

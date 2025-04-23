@@ -42,19 +42,19 @@ namespace CombinationTests
             // Assert
             Assert.Equal("LC1: Accidental, Eq. 6.11a/b - Leading Truck impact combined with Live loads Category B as main accompanying variable action",
                 combinations[0].Name);
-            Assert.Equal("DL + SDL + 1.5·A + 0.5·Q + 0.2·S", combinations[0].Definition);
+            Assert.Equal("DL + SDL + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·A + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.2, RatioUnit.DecimalFraction) + "·S", combinations[0].Definition);
 
             Assert.Equal("LC2: Accidental, Eq. 6.11a/b - Leading Truck impact combined with Wind loads as main accompanying variable action",
                 combinations[1].Name);
-            Assert.Equal("DL + SDL + 1.5·A + 0.2·W + 0.3·Q + 0.2·S", combinations[1].Definition);
+            Assert.Equal("DL + SDL + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·A + " + new Ratio(0.2, RatioUnit.DecimalFraction) + "·W + " + new Ratio(0.3, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.2, RatioUnit.DecimalFraction) + "·S", combinations[1].Definition);
 
             Assert.Equal("LC3: Accidental, Eq. 6.11a/b - Leading Truck impact combined with Snow loads as main accompanying variable action",
                 combinations[2].Name);
-            Assert.Equal("DL + SDL + 1.5·A + 0.5·S + 0.3·Q", combinations[2].Definition);
+            Assert.Equal("DL + SDL + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·A + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(0.3, RatioUnit.DecimalFraction) + "·Q", combinations[2].Definition);
 
             Assert.Equal("LC4: Accidental, Eq. 6.11a/b - Leading Truck impact combined with Thermal loads as main accompanying variable action",
                 combinations[3].Name);
-            Assert.Equal("DL + SDL + 1.5·A + 0.5·T + 0.3·Q + 0.2·S", combinations[3].Definition);
+            Assert.Equal("DL + SDL + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·A + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·T + " + new Ratio(0.3, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.2, RatioUnit.DecimalFraction) + "·S", combinations[3].Definition);
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace CombinationTests
 
             // Assert
             Assert.Equal("LC1: Accidental, Eq. 6.11a/b - Leading Truck impact", combinations[0].Name);
-            Assert.Equal("DL + SDL + 1.5·A + 0.3·Q + 0.2·S", combinations[0].Definition);
+            Assert.Equal("DL + SDL + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·A + " + new Ratio(0.3, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.2, RatioUnit.DecimalFraction) + "·S", combinations[0].Definition);
         }
 
         [Fact]
