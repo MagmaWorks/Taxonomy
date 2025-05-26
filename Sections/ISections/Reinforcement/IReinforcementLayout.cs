@@ -1,6 +1,6 @@
 ﻿using MagmaWorks.Taxonomy.Serialization;
 
-namespace MagmaWorks.Taxonomy.Sections
+namespace MagmaWorks.Taxonomy.Sections.Reinforcement
 {
     public interface IReinforcementLayout : ITaxonomySerializable
     {

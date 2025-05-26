@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MagmaWorks.Taxonomy.Sections.Reinforcement;
 
 namespace MagmaWorks.Taxonomy.Sections
 {

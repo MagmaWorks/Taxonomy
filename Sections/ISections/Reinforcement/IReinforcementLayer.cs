@@ -3,7 +3,7 @@ using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Serialization;
 
-namespace MagmaWorks.Taxonomy.Sections
+namespace MagmaWorks.Taxonomy.Sections.Reinforcement
 {
     public interface IReinforcementLayer : ITaxonomySerializable
     {
