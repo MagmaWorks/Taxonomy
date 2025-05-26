@@ -1,7 +1,7 @@
 ﻿using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Materials;
 
-namespace MagmaWorks.Taxonomy.Sections
+namespace MagmaWorks.Taxonomy.Sections.Reinforcement
 {
     public class LongitudinalReinforcement : ILongitudinalReinforcement
     {

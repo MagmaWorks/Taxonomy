@@ -1,8 +1,7 @@
 ﻿using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Sections.Exceptions;
-using MagmaWorks.Taxonomy.Sections.Reinforcement;
 
-namespace MagmaWorks.Taxonomy.Sections
+namespace MagmaWorks.Taxonomy.Sections.Reinforcement
 {
     public class Rebar : IRebar
     {

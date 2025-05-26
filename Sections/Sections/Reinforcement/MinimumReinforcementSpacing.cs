@@ -1,7 +1,6 @@
-﻿using MagmaWorks.Taxonomy.Sections.Reinforcement;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
+﻿using MagmaWorks.Taxonomy.Standards.Eurocode;
 
-namespace MagmaWorks.Taxonomy.Sections
+namespace MagmaWorks.Taxonomy.Sections.Reinforcement
 {
     public class MinimumReinforcementSpacing : IMinimumReinforcementSpacing
     {

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
+using MagmaWorks.Taxonomy.Serialization;
 
-namespace MagmaWorks.Taxonomy.Sections
+namespace MagmaWorks.Taxonomy.Sections.Reinforcement
 {
-    public interface IReinforcementLayer
+    public interface IReinforcementLayer : ITaxonomySerializable
     {
         IReinforcementLayout Layout { get; }
         IList<ILongitudinalReinforcement> GetRebars(ILocalPolyline2d path);

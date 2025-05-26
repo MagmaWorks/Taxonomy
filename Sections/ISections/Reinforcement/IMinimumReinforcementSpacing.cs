@@ -1,6 +1,8 @@
-﻿namespace MagmaWorks.Taxonomy.Sections.Reinforcement
+﻿using MagmaWorks.Taxonomy.Serialization;
+
+namespace MagmaWorks.Taxonomy.Sections.Reinforcement
 {
-    public interface IMinimumReinforcementSpacing
+    public interface IMinimumReinforcementSpacing : ITaxonomySerializable
     {
         Ratio BarDiameterFactor { get; set; }
         Length AdditionalAggregateFactor { get; set; }

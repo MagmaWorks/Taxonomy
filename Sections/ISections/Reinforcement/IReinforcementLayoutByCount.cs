@@ -1,4 +1,4 @@
-﻿namespace MagmaWorks.Taxonomy.Sections
+﻿namespace MagmaWorks.Taxonomy.Sections.Reinforcement
 {
     public interface IReinforcementLayoutByCount : IReinforcementLayout
     {

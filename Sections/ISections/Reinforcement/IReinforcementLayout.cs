@@ -1,6 +1,8 @@
-﻿namespace MagmaWorks.Taxonomy.Sections
+﻿using MagmaWorks.Taxonomy.Serialization;
+
+namespace MagmaWorks.Taxonomy.Sections.Reinforcement
 {
-    public interface IReinforcementLayout
+    public interface IReinforcementLayout : ITaxonomySerializable
     {
         IRebar Rebar { get; }
     }
