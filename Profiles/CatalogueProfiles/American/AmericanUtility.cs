@@ -1,8 +1,8 @@
 namespace MagmaWorks.Taxonomy.Profiles
 {
-    public partial class Utility
+    public partial class CatalogueFactory
     {
-        public static ICatalogue GetCatalogue(American american)
+        public static ICatalogue CreateAmerican(American american)
         {
             return american switch
             {

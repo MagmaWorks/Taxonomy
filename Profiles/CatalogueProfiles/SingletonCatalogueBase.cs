@@ -5,6 +5,6 @@
         private static readonly Lazy<T> _lazy =
             new(() => (Activator.CreateInstance(typeof(T), true) as T)!);
 
-        public static T Default => _lazy.Value;
+        internal static T Default => _lazy.Value;
     }
 }

@@ -32,7 +32,7 @@ namespace ProfileTests.Catalogue
         [MemberData(nameof(AmericanEnumValues))]
         public void TestAmericanCatalogue(American type)
         {
-            ICatalogue profile = MagmaWorks.Taxonomy.Profiles.Utility.GetCatalogue(type);
+            ICatalogue profile = MagmaWorks.Taxonomy.Profiles.CatalogueFactory.CreateAmerican(type);
             Assert.NotNull(profile);
             List<string> expectedValues = CsvValues[profile.Label];
             ProfileValuesTest(profile, expectedValues);
