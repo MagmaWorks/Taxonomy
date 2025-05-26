@@ -1,18 +1,15 @@
 ﻿using MagmaWorks.Taxonomy.Materials.StandardMaterials;
 using MagmaWorks.Taxonomy.Materials.StandardMaterials.En;
-using MagmaWorks.Taxonomy.Standards;
-using MagmaWorks.Taxonomy.Standards.Eurocode;
 
 namespace MagmaWorks.Taxonomy.Materials
 {
     public static partial class AnalysisMaterialFactory
     {
-        public static ILinearElasticMaterial CreateLinearElastic<Std>(IStandardMaterial<Std> material)
-            where Std : IStandard
+        public static ILinearElasticMaterial CreateLinearElastic(IStandardMaterial material)
         {
-            switch (material.Standard)
+            switch (material.Standard.Body)
             {
-                case IEurocode:
+                case Standards.StandardBody.EN:
                     switch (material)
                     {
                         case IEnConcreteMaterial enConcrete:
@@ -29,7 +26,7 @@ namespace MagmaWorks.Taxonomy.Materials
                     }
 
                 default:
-                    throw new ArgumentException($"{material.Standard} standard not implemented");
+                    throw new ArgumentException($"{material.Standard.Body} standard body not implemented");
 
             }
         }

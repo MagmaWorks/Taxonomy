@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
-    public interface IEnRebarMaterial : IEnMaterial
+    public interface IEnRebarMaterial : IStandardMaterial
     {
         EnRebarGrade Grade { get; }
 

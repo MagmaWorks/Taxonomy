@@ -1,9 +1,8 @@
 ﻿namespace MagmaWorks.Taxonomy.Standards.Eurocode
 {
-    public class En1991 : IEurocode
+    public class En1991 : IStandard
     {
         public StandardBody Body => StandardBody.EN;
-        public Eurocode Code { get; } = Eurocode.EN1991;
         public En1991Part Part { get; set; } = En1991Part.Part1_1;
         public NationalAnnex NationalAnnex { get; set; } = NationalAnnex.RecommendedValues;
         public string Title => GetTitle();
@@ -19,9 +18,8 @@
         private string GetTitle()
         {
             string prefix = NationalAnnexUtility.GetAbbreviation(NationalAnnex);
-            string codeNo = Code.ToString().Replace("EN", "EN ")
-                + Part.ToString().Replace("Part", "-").Replace("_", "-");
-            string name = EurocodeUtility.GetCodeTitle(Code);
+            string codeNo = "EN 1991" + Part.ToString().Replace("Part", "-").Replace("_", "-");
+            string name = "Eurocode 1: Actions on Structures";
             string part = En1991Utility.GetPartDescription(Part);
             return $"{prefix} {codeNo}: {name} - {part}".TrimStart(' ');
         }

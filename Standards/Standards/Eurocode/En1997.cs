@@ -1,9 +1,8 @@
 ﻿namespace MagmaWorks.Taxonomy.Standards.Eurocode
 {
-    public class En1997 : IEurocode
+    public class En1997 : IStandard
     {
         public StandardBody Body => StandardBody.EN;
-        public Eurocode Code { get; } = Eurocode.EN1997;
         public En1997Part Part { get; set; } = En1997Part.Part1;
         public NationalAnnex NationalAnnex { get; set; } = NationalAnnex.RecommendedValues;
         public string Title => GetTitle();
@@ -19,9 +18,8 @@
         private string GetTitle()
         {
             string prefix = NationalAnnexUtility.GetAbbreviation(NationalAnnex);
-            string codeNo = Code.ToString().Replace("EN", "EN ")
-                + Part.ToString().Replace("Part", "-").Replace("_", "-");
-            string name = EurocodeUtility.GetCodeTitle(Code);
+            string codeNo = "EN 1997" + Part.ToString().Replace("Part", "-").Replace("_", "-");
+            string name = "Eurocode 7: Geotechnical Design";
             string part = En1997Utility.GetPartDescription(Part);
             return $"{prefix} {codeNo}: {name} - {part}".TrimStart(' ');
         }
