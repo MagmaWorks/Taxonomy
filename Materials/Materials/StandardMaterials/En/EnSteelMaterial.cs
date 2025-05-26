@@ -1,4 +1,5 @@
-﻿using MagmaWorks.Taxonomy.Standards.Eurocode;
+﻿using MagmaWorks.Taxonomy.Standards;
+using MagmaWorks.Taxonomy.Standards.Eurocode;
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
@@ -6,7 +7,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
     {
         public EnSteelGrade Grade { get; set; } = EnSteelGrade.S355;
         public IEnSteelSpecification Specification { get; } = new EnSteelSpecification();
-        public IEurocode Standard { get; set; } = new En1993(En1993Part.Part1_1, NationalAnnex.RecommendedValues);
+        public IStandard Standard { get; set; } = new En1993(En1993Part.Part1_1, NationalAnnex.RecommendedValues);
         public MaterialType Type => MaterialType.Steel;
         public Ratio PartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);
         public Ratio MemberInstabilityPartialFactor { get; set; } = new Ratio(1.0, RatioUnit.DecimalFraction);

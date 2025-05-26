@@ -15,7 +15,6 @@
             // Assert
             Assert.Equal(MaterialType.Steel, material.Type);
             Assert.Equal(StandardBody.EN, material.Standard.Body);
-            Assert.Equal(Eurocode.EN1993, material.Standard.Code);
             Assert.Equal(
                 "EN 1993-1-1: Eurocode 3: Design of Steel Structures - Part 1-1: General rules and rules for buildings",
                 material.Standard.Title);

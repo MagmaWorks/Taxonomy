@@ -2,7 +2,7 @@
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
-    public interface IEnConcreteMaterial : IEnMaterial
+    public interface IEnConcreteMaterial : IStandardMaterial
     {
         EnConcreteGrade Grade { get; }
         IList<EnConcreteExposureClass> ExposureClasses { get; }

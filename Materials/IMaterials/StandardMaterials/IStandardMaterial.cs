@@ -2,9 +2,8 @@
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials
 {
-    public interface IStandardMaterial<TStandard> : IMaterial
-        where TStandard : IStandard
+    public interface IStandardMaterial : IMaterial
     {
-        TStandard Standard { get; }
+        IStandard Standard { get; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
-    public interface IEnSteelMaterial : IEnMaterial
+    public interface IEnSteelMaterial : IStandardMaterial
     {
         IEnSteelSpecification Specification { get; }
         EnSteelGrade Grade { get; }

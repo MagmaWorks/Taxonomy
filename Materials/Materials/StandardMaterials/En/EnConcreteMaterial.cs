@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MagmaWorks.Taxonomy.Standards;
 using MagmaWorks.Taxonomy.Standards.Eurocode;
 
 namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
@@ -8,7 +9,7 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
         public IList<EnConcreteExposureClass> ExposureClasses { get; set; } = new List<EnConcreteExposureClass> { EnConcreteExposureClass.XC1 };
         public EnCementClass CementClass { get; set; } = EnCementClass.N;
         public EnConcreteGrade Grade { get; set; } = EnConcreteGrade.C30_37;
-        public IEurocode Standard { get; set; } = new En1992(En1992Part.Part1_1, NationalAnnex.RecommendedValues);
+        public IStandard Standard { get; set; } = new En1992(En1992Part.Part1_1, NationalAnnex.RecommendedValues);
         public MaterialType Type => MaterialType.Concrete;
         public Length MaximumAggregateSize { get; set; } = new Length(20, LengthUnit.Millimeter);
         public Length CrackWidthLimit { get; set; } = new Length(0.3, LengthUnit.Millimeter);

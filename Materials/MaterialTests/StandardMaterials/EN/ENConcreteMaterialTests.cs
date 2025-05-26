@@ -17,11 +17,9 @@ namespace MaterialTests.StandardMaterials.En
             // Assert
             Assert.Equal(MaterialType.Concrete, material.Type);
             Assert.Equal(StandardBody.EN, material.Standard.Body);
-            Assert.Equal(Eurocode.EN1992, material.Standard.Code);
             Assert.Equal(
                 "BS EN 1992-1-1: Eurocode 2: Design of Concrete Structures - Part 1-1: General rules and rules for buildings",
                 material.Standard.Title);
-            Assert.Equal(NationalAnnex.UnitedKingdom, material.Standard.NationalAnnex);
             Assert.Equal(EnConcreteGrade.C40_50, material.Grade);
             Assert.Equal(EnConcreteExposureClass.XC1, material.ExposureClasses[0]);
             Assert.Equal(20, material.MaximumAggregateSize.Millimeters);
@@ -45,7 +43,6 @@ namespace MaterialTests.StandardMaterials.En
             IEnConcreteMaterial material = new EnConcreteMaterial(grade, nationalAnnex, exposureClass, maxAggregateSize, cementClass, crackWidth, cover);
 
             // Assert
-            Assert.Equal(NationalAnnex.Germany, material.Standard.NationalAnnex);
             Assert.Equal(EnConcreteGrade.C30_37, material.Grade);
             Assert.Equal(EnConcreteExposureClass.XF2, material.ExposureClasses[0]);
             Assert.Equal(EnCementClass.S, material.CementClass);

@@ -15,7 +15,6 @@
             // Assert
             Assert.Equal(MaterialType.Reinforcement, material.Type);
             Assert.Equal(StandardBody.EN, material.Standard.Body);
-            Assert.Equal(Eurocode.EN1992, material.Standard.Code);
             Assert.Equal(
                 "EN 1992-1-1: Eurocode 2: Design of Concrete Structures - Part 1-1: General rules and rules for buildings",
                 material.Standard.Title);
