@@ -11,7 +11,9 @@
         public EnSteelQuality? Quality { get; set; } = EnSteelQuality.None;
         public bool? HollowSection { get; set; } = false;
 
-        internal EnSteelSpecification() { }
+        internal EnSteelSpecification()
+        {
+        }
 
         internal void Validate(EnSteelGrade grade)
         {
@@ -24,8 +26,8 @@
                         if (ImpactTemperatureProperty != EnSteelImpactTemperatureProperty.None)
                         {
                             throw new InvalidSteelSpecificationException(
-                            $"Low impact temperature property (L) may not be used in accordance with EN 10025-5, " +
-                            $"structural steels with improved atmospheric corrosion resistance.");
+                                $"Low impact temperature property (L) may not be used in accordance with EN 10025-5, " +
+                                $"structural steels with improved atmospheric corrosion resistance.");
                         }
 
                         switch (grade)
@@ -34,8 +36,8 @@
                                 if (CorrosionResistance == EnSteelCorrosionResistance.WP)
                                 {
                                     throw new InvalidSteelSpecificationException(
-                                    $"Improved atmospheric corrosion resistance class WP may only be used for steel grade " +
-                                    $"S355 in accordance with EN 10025-5");
+                                        $"Improved atmospheric corrosion resistance class WP may only be used for steel grade " +
+                                        $"S355 in accordance with EN 10025-5");
                                 }
                                 break;
 
@@ -51,9 +53,9 @@
 
                     default:
                         throw new InvalidSteelSpecificationException(
-                        $"In accordance with EN 10025-5, structural steels with improved " +
-                        $"atmospheric corrosion resistance class {CorrosionResistance} may only be delivered " +
-                        $"with normalized rolling (+N) or as-rolled (+AR).");
+                            $"In accordance with EN 10025-5, structural steels with improved " +
+                            $"atmospheric corrosion resistance class {CorrosionResistance} may only be delivered " +
+                            $"with normalized rolling (+N) or as-rolled (+AR).");
                 }
             }
 
@@ -62,8 +64,8 @@
                 if (!(grade == EnSteelGrade.S460 && DeliveryCondition == EnSteelDeliveryCondition.Q))
                 {
                     throw new InvalidSteelSpecificationException(
-                    $"Only steel grades S460 in quenched and tempered delivery condition according to EN 10025-5, " +
-                    $"may use L1 designition for minimum values of impact energy at low temperatures");
+                        $"Only steel grades S460 in quenched and tempered delivery condition according to EN 10025-5, " +
+                        $"may use L1 designation for minimum values of impact energy at low temperatures");
                 }
             }
 
@@ -78,11 +80,11 @@
                             break;
 
                         case EnSteelGrade.S450:
-                            if (HollowSection)
+                            if (HollowSection != null && (bool)HollowSection)
                             {
                                 throw new InvalidSteelSpecificationException(
-                                $"Steel grade {grade} is not covered by EN 10210-1 " +
-                                $"and EN 1993-1-1, Table 3.1 for hollow sections");
+                                    $"Steel grade {grade} is not covered by EN 10210-1 " +
+                                    $"and EN 1993-1-1, Table 3.1 for hollow sections");
                             }
                             break;
 
@@ -132,11 +134,11 @@
                             $"Only steel grade S460 is covered by EN 10025-6 and EN1993-1-1, Table 3.1.");
                     }
 
-                    if (HollowSection)
+                    if (HollowSection != null && (bool)HollowSection)
                     {
                         throw new InvalidSteelSpecificationException(
-                        $"Quenched and tempered delivery condition (Q) according to EN 10025-6 " +
-                        $"is not covered by EN 1993-1-1, Table 3.1 for hollow sections");
+                            $"Quenched and tempered delivery condition (Q) according to EN 10025-6 " +
+                            $"is not covered by EN 1993-1-1, Table 3.1 for hollow sections");
                     }
                     break;
 
@@ -159,7 +161,7 @@
             }
 
             string l = ImpactTemperatureProperty.ToString();
-            string h = HollowSection ? "H" : string.Empty;
+            string h = HollowSection != null ? "H" : string.Empty;
             string description = (j0 + w + n + l + h).Replace("None", string.Empty);
             if (CorrosionResistance != EnSteelCorrosionResistance.None)
             {
@@ -168,7 +170,6 @@
                     n = "+" + n;
                     description = (j0 + w + n + l + h).Replace("None", string.Empty);
                 }
-
             }
 
             return $"{grade}{description}";
