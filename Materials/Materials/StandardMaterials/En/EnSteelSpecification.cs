@@ -161,7 +161,7 @@
             }
 
             string l = ImpactTemperatureProperty.ToString();
-            string h = HollowSection != null ? "H" : string.Empty;
+            string h = (HollowSection != null && (bool)HollowSection) ? "H" : string.Empty;
             string description = (j0 + w + n + l + h).Replace("None", string.Empty);
             if (CorrosionResistance != EnSteelCorrosionResistance.None)
             {
