@@ -2,13 +2,13 @@
 {
     public class EnSteelSpecification : IEnSteelSpecification
     {
-        public EnExecutionClass? ExecutionClassforStaticOrLowSeismicLoading { get; set; } = EnExecutionClass.EXC3;
-        public EnExecutionClass? ExecutionClassforFatigueOrHighSeismicLoading { get; set; } = EnExecutionClass.EXC3;
+        public EnExecutionClass? ExecutionClassForStaticOrLowSeismicLoading { get; set; } = EnExecutionClass.EXC3;
+        public EnExecutionClass? ExecutionClassForFatigueOrHighSeismicLoading { get; set; } = EnExecutionClass.EXC3;
         public EnSteelCorrosionResistance CorrosionResistance { get; set; } = EnSteelCorrosionResistance.None;
         public EnSteelDeliveryCondition? DeliveryCondition { get; set; } = EnSteelDeliveryCondition.AR;
         public EnSteelFormingTemperature? FormingTemperature { get; set; } = EnSteelFormingTemperature.HotRolled;
         public EnSteelImpactTemperatureProperty ImpactTemperatureProperty { get; set; } = EnSteelImpactTemperatureProperty.None;
-        public EnSteelQuality Quality { get; set; } = EnSteelQuality.None;
+        public EnSteelQualityClass QualityClass { get; set; } = EnSteelQualityClass.None;
         public bool? HollowSection { get; set; } = false;
 
         internal EnSteelSpecification()
@@ -152,7 +152,7 @@
         internal string GetShortDesignation(EnSteelGrade grade)
         {
             Validate(grade);
-            string j0 = Quality.ToString();
+            string j0 = QualityClass.ToString();
             string w = CorrosionResistance.ToString();
             string n = DeliveryCondition.ToString();
             if (DeliveryCondition == EnSteelDeliveryCondition.AR)

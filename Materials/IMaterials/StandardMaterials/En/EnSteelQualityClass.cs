@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 {
-    public enum EnSteelQuality
+    public enum EnSteelQualityClass
     {
         None,
         JR,

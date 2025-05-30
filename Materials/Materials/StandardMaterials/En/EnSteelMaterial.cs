@@ -72,22 +72,22 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
 
             if (s.Contains("jr"))
             {
-                material.Specification.Quality = EnSteelQuality.JR;
+                material.Specification.QualityClass = EnSteelQualityClass.JR;
             }
 
             if (s.Contains("j0"))
             {
-                material.Specification.Quality = EnSteelQuality.J0;
+                material.Specification.QualityClass = EnSteelQualityClass.J0;
             }
 
             if (s.Contains("j2"))
             {
-                material.Specification.Quality = EnSteelQuality.J2;
+                material.Specification.QualityClass = EnSteelQualityClass.J2;
             }
 
             if (s.Contains("k2"))
             {
-                material.Specification.Quality = EnSteelQuality.K2;
+                material.Specification.QualityClass = EnSteelQualityClass.K2;
             }
 
             try
