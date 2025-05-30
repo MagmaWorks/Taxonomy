@@ -94,7 +94,7 @@
             Length thickness = new Length(60, LengthUnit.Millimeter);
 
             // Act
-            if (material.Specification.HollowSection && material.Specification.DeliveryCondition == EnSteelDeliveryCondition.M)
+            if (material.Specification.HollowSection != null && (bool)material.Specification.HollowSection && material.Specification.DeliveryCondition == EnSteelDeliveryCondition.M)
             {
                 Assert.Throws<ArgumentException>(() => EnSteelFactory.CreateBiLinear(material, thickness));
                 return;
@@ -178,7 +178,7 @@
         private static string GetGradeName(IEnSteelMaterial material)
         {
             string materialGrade = $"{material.Grade}{material.Specification.DeliveryCondition}";
-            return materialGrade.Replace("AR", string.Empty) + (material.Specification.HollowSection ? "H" : string.Empty);
+            return materialGrade.Replace("AR", string.Empty) + ((material.Specification.HollowSection != null && (bool)material.Specification.HollowSection) ? "H" : string.Empty);
         }
 
         private static readonly Dictionary<string, (double fy40, double fu40, double fy80, double fu80)> Table3_1 = new()

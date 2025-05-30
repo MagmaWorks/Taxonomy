@@ -80,19 +80,24 @@ namespace MagmaWorks.Taxonomy.Materials.StandardMaterials.En
                 throw new ArgumentException("Unable to get EN1993-1-1, Table 3.1 values for Cold Formed steel. ");
             }
 
+            if (specification.HollowSection == null)
+            {
+                throw new ArgumentException("Hollow section property is not set.");
+
+            }
             switch (specification.DeliveryCondition)
             {
                 case EnSteelDeliveryCondition.AR:
-                    return specification.HollowSection ? EN1993_1_1_Table3_1_ARH : EN1993_1_1_Table3_1_AR;
+                    return (bool)specification.HollowSection ? EN1993_1_1_Table3_1_ARH : EN1993_1_1_Table3_1_AR;
 
                 case EnSteelDeliveryCondition.N:
-                    return specification.HollowSection ? EN1993_1_1_Table3_1_NH : EN1993_1_1_Table3_1_N;
+                    return (bool)specification.HollowSection ? EN1993_1_1_Table3_1_NH : EN1993_1_1_Table3_1_N;
 
                 case EnSteelDeliveryCondition.M:
-                    return specification.HollowSection ? EN1993_1_1_Table3_1_MH : EN1993_1_1_Table3_1_M;
+                    return (bool)specification.HollowSection ? EN1993_1_1_Table3_1_MH : EN1993_1_1_Table3_1_M;
 
                 case EnSteelDeliveryCondition.Q:
-                    if (specification.HollowSection)
+                    if ((bool)specification.HollowSection)
                     {
                         throw new ArgumentException("Unable to get EN1993-1-1, Table 3.1 values for Hollow Sections" +
                             "using quenched and tempered delivery condition steel. ");
