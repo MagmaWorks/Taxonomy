@@ -73,7 +73,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     Name = $"{prefix}{firstCaseId++}: SLS Quasi-permanent",
                     PermanentCases = permanents,
-                    AccompanyingVariableCases = variables.Where(lc => lc.QuasiPermanent.Value != 0).ToList(),
+                    AccompanyingVariableCases = variables.Where(lc => lc.QuasiPermanentFactor.Value != 0).ToList(),
                 }
             };
 

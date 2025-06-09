@@ -23,7 +23,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             factoredLoads.AddRange(
                 Utility.FactorLoads(LeadingVariablePartialFactor, LeadingVariableCases));
             factoredLoads.AddRange(Utility.FactorAccompanyingVariableLoads(
-                AccompanyingPartialFactor, AccompanyingVariableCases, ld => ld.Characteristic));
+                AccompanyingPartialFactor, AccompanyingVariableCases, ld => ld.CombinationFactor));
             return factoredLoads;
         }
 
@@ -32,7 +32,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             string perm = Utility.DescriptionHelper(PermanentCases, PermanentPartialFactor);
             string lead = Utility.DescriptionHelper(LeadingVariableCases, LeadingVariablePartialFactor);
             string other = Utility.DescriptionHelper(
-                AccompanyingVariableCases, AccompanyingPartialFactor, ld => ld.Characteristic);
+                AccompanyingVariableCases, AccompanyingPartialFactor, ld => ld.CombinationFactor);
             return Utility.JoinDescriptions(new string[] { perm, lead, other });
         }
     }

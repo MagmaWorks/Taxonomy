@@ -18,9 +18,9 @@
             // Assert
             Assert.Equal("Thermal loads", variableCase.Name);
             Assert.Equal("T", variableCase.Nickname);
-            Assert.Equal(0.6, variableCase.Characteristic.DecimalFractions);
-            Assert.Equal(0.5, variableCase.Frequent.DecimalFractions);
-            Assert.Equal(0.0, variableCase.QuasiPermanent.DecimalFractions);
+            Assert.Equal(0.6, variableCase.CombinationFactor.DecimalFractions);
+            Assert.Equal(0.5, variableCase.FrequentFactor.DecimalFractions);
+            Assert.Equal(0.0, variableCase.QuasiPermanentFactor.DecimalFractions);
         }
 
         [Theory]
@@ -40,9 +40,9 @@
             // Assert
             Assert.Equal(expectedName, variableCase.Name);
             Assert.Equal(expectedNickname, variableCase.Nickname);
-            Assert.Equal(expectedPhi_0, variableCase.Characteristic.DecimalFractions);
-            Assert.Equal(expectedPhi_1, variableCase.Frequent.DecimalFractions);
-            Assert.Equal(expectedPhi_2, variableCase.QuasiPermanent.DecimalFractions);
+            Assert.Equal(expectedPhi_0, variableCase.CombinationFactor.DecimalFractions);
+            Assert.Equal(expectedPhi_1, variableCase.FrequentFactor.DecimalFractions);
+            Assert.Equal(expectedPhi_2, variableCase.QuasiPermanentFactor.DecimalFractions);
         }
 
         [Theory]
@@ -65,9 +65,9 @@
             // Assert
             Assert.Equal(expectedName, variableCase.Name);
             Assert.Equal(expectedNickname, variableCase.Nickname);
-            Assert.Equal(expectedPhi_0, variableCase.Characteristic.DecimalFractions);
-            Assert.Equal(expectedPhi_1, variableCase.Frequent.DecimalFractions);
-            Assert.Equal(expectedPhi_2, variableCase.QuasiPermanent.DecimalFractions);
+            Assert.Equal(expectedPhi_0, variableCase.CombinationFactor.DecimalFractions);
+            Assert.Equal(expectedPhi_1, variableCase.FrequentFactor.DecimalFractions);
+            Assert.Equal(expectedPhi_2, variableCase.QuasiPermanentFactor.DecimalFractions);
             Assert.Equal(0.01, ((IPointDisplacement)variableCase.Loads.FirstOrDefault()).Z.Centimeters);
         }
     }

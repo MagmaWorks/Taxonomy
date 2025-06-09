@@ -3,18 +3,18 @@
     public interface IVariableCase : ILoadCase
     {
         /// <summary>
-        /// ψ_0 Characteristic partial factor
+        /// ψ_0 Factor for combination value of a variable action
         /// </summary>
-        Ratio Characteristic { get; }
+        Ratio CombinationFactor { get; }
 
         /// <summary>
-        /// ψ_1 Frequent partial factor
+        /// ψ_1 Factor for frequent value of a variable action
         /// </summary>
-        Ratio Frequent { get; }
+        Ratio FrequentFactor { get; }
 
         /// <summary>
-        /// ψ_2 Quasi-permanent partial factor
+        /// ψ_2 Factor for quasi-permanent value of a variable action
         /// </summary>
-        Ratio QuasiPermanent { get; }
+        Ratio QuasiPermanentFactor { get; }
     }
 }

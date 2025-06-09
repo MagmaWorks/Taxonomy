@@ -18,9 +18,9 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             var factoredLoads = new List<ILoad>();
             factoredLoads.AddRange(Utility.GetLoads(PermanentCases));
             factoredLoads.AddRange(
-                Utility.SelectAccompanyingVariableLoads(LeadingVariableCases, ld => ld.QuasiPermanent));
+                Utility.SelectAccompanyingVariableLoads(LeadingVariableCases, ld => ld.QuasiPermanentFactor));
             factoredLoads.AddRange(
-                Utility.SelectAccompanyingVariableLoads(AccompanyingVariableCases, ld => ld.QuasiPermanent));
+                Utility.SelectAccompanyingVariableLoads(AccompanyingVariableCases, ld => ld.QuasiPermanentFactor));
             return factoredLoads;
         }
 
@@ -28,9 +28,9 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         {
             string perm = Utility.DescriptionHelper(PermanentCases, new Ratio(1, RatioUnit.DecimalFraction));
             string lead = Utility.DescriptionHelper(
-                LeadingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.Frequent);
+                LeadingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.FrequentFactor);
             string other = Utility.DescriptionHelper(
-                AccompanyingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.QuasiPermanent);
+                AccompanyingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.QuasiPermanentFactor);
             return Utility.JoinDescriptions(new string[] { perm, lead, other });
         }
     }

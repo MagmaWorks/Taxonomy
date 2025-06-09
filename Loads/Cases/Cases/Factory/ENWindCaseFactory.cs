@@ -11,9 +11,9 @@ namespace MagmaWorks.Taxonomy.Loads.Cases
             TableA1_1Properties factors = new ENTableA1_1Wind().GetProperties(nationalAnnex);
             return new VariableCase()
             {
-                Characteristic = factors.Phi_0,
-                Frequent = factors.Phi_1,
-                QuasiPermanent = factors.Phi_2,
+                CombinationFactor = factors.Phi_0,
+                FrequentFactor = factors.Phi_1,
+                QuasiPermanentFactor = factors.Phi_2,
                 Name = $"Wind loads",
                 Nickname = "W",
                 IsHorizontal = true,

@@ -26,16 +26,16 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             if (UseFrequentCombinationFactorForMainAccompanying)
             {
                 factoredLoads.AddRange(Utility.SelectAccompanyingVariableLoads(
-                    MainAccompanyingVariableCases, ld => ld.Frequent));
+                    MainAccompanyingVariableCases, ld => ld.FrequentFactor));
             }
             else
             {
                 factoredLoads.AddRange(Utility.SelectAccompanyingVariableLoads(
-                    MainAccompanyingVariableCases, ld => ld.QuasiPermanent));
+                    MainAccompanyingVariableCases, ld => ld.QuasiPermanentFactor));
             }
 
             factoredLoads.AddRange(Utility.SelectAccompanyingVariableLoads(
-                    OtherAccompanyingVariableCases, ld => ld.QuasiPermanent));
+                    OtherAccompanyingVariableCases, ld => ld.QuasiPermanentFactor));
             return factoredLoads;
         }
 
@@ -43,16 +43,16 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         {
             string perm = Utility.DescriptionHelper(PermanentCases, new Ratio(1, RatioUnit.DecimalFraction));
             string lead = Utility.DescriptionHelper(LeadingVariableCases, LeadingAccidentalPartialFactor);
-            Func<IVariableCase, Ratio> selector = ld => ld.QuasiPermanent;
+            Func<IVariableCase, Ratio> selector = ld => ld.QuasiPermanentFactor;
             if (UseFrequentCombinationFactorForMainAccompanying)
             {
-                selector = ld => ld.Frequent;
+                selector = ld => ld.FrequentFactor;
             }
 
             string main = Utility.DescriptionHelper(
                 MainAccompanyingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), selector);
             string other = Utility.DescriptionHelper(
-                OtherAccompanyingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.QuasiPermanent);
+                OtherAccompanyingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.QuasiPermanentFactor);
             return Utility.JoinDescriptions(new string[] { perm, lead, main, other });
         }
     }
