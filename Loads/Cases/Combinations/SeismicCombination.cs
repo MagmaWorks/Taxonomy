@@ -21,7 +21,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             factoredLoads.AddRange(
                 Utility.FactorLoads(LeadingSeismicPartialFactor, LeadingVariableCases));
             factoredLoads.AddRange(
-                Utility.SelectAccompanyingVariableLoads(AccompanyingVariableCases, ld => ld.QuasiPermanent));
+                Utility.SelectAccompanyingVariableLoads(AccompanyingVariableCases, ld => ld.QuasiPermanentFactor));
             return factoredLoads;
         }
 
@@ -30,7 +30,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             string perm = Utility.DescriptionHelper(PermanentCases, new Ratio(1, RatioUnit.DecimalFraction));
             string lead = Utility.DescriptionHelper(LeadingVariableCases, LeadingSeismicPartialFactor);
             string other = Utility.DescriptionHelper(
-                AccompanyingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.QuasiPermanent);
+                AccompanyingVariableCases, new Ratio(1, RatioUnit.DecimalFraction), ld => ld.QuasiPermanentFactor);
             return Utility.JoinDescriptions(new string[] { perm, lead, other });
         }
     }
