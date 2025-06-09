@@ -2,7 +2,7 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public partial class CatalogueFactory
     {
-        public static ICatalogue CreateAmerican(American american)
+        public static IAmericanCatalogue CreateAmerican(American american)
         {
             return american switch
             {
