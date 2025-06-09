@@ -2,7 +2,7 @@ namespace MagmaWorks.Taxonomy.Profiles
 {
     public partial class CatalogueFactory
     {
-        public static ICatalogue CreateEuropean(European european)
+        public static IEuropeanCatalogue CreateEuropean(European european)
         {
             return european switch
             {
