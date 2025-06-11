@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MagmaWorks.Taxonomy.Loads.Cases;
 using MagmaWorks.Taxonomy.Loads.Combinations.EN;
@@ -20,10 +21,9 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             var combinations = new List<IEquilibriumCombination>();
             for (int i = 0; i < variables.Count; i++)
             {
-                combinations.Add(new EquilibriumCombination()
+                var combination = new EquilibriumCombination()
                 {
                     Name = $"{prefix}{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[i].Name}",
-                    PermanentCases = permanents,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                     AccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
                     DesignSitation = new DesignSituation()
@@ -34,14 +34,16 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                         LeadingActionPartialFactor = factors.Gamma_Q1.Value,
                         OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value
                     }
-                });
+                };
+
+                combination.SetPermanentCases(permanents, permanents.Select(x => true).ToList());
+                combinations.Add(combination);
 
                 if (variables[i].IsHorizontal)
                 {
-                    combinations.Add(new EquilibriumCombination()
+                    combination = new EquilibriumCombination()
                     {
                         Name = $"{prefix}{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[i].Name} with favourable permanent",
-                        PermanentCases = permanents.Where((item, index) => !item.IsFavourable).ToList(),
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                         AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
                         DesignSitation = new DesignSituation()
@@ -52,9 +54,31 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                             LeadingActionPartialFactor = factors.Gamma_Q1.Value,
                             OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value
                         }
-                    });
+                    };
+
+                    combination.SetPermanentCases(permanents, permanents.Select(x => true).ToList());
+                    combinations.Add(combination);
                 }
             }
+
+            // favourable permanent
+            var favourable = new EquilibriumCombination()
+            {
+                Name = $"{prefix}{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[1].Name} with favourable permanent",
+                LeadingVariableCases = new List<IVariableCase>() { variables[1] },
+                AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != 1).ToList(),
+                DesignSitation = new DesignSituation()
+                {
+                    Class = DesignSituationClass.Persistent,
+                    UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                    FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                    LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                    OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value
+                }
+            };
+
+            favourable.SetPermanentCases(permanents, permanents.Select(x => true).ToList());
+            combinations.Add(favourable);
 
             return combinations;
         }

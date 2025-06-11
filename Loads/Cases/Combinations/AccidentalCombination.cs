@@ -4,13 +4,9 @@ using MagmaWorks.Taxonomy.Loads.Cases;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
-    public class AccidentalCombination : IAccidentalCombination
+    public class AccidentalCombination : LoadCombination, IAccidentalCombination
     {
-        public string Name { get; set; } = string.Empty;
-        public string Definition => GetDefinition();
         public bool UseFrequentCombinationFactorForMainAccompanying { get; set; } = true;
-        public IList<IPermanentCase> PermanentCases { get; set; } = new List<IPermanentCase>();
-        public IList<IVariableCase> LeadingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> MainAccompanyingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> OtherAccompanyingVariableCases { get; set; } = new List<IVariableCase>();
         public IDesignSituation DesignSitation { get; set; } = new DesignSituation()
@@ -20,7 +16,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
         public AccidentalCombination() { }
 
-        public IList<ILoad> GetFactoredLoads()
+        public override IList<ILoad> GetFactoredLoads()
         {
             var factoredLoads = new List<ILoad>();
             factoredLoads.AddRange(Utility.GetLoads(PermanentCases));
@@ -42,7 +38,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return factoredLoads;
         }
 
-        private string GetDefinition()
+        internal override string GetDefinition()
         {
             string perm = Utility.DescriptionHelper(PermanentCases, new Ratio(1, RatioUnit.DecimalFraction));
             string lead = Utility.DescriptionHelper(LeadingVariableCases, new Ratio(DesignSitation.LeadingActionPartialFactor, RatioUnit.DecimalFraction));

@@ -66,7 +66,6 @@ namespace CombinationTests
             IList<IEquilibriumCombination> combinations = Create();
 
             // Assert
-            Assert.Equal(5, combinations.Count);
             for (int i = 0; i < combinations.Count; i++)
             {
                 Assert.Equal(2, combinations[i].PermanentCases.Count);

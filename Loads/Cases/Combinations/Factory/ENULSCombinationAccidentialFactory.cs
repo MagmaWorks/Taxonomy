@@ -15,10 +15,9 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             var combinations = new List<IAccidentalCombination>();
             if (!useFrequentCombinationFactorForMainAccompanying)
             {
-                combinations.Add(new AccidentalCombination()
+                var combination = new AccidentalCombination()
                 {
                     Name = $"{prefix}{firstCaseId++}: Accidental, Eq. 6.11a/b - Leading {accidentalCase.Name}",
-                    PermanentCases = permanents,
                     LeadingVariableCases = new List<IVariableCase>() { accidentalCase },
                     OtherAccompanyingVariableCases = variables,
                     UseFrequentCombinationFactorForMainAccompanying = false,
@@ -27,16 +26,19 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                         Class = DesignSituationClass.Seismic,
                         LeadingActionPartialFactor = partialFactor
                     }
-                });
+                };
+
+                combination.SetPermanentCases(permanents);
+                combinations.Add(combination);
+
                 return combinations;
             }
 
             for (int i = 0; i < variables.Count; i++)
             {
-                combinations.Add(new AccidentalCombination()
+                var combination = new AccidentalCombination()
                 {
                     Name = $"{prefix}{firstCaseId++}: Accidental, Eq. 6.11a/b - Leading {accidentalCase.Name} combined with {variables[i].Name} as main accompanying variable action",
-                    PermanentCases = permanents,
                     LeadingVariableCases = new List<IVariableCase>() { accidentalCase },
                     MainAccompanyingVariableCases = new List<IVariableCase>() { variables[i] },
                     OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
@@ -46,7 +48,10 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                         Class = DesignSituationClass.Seismic,
                         LeadingActionPartialFactor = partialFactor
                     }
-                });
+                };
+
+                combination.SetPermanentCases(permanents);
+                combinations.Add(combination);
             }
 
             return combinations;
@@ -59,14 +64,16 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             var combinations = new List<ISeismicCombination>();
             for (int i = 0; i < seismicCases.Count; i++)
             {
-                combinations.Add(new SeismicCombination()
+                var combination = new SeismicCombination()
                 {
                     Name = $"{prefix}{firstCaseId++}: Seismic, Eq. 6.12a/b - Leading {seismicCases[i].Name}",
-                    PermanentCases = permanents,
                     LeadingVariableCases = new List<IVariableCase>() { seismicCases[i] },
                     LeadingSeismicPartialFactor = partialFactor,
                     AccompanyingVariableCases = variables,
-                });
+                };
+
+                combination.SetPermanentCases(permanents);
+                combinations.Add(combination);
             }
 
             return combinations;

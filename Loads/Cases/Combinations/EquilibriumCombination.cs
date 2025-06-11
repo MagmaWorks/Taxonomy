@@ -1,14 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MagmaWorks.Taxonomy.Loads.Cases;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
-    public class EquilibriumCombination : IEquilibriumCombination
+    public class EquilibriumCombination : LoadCombination, IEquilibriumCombination
     {
-        public string Name { get; set; } = string.Empty;
-        public string Definition => GetDefinition();
-        public IList<IPermanentCase> PermanentCases { get; set; } = new List<IPermanentCase>();
-        public IList<IVariableCase> LeadingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> AccompanyingVariableCases { get; set; } = new List<IVariableCase>();
         public IDesignSituation DesignSitation { get; set; } = new DesignSituation()
         {
@@ -18,7 +15,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
         public EquilibriumCombination() { }
 
-        public IList<ILoad> GetFactoredLoads()
+        public override IList<ILoad> GetFactoredLoads()
         {
             var factoredLoads = new List<ILoad>();
             factoredLoads.AddRange(Utility.FactorLoads(DesignSitation, PermanentCases));
@@ -29,7 +26,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return factoredLoads;
         }
 
-        private string GetDefinition()
+        internal override string GetDefinition()
         {
             string perm = Utility.DescriptionHelper(PermanentCases, DesignSitation);
             string lead = Utility.DescriptionHelper(LeadingVariableCases, new Ratio(DesignSitation.LeadingActionPartialFactor, RatioUnit.DecimalFraction));

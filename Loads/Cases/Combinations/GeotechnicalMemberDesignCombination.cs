@@ -3,15 +3,11 @@ using MagmaWorks.Taxonomy.Loads.Cases;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
-    public class GeotechnicalMemberDesignCombination : IGeotechnicalMemberDesignCombination
+    public class GeotechnicalMemberDesignCombination : LoadCombination, IGeotechnicalMemberDesignCombination
     {
-        public string Name { get; set; } = string.Empty;
-        public string Definition => GetDefinition();
         public Ratio PermanentPartialFactor { get; set; } = new Ratio(1, RatioUnit.DecimalFraction);
         public Ratio LeadingVariablePartialFactor { get; set; } = new Ratio(1.3, RatioUnit.DecimalFraction);
         public Ratio AccompanyingPartialFactor { get; set; } = new Ratio(1.3, RatioUnit.DecimalFraction);
-        public IList<IPermanentCase> PermanentCases { get; set; } = new List<IPermanentCase>();
-        public IList<IVariableCase> LeadingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> AccompanyingVariableCases { get; set; } = new List<IVariableCase>();
         public IDesignSituation DesignSitation { get; set; } = new DesignSituation()
         {
@@ -21,7 +17,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
         public GeotechnicalMemberDesignCombination() { }
 
-        public IList<ILoad> GetFactoredLoads()
+        public override IList<ILoad> GetFactoredLoads()
         {
             var factoredLoads = new List<ILoad>();
             factoredLoads.AddRange(Utility.FactorLoads(PermanentPartialFactor, PermanentCases));
@@ -32,7 +28,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return factoredLoads;
         }
 
-        private string GetDefinition()
+        internal override string GetDefinition()
         {
             string perm = Utility.DescriptionHelper(PermanentCases, PermanentPartialFactor);
             string lead = Utility.DescriptionHelper(LeadingVariableCases, LeadingVariablePartialFactor);
