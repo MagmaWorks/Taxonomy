@@ -18,7 +18,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         {
             if (isFavourable == null)
             {
-                isFavourable = cases.Select(x => true).ToList().ToList();
+                isFavourable = cases.Select(x => false).ToList().ToList();
             }
 
             _permanentCases = cases;

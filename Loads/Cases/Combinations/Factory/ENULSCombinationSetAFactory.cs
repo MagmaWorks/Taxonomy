@@ -36,7 +36,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                     }
                 };
 
-                combination.SetPermanentCases(permanents, permanents.Select(x => true).ToList());
+                combination.SetPermanentCases(permanents, permanents.Select(x => false).ToList());
                 combinations.Add(combination);
 
                 if (variables[i].IsHorizontal)
@@ -56,7 +56,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                         }
                     };
 
-                    combination.SetPermanentCases(permanents, permanents.Select(x => true).ToList());
+                    combination.SetPermanentCases(permanents, permanents.Select(x => false).ToList());
                     combinations.Add(combination);
                 }
             }
@@ -64,7 +64,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             // favourable permanent
             var favourable = new EquilibriumCombination()
             {
-                Name = $"{prefix}{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[1].Name} with favourable permanent",
+                Name = $"{prefix}3: EQU Set A, Eq. 6.10 - Leading {variables[1].Name} with favourable permanent",
                 LeadingVariableCases = new List<IVariableCase>() { variables[1] },
                 AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != 1).ToList(),
                 DesignSitation = new DesignSituation()
@@ -78,7 +78,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             };
 
             favourable.SetPermanentCases(permanents, permanents.Select(x => true).ToList());
-            combinations.Add(favourable);
+            combinations[2] = favourable;
 
             return combinations;
         }

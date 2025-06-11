@@ -28,7 +28,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return factoredLoads;
         }
 
-        public static IList<ILoad> FactorLoads<T>(IDesignSituation designSitation, IList<T> loadCases)
+        public static IList<ILoad> FactorLoads<T>(IDesignSituation designSitation, IList<T> loadCases, IList<bool> isFavourable)
             where T : ILoadCase
         {
             var factoredLoads = new List<ILoad>();
@@ -37,14 +37,14 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 return factoredLoads;
             }
 
-            foreach (T loadCase in loadCases)
+            for (int i = 0; i < loadCases.Count; i++)
             {
+                T loadCase = loadCases[i];
                 foreach (ILoad load in loadCase.Loads)
                 {
-                    if (loadCase.IsFavourable)
+                    if (isFavourable[i])
                     {
                         factoredLoads.Add(load.Factor(new Ratio(designSitation.FavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction)));
-
                     }
                     else
                     {
@@ -163,7 +163,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return desc.ToString();
         }
 
-        internal static string DescriptionHelper<T>(IList<T> cases, IDesignSituation designSituation) where T : ILoadCase
+        internal static string DescriptionHelper<T>(IList<T> cases, IList<bool> isFavourable, IDesignSituation designSituation) where T : ILoadCase
         {
             if (cases == null || cases.Count == 0)
             {
@@ -172,9 +172,10 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 
             var favourables = new List<ILoadCase>();
             var unfavourables = new List<ILoadCase>();
-            foreach (ILoadCase lc in cases)
+            for (int i = 0; i < cases.Count; i++)
             {
-                if (lc.IsFavourable)
+                ILoadCase lc = cases[i];
+                if (isFavourable[i])
                 {
                     favourables.Add(lc);
                 }
