@@ -164,7 +164,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                             FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
                             LeadingActionPartialFactor = factors.Gamma_Q1.Value,
                             OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value,
-                            ReductionFactor = factors.Xi.Value
+                            ReductionFactor = 1.0
                         }
                     };
 
