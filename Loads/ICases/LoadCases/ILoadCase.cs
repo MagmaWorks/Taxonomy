@@ -8,5 +8,6 @@ namespace MagmaWorks.Taxonomy.Loads.Cases
         IList<ILoad> Loads { get; }
         bool IsFavourable { get; }
         bool IsHorizontal { get; }
+        ActionClass ActionClass { get; }
     }
 }
