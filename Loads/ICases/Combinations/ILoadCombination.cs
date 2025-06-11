@@ -7,6 +7,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
     {
         string Definition { get; }
         IList<IPermanentCase> PermanentCases { get; }
+        IList<bool> PermanentCaseIsFavourable { get; }
         IList<IVariableCase> LeadingVariableCases { get; }
         IList<ILoad> GetFactoredLoads();
     }

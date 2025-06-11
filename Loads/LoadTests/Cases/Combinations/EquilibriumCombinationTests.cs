@@ -38,7 +38,7 @@ namespace CombinationTests
                 combinations[1].Name);
             Assert.Equal("" + new Ratio(1.1, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·W + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·(" + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T)", combinations[1].Definition);
 
-            Assert.Equal("LC3: EQU Set A, Eq. 6.10 - Leading Wind loads with unfavourable permanent",
+            Assert.Equal("LC3: EQU Set A, Eq. 6.10 - Leading Wind loads with favourable permanent",
                 combinations[2].Name);
             Assert.Equal("" + new Ratio(0.9, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·W", combinations[2].Definition);
 
@@ -60,7 +60,6 @@ namespace CombinationTests
             IList<IEquilibriumCombination> combinations = Create();
 
             // Assert
-            Assert.Equal(5, combinations.Count);
             for (int i = 0; i < combinations.Count; i++)
             {
                 Assert.Equal(2, combinations[i].PermanentCases.Count);

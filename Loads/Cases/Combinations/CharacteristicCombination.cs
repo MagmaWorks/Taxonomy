@@ -3,17 +3,13 @@ using MagmaWorks.Taxonomy.Loads.Cases;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
-    public class CharacteristicCombination : ICharacteristicCombination
+    public class CharacteristicCombination : LoadCombination, ICharacteristicCombination
     {
-        public string Name { get; set; } = string.Empty;
-        public string Definition => GetDefinition();
-        public IList<IPermanentCase> PermanentCases { get; set; } = new List<IPermanentCase>();
-        public IList<IVariableCase> LeadingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> AccompanyingVariableCases { get; set; } = new List<IVariableCase>();
 
         public CharacteristicCombination() { }
 
-        public IList<ILoad> GetFactoredLoads()
+        public override IList<ILoad> GetFactoredLoads()
         {
             var factoredLoads = new List<ILoad>();
             factoredLoads.AddRange(Utility.GetLoads(PermanentCases));
@@ -23,7 +19,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return factoredLoads;
         }
 
-        private string GetDefinition()
+        internal override string GetDefinition()
         {
             string perm = Utility.DescriptionHelper(PermanentCases, new Ratio(1, RatioUnit.DecimalFraction));
             string lead = Utility.DescriptionHelper(LeadingVariableCases, new Ratio(1, RatioUnit.DecimalFraction));

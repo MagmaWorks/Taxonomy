@@ -38,7 +38,7 @@ namespace CombinationTests
                 combinations[1].Name);
             Assert.Equal("DL + SDL + " + new Ratio(1.3, RatioUnit.DecimalFraction) + "·W + " + new Ratio(1.3, RatioUnit.DecimalFraction) + "·(" + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T)", combinations[1].Definition);
 
-            Assert.Equal("LC3: STR/GEO Set C, Eq. 6.10 - Leading Wind loads with unfavourable permanent",
+            Assert.Equal("LC3: STR/GEO Set C, Eq. 6.10 - Leading Wind loads with favourable permanent",
                 combinations[2].Name);
             Assert.Equal("DL + SDL + " + new Ratio(1.3, RatioUnit.DecimalFraction) + "·W", combinations[2].Definition);
 

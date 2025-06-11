@@ -9,7 +9,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
     internal static class Utility
     {
         public static IList<ILoad> FactorLoads<T>(Ratio partialFactor, IList<T> loadCases)
-            where T : ILoadCase
+    where T : ILoadCase
         {
             var factoredLoads = new List<ILoad>();
             if (loadCases == null || loadCases.Count == 0)
@@ -22,6 +22,34 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 foreach (ILoad load in loadCase.Loads)
                 {
                     factoredLoads.Add(load.Factor(partialFactor));
+                }
+            }
+
+            return factoredLoads;
+        }
+
+        public static IList<ILoad> FactorLoads<T>(IDesignSituation designSitation, IList<T> loadCases, IList<bool> isFavourable)
+            where T : ILoadCase
+        {
+            var factoredLoads = new List<ILoad>();
+            if (loadCases == null || loadCases.Count == 0)
+            {
+                return factoredLoads;
+            }
+
+            for (int i = 0; i < loadCases.Count; i++)
+            {
+                T loadCase = loadCases[i];
+                foreach (ILoad load in loadCase.Loads)
+                {
+                    if (isFavourable[i])
+                    {
+                        factoredLoads.Add(load.Factor(new Ratio(designSitation.FavourablePermanentActionsPartialFactor * designSitation.ReductionFactor, RatioUnit.DecimalFraction)));
+                    }
+                    else
+                    {
+                        factoredLoads.Add(load.Factor(new Ratio(designSitation.UnfavourablePermanentActionsPartialFactor * designSitation.ReductionFactor, RatioUnit.DecimalFraction)));
+                    }
                 }
             }
 
@@ -130,6 +158,60 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             if (factor.Value != 1)
             {
                 desc.Append(")");
+            }
+
+            return desc.ToString();
+        }
+
+        internal static string DescriptionHelper<T>(IList<T> cases, IList<bool> isFavourable, IDesignSituation designSituation) where T : ILoadCase
+        {
+            if (cases == null || cases.Count == 0)
+            {
+                return string.Empty;
+            }
+
+            var favourables = new List<ILoadCase>();
+            var unfavourables = new List<ILoadCase>();
+            for (int i = 0; i < cases.Count; i++)
+            {
+                ILoadCase lc = cases[i];
+                if (isFavourable[i])
+                {
+                    favourables.Add(lc);
+                }
+                else
+                {
+                    unfavourables.Add(lc);
+                }
+            }
+
+            StringBuilder desc = new StringBuilder();
+            var reductionFactor = new Ratio(designSituation.ReductionFactor, RatioUnit.DecimalFraction);
+            if (unfavourables.Count > 0)
+            {
+                var factor = new Ratio(designSituation.UnfavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction);
+
+                if (designSituation.ReductionFactor != 1.0)
+                {
+                    desc.Append(DescriptionHelper(unfavourables, factor, reductionFactor));
+                }
+                else
+                {
+                    desc.Append(DescriptionHelper(unfavourables, factor));
+                }
+            }
+
+            if (favourables.Count > 0)
+            {
+                var factor = new Ratio(designSituation.FavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction);
+                if (designSituation.ReductionFactor != 1.0)
+                {
+                    desc.Append(DescriptionHelper(favourables, factor, reductionFactor));
+                }
+                else
+                {
+                    desc.Append(DescriptionHelper(favourables, factor));
+                }
             }
 
             return desc.ToString();

@@ -27,8 +27,7 @@ namespace CombinationTests
                 dl, sdl, ll, w, s, t
             };
 
-            return ENCombinationFactory.CreateAccidental(
-                impact, new Ratio(1.5, RatioUnit.DecimalFraction), otherCases,
+            return ENCombinationFactory.CreateAccidental(impact, 1.5, otherCases,
                 NationalAnnex.RecommendedValues, useFrequent);
         }
 
@@ -106,7 +105,7 @@ namespace CombinationTests
                 Assert.Single(combinations[i].MainAccompanyingVariableCases);
                 Assert.DoesNotContain(otherCases[i + 2], combinations[i].OtherAccompanyingVariableCases);
                 Assert.Equal(3, combinations[i].OtherAccompanyingVariableCases.Count);
-                Assert.Equal(1.5, combinations[i].LeadingAccidentalPartialFactor.DecimalFractions);
+                Assert.Equal(1.5, combinations[i].DesignSituation.LeadingActionPartialFactor);
             }
         }
 
@@ -144,7 +143,7 @@ namespace CombinationTests
             Assert.Equivalent(impact, combinations[0].LeadingVariableCases.FirstOrDefault());
             Assert.Empty(combinations[0].MainAccompanyingVariableCases);
             Assert.Equal(4, combinations[0].OtherAccompanyingVariableCases.Count);
-            Assert.Equal(1.5, combinations[0].LeadingAccidentalPartialFactor.DecimalFractions);
+            Assert.Equal(1.5, combinations[0].DesignSituation.LeadingActionPartialFactor);
         }
 
         [Fact]

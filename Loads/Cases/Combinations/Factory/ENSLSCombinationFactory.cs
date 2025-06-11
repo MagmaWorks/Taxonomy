@@ -12,23 +12,27 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             var combinations = new List<ICharacteristicCombination>();
             for (int i = 0; i < variables.Count; i++)
             {
-                combinations.Add(new CharacteristicCombination()
+                var combination = new CharacteristicCombination()
                 {
                     Name = $"{prefix}{firstCaseId++}: SLS Characteristic - Leading {variables[i].Name}",
-                    PermanentCases = permanents,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                     AccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
-                });
+                };
+
+                combination.SetPermanentCases(permanents);
+                combinations.Add(combination);
 
                 if (variables[i].IsHorizontal)
                 {
-                    combinations.Add(new CharacteristicCombination()
+                    combination = new CharacteristicCombination()
                     {
                         Name = $"{prefix}{firstCaseId++}: SLS Characteristic - Leading {variables[i].Name} with unfavourable permanent",
-                        PermanentCases = permanents.Where((item, index) => !item.IsFavourable).ToList(),
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                         AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
-                    });
+                    };
+
+                    combination.SetPermanentCases(permanents);
+                    combinations.Add(combination);
                 }
             }
 
@@ -41,23 +45,27 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             var combinations = new List<IFrequentCombination>();
             for (int i = 0; i < variables.Count; i++)
             {
-                combinations.Add(new FrequentCombination()
+                var combination = new FrequentCombination()
                 {
                     Name = $"{prefix}{firstCaseId++}: SLS Frequent - Leading {variables[i].Name}",
-                    PermanentCases = permanents,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                     AccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
-                });
+                };
+
+                combination.SetPermanentCases(permanents);
+                combinations.Add(combination);
 
                 if (variables[i].IsHorizontal)
                 {
-                    combinations.Add(new FrequentCombination()
+                    combination = new FrequentCombination()
                     {
                         Name = $"{prefix}{firstCaseId++}: SLS Frequent - Leading {variables[i].Name} with unfavourable permanent",
-                        PermanentCases = permanents.Where((item, index) => !item.IsFavourable).ToList(),
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                         AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
-                    });
+                    };
+
+                    combination.SetPermanentCases(permanents);
+                    combinations.Add(combination);
                 }
             }
 
@@ -67,15 +75,16 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         public static IList<IQuasiPermanentCombination> CreateQuasiPermanent(IList<ILoadCase> cases, string prefix = "LC", int firstCaseId = 1)
         {
             (IList<IPermanentCase> permanents, IList<IVariableCase> variables) = SortLoadCases(cases);
-            var combinations = new List<IQuasiPermanentCombination>
+            var combinations = new List<IQuasiPermanentCombination>();
+
+            var combination = new QuasiPermanentCombination()
             {
-                new QuasiPermanentCombination()
-                {
-                    Name = $"{prefix}{firstCaseId++}: SLS Quasi-permanent",
-                    PermanentCases = permanents,
-                    AccompanyingVariableCases = variables.Where(lc => lc.QuasiPermanentFactor.Value != 0).ToList(),
-                }
+                Name = $"{prefix}{firstCaseId++}: SLS Quasi-permanent",
+                AccompanyingVariableCases = variables.Where(lc => lc.QuasiPermanentFactor.Value != 0).ToList(),
             };
+
+            combination.SetPermanentCases(permanents);
+            combinations.Add(combination);
 
             return combinations;
         }

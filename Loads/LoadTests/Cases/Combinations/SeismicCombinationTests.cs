@@ -69,7 +69,7 @@ namespace CombinationTests
             Assert.Single(combinations[0].LeadingVariableCases);
             Assert.Equivalent(seismic, combinations[0].LeadingVariableCases.FirstOrDefault());
             Assert.Equal(4, combinations[0].AccompanyingVariableCases.Count);
-            Assert.Equal(1.5, combinations[0].LeadingSeismicPartialFactor.DecimalFractions);
+            Assert.Equal(1.5, combinations[0].DesignSituation.LeadingActionPartialFactor);
         }
 
         [Fact]

@@ -4,25 +4,24 @@ using MagmaWorks.Taxonomy.Loads.Cases;
 
 namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
-    public class AccidentalCombination : IAccidentalCombination
+    public class AccidentalCombination : LoadCombination, IAccidentalCombination
     {
-        public string Name { get; set; } = string.Empty;
-        public string Definition => GetDefinition();
         public bool UseFrequentCombinationFactorForMainAccompanying { get; set; } = true;
-        public Ratio LeadingAccidentalPartialFactor { get; set; } = new Ratio(1, RatioUnit.DecimalFraction);
-        public IList<IPermanentCase> PermanentCases { get; set; } = new List<IPermanentCase>();
-        public IList<IVariableCase> LeadingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> MainAccompanyingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> OtherAccompanyingVariableCases { get; set; } = new List<IVariableCase>();
+        public IDesignSituation DesignSituation { get; set; } = new DesignSituation()
+        {
+            Class = DesignSituationClass.Accidental
+        };
 
         public AccidentalCombination() { }
 
-        public IList<ILoad> GetFactoredLoads()
+        public override IList<ILoad> GetFactoredLoads()
         {
             var factoredLoads = new List<ILoad>();
             factoredLoads.AddRange(Utility.GetLoads(PermanentCases));
             factoredLoads.AddRange(
-                Utility.FactorLoads(LeadingAccidentalPartialFactor, LeadingVariableCases));
+                Utility.FactorLoads(new Ratio(DesignSituation.LeadingActionPartialFactor, RatioUnit.DecimalFraction), LeadingVariableCases));
             if (UseFrequentCombinationFactorForMainAccompanying)
             {
                 factoredLoads.AddRange(Utility.SelectAccompanyingVariableLoads(
@@ -39,10 +38,10 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             return factoredLoads;
         }
 
-        private string GetDefinition()
+        internal override string GetDefinition()
         {
             string perm = Utility.DescriptionHelper(PermanentCases, new Ratio(1, RatioUnit.DecimalFraction));
-            string lead = Utility.DescriptionHelper(LeadingVariableCases, LeadingAccidentalPartialFactor);
+            string lead = Utility.DescriptionHelper(LeadingVariableCases, new Ratio(DesignSituation.LeadingActionPartialFactor, RatioUnit.DecimalFraction));
             Func<IVariableCase, Ratio> selector = ld => ld.QuasiPermanentFactor;
             if (UseFrequentCombinationFactorForMainAccompanying)
             {

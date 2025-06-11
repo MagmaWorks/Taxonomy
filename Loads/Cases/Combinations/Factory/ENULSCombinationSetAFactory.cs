@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MagmaWorks.Taxonomy.Loads.Cases;
 using MagmaWorks.Taxonomy.Loads.Combinations.EN;
@@ -8,8 +9,6 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {
-
-
         public static IList<IEquilibriumCombination> CreateEquSetA(IList<ILoadCase> cases)
         {
             return CreateEquSetA(cases, NationalAnnex.RecommendedValues);
@@ -22,31 +21,64 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             var combinations = new List<IEquilibriumCombination>();
             for (int i = 0; i < variables.Count; i++)
             {
-                combinations.Add(new EquilibriumCombination()
+                var combination = new EquilibriumCombination()
                 {
                     Name = $"{prefix}{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[i].Name}",
-                    PermanentCases = permanents,
-                    PermanentPartialFactor = factors.Gamma_Gsup,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
-                    LeadingVariablePartialFactor = factors.Gamma_Q1,
                     AccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
-                    AccompanyingPartialFactor = factors.Gamma_Qi,
-                });
+                    DesignSituation = new DesignSituation()
+                    {
+                        Class = DesignSituationClass.Persistent,
+                        UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                        FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                        LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                        OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value
+                    }
+                };
+
+                combination.SetPermanentCases(permanents, permanents.Select(x => false).ToList());
+                combinations.Add(combination);
 
                 if (variables[i].IsHorizontal)
                 {
-                    combinations.Add(new EquilibriumCombination()
+                    combination = new EquilibriumCombination()
                     {
-                        Name = $"{prefix}{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[i].Name} with unfavourable permanent",
-                        PermanentCases = permanents.Where((item, index) => !item.IsFavourable).ToList(),
-                        PermanentPartialFactor = factors.Gamma_Ginf,
+                        Name = $"{prefix}{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[i].Name} with favourable permanent",
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
-                        LeadingVariablePartialFactor = factors.Gamma_Q1,
                         AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
-                        AccompanyingPartialFactor = factors.Gamma_Qi,
-                    });
+                        DesignSituation = new DesignSituation()
+                        {
+                            Class = DesignSituationClass.Persistent,
+                            UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                            FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                            LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                            OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value
+                        }
+                    };
+
+                    combination.SetPermanentCases(permanents, permanents.Select(x => false).ToList());
+                    combinations.Add(combination);
                 }
             }
+
+            // favourable permanent
+            var favourable = new EquilibriumCombination()
+            {
+                Name = $"{prefix}3: EQU Set A, Eq. 6.10 - Leading {variables[1].Name} with favourable permanent",
+                LeadingVariableCases = new List<IVariableCase>() { variables[1] },
+                AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != 1).ToList(),
+                DesignSituation = new DesignSituation()
+                {
+                    Class = DesignSituationClass.Persistent,
+                    UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                    FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                    LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                    OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value
+                }
+            };
+
+            favourable.SetPermanentCases(permanents, permanents.Select(x => true).ToList());
+            combinations[2] = favourable;
 
             return combinations;
         }
