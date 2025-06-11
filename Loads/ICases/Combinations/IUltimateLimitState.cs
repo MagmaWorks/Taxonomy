@@ -2,6 +2,6 @@
 {
     public interface IUltimateLimitState : ILoadCombination
     {
-        IDesignSituation DesignSitation { get; }
+        IDesignSituation DesignSituation { get; }
     }
 }

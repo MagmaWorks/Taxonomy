@@ -44,11 +44,11 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     if (isFavourable[i])
                     {
-                        factoredLoads.Add(load.Factor(new Ratio(designSitation.FavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction)));
+                        factoredLoads.Add(load.Factor(new Ratio(designSitation.FavourablePermanentActionsPartialFactor * designSitation.ReductionFactor, RatioUnit.DecimalFraction)));
                     }
                     else
                     {
-                        factoredLoads.Add(load.Factor(new Ratio(designSitation.UnfavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction)));
+                        factoredLoads.Add(load.Factor(new Ratio(designSitation.UnfavourablePermanentActionsPartialFactor * designSitation.ReductionFactor, RatioUnit.DecimalFraction)));
                     }
                 }
             }
@@ -186,16 +186,31 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             }
 
             StringBuilder desc = new StringBuilder();
+            var reductionFactor = new Ratio(designSituation.ReductionFactor, RatioUnit.DecimalFraction);
             if (unfavourables.Count > 0)
             {
-                desc.Append(DescriptionHelper(unfavourables, new Ratio(designSituation.UnfavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction)));
+                var factor = new Ratio(designSituation.UnfavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction);
+
+                if (designSituation.ReductionFactor != 1.0)
+                {
+                    desc.Append(DescriptionHelper(unfavourables, factor, reductionFactor));
+                }
+                else
+                {
+                    desc.Append(DescriptionHelper(unfavourables, factor));
+                }
             }
 
             if (favourables.Count > 0)
             {
-                if (favourables.Count > 0)
+                var factor = new Ratio(designSituation.FavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction);
+                if (designSituation.ReductionFactor != 1.0)
                 {
-                    desc.Append(DescriptionHelper(favourables, new Ratio(designSituation.FavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction)));
+                    desc.Append(DescriptionHelper(favourables, factor, reductionFactor));
+                }
+                else
+                {
+                    desc.Append(DescriptionHelper(favourables, factor));
                 }
             }
 

@@ -35,12 +35,17 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 var combination = new MemberDesignCombination()
                 {
                     Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10 - Leading {variables[i].Name}",
-                    PermanentPartialFactor = factors.Gamma_Gsup,
-                    PermanentReductionFactor = new Ratio(1.0, RatioUnit.DecimalFraction),
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
-                    LeadingVariablePartialFactor = factors.Gamma_Q1,
                     OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
-                    AccompanyingPartialFactor = factors.Gamma_Qi,
+                    DesignSituation = new DesignSituation()
+                    {
+                        Class = DesignSituationClass.PersistentAndTransient,
+                        UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                        FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                        LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                        OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value,
+                        ReductionFactor = 1.0
+                    }
                 };
 
                 combination.SetPermanentCases(permanents);
@@ -50,16 +55,21 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     combination = new MemberDesignCombination()
                     {
-                        Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10 - Leading {variables[i].Name} with unfavourable permanent",
-                        PermanentPartialFactor = factors.Gamma_Ginf,
-                        PermanentReductionFactor = new Ratio(1.0, RatioUnit.DecimalFraction),
+                        Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10 - Leading {variables[i].Name} with favourable permanent",
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
-                        LeadingVariablePartialFactor = factors.Gamma_Q1,
                         OtherAccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
-                        AccompanyingPartialFactor = factors.Gamma_Qi,
+                        DesignSituation = new DesignSituation()
+                        {
+                            Class = DesignSituationClass.PersistentAndTransient,
+                            UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                            FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                            LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                            OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value,
+                            ReductionFactor = 1.0
+                        }
                     };
 
-                    combination.SetPermanentCases(permanents);
+                    combination.SetPermanentCases(permanents, permanents.Select(x => true).ToList());
                     combinations.Add(combination);
                 }
             }
@@ -80,10 +90,16 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 combination = new MemberDesignCombination()
                 {
                     Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10a - Leading Permanent combined with accompanying variable actions",
-                    PermanentPartialFactor = factors.Gamma_Gsup,
-                    PermanentReductionFactor = new Ratio(1.0, RatioUnit.DecimalFraction),
                     OtherAccompanyingVariableCases = variables,
-                    AccompanyingPartialFactor = factors.Gamma_Qi,
+                    DesignSituation = new DesignSituation()
+                    {
+                        Class = DesignSituationClass.PersistentAndTransient,
+                        UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                        FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                        LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                        OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value,
+                        ReductionFactor = 1.0
+                    }
                 };
 
                 combination.SetPermanentCases(permanents);
@@ -97,12 +113,18 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                     combination = new MemberDesignCombination()
                     {
                         Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10a - Leading Permanent combined with {variables[i].Name} as main accompanying variable action",
-                        PermanentPartialFactor = factors.Gamma_Gsup,
-                        PermanentReductionFactor = new Ratio(1.0, RatioUnit.DecimalFraction),
                         MainAccompanyingVariableCases = new List<IVariableCase>() { variables[i] },
-                        LeadingVariablePartialFactor = factors.Gamma_Q1,
                         OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
-                        AccompanyingPartialFactor = factors.Gamma_Qi,
+                        DesignSituation = new DesignSituation()
+                        {
+                            Class = DesignSituationClass.PersistentAndTransient,
+                            UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                            FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                            LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                            OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value,
+                            ReductionFactor = 1.0
+
+                        }
                     };
 
                     combination.SetPermanentCases(permanents);
@@ -112,12 +134,17 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 combination = new MemberDesignCombination()
                 {
                     Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10b - Leading {variables[i].Name}",
-                    PermanentPartialFactor = factors.Gamma_Gsup,
-                    PermanentReductionFactor = factors.Xi,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
-                    LeadingVariablePartialFactor = factors.Gamma_Q1,
                     OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
-                    AccompanyingPartialFactor = factors.Gamma_Qi,
+                    DesignSituation = new DesignSituation()
+                    {
+                        Class = DesignSituationClass.PersistentAndTransient,
+                        UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                        FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                        LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                        OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value,
+                        ReductionFactor = factors.Xi.Value
+                    }
                 };
 
                 combination.SetPermanentCases(permanents);
@@ -127,16 +154,21 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     combination = new MemberDesignCombination()
                     {
-                        Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10b - Leading {variables[i].Name} with unfavourable permanent",
-                        PermanentPartialFactor = factors.Gamma_Ginf,
-                        PermanentReductionFactor = factors.Xi,
+                        Name = $"{prefix}{firstCaseId++}: STR/GEO Set B, Eq. 6.10b - Leading {variables[i].Name} with favourable permanent",
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
-                        LeadingVariablePartialFactor = factors.Gamma_Q1,
                         OtherAccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
-                        AccompanyingPartialFactor = factors.Gamma_Qi,
+                        DesignSituation = new DesignSituation()
+                        {
+                            Class = DesignSituationClass.PersistentAndTransient,
+                            UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                            FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                            LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                            OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value,
+                            ReductionFactor = factors.Xi.Value
+                        }
                     };
 
-                    combination.SetPermanentCases(permanents);
+                    combination.SetPermanentCases(permanents, permanents.Select(x => true).ToList());
                     combinations.Add(combination);
                 }
             }

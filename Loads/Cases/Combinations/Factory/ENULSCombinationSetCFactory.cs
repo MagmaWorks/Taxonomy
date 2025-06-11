@@ -30,11 +30,16 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 var combination = new GeotechnicalMemberDesignCombination()
                 {
                     Name = $"{prefix}{firstCaseId++}: STR/GEO Set C, Eq. 6.10 - Leading {variables[i].Name}",
-                    PermanentPartialFactor = factors.Gamma_Gsup,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
-                    LeadingVariablePartialFactor = factors.Gamma_Q1,
                     AccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
-                    AccompanyingPartialFactor = factors.Gamma_Qi,
+                    DesignSituation = new DesignSituation()
+                    {
+                        Class = DesignSituationClass.Transient,
+                        UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                        FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                        LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                        OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value
+                    }
                 };
 
                 combination.SetPermanentCases(permanents);
@@ -44,15 +49,20 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     combination = new GeotechnicalMemberDesignCombination()
                     {
-                        Name = $"{prefix}{firstCaseId++}: STR/GEO Set C, Eq. 6.10 - Leading {variables[i].Name} with unfavourable permanent",
-                        PermanentPartialFactor = factors.Gamma_Ginf,
+                        Name = $"{prefix}{firstCaseId++}: STR/GEO Set C, Eq. 6.10 - Leading {variables[i].Name} with favourable permanent",
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
-                        LeadingVariablePartialFactor = factors.Gamma_Q1,
                         AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
-                        AccompanyingPartialFactor = factors.Gamma_Qi,
+                        DesignSituation = new DesignSituation()
+                        {
+                            Class = DesignSituationClass.Transient,
+                            UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                            FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                            LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                            OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value
+                        }
                     };
 
-                    combination.SetPermanentCases(permanents);
+                    combination.SetPermanentCases(permanents, permanents.Select(x => false).ToList());
                     combinations.Add(combination);
                 }
             }

@@ -7,7 +7,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
     {
         public Ratio LeadingSeismicPartialFactor { get; set; } = new Ratio(1, RatioUnit.DecimalFraction);
         public IList<IVariableCase> AccompanyingVariableCases { get; set; } = new List<IVariableCase>();
-        public IDesignSituation DesignSitation { get; set; } = new DesignSituation()
+        public IDesignSituation DesignSituation { get; set; } = new DesignSituation()
         {
             Class = DesignSituationClass.Seismic,
             LeadingActionPartialFactor = 1.5

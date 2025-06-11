@@ -21,7 +21,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                     LeadingVariableCases = new List<IVariableCase>() { accidentalCase },
                     OtherAccompanyingVariableCases = variables,
                     UseFrequentCombinationFactorForMainAccompanying = false,
-                    DesignSitation = new DesignSituation()
+                    DesignSituation = new DesignSituation()
                     {
                         Class = DesignSituationClass.Seismic,
                         LeadingActionPartialFactor = partialFactor
@@ -43,7 +43,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                     MainAccompanyingVariableCases = new List<IVariableCase>() { variables[i] },
                     OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
                     UseFrequentCombinationFactorForMainAccompanying = true,
-                    DesignSitation = new DesignSituation()
+                    DesignSituation = new DesignSituation()
                     {
                         Class = DesignSituationClass.Seismic,
                         LeadingActionPartialFactor = partialFactor

@@ -42,7 +42,7 @@ namespace CombinationTests
                 combinations[2].Name);
             Assert.Equal("" + new Ratio(1.35, RatioUnit.DecimalFraction) + "·" + new Ratio(0.85, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·W + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·(" + new Ratio(0.7, RatioUnit.DecimalFraction) + "·Q + " + new Ratio(0.5, RatioUnit.DecimalFraction) + "·S + " + new Ratio(0.6, RatioUnit.DecimalFraction) + "·T)", combinations[2].Definition);
 
-            Assert.Equal("LC4: STR/GEO Set B, Eq. 6.10b - Leading Wind loads with unfavourable permanent",
+            Assert.Equal("LC4: STR/GEO Set B, Eq. 6.10b - Leading Wind loads with favourable permanent",
                 combinations[3].Name);
             Assert.Equal("" + new Ratio(0.85, RatioUnit.DecimalFraction) + "·(DL + SDL) + " + new Ratio(1.5, RatioUnit.DecimalFraction) + "·W", combinations[3].Definition);
 
@@ -131,10 +131,10 @@ namespace CombinationTests
             TestFactoredLoad(lc3Loads[i++], 1.5 * 0.5, s);
             TestFactoredLoad(lc3Loads[i++], 1.5 * 0.6, t);
 
-            // LC4: 0.85·(DL + SDL) + 1.5·W
+            // LC4: 1.0·0.85·(DL + SDL) + 1.5·W
             i = 0;
-            TestFactoredLoad(lc4Loads[i++], 0.85, dl);
-            TestFactoredLoad(lc4Loads[i++], 0.85, sdl);
+            TestFactoredLoad(lc4Loads[i++], 1.0 * 0.85, dl);
+            TestFactoredLoad(lc4Loads[i++], 1.0 * 0.85, sdl);
             TestFactoredLoad(lc4Loads[i++], 1.5, w);
 
             // LC5: 1.35·0.85·(DL + SDL) + 1.5·S + 1.5·(0.7·Q + 0.6·W + 0.6·T)

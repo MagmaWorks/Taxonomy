@@ -26,7 +26,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                     Name = $"{prefix}{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[i].Name}",
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                     AccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
-                    DesignSitation = new DesignSituation()
+                    DesignSituation = new DesignSituation()
                     {
                         Class = DesignSituationClass.Persistent,
                         UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
@@ -46,7 +46,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                         Name = $"{prefix}{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[i].Name} with favourable permanent",
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
                         AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
-                        DesignSitation = new DesignSituation()
+                        DesignSituation = new DesignSituation()
                         {
                             Class = DesignSituationClass.Persistent,
                             UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
@@ -67,7 +67,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 Name = $"{prefix}3: EQU Set A, Eq. 6.10 - Leading {variables[1].Name} with favourable permanent",
                 LeadingVariableCases = new List<IVariableCase>() { variables[1] },
                 AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != 1).ToList(),
-                DesignSitation = new DesignSituation()
+                DesignSituation = new DesignSituation()
                 {
                     Class = DesignSituationClass.Persistent,
                     UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
