@@ -7,32 +7,34 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
     {
         public string Name { get; set; } = string.Empty;
         public string Definition => GetDefinition();
-        public Ratio PermanentPartialFactor { get; set; } = new Ratio(1.1, RatioUnit.DecimalFraction);
-        public Ratio LeadingVariablePartialFactor { get; set; } = new Ratio(1.5, RatioUnit.DecimalFraction);
-        public Ratio AccompanyingPartialFactor { get; set; } = new Ratio(1.5, RatioUnit.DecimalFraction);
         public IList<IPermanentCase> PermanentCases { get; set; } = new List<IPermanentCase>();
         public IList<IVariableCase> LeadingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> AccompanyingVariableCases { get; set; } = new List<IVariableCase>();
+        public IDesignSituation DesignSitation { get; set; } = new DesignSituation()
+        {
+            Class = DesignSituationClass.Accidental,
+
+        };
 
         public EquilibriumCombination() { }
 
         public IList<ILoad> GetFactoredLoads()
         {
             var factoredLoads = new List<ILoad>();
-            factoredLoads.AddRange(Utility.FactorLoads(PermanentPartialFactor, PermanentCases));
-            factoredLoads.AddRange(
-                Utility.FactorLoads(LeadingVariablePartialFactor, LeadingVariableCases));
-            factoredLoads.AddRange(Utility.FactorAccompanyingVariableLoads(
-                AccompanyingPartialFactor, AccompanyingVariableCases, ld => ld.CombinationFactor));
+            factoredLoads.AddRange(Utility.FactorLoads(DesignSitation, PermanentCases));
+            factoredLoads.AddRange(Utility.FactorLoads(DesignSitation, LeadingVariableCases));
+            factoredLoads.AddRange(Utility.FactorAccompanyingVariableLoads(new Ratio(
+                DesignSitation.MainAccompanyingVariableActionsPartialFactor, RatioUnit.DecimalFraction),
+                AccompanyingVariableCases, ld => ld.CombinationFactor));
             return factoredLoads;
         }
 
         private string GetDefinition()
         {
-            string perm = Utility.DescriptionHelper(PermanentCases, PermanentPartialFactor);
-            string lead = Utility.DescriptionHelper(LeadingVariableCases, LeadingVariablePartialFactor);
-            string other = Utility.DescriptionHelper(
-                AccompanyingVariableCases, AccompanyingPartialFactor, ld => ld.CombinationFactor);
+            string perm = Utility.DescriptionHelper(PermanentCases, DesignSitation);
+            string lead = Utility.DescriptionHelper(LeadingVariableCases, new Ratio(DesignSitation.LeadingActionPartialFactor, RatioUnit.DecimalFraction));
+            string other = Utility.DescriptionHelper(AccompanyingVariableCases,
+                new Ratio(DesignSitation.OtherAccompanyingVariableActionsPartialFactor, RatioUnit.DecimalFraction), ld => ld.CombinationFactor);
             return Utility.JoinDescriptions(new string[] { perm, lead, other });
         }
     }

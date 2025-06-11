@@ -8,8 +8,6 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {
-
-
         public static IList<IEquilibriumCombination> CreateEquSetA(IList<ILoadCase> cases)
         {
             return CreateEquSetA(cases, NationalAnnex.RecommendedValues);
@@ -26,24 +24,34 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     Name = $"{prefix}{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[i].Name}",
                     PermanentCases = permanents,
-                    PermanentPartialFactor = factors.Gamma_Gsup,
                     LeadingVariableCases = new List<IVariableCase>() { variables[i] },
-                    LeadingVariablePartialFactor = factors.Gamma_Q1,
                     AccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
-                    AccompanyingPartialFactor = factors.Gamma_Qi,
+                    DesignSitation = new DesignSituation()
+                    {
+                        Class = DesignSituationClass.Persistent,
+                        UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                        FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                        LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                        OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value
+                    }
                 });
 
                 if (variables[i].IsHorizontal)
                 {
                     combinations.Add(new EquilibriumCombination()
                     {
-                        Name = $"{prefix}{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[i].Name} with unfavourable permanent",
+                        Name = $"{prefix}{firstCaseId++}: EQU Set A, Eq. 6.10 - Leading {variables[i].Name} with favourable permanent",
                         PermanentCases = permanents.Where((item, index) => !item.IsFavourable).ToList(),
-                        PermanentPartialFactor = factors.Gamma_Ginf,
                         LeadingVariableCases = new List<IVariableCase>() { variables[i] },
-                        LeadingVariablePartialFactor = factors.Gamma_Q1,
                         AccompanyingVariableCases = variables.Where((item, index) => item.IsHorizontal && index != i).ToList(),
-                        AccompanyingPartialFactor = factors.Gamma_Qi,
+                        DesignSitation = new DesignSituation()
+                        {
+                            Class = DesignSituationClass.Persistent,
+                            UnfavourablePermanentActionsPartialFactor = factors.Gamma_Gsup.Value,
+                            FavourablePermanentActionsPartialFactor = factors.Gamma_Ginf.Value,
+                            LeadingActionPartialFactor = factors.Gamma_Q1.Value,
+                            OtherAccompanyingVariableActionsPartialFactor = factors.Gamma_Qi.Value
+                        }
                     });
                 }
             }

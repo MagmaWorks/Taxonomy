@@ -9,7 +9,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
     internal static class Utility
     {
         public static IList<ILoad> FactorLoads<T>(Ratio partialFactor, IList<T> loadCases)
-            where T : ILoadCase
+    where T : ILoadCase
         {
             var factoredLoads = new List<ILoad>();
             if (loadCases == null || loadCases.Count == 0)
@@ -22,6 +22,34 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 foreach (ILoad load in loadCase.Loads)
                 {
                     factoredLoads.Add(load.Factor(partialFactor));
+                }
+            }
+
+            return factoredLoads;
+        }
+
+        public static IList<ILoad> FactorLoads<T>(IDesignSituation designSitation, IList<T> loadCases)
+            where T : ILoadCase
+        {
+            var factoredLoads = new List<ILoad>();
+            if (loadCases == null || loadCases.Count == 0)
+            {
+                return factoredLoads;
+            }
+
+            foreach (T loadCase in loadCases)
+            {
+                foreach (ILoad load in loadCase.Loads)
+                {
+                    if (loadCase.IsFavourable)
+                    {
+                        factoredLoads.Add(load.Factor(new Ratio(designSitation.FavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction)));
+
+                    }
+                    else
+                    {
+                        factoredLoads.Add(load.Factor(new Ratio(designSitation.UnfavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction)));
+                    }
                 }
             }
 
@@ -130,6 +158,44 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             if (factor.Value != 1)
             {
                 desc.Append(")");
+            }
+
+            return desc.ToString();
+        }
+
+        internal static string DescriptionHelper<T>(IList<T> cases, IDesignSituation designSituation) where T : ILoadCase
+        {
+            if (cases == null || cases.Count == 0)
+            {
+                return string.Empty;
+            }
+
+            var favourables = new List<ILoadCase>();
+            var unfavourables = new List<ILoadCase>();
+            foreach (ILoadCase lc in cases)
+            {
+                if (lc.IsFavourable)
+                {
+                    favourables.Add(lc);
+                }
+                else
+                {
+                    unfavourables.Add(lc);
+                }
+            }
+
+            StringBuilder desc = new StringBuilder();
+            if (unfavourables.Count > 0)
+            {
+                desc.Append(DescriptionHelper(unfavourables, new Ratio(designSituation.UnfavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction)));
+            }
+
+            if (favourables.Count > 0)
+            {
+                if (favourables.Count > 0)
+                {
+                    desc.Append(DescriptionHelper(favourables, new Ratio(designSituation.FavourablePermanentActionsPartialFactor, RatioUnit.DecimalFraction)));
+                }
             }
 
             return desc.ToString();

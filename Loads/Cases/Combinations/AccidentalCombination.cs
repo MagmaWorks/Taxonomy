@@ -9,11 +9,14 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         public string Name { get; set; } = string.Empty;
         public string Definition => GetDefinition();
         public bool UseFrequentCombinationFactorForMainAccompanying { get; set; } = true;
-        public Ratio LeadingAccidentalPartialFactor { get; set; } = new Ratio(1, RatioUnit.DecimalFraction);
         public IList<IPermanentCase> PermanentCases { get; set; } = new List<IPermanentCase>();
         public IList<IVariableCase> LeadingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> MainAccompanyingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> OtherAccompanyingVariableCases { get; set; } = new List<IVariableCase>();
+        public IDesignSituation DesignSitation { get; set; } = new DesignSituation()
+        {
+            Class = DesignSituationClass.Accidental
+        };
 
         public AccidentalCombination() { }
 
@@ -22,7 +25,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             var factoredLoads = new List<ILoad>();
             factoredLoads.AddRange(Utility.GetLoads(PermanentCases));
             factoredLoads.AddRange(
-                Utility.FactorLoads(LeadingAccidentalPartialFactor, LeadingVariableCases));
+                Utility.FactorLoads(new Ratio(DesignSitation.LeadingActionPartialFactor, RatioUnit.DecimalFraction), LeadingVariableCases));
             if (UseFrequentCombinationFactorForMainAccompanying)
             {
                 factoredLoads.AddRange(Utility.SelectAccompanyingVariableLoads(
@@ -42,7 +45,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         private string GetDefinition()
         {
             string perm = Utility.DescriptionHelper(PermanentCases, new Ratio(1, RatioUnit.DecimalFraction));
-            string lead = Utility.DescriptionHelper(LeadingVariableCases, LeadingAccidentalPartialFactor);
+            string lead = Utility.DescriptionHelper(LeadingVariableCases, new Ratio(DesignSitation.LeadingActionPartialFactor, RatioUnit.DecimalFraction));
             Func<IVariableCase, Ratio> selector = ld => ld.QuasiPermanentFactor;
             if (UseFrequentCombinationFactorForMainAccompanying)
             {

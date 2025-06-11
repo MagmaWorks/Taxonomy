@@ -15,6 +15,11 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         public IList<IVariableCase> LeadingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> MainAccompanyingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> OtherAccompanyingVariableCases { get; set; } = new List<IVariableCase>();
+        public IDesignSituation DesignSitation { get; set; } = new DesignSituation()
+        {
+            Class = DesignSituationClass.PersistentAndTransient,
+            LeadingActionPartialFactor = 1.5
+        };
 
         public MemberDesignCombination() : base() { }
 

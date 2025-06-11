@@ -7,7 +7,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
 {
     public static partial class ENCombinationFactory
     {
-        public static IList<IAccidentalCombination> CreateAccidental(IVariableCase accidentalCase, Ratio partialFactor,
+        public static IList<IAccidentalCombination> CreateAccidental(IVariableCase accidentalCase, double partialFactor,
             IList<ILoadCase> otherCases, NationalAnnex nationalAnnex, bool useFrequentCombinationFactorForMainAccompanying,
             string prefix = "LC", int firstCaseId = 1)
         {
@@ -19,10 +19,14 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     Name = $"{prefix}{firstCaseId++}: Accidental, Eq. 6.11a/b - Leading {accidentalCase.Name}",
                     PermanentCases = permanents,
-                    LeadingAccidentalPartialFactor = partialFactor,
                     LeadingVariableCases = new List<IVariableCase>() { accidentalCase },
                     OtherAccompanyingVariableCases = variables,
-                    UseFrequentCombinationFactorForMainAccompanying = false
+                    UseFrequentCombinationFactorForMainAccompanying = false,
+                    DesignSitation = new DesignSituation()
+                    {
+                        Class = DesignSituationClass.Seismic,
+                        LeadingActionPartialFactor = partialFactor
+                    }
                 });
                 return combinations;
             }
@@ -33,11 +37,15 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
                 {
                     Name = $"{prefix}{firstCaseId++}: Accidental, Eq. 6.11a/b - Leading {accidentalCase.Name} combined with {variables[i].Name} as main accompanying variable action",
                     PermanentCases = permanents,
-                    LeadingAccidentalPartialFactor = partialFactor,
                     LeadingVariableCases = new List<IVariableCase>() { accidentalCase },
                     MainAccompanyingVariableCases = new List<IVariableCase>() { variables[i] },
                     OtherAccompanyingVariableCases = variables.Where((item, index) => index != i).ToList(),
-                    UseFrequentCombinationFactorForMainAccompanying = true
+                    UseFrequentCombinationFactorForMainAccompanying = true,
+                    DesignSitation = new DesignSituation()
+                    {
+                        Class = DesignSituationClass.Seismic,
+                        LeadingActionPartialFactor = partialFactor
+                    }
                 });
             }
 

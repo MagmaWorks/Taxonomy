@@ -11,6 +11,11 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         public IList<IPermanentCase> PermanentCases { get; set; } = new List<IPermanentCase>();
         public IList<IVariableCase> LeadingVariableCases { get; set; } = new List<IVariableCase>();
         public IList<IVariableCase> AccompanyingVariableCases { get; set; } = new List<IVariableCase>();
+        public IDesignSituation DesignSitation { get; set; } = new DesignSituation()
+        {
+            Class = DesignSituationClass.Seismic,
+            LeadingActionPartialFactor = 1.5
+        };
 
         public SeismicCombination() { }
 
