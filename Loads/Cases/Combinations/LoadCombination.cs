@@ -28,5 +28,16 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         internal abstract string GetDefinition();
 
         public abstract IList<ILoad> GetFactoredLoads();
+
+        internal static Ratio CreateFactor(double? factor)
+        {
+            double value = 0;
+            if (factor != null)
+            {
+                value = (double)factor;
+            }
+
+            return new Ratio(value, RatioUnit.DecimalFraction);
+        }
     }
 }

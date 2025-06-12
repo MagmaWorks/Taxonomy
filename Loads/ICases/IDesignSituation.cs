@@ -14,11 +14,11 @@
         /// <summary>
         /// γ_Q,1 leading variable/accidental/seismic action partial factor
         /// </summary>
-        double LeadingActionPartialFactor { get; }
+        double? LeadingActionPartialFactor { get; }
         /// <summary>
         /// γ_Q,1 main accompanying variable actions partial factor
         /// </summary>
-        double MainAccompanyingVariableActionsPartialFactor { get; }
+        double? MainAccompanyingVariableActionsPartialFactor { get; }
         /// <summary>
         /// γ_Q,i other accompanying variable actions partial factor
         /// </summary>
