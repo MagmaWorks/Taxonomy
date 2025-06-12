@@ -20,8 +20,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         {
             var factoredLoads = new List<ILoad>();
             factoredLoads.AddRange(Utility.GetLoads(PermanentCases));
-            factoredLoads.AddRange(
-                Utility.FactorLoads(new Ratio(DesignSituation.LeadingActionPartialFactor, RatioUnit.DecimalFraction), LeadingVariableCases));
+            factoredLoads.AddRange(Utility.FactorLoads(CreateFactor(DesignSituation.LeadingActionPartialFactor), LeadingVariableCases));
             if (UseFrequentCombinationFactorForMainAccompanying)
             {
                 factoredLoads.AddRange(Utility.SelectAccompanyingVariableLoads(
@@ -41,7 +40,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         internal override string GetDefinition()
         {
             string perm = Utility.DescriptionHelper(PermanentCases, new Ratio(1, RatioUnit.DecimalFraction));
-            string lead = Utility.DescriptionHelper(LeadingVariableCases, new Ratio(DesignSituation.LeadingActionPartialFactor, RatioUnit.DecimalFraction));
+            string lead = Utility.DescriptionHelper(LeadingVariableCases, CreateFactor(DesignSituation.LeadingActionPartialFactor));
             Func<IVariableCase, Ratio> selector = ld => ld.QuasiPermanentFactor;
             if (UseFrequentCombinationFactorForMainAccompanying)
             {

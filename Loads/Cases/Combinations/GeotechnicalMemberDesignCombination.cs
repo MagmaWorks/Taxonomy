@@ -18,8 +18,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         {
             var factoredLoads = new List<ILoad>();
             factoredLoads.AddRange(Utility.FactorLoads(DesignSituation, PermanentCases, PermanentCaseIsFavourable));
-            factoredLoads.AddRange(Utility.FactorLoads(new Ratio(DesignSituation.LeadingActionPartialFactor,
-               RatioUnit.DecimalFraction), LeadingVariableCases));
+            factoredLoads.AddRange(Utility.FactorLoads(CreateFactor(DesignSituation.LeadingActionPartialFactor), LeadingVariableCases));
             factoredLoads.AddRange(Utility.FactorAccompanyingVariableLoads(new Ratio(
                       DesignSituation.OtherAccompanyingVariableActionsPartialFactor, RatioUnit.DecimalFraction),
                       AccompanyingVariableCases, ld => ld.CombinationFactor));
@@ -29,7 +28,7 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
         internal override string GetDefinition()
         {
             string perm = Utility.DescriptionHelper(PermanentCases, PermanentCaseIsFavourable, DesignSituation);
-            string lead = Utility.DescriptionHelper(LeadingVariableCases, new Ratio(DesignSituation.LeadingActionPartialFactor, RatioUnit.DecimalFraction));
+            string lead = Utility.DescriptionHelper(LeadingVariableCases, CreateFactor(DesignSituation.LeadingActionPartialFactor));
             string other = Utility.DescriptionHelper(AccompanyingVariableCases,
                 new Ratio(DesignSituation.OtherAccompanyingVariableActionsPartialFactor, RatioUnit.DecimalFraction), ld => ld.CombinationFactor);
             return Utility.JoinDescriptions(new string[] { perm, lead, other });
