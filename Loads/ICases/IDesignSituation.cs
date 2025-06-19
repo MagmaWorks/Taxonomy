@@ -1,6 +1,8 @@
-﻿namespace MagmaWorks.Taxonomy.Loads
+﻿using MagmaWorks.Taxonomy.Serialization;
+
+namespace MagmaWorks.Taxonomy.Loads
 {
-    public interface IDesignSituation
+    public interface IDesignSituation : ITaxonomySerializable
     {
         DesignSituationClass Class { get; }
         /// <summary>
