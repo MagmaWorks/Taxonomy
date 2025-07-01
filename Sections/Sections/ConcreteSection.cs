@@ -91,7 +91,6 @@ namespace MagmaWorks.Taxonomy.Sections
                         case SectionFace.Right:
                             _sidesReinforcementLayers.Add(face);
                             break;
-
                     }
                     break;
             }
@@ -102,6 +101,11 @@ namespace MagmaWorks.Taxonomy.Sections
             _rebars.Clear();
             _rebars.AddRange(_looseRebars);
             Length offset = Cover;
+            if (Link != null)
+            {
+                offset += Link.Diameter;
+            }
+
             foreach (IPerimeterReinforcementLayer layer in _perimeterReinforcementLayers)
             {
                 CollectTopBottomRebars(layer, ref offset);
