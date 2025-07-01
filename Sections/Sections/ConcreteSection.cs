@@ -12,7 +12,7 @@ namespace MagmaWorks.Taxonomy.Sections
     public class ConcreteSection : Section, IConcreteSection
     {
         public IList<ILongitudinalReinforcement> Rebars => CollectRebars();
-        public IRebar Link { get; set; }
+        public ILink Link { get; set; }
         public Length Cover { get; set; } = Length.Zero;
         public IMinimumReinforcementSpacing MinimumReinforcementSpacing { get; set; } = new MinimumReinforcementSpacing();
         private List<ILongitudinalReinforcement> _rebars = new();
@@ -28,15 +28,21 @@ namespace MagmaWorks.Taxonomy.Sections
         {
             ValidateMaterial();
         }
+        public ConcreteSection(IProfile profile, IMaterial material, IRebar link) : this(profile, material, new Link(link)) { }
 
-        public ConcreteSection(IProfile profile, IMaterial material, IRebar link)
+        public ConcreteSection(IProfile profile, IMaterial material, IRebar link, Length cover) : this(profile, material, new Link(link), cover) { }
+
+        public ConcreteSection(IProfile profile, IMaterial material, IRebar link, Length cover, IList<ILongitudinalReinforcement> rebars)
+            : this(profile, material, new Link(link), cover, rebars) { }
+
+        public ConcreteSection(IProfile profile, IMaterial material, ILink link)
             : base(profile, material)
         {
             ValidateMaterial();
             Link = link;
         }
 
-        public ConcreteSection(IProfile profile, IMaterial material, IRebar link, Length cover)
+        public ConcreteSection(IProfile profile, IMaterial material, ILink link, Length cover)
             : base(profile, material)
         {
             ValidateMaterial();
@@ -44,7 +50,7 @@ namespace MagmaWorks.Taxonomy.Sections
             Cover = cover;
         }
 
-        public ConcreteSection(IProfile profile, IMaterial material, IRebar link, Length cover, IList<ILongitudinalReinforcement> rebars)
+        public ConcreteSection(IProfile profile, IMaterial material, ILink link, Length cover, IList<ILongitudinalReinforcement> rebars)
             : base(profile, material)
         {
             ValidateMaterial();

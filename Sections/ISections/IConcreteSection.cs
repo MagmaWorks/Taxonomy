@@ -7,6 +7,6 @@ namespace MagmaWorks.Taxonomy.Sections
     {
         Length Cover { get; }
         IList<ILongitudinalReinforcement> Rebars { get; }
-        IRebar Link { get; }
+        ILink Link { get; }
     }
 }
