@@ -113,7 +113,7 @@
         }
 
         [Fact]
-        public void AddBottomTopAndSideRebarLayersTest()
+        public void AddBottomTopLeftAndRigthRebarLayersTest()
         {
             // Assemble
             LengthUnit u = LengthUnit.Millimeter;
@@ -132,6 +132,78 @@
             // Act
             section.AddRebarLayer(left);
             section.AddRebarLayer(right);
+            section.AddRebarLayer(bottom);
+            section.AddRebarLayer(bottom);
+            section.AddRebarLayer(top);
+            IList<ILongitudinalReinforcement> rebars = section.Rebars;
+
+            // Assert
+            Assert.Equal(3 * 2 + 2 + 2 + 2, rebars.Count);
+            int i = 0;
+            double coverToFirstLayerCentre = 35.0 + 8 + 20 / 2; // cover + link + dia/2
+            // bottom first layer
+            Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
+            Assert.Equal(400 / 2 - coverToFirstLayerCentre, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(-800 / 2 + coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
+            Assert.Equal(0, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(-800 / 2 + coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
+            Assert.Equal(-400 / 2 + coverToFirstLayerCentre, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(-800 / 2 + coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            // bottom second layer
+            double coverToSecondLayerCentre = 35.0 + 8 + 20.0 + 25.0 + 20.0 / 2;
+            Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
+            Assert.Equal(400 / 2 - coverToSecondLayerCentre, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(-800 / 2 + coverToSecondLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
+            Assert.Equal(0, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(-800 / 2 + coverToSecondLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
+            Assert.Equal(-400 / 2 + coverToSecondLayerCentre, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(-800 / 2 + coverToSecondLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            // top first layer
+            Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
+            Assert.Equal(-400 / 2 + coverToFirstLayerCentre, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(800 / 2 - coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
+            Assert.Equal(400 / 2 - coverToFirstLayerCentre, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(800 / 2 - coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            // left layer
+            double coverToSideBars = 35.0 + 8 + 12 / 2;
+            Assert.Equal(12, rebars[i].Rebar.Diameter.As(u), 2);
+            Assert.Equal(-400 / 2 + coverToSideBars, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(102.67, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(12, rebars[i].Rebar.Diameter.As(u), 2);
+            Assert.Equal(-400 / 2 + coverToSideBars, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(-57.67, rebars[i++].Position.Z.As(u), 2);
+            // right layer
+            Assert.Equal(12, rebars[i].Rebar.Diameter.As(u), 2);
+            Assert.Equal(400 / 2 - coverToSideBars, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(102.67, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(12, rebars[i].Rebar.Diameter.As(u), 2);
+            Assert.Equal(400 / 2 - coverToSideBars, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(-57.67, rebars[i++].Position.Z.As(u), 2);
+        }
+
+        [Fact]
+        public void AddBottomTopAndSideRebarLayersTest()
+        {
+            // Assemble
+            LengthUnit u = LengthUnit.Millimeter;
+            IEnConcreteMaterial material = new EnConcreteMaterial(EnConcreteGrade.C30_37, NationalAnnex.UnitedKingdom);
+            IRectangle profile = new Rectangle(new Length(400, u), new Length(800, u));
+            IRebar link = RebarTests.CreateRebar(8);
+            Length cover = new Length(35, LengthUnit.Millimeter);
+            var section = new ConcreteSection(profile, material, link, cover);
+            IRebar mainBars = RebarTests.CreateRebar(20);
+            IRebar sideBars = RebarTests.CreateRebar(12);
+            var bottom = new FaceReinforcementLayer(SectionFace.Bottom, mainBars, 3);
+            var top = new FaceReinforcementLayer(SectionFace.Top, mainBars, 2);
+            var sides = new FaceReinforcementLayer(SectionFace.Sides, sideBars, 4);
+
+            // Act
+            section.AddRebarLayer(sides);
             section.AddRebarLayer(bottom);
             section.AddRebarLayer(bottom);
             section.AddRebarLayer(top);

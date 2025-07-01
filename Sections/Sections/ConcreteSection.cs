@@ -91,6 +91,11 @@ namespace MagmaWorks.Taxonomy.Sections
                         case SectionFace.Right:
                             _sidesReinforcementLayers.Add(face);
                             break;
+
+                        case SectionFace.Sides:
+                            _sidesReinforcementLayers.Add(new FaceReinforcementLayer(face) { Face = SectionFace.Left });
+                            _sidesReinforcementLayers.Add(new FaceReinforcementLayer(face) { Face = SectionFace.Right });
+                            break;
                     }
                     break;
             }
