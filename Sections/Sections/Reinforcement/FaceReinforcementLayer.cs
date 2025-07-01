@@ -22,6 +22,12 @@ namespace MagmaWorks.Taxonomy.Sections.Reinforcement
             Face = face;
         }
 
+        internal FaceReinforcementLayer(IFaceReinforcementLayer other)
+        {
+            Layout = other.Layout;
+            Face = other.Face;
+        }
+
         public ILocalPolyline2d GetPath(IProfile profile, Length offset)
         {
             int startingPointIndex = 0;
