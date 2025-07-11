@@ -15,10 +15,10 @@ namespace MagmaWorks.Taxonomy.Sections
         public ILink Link { get; set; }
         public Length Cover { get; set; } = Length.Zero;
         public IMinimumReinforcementSpacing MinimumReinforcementSpacing { get; set; } = new MinimumReinforcementSpacing();
+
         private List<ILongitudinalReinforcement> _rebars = new();
         private List<ILongitudinalReinforcement> _looseRebars = new();
         private List<IPerimeterReinforcementLayer> _perimeterReinforcementLayers = new();
-
         private List<IFaceReinforcementLayer> _sidesReinforcementLayers = new();
         private List<IFaceReinforcementLayer> _topBottomReinforcementLayers = new();
 
@@ -144,7 +144,68 @@ namespace MagmaWorks.Taxonomy.Sections
                 }
             }
 
+            _rebars = MoveCornerBars(_rebars);
             return _rebars;
+        }
+
+        private List<ILongitudinalReinforcement> MoveCornerBars(IList<ILongitudinalReinforcement> rebars)
+        {
+            if (Link == null || Link.Diameter.Value == 0)
+            {
+                return new List<ILongitudinalReinforcement>(rebars);
+            }
+
+            ILocalPolyline2d perimeter = new Perimeter(Profile).OuterEdge;
+            Length offset = Cover + Link.Diameter;
+            if (perimeter.IsClockwise())
+            {
+                offset *= -1;
+            }
+
+            ILocalPolyline2d innerSideOfLink = perimeter.Offset(offset);
+            var movedBars = new List<ILongitudinalReinforcement>();
+            for (int i = 0; i < rebars.Count; i++)
+            {
+                Length radius = (Link.MinimumMandrelDiameter > rebars[i].Rebar.Diameter
+                    ? Link.MinimumMandrelDiameter : rebars[i].Rebar.Diameter) / 2;
+                Length cornerOffset = (radius * Math.Sqrt(2) - radius + rebars[i].Rebar.Diameter / 2) / Math.Sqrt(2);
+                Length rebarRadiusOffset = rebars[i].Rebar.Diameter / 2;
+                if (perimeter.IsClockwise())
+                {
+                    cornerOffset *= -1;
+                    rebarRadiusOffset *= -1;
+                }
+
+                IList<ILocalPoint2d> withCornerOffset = innerSideOfLink.Offset(cornerOffset).Points;
+                IList<ILocalPoint2d> longitudinalBarCentres = innerSideOfLink.Offset(rebarRadiusOffset).Points;
+                if (IsCornerPoint(rebars[i].Position, longitudinalBarCentres, out int id))
+                {
+                    var movedBar = new LongitudinalReinforcement(rebars[i].Rebar, withCornerOffset[id]);
+                    movedBars.Add(movedBar);
+                }
+                else
+                {
+                    movedBars.Add(rebars[i]);
+                }
+            }
+
+            return movedBars;
+        }
+
+        private bool IsCornerPoint(ILocalPoint2d pt, IList<ILocalPoint2d> corners, out int index, double tolerance = 1.0e-12)
+        {
+            for(index = 0; index < corners.Count; index++)
+            {
+                double distance = Math.Sqrt(
+                    Math.Pow(corners[index].Y.Millimeters - pt.Y.Millimeters, 2) +
+                    Math.Pow(corners[index].Z.Millimeters - pt.Z.Millimeters, 2));
+                if (distance < tolerance)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void CollectTopBottomRebars(IReinforcementLayer layer, ref Length offset)
