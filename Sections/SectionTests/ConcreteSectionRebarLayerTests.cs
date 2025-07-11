@@ -98,13 +98,12 @@
 
             // Assert
             Assert.Equal(5, section.Rebars.Count);
-            double coverToFirstLayerCentre = 35.0 + 8 + 20 / 2; // cover + link + dia/2
-            Assert.Equal(400 / 2 - coverToFirstLayerCentre, section.Rebars[0].Position.Y.As(u), 2);
-            Assert.Equal(-800 / 2 + coverToFirstLayerCentre, section.Rebars[0].Position.Z.As(u), 2);
+            Assert.Equal(145.24, section.Rebars[0].Position.Y.As(u), 2);
+            Assert.Equal(-345.24, section.Rebars[0].Position.Z.As(u), 2);
             Assert.Equal(0, section.Rebars[1].Position.Y.As(u), 2);
-            Assert.Equal(-800 / 2 + coverToFirstLayerCentre, section.Rebars[1].Position.Z.As(u), 2);
-            Assert.Equal(-400 / 2 + coverToFirstLayerCentre, section.Rebars[2].Position.Y.As(u), 2);
-            Assert.Equal(-800 / 2 + coverToFirstLayerCentre, section.Rebars[2].Position.Z.As(u), 2);
+            Assert.Equal(-347, section.Rebars[1].Position.Z.As(u), 2);
+            Assert.Equal(-145.24, section.Rebars[2].Position.Y.As(u), 2);
+            Assert.Equal(-345.24, section.Rebars[2].Position.Z.As(u), 2);
             double coverToSecondLayerCentre = 35.0 + 8 + 20.0 + 25.0 + 20.0 / 2;
             Assert.Equal(400 / 2 - coverToSecondLayerCentre, section.Rebars[3].Position.Y.As(u), 2);
             Assert.Equal(-800 / 2 + coverToSecondLayerCentre, section.Rebars[3].Position.Z.As(u), 2);
@@ -143,14 +142,14 @@
             double coverToFirstLayerCentre = 35.0 + 8 + 20 / 2; // cover + link + dia/2
             // bottom first layer
             Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
-            Assert.Equal(400 / 2 - coverToFirstLayerCentre, rebars[i].Position.Y.As(u), 2);
-            Assert.Equal(-800 / 2 + coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(145.24, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(-345.24, rebars[i++].Position.Z.As(u), 2);
             Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
             Assert.Equal(0, rebars[i].Position.Y.As(u), 2);
             Assert.Equal(-800 / 2 + coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
             Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
-            Assert.Equal(-400 / 2 + coverToFirstLayerCentre, rebars[i].Position.Y.As(u), 2);
-            Assert.Equal(-800 / 2 + coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(-145.24, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(-345.24, rebars[i++].Position.Z.As(u), 2);
             // bottom second layer
             double coverToSecondLayerCentre = 35.0 + 8 + 20.0 + 25.0 + 20.0 / 2;
             Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
@@ -164,11 +163,11 @@
             Assert.Equal(-800 / 2 + coverToSecondLayerCentre, rebars[i++].Position.Z.As(u), 2);
             // top first layer
             Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
-            Assert.Equal(-400 / 2 + coverToFirstLayerCentre, rebars[i].Position.Y.As(u), 2);
-            Assert.Equal(800 / 2 - coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(-145.24, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(345.24, rebars[i++].Position.Z.As(u), 2);
             Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
-            Assert.Equal(400 / 2 - coverToFirstLayerCentre, rebars[i].Position.Y.As(u), 2);
-            Assert.Equal(800 / 2 - coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(145.24, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(345.24, rebars[i++].Position.Z.As(u), 2);
             // left layer
             double coverToSideBars = 35.0 + 8 + 12 / 2;
             Assert.Equal(12, rebars[i].Rebar.Diameter.As(u), 2);
@@ -215,14 +214,14 @@
             double coverToFirstLayerCentre = 35.0 + 8 + 20 / 2; // cover + link + dia/2
             // bottom first layer
             Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
-            Assert.Equal(400 / 2 - coverToFirstLayerCentre, rebars[i].Position.Y.As(u), 2);
-            Assert.Equal(-800 / 2 + coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(145.24, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(-345.24, rebars[i++].Position.Z.As(u), 2);
             Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
             Assert.Equal(0, rebars[i].Position.Y.As(u), 2);
             Assert.Equal(-800 / 2 + coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
             Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
-            Assert.Equal(-400 / 2 + coverToFirstLayerCentre, rebars[i].Position.Y.As(u), 2);
-            Assert.Equal(-800 / 2 + coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(-145.24, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(-345.24, rebars[i++].Position.Z.As(u), 2);
             // bottom second layer
             double coverToSecondLayerCentre = 35.0 + 8 + 20.0 + 25.0 + 20.0 / 2;
             Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
@@ -236,11 +235,11 @@
             Assert.Equal(-800 / 2 + coverToSecondLayerCentre, rebars[i++].Position.Z.As(u), 2);
             // top first layer
             Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
-            Assert.Equal(-400 / 2 + coverToFirstLayerCentre, rebars[i].Position.Y.As(u), 2);
-            Assert.Equal(800 / 2 - coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(-145.24, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(345.24, rebars[i++].Position.Z.As(u), 2);
             Assert.Equal(20, rebars[i].Rebar.Diameter.As(u), 2);
-            Assert.Equal(400 / 2 - coverToFirstLayerCentre, rebars[i].Position.Y.As(u), 2);
-            Assert.Equal(800 / 2 - coverToFirstLayerCentre, rebars[i++].Position.Z.As(u), 2);
+            Assert.Equal(145.24, rebars[i].Position.Y.As(u), 2);
+            Assert.Equal(345.24, rebars[i++].Position.Z.As(u), 2);
             // left layer
             double coverToSideBars = 35.0 + 8 + 12 / 2;
             Assert.Equal(12, rebars[i].Rebar.Diameter.As(u), 2);
