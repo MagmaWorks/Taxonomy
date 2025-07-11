@@ -148,7 +148,7 @@ namespace MagmaWorks.Taxonomy.Sections
             return _rebars;
         }
 
-        private List<ILongitudinalReinforcement> MoveCornerBars(IList<ILongitudinalReinforcement> rebars)
+        private List<ILongitudinalReinforcement> MoveCornerBars(List<ILongitudinalReinforcement> rebars)
         {
             if (Link == null || Link.Diameter.Value == 0)
             {
