@@ -194,7 +194,7 @@ namespace MagmaWorks.Taxonomy.Sections
 
         private bool IsCornerPoint(ILocalPoint2d pt, IList<ILocalPoint2d> corners, out int index, double tolerance = 1.0e-12)
         {
-            for(index = 0; index < corners.Count; index++)
+            for (index = 0; index < corners.Count; index++)
             {
                 double distance = Math.Sqrt(
                     Math.Pow(corners[index].Y.Millimeters - pt.Y.Millimeters, 2) +
