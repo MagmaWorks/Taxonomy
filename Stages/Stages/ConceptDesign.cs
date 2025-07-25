@@ -6,7 +6,7 @@
         public string Description => _description;
         public string Id => _id;
 
-        public IGovernance Governance => new WhitbyWoodGoverned();
+        public IGovernance Governance => new International();
 
         private const string _name = "Concept Design";
         private const string _description = "Concept Design phase";
