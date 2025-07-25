@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using MagmaWorks.Taxonomy.Serialization;
 using MagmaWorks.Taxonomy.Stages;
-using MagmaWorks.Taxonomy.Stages.RIBA;
+using MagmaWorks.Taxonomy.Stages.UK;
 
 namespace StageTests
 {

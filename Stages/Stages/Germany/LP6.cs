@@ -1,4 +1,4 @@
-﻿namespace MagmaWorks.Taxonomy.Stages.HOAI
+﻿namespace MagmaWorks.Taxonomy.Stages.Germany
 {
     public class LP6 : IDetailedDesign
     {

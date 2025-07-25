@@ -1,4 +1,4 @@
-﻿namespace MagmaWorks.Taxonomy.Stages.RIBA.RIBA2007
+﻿namespace MagmaWorks.Taxonomy.Stages.UK.RIBA2007
 {
     public class RIBAStageD : ISchematicDesign
     {

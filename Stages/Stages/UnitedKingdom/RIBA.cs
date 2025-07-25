@@ -1,6 +1,6 @@
 ﻿using MagmaWorks.Taxonomy.Countries;
 
-namespace MagmaWorks.Taxonomy.Stages.RIBA
+namespace MagmaWorks.Taxonomy.Stages.UK
 {
     public class RIBA : IGovernance
     {
