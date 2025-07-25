@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Stages.Germany
 {
-    public class LP9 : IPredesign
+    public class LP9 : IHandover
     {
         public string Name => _name;
         public string Description => _description;

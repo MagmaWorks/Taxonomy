@@ -1,6 +1,6 @@
 ﻿namespace MagmaWorks.Taxonomy.Stages
 {
-    public class DetailedDesign : IDetailedDesign
+    public class Handover : IHandover
     {
         public string Name => _name;
         public string Description => _description;
@@ -8,10 +8,10 @@
 
         public IGovernance Governance => new International();
 
-        private const string _name = "Detailed Design";
-        private const string _description = "Detailed Design phase";
-        private const string _id = "6";
+        private const string _name = "Handover";
+        private const string _description = "Handover & Close-out";
+        private const string _id = "8";
 
-        public DetailedDesign() { }
+        public Handover() { }
     }
 }
