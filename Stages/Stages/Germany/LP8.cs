@@ -1,6 +1,6 @@
-﻿namespace MagmaWorks.Taxonomy.Stages.HOAI
+﻿namespace MagmaWorks.Taxonomy.Stages.Germany
 {
-    public class LP8 : IPredesign
+    public class LP8 : IConstruction
     {
         public string Name => _name;
         public string Description => _description;

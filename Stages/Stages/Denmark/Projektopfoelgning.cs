@@ -1,6 +1,6 @@
-﻿namespace MagmaWorks.Taxonomy.Stages.AB89
+﻿namespace MagmaWorks.Taxonomy.Stages.Denmark
 {
-    public class Projektopfoelgning : IDetailedDesign
+    public class Projektopfoelgning : IConstruction
     {
         public string Name => _name;
         public string Description => _description;

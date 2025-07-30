@@ -6,11 +6,11 @@
         public string Description => _description;
         public string Id => _id;
 
-        public IGovernance Governance => new WhitbyWoodGoverned();
+        public IGovernance Governance => new International();
 
         private const string _name = "Competition";
         private const string _description = "Architectural Competition phase";
-        private const string _id = "2";
+        private const string _id = "3";
 
         public Competition() { }
     }

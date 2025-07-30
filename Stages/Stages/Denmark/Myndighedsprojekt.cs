@@ -1,4 +1,4 @@
-﻿namespace MagmaWorks.Taxonomy.Stages.AB89
+﻿namespace MagmaWorks.Taxonomy.Stages.Denmark
 {
     public class Myndighedsprojekt : IDetailedDesign
     {

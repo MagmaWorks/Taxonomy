@@ -1,6 +1,6 @@
 ﻿using MagmaWorks.Taxonomy.Countries;
 
-namespace MagmaWorks.Taxonomy.Stages.AB89
+namespace MagmaWorks.Taxonomy.Stages.Denmark
 {
     public class AB89 : IGovernance
     {
@@ -10,7 +10,7 @@ namespace MagmaWorks.Taxonomy.Stages.AB89
 
         private const string _name = "AB89";
         private const string _fullBodyName = "Foreningen af Rådgivende Ingeniører og Danske Arkitekvirksomheder";
-        private static readonly ICountry _country = new Denmark();
+        private static readonly ICountry _country = new Countries.Denmark();
 
         public AB89() { }
     }

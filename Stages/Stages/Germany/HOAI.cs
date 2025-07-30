@@ -1,6 +1,6 @@
 ﻿using MagmaWorks.Taxonomy.Countries;
 
-namespace MagmaWorks.Taxonomy.Stages.HOAI
+namespace MagmaWorks.Taxonomy.Stages.Germany
 {
     public class HOAI : IGovernance
     {
@@ -10,7 +10,7 @@ namespace MagmaWorks.Taxonomy.Stages.HOAI
 
         private const string _name = "HOAI";
         private const string _fullBodyName = "Honorarordnung für Architekten und Ingenieure";
-        private static readonly ICountry _country = new Germany();
+        private static readonly ICountry _country = new Countries.Germany();
 
         public HOAI() { }
     }

@@ -1,4 +1,4 @@
-﻿namespace MagmaWorks.Taxonomy.Stages.RIBA
+﻿namespace MagmaWorks.Taxonomy.Stages.UK
 {
     public class RIBAStage4 : IDetailedDesign
     {
