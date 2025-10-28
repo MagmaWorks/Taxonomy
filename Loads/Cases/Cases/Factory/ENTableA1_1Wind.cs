@@ -12,7 +12,8 @@ namespace MagmaWorks.Taxonomy.Loads.Cases
             {
                 throw new System.NotImplementedException(
                     $"NA {nationalAnnex} not implemented for EN1990 Table A1.1 Wind φ-factors");
-            };
+            }
+            ;
 
             return factors;
         }
