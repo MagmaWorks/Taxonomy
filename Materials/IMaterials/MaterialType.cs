@@ -12,7 +12,10 @@
         FRP = 7,
         Glass = 8,
         Fabric = 9,
+        [Obsolete("This value is deprecated. Use Timber instead.")]
         SolidTimber = 10,
-        GluedLaminatedTimber = 11
+        [Obsolete("This value is deprecated. Use Timber instead.")]
+        GluedLaminatedTimber = 11,
+        RammedEarth = 12
     }
 }
