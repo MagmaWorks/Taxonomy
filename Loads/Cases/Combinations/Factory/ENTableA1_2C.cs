@@ -12,7 +12,8 @@ namespace MagmaWorks.Taxonomy.Loads.Combinations
             {
                 throw new System.NotImplementedException(
                     $"NA {nationalAnnex} not implemented for EN1990 Table A1.2(C) values");
-            };
+            }
+            ;
 
             return factors;
         }
